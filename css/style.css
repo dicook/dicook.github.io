@@ -249,10 +249,10 @@ input.button {
 	color: #F88F26;
 }
 #header-content li a#current  {	
-	color: #FFF;	
+	color: #555;	
 }
 #header-content li a.current  {	
-	color: #FFF;	
+	color: #555;	
 }
 
 #header-content #header-links {

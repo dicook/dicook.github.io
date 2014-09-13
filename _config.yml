@@ -18,17 +18,15 @@ rdiscount extensions: [smart]
 navigation:
 - text: Home
   url: /index.html
-- text: CV
-  url: /cv.html
-- text: Teaching
-  url: /teaching.html
-- text: Research
-  url: /research.html
-- text: Coursework
-  url: /coursework.html
 - text: Blog
   url: /blog.html
   layout: post_ak
+- text: Research
+  url: /research.html
+- text: Teaching
+  url: /teaching.html
+- text: CV
+  url: /cv.html
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
