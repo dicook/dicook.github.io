@@ -1,5 +1,5 @@
 ---
-layout: post_ak
+layout: post
 title: "Testing this blog out"
 description: ""
 category: 
