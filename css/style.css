@@ -28,7 +28,6 @@ a:hover {
 h1, h2, h3 {
 	font: normal 1.4em Candara, 'Trebuchet MS', Tahoma, sans-serif;
 	color: #336699;
-	letter-spacing:-1px;
 }
 h1 { font-size: 3em; }
 h2 { font-size: 2.5em; color:#336699; }
@@ -303,7 +302,7 @@ input.button {
 	color: #336699;
 	padding: 0;
 	margin: 15px 0 10px 5px;
-	letter-spacing:-1px;	
+	letter-spacing:0px;	
 }
 #sidebar ul.sidemenu {
 	margin: 5px 0 15px 0;
@@ -339,7 +338,6 @@ input.button {
 	color: #336699; 	
 	padding: 0 0 5px 0;
 	margin: 15px 15px 20px 15px;
-	letter-spacing:-1px;
 	background: url(../images/bk_dotted.gif) repeat-x left bottom;
 }
 #main li { 
