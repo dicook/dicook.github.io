@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : GreenOrange  
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20110411
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Election 2012 - Obama vs Romney</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><a href="#">Election 2012 </a></h1>
+  		<h1><a href="#">Obama vs Romney </a></h1>
+		  
+		</div>
+	</div>
+	<!-- end #header -->
+	<div id="page">
+	<div id="page-bgtop">
+	<div id="page-bgbtm">
+		<div id="content">
+			<div class="post">
+				<h2 class="title"> Popular vote</h2>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+<!--begin.rcode message=FALSE, echo=FALSE
+  opts_chunk$set(fig.width=9, fig.height=4, fig.path='figures-')
+  end.rcode-->
+
+<table>
+<tr> <td>
+<!--begin.rcode tracking, message=FALSE, warning=FALSE, echo=FALSE, cache=FALSE
+library(ggplot2)
+library(XML)
+library(lubridate)
+library(plyr)
+#current.polls.tracking <- read.csv("current-polls-tracking.csv")
+#current.polls.tracking$date <- as.Date(current.polls.tracking$date)
+webpg ="http://www.nationalpolls.com/2012/obama-vs-romney.html"
+doc <- htmlParse(webpg)
+r <- xmlRoot(doc)
+body <- xmlChildren(r)[[2]]
+tables <- getNodeSet(doc, "//table")
+polls<-NULL
+
+x <- xmlValue(tables[[6]], "td")
+#dt <- as.Date(paste(strsplit(x, " ")[[1]][2], "2012"), "%b %d %Y")
+xp <- getNodeSet(tables[[6]], "tr")
+xps <- data.frame(do.call("rbind", sapply(xp[-1], function(x) (xpathSApply(x, "td", xmlValue)))))
+names(xps) <- c("Pollster", "Region", "Date.Range", "Obama", "Romney")
+xps$Date.Range <- as.character(xps$Date.Range)
+xps$Obama <- as.numeric(as.character(xps$Obama))
+xps$Romney <- as.numeric(as.character(xps$Romney))
+
+xps$Date <- as.Date(sapply(xps$Date.Range, FUN= function(i) strsplit(i, "-")[[1]][2]), "%m/%d/%y")
+xps$Region[which(xps$Region=="ConnecticutPPP")] <- "Connecticut"
+
+polls.sub <- xps[which(rowSums(is.na(xps))==0), -3]
+polls.sub$Obama.Romney<-polls.sub$Obama-polls.sub$Romney
+polls.sub$isNational <- polls.sub$Region=="National"
+
+#write.csv(polls.sub, file="NationalPolling-current-polls.csv", row.names=F)
+
+labels.tracking <- data.frame(Obama.Romney=c(-12, 12), date=c(as.Date("1/8/2012","%d/%m/%Y"), as.Date("1/8/2012","%d/%m/%Y")), text=c("Romney", "Obama"), colour=c("red", "blue"))
+
+polls.sub$Pollster<-as.character(polls.sub$Pollster)
+polls.sub$MajorPollster <- polls.sub$Pollster
+
+polls.sub$MajorPollster[grepl("Gallup", polls.sub$Pollster, ignore.case=TRUE)] <- "Gallup"
+polls.sub$MajorPollster[grepl("Rasmussen", polls.sub$Pollster, ignore.case=TRUE)] <- "Rasmussen" 
+polls.sub$MajorPollster[grepl("Ramussen", polls.sub$Pollster, ignore.case=TRUE)] <- "Rasmussen" 
+polls.sub$MajorPollster[grepl("ABC", polls.sub$Pollster, ignore.case=TRUE)] <- "ABC" 
+polls.sub$MajorPollster[grepl("NBC", polls.sub$Pollster, ignore.case=TRUE)] <- "NBC" 
+polls.sub$MajorPollster[grepl("CBS", polls.sub$Pollster, ignore.case=TRUE)] <- "CBS" 
+polls.sub$MajorPollster[grepl("CNN", polls.sub$Pollster, ignore.case=TRUE)] <- "CNN"
+polls.sub$MajorPollster[grepl("Pew", polls.sub$Pollster, ignore.case=TRUE)] <- "Pew" 
+polls.sub$MajorPollster[grepl("Public Policy", polls.sub$Pollster, ignore.case=TRUE)] <- "PPP" 
+polls.sub$MajorPollster[grepl("PPP", polls.sub$Pollster, ignore.case=TRUE)] <- "PPP"
+polls.sub$MajorPollster[grepl("Fox", polls.sub$Pollster, ignore.case=TRUE)] <- "Fox"
+polls.sub$MajorPollster[grepl("Quinnipiac", polls.sub$Pollster, ignore.case=TRUE)] <- "Quinnipiac"
+polls.sub$MajorPollster[grepl("Dixon", polls.sub$Pollster, ignore.case=TRUE)] <- "MasonDixon"
+polls.sub$MajorPollster[grepl("Democracy", polls.sub$Pollster, ignore.case=TRUE)] <- "DemocracyCorps"
+polls.sub$MajorPollster[grepl("Survey", polls.sub$Pollster, ignore.case=TRUE)&
+                        grepl("USA", polls.sub$Pollster, ignore.case=TRUE)] <- "SurveyUSA"
+polls.sub$MajorPollster[grepl("Reuters", polls.sub$Pollster, ignore.case=TRUE)] <- "AP.Reuters"
+polls.sub$MajorPollster[grepl("AP", polls.sub$Pollster, ignore.case=TRUE)] <- "AP.Reuters"
+polls.sub$MajorPollster[grepl("YouGov", polls.sub$Pollster, ignore.case=TRUE)] <- "YouGov"
+
+tracking.polls<-subset(polls.sub, Region=="National")
+tracking.polls <- subset(tracking.polls, Date > as.Date("9/4/2012","%d/%m/%Y"))
+tracking.polls$MajorPollster <- as.character(tracking.polls$MajorPollster)
+pollsters <- unique(tracking.polls$MajorPollster)
+for (i in 1:length(pollsters)) {
+  indx <- c(1:nrow(tracking.polls))[tracking.polls$MajorPollster == pollsters[i]]
+  if (length(indx) < 10) 
+    tracking.polls$MajorPollster[indx] <- "Other"
+}
+tracking.polls$MajorPollster <- factor(tracking.polls$MajorPollster)
+
+labels.tracking <- data.frame(Obama.Romney=c(-14, 14), Date=c(as.Date("1/8/2012","%d/%m/%Y"), as.Date("1/8/2012","%d/%m/%Y")), text=c("Romney", "Obama"), colour=c("red", "blue"))
+polls.means <- data.frame(Date=tracking.polls$Date, Obama.Romney=tracking.polls$Obama.Romney)
+polls.means$Date <- as.Date(polls.means$Date)
+polls.means$wks <- as.Date("1/1/2012","%d/%m/%Y") + weeks(week(polls.means$Date))
+polls.m <- ddply(polls.means, "wks", summarise, median=median(Obama.Romney))
+tracking.polls$weeks <- as.Date("1/1/2012","%d/%m/%Y") + weeks(week(tracking.polls$Date))
+bymedian <- with(tracking.polls, reorder(MajorPollster, Obama.Romney, median))
+tracking.polls$MajorPollster <- bymedian
+ggplot(data=tracking.polls, ylim=c(-15,15)) +
+  geom_point(data=tracking.polls, mapping=aes(x=Date, y=Obama.Romney), size=0.01) + 
+  annotate("rect", xmin=as.Date("2/2/2012","%d/%m/%Y"), xmax=as.Date("2/12/2012","%d/%m/%Y"), ymin=0, ymax=Inf, fill="blue", alpha=0.03) +
+  annotate("rect", xmin=as.Date("2/2/2012","%d/%m/%Y"), xmax=as.Date("2/12/2012","%d/%m/%Y"), ymin=-Inf, ymax=0, fill="red", alpha=0.03) +
+  geom_text(data=labels.tracking[1,], mapping=aes(x=Date, y=Obama.Romney, label=text), colour=I("#FF0000"), size=3, alpha=I(0.2), shape=1) +
+  geom_text(data=labels.tracking[2,], mapping=aes(x=Date, y=Obama.Romney, label=text), colour=I("#330099"), size=3, alpha=I(0.2), shape=1) + 
+  geom_hline(yintercept=0, colour="white", size=2) + scale_x_date(limits=c(as.Date("9/4/2012","%d/%m/%Y"), as.Date("2/11/2012","%d/%m/%Y"))) + 
+  annotate("text", x=as.Date("11/8/2012","%d/%m/%Y"), y=-10, label="1", color="#FF0000", hjust=-0.5, alpha=0.2, size=3) + 
+  annotate("rect", xmin=as.Date("10/8/2012","%d/%m/%Y"), ymin=0, xmax=as.Date("11/8/2012","%d/%m/%Y"), ymax=-10, fill="#FF0000", alpha=0.2) + 
+  annotate("text", x=as.Date("28/8/2012","%d/%m/%Y"), y=-10, label="2", color="#FF0000", hjust=-0.7, alpha=0.2, size=3) + 
+  annotate("rect", xmin=as.Date("27/8/2012","%d/%m/%Y"), ymin=0, xmax=as.Date("30/8/2012","%d/%m/%Y"), ymax=-10, fill="#FF0000", alpha=0.2) +
+  annotate("text", x=as.Date("5/9/2012","%d/%m/%Y"), y=10, label="3", color="#330099", hjust=-0.5, alpha=0.2, size=3) + 
+  annotate("rect", xmin=as.Date("4/9/2012","%d/%m/%Y"), ymin=0, xmax=as.Date("6/9/2012","%d/%m/%Y"), ymax=10, fill="#330099", alpha=0.2) +
+  geom_point(data=tracking.polls, mapping=aes(x=Date, y=Obama.Romney, colour=MajorPollster), size=3, alpha=0.4) + 
+  geom_smooth(mapping=aes(x=Date, y=Obama.Romney, colour=MajorPollster), se=F, size=1.5, alpha=0.2) + 
+  facet_wrap(~MajorPollster, ncol=4) + 
+  xlab("Date") + ylab("Romney -------- | -------- Obama  ") + 
+  scale_y_continuous(limits=c(-15,15), breaks=seq(-15,15,5), labels=c(seq(15, 0, -5), seq(5, 15, 5))) + 
+  #scale_colour_discrete("", h=c(20, 200), c=100, l=50) +
+  scale_colour_brewer(palette="Set1") +
+  theme_bw() + 
+  theme(legend.title=element_text(""),legend.position="bottom", 
+        strip.background = element_rect(fill="white", colour="grey95"), 
+        panel.border = element_rect(colour="grey95"),
+        strip.text = element_text(colour="black", size=12, face="bold"))
+end.rcode-->
+</td>
+</tr>
+<tr>
+<td>
+Tracking polls showing the popular vote, for the major pollsters.
+<br>1=Paul Ryan VP pick
+<br>2=GOP convention
+<br>3=Democratic convention
+<br><br> <b> Is there pollster bias??? </b>
+  
+<br> Each point indicates a tracking poll. Vertically shows the difference in poll results for Obama and Romney. Points above the horizontal 0 line indicate Obama has an advantage, and below indicate a Romney advantage. Horizontally is a time line, running from April until election day. Pollsters who have conducted more than 10 polls are colored, the remaining are a mix of few time pollsters. The line indicates the average of all poll results, within a small time window. <b> The race is pretty tight. </b>
+
+<br><br> <b> Rather looks like a pollster bias!</b> Gallup appears to be consistently higher than Rasmussen, so Gallup favors Obama, and Rasmussen favors Romney. But, the small time pollsters tend to agree more with Gallup! 
+
+<br> Sep 5: Ok, I've broken down and added separate smoothers for the pollsters, Rasmussen, Gallup and everyone else. The pollster bias is so great that they cannot be polling from the same population.
+
+<br> Sep 23: Using more extensive data from nationalpolls.com, allows us to look at many more polls, and pollsters. 
+  
+<br><br><em>Why do we plot the difference rather than two separate lines? People have trouble correctly interpreting the difference between two lines, and typically get it wrong. We are interested to know who has the advantage at any particular time, so we plot the difference. </em>
+
+</td>
+</tr>
+</table>
+ 
+
+</div>
+			</div>
+
+  
+  
+		<div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end #content -->
+		<div id="sidebar">
+			<ul>
+			<img src="images/obama.jpg" align="left"> <img src="images/romney.jpg" align="right"> 
+
+			  <li>
+					<div style="clear: both;">&nbsp;</div>
+				</li>
+				<li>
+					<h2>Terminology</h2>
+					<p>-<a href="http://en.wikipedia.org/wiki/Dot_plot_%28statistics%29">dotplot</a>- -<a href="http://en.wikipedia.org/wiki/Time_series">time series</a>- -<a href="http://en.wikipedia.org/wiki/Kernel_smoother">smoother</a>- -<a href="http://en.wikipedia.org/wiki/Cartogram">cartogram</a>- -<a href="http://en.wikipedia.org/wiki/Scatterplot">scatterplot</a>- -<a href="http://en.wikipedia.org/wiki/Margin_of_error">margin of error</a>-</p>
+				</li>
+				<li>
+				<li>
+					<h2>How's it looking?</h2>
+					<ul>
+						<li><a href="#">Popular vote</a></li>
+						<li><a href="electoral-map.html">Electoral map</a></li>
+						<li><a href="state-trends.html">State trends</a></li>
+						<li><a href="tower.html">Electoral college</a></li>
+					</ul>
+				</li>
+				<li>
+					<h2>Spending</h2>
+					<ul>
+						<li><a href="PAC-type.html">Type of expenses</a></li>
+						<li><a href="PAC-overall.html">Big spenders</a></li>
+						<li><a href="PAC-time.html">Temporal trends</a></li>
+						<li><a href="PAC-state.html">State trends</a></li>
+					</li>
+					</ul>
+				</li>
+					<h2>Sources</h2>
+					<ul>
+						<li><a href="http://www.nationalpolls.com">National Polls</a></li>
+					</ul>
+				</li>	
+        <li> <em> Last poll date:  <!--rinline today() --> </li></em>
+			</ul>
+		</div>
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	</div>
+	</div>
+	<!-- end #page -->
+</div>
+	<div id="footer">
+		<p>Copyright (c) 2012 <a href="http://www.stat.iastate.edu">ISU Statistical Graphics</a> Working Group. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+	</div>
+	<!-- end #footer -->
+</body>
+</html>

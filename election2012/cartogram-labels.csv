@@ -1,0 +1,52 @@
+State,Abbrv,Longitude,Latitude
+california,CA,3,12
+washington,WA,3,18.5
+oregon,OR,4,17
+nevada,NV,5,15.5
+idaho,ID,7,16.5
+utah,UT,7,14.5
+arizona,AZ,8,9
+montana,MT,9,17.5
+wyoming,WY,9,15.5
+colorado,CO,9.5,13
+new mexico,NM,9,10.5
+north dakota,ND,11.5,17.5
+south dakota,SD,11.5,16.5
+nebraska,NE,12,15
+kansas,KS,12,12
+oklahoma,OK,12,9.5
+texas,TX,11,6
+minnesota,MN,14.5,17
+iowa,IA,14.5,15
+missouri,MO,15,12.5
+arkansas,AR,14.5,10
+louisiana,LA,14.5,7.5
+wisconsin,WI,17.5,16
+illinois,IL,18.5,12.5
+tennessee,TN,18.5,8.5
+missouri,MS,17.5,6.5
+michigan,MI,21,17
+indiana,IN,22.5,14
+kentucky,KY,22,11.5
+alabama,AL,20.5,6
+florida,FL,24,3.5
+georgia,GA,24.5,6
+south carolina,SC,22,8.9
+north carolina,NC,25,9.5
+virginia,VA,27.5,11.5
+west virginia,WV,27,13.5
+ohio,OH,26,16.5
+pennsylvania,PA,30,17.5
+maryland,MD,30,14
+district of columbia,DC,31,11.5
+delaware,DE,32.5,12.5
+new jersey,NJ,34.5,14
+new york,NY,34,19.5
+vermont,VT,37,22.5
+massachusetts,MA,39,21
+connecticut,CT,38.5,18.5
+rhode island,RI,41,18.5
+new hampshire,NH,39,22.5
+maine,ME,41,22.5
+alaska,AK,6,3.5
+hawaii,HI,1.5,3.5
