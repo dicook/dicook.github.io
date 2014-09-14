@@ -13,12 +13,12 @@
 /*.navbar .nav {
   float: right; }*/
 
-/* My Colors */
+/* Jekyll Bootstrap Colors */
 h1, h2, h3, h4 {
-  color: #F88F26;
+  color: #f22430;
 }
 #footer {
-  background-color: #336699;
+  background-color: #fdcd60;
 }
 
 
