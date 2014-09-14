@@ -341,9 +341,10 @@ input.button {
 }
 #main h1 { 
 	font: normal 1.8em Georgia, "Times New Roman", Times, serif;
-	color: #336699; 	
+	color: #F88F26; 	
 	padding: 0 0 5px 0;
 	margin: 15px 15px 20px 15px;
+	margin-left: 50px;
 	background: url(../images/bk_dotted.gif) repeat-x left bottom;
 }
 #main li { 
@@ -353,19 +354,19 @@ input.button {
 #main li a { 
 	font: normal 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
         font-weight: 200;
-        font-style: italic;
 	color: #F88F26;
 	margin-left: 10px;
 }
 #main li a:hover { 
 	font: bold 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
-	color: #336699;
+        font-style: italic;
+	color: #F88F26;
 }
 #main h1 a {
 	color: #111;
 	text-decoration: none;
 }
-#main p, #main h1, #main h2, #main h3, #main blockquote, #main form, #main table {
+#main p, #main h2, #main h3, #main blockquote, #main form, #main table {
 	margin-left: 0;
 }
 #main form p {
