@@ -342,7 +342,7 @@ input.button {
 	letter-spacing:-1px;
 	background: url(../images/bk_dotted.gif) repeat-x left bottom;
 }
-#main li a { 
+#main li { 
 	font: normal 1.2em Georgia, "Times New Roman", Times, serif;
 }
 #main h1 a {
