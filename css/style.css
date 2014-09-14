@@ -26,8 +26,8 @@ a:hover {
 
 /* headers */
 h1, h2, h3 {
-	font: normal 1em Candara, "Times New Roman", Times, serif;
-	color:#111;
+	font: normal 1.4em Georgia, "Times New Roman", Times, serif;
+	color: #336699;
 	letter-spacing:-1px;
 }
 h1 { font-size: 3em; }
