@@ -344,6 +344,15 @@ input.button {
 }
 #main li { 
 	font: normal 1.2em Georgia, "Times New Roman", Times, serif;
+	padding: 0 0 5px 0;
+}
+#main li a { 
+	font: normal 1.2em Georgia, "Times New Roman", Times, serif;
+	color: #F88F26;
+}
+#main li a:hover { 
+	font: normal 1.2em Georgia, "Times New Roman", Times, serif;
+	color: #336699;
 }
 #main h1 a {
 	color: #111;
