@@ -355,12 +355,12 @@ input.button {
 	font: normal 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
         font-weight: 200;
 	color: #336699;
-	margin-left: 10px;
+	margin-left: 0px;
 }
 #main1 li a:hover { 
 	font: bold 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
         font-style: italic;
-	color: #F88F26;
+	color: #336699;
 }
 #main1 h1 a {
 	color: #111;
