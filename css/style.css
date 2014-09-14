@@ -387,6 +387,18 @@ input.button {
 	width: 100%;
 	float: left;	
 }
+#footer-wrap2 {
+	position: relative;
+	height: 200px;
+	clear: both;
+	padding: 2.5em 0;
+	font: normal .95em 'Trebuchet MS', Tahoma, sans-serif;
+	text-align: left;	
+	background: url(../images/stkilda.jpg) 0 0;
+	color: #336699;
+	width: 100%;
+	float: left;	
+}
 #footer-wrap p {
 	margin-left: 0;
 }
