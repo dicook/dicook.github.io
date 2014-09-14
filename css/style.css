@@ -333,6 +333,47 @@ input.button {
 }
 
 /* main */
+#main1 {
+	margin: 0 20px 10px 0; 
+	padding: 0;		
+	width: 590px;
+	float: left;	
+}
+#main1 h1 { 
+	font: normal 1.8em Georgia, "Times New Roman", Times, serif;
+	color: #336699; 	
+	padding: 0 0 5px 0;
+	margin: 15px 15px 20px 15px;
+	margin-left: 10px;
+	background: url(../images/bk_dotted.gif) repeat-x left bottom;
+}
+#main1 li { 
+	font: normal 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
+	padding: 0 0 5px 0;
+}
+#main1 li a { 
+	font: normal 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
+        font-weight: 200;
+	color: #336699;
+	margin-left: 10px;
+}
+#main1 li a:hover { 
+	font: bold 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
+        font-style: italic;
+	color: #F88F26;
+}
+#main1 h1 a {
+	color: #111;
+	text-decoration: none;
+}
+#main1 p, #main h2, #main h3, #main blockquote, #main form, #main table {
+	margin-left: 0;
+}
+#main1 form p {
+	margin: 15px;
+}
+
+/* main visiphilia */
 #main {
 	margin: 0 20px 10px 0; 
 	padding: 0;		
