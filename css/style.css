@@ -349,6 +349,7 @@ input.button {
 #main li a { 
 	font: bold 1.2em Georgia, "Times New Roman", Times, serif;
 	color: #F88F26;
+	padding: 10px 0 5px 0;
 }
 #main li a:hover { 
 	font: bold 1.2em Georgia, "Times New Roman", Times, serif;
