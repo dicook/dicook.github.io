@@ -335,10 +335,11 @@ input.button {
 	float: left;	
 }
 #main h1 { 
-	font: normal 1.4em Georgia, "Times New Roman", Times, serif;
+	font: normal 1.8em Georgia, "Times New Roman", Times, serif;
 	color: #336699; 	
 	padding: 0 0 5px 0;
 	margin: 15px 15px 20px 15px;
+        margin-left: 70px;
 	letter-spacing:-1px;
 	background: url(../images/bk_dotted.gif) repeat-x left bottom;
 }
