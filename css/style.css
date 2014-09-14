@@ -347,8 +347,9 @@ input.button {
 	padding: 0 0 5px 0;
 }
 #main li a { 
-	font: italic 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
+	font: normal 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
         font-weight: 200;
+        font-style: italic;
 	color: #F88F26;
 	margin-left: 10px;
 }
