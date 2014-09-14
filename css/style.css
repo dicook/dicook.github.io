@@ -342,6 +342,9 @@ input.button {
 	letter-spacing:-1px;
 	background: url(../images/bk_dotted.gif) repeat-x left bottom;
 }
+#main li { 
+	font: normal 1.4em Candara, 'Trebuchet MS', Tahoma, sans-serif;
+}
 #main h1 a {
 	color: #111;
 	text-decoration: none;
