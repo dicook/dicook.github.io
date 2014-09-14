@@ -349,7 +349,7 @@ input.button {
 #main li a { 
 	font: bold 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
 	color: #F88F26;
-	padding: 10px 10px 5px 0;
+	margin-left: 10px;
 }
 #main li a:hover { 
 	font: bold 1.2em Georgia, "Times New Roman", Times, serif;
