@@ -348,17 +348,17 @@ input.button {
 	background: url(../images/bk_dotted.gif) repeat-x left bottom;
 }
 #main1 li { 
-	font: normal 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
-	padding: 0 0 5px 0;
+	font: normal 1em Candara, 'Trebuchet MS', Tahoma, sans-serif;
+	padding: 0 0 0px 0;
 }
 #main1 li a { 
-	font: normal 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
+	font: normal 1em Candara, 'Trebuchet MS', Tahoma, sans-serif;
         font-weight: 200;
 	color: #336699;
 	margin-left: 0px;
 }
 #main1 li a:hover { 
-	font: bold 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
+	font: bold 1em Candara, 'Trebuchet MS', Tahoma, sans-serif;
         font-style: italic;
 	color: #336699;
 }
