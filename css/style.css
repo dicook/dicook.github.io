@@ -282,6 +282,7 @@ input.button {
 #content {
 	text-align: left;	
 	margin: 0px auto;
+        margin-left: 50px;
 	padding: 0;	
 }
 
