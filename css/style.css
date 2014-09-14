@@ -199,7 +199,7 @@ input.button {
 #header-content #logo {
 	position: absolute;	
 	font: normal 40px/65px Candara, 'Trebuchet MS', Tahoma, sans-serif;
-	letter-spacing: -1px; 
+	letter-spacing: 0px; 
 	color: #FFF;
 	border: 1px solid #4E460F;
 	height: 65px;
