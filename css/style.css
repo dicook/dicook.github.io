@@ -287,7 +287,7 @@ input.button {
 }
 
 #content h1 {
-	font: normal 1.4em Candara, 'Trebuchet MS', Tahoma, sans-serif;
+	font: normal 1.4em Georgia, "Times New Roman", Times, serif;
 	color: #336699;
 }
 
@@ -299,7 +299,7 @@ input.button {
 	padding: 5px 0 0 0;
 }
 #sidebar h1 {
-	font: normal 1.4em Candara, 'Trebuchet MS', Tahoma, sans-serif;
+	font: normal 1.4em Georgia, "Times New Roman", Times, serif;
 	color: #336699;
 	padding: 0;
 	margin: 15px 0 10px 5px;
@@ -335,7 +335,7 @@ input.button {
 	float: left;	
 }
 #main h1 { 
-	font: normal 1.8em Candara, 'Trebuchet MS', Tahoma, sans-serif;
+	font: normal 1.8em Georgia, "Times New Roman", Times, serif;
 	color: #336699; 	
 	padding: 0 0 5px 0;
 	margin: 15px 15px 20px 15px;
