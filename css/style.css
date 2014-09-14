@@ -281,7 +281,7 @@ input.button {
 }
 #content {
 	text-align: left;	
-	margin: 30px auto;
+	margin: 0px auto;
 	padding: 0;	
 }
 
@@ -302,7 +302,6 @@ input.button {
 #sidebar ul.sidemenu {
 	margin: 5px 0 15px 0;
 	padding: 0;	
-	border-top: 1px dashed #E1E1E1;	
 }
 #sidebar ul.sidemenu li {
 	font: normal 1.2em Georgia, "Times New Roman", Times, serif;
