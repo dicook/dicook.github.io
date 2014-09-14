@@ -286,6 +286,11 @@ input.button {
 	padding: 0;	
 }
 
+#content h1 {
+	font: normal 1.4em Georgia, "Times New Roman", Times, serif;
+	color: #336699;
+}
+
 /* sidebar */
 #sidebar {
 	float: left;
