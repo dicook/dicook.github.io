@@ -343,11 +343,11 @@ input.button {
 	background: url(../images/bk_dotted.gif) repeat-x left bottom;
 }
 #main li { 
-	font: normal 1.2em Georgia, "Times New Roman", Times, serif;
+	font: normal 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
 	padding: 0 0 5px 0;
 }
 #main li a { 
-	font: bold 1.2em Georgia, "Times New Roman", Times, serif;
+	font: bold 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
 	color: #F88F26;
 	padding: 10px 10px 5px 0;
 }
