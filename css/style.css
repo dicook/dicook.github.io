@@ -230,7 +230,7 @@ input.button {
 #header-content ul {
 	position: absolute;
 	right: 0px; top: 170px; 
-	font: bold 12px Georgia, "Times New Roman", Times, serif;
+	font: bold 14px Georgia, "Times New Roman", Times, serif;
 	list-style: none;
 	margin: 0; padding: 0;		
 	text-transform: uppercase;		
