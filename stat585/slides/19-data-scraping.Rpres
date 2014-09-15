@@ -1,0 +1,43 @@
+STAT 585X
+More data scraping
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 2/26/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Exercise 1
+===
+left:70%
+
+- The Winter Olympics have just finished. Time to look at the results. 
+- Go to the winter olympic games website. 
+- Navigate to the medal counts, [full medal counts](http://www.sochi2014.com/en/medal-standings)
+- Use the readHTMLTable() function of the XML library to pull out the medal table.
+- Make a scatterplot matrix of the Gold, Silver and Bronze counts (like at right).
+- Write a paragraph summarizing the association between medal counts
+
+***
+
+![alt text](figures/winter-olympics1.png "medal counts")
+
+Exercise 2
+===
+left:80%
+
+- Now look at the historical medals, but you should follow links in order to get to the history data
+- Pull out the total number of medals for all of the years in the historical records. Using these type of commands will help: 
+- ```getNodeSet(root, "//option[@value])"```  
+- ```ldply(yearsdetails, function(x) xmlAttrs(x)["value"])```
+- Make a parallel coordinate plot showing the medal tallies by year (like plot at right).
+- Write a paragraph summarizing what you learn about historical medal tallies.
+
+***
+![alt text](figures/winter-olympics2.png "historical medal tallies")

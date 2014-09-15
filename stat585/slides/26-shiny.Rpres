@@ -1,0 +1,109 @@
+STAT 585X
+Web-applications with shiny
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 3/26/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Making your own shiny apps ...
+===
+
+* Exercixe 1: getting started and fixing the small problem in the code from last time
+
+* Exercise 2: rebuild an existing app
+
+Exercise 1: Getting up and running
+====
+
+* Download the two files server.R and ui.R from the website.
+* Create a new folder on your machine, and put the two files there
+* call `runApp(path)` from RStudio, where `path` is the path  to the folder you created.
+* check whether all of the dependency work as they should (read as: which dependency does not work) and adjust the code as needed
+* report the code and a small writeup on what was wrong
+
+ui.R
+===
+
+```
+library(shiny)
+
+# Define UI for dataset viewer application
+shinyUI(fluidPage(
+  
+  # Application title
+  titlePanel("Shiny Text"),
+  
+  # Sidebar with controls to select a dataset and specify the
+  # number of observations to view
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("dataset", "Choose a dataset:", 
+                  choices = c("rock", "pressure", "cars")),
+      
+      numericInput("obs", "Number of observations to view:", 10)
+    ),
+    
+    # Show a summary of the dataset and an HTML table with the 
+   # requested number of observations
+    mainPanel(
+      verbatimTextOutput("summary"),
+      
+      tableOutput("view")
+    )
+  )
+))
+```
+
+server.R
+===
+
+```
+library(shiny)
+library(datasets)
+
+# Define server logic required to summarize and view the selected dataset
+shinyServer(function(input, output) {
+  
+  inputData <- reactive({
+    switch(input$dataset,
+                "rock" = rock,
+                "pressure" = pressure,
+                "cars" = cars), n = input$obs)
+  })
+  
+  # Generate a summary of the dataset
+  output$summary <- renderPrint({
+    dataset <- inputData()
+    summary(dataset)
+  })
+  
+  # Show the first "n" observations
+  output$view <- renderTable({
+    head(inputData())
+  })
+})
+```
+
+Exercise 2: Finding your way
+====
+
+The link [http://shiny1.stat.iastate.edu/hofmann/shiny-lab/] points to a shiny app that allows you to define a route across the US starting in Ames
+
+The goal of the exercise is for you to re-build the app.
+
+Explain in your writeup what reactive objects you used, and what dependencies exist among them. 
+
+Hints:
+
+* Make use of the dataset `us.cities` in the `maps` package to get access to latitude/longitude of the cities used in the app
+* Look up what `renderUI` does - you might want to search for explanations/examples online, as the in-built help is still very much incomplete.
+
+

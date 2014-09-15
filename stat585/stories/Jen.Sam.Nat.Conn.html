@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>What would happen if we never knew about the normal distribution?</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>What would happen if we never knew about the normal distribution?</h1>
+
+<p>This story is a very sad story about a world without a Normal distribution.  As a statistician it is very difficult to imagine a world without the Normal distribution.  She is the queen of the distributions!  She is very elegant with a perfect symmetric shape, and a lot of the other curves aspire to her ideal unimodal and symmetric shape. Some of the other curves, like gamma or exponential, have a lot of asymmetry that is difficult to change.  </p>
+
+<p>Here is our queen&hellip;</p>
+
+<pre><code class="r">normal &lt;- rnorm(10000)
+library(ggplot2)
+qplot(normal, geom = &quot;blank&quot;, main = &quot;The Queen&quot;, xlab = &quot;Value&quot;) + geom_histogram(aes(y = ..density..), 
+    binwidth = 0.25) + stat_function(fun = dnorm, color = &quot;red&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<p>But what would a world without our queen be?? What would happen in a world that hadn&#39;t discovered this magic curve?  Suppose that we live in a world where people are holding our queen hostage.  These people are a terrible kind of evil hippie who are so dedicated to saving a few sheets of paper in the back of statistics textbooks that they have taken our queen hostage so that no one knows about her.  Without our queen, there&#39;s no need for normal quantile and p-value tables and many trees are rescued. They only think in rescue some trees but they don&#39;t know all the advantages in statistics that our queen give us.</p>
+
+<p>These are our queen&#39;s evil captors!</p>
+
+<p><img src="http://flowerpower89.files.wordpress.com/2010/10/hippies.jpg" alt="Drawing" style="width: 400px;"/></p>
+
+<!--  commented out original
+![](http://flowerpower89.files.wordpress.com/2010/10/hippies.jpg =50x) 
+-->
+
+<p>We may have saved some trees, but is this conservation of a few trees worth the cost of living without our queen?? </p>
+
+<p>What would happen to the Kindom of distributions?! The beautiful Queen was missing.  Would the distribution kingdom turn into a uniform democracy?</p>
+
+<pre><code class="r">x = c(rep(c(1:10), 5))
+qplot(x, binwidth = 0.5)  # uniform distribution
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAADYCAMAAAB8685yAAAAtFBMVEUAAAAAADoAAGYAOpAAZrYzMzM6ADo6AGY6OpA6kNtmAABmADpmAGZmZmZmtv9/f39/f5V/f6t/lcF/q9aQOgCQOjqQ2/+Vf3+VlcGVq9aVweurf6urlZWrlcGr1v+2ZgC2/7a2///BlX/BlZXBlavBq8HBwdbB6//Wq3/Wq5XW///bkDrb/9vb///l5eXrwZXr1qvr///y8vL/tmb/1qv/25D/68H//7b//9b//9v//+v////virt0AAAACXBIWXMAAAsSAAALEgHS3X78AAAEf0lEQVR4nO3da3uaMBiHcXdeu270tHVznT1t09atTqXVyvf/XpOgCCXJkwBVLnv/X/SaLjH46wMI0tCKiDWtTS9A0wOQEICEACQEICEACQFICEBCABICkBCAhAAkBCAhjkC3xozM/2XuVarTmnoBJPQCSOgFkNALIKGXM1AvCPa7ABmBZlfdzKOal3obgKanJ8FR/I9gHm2LN6tIz26mqceymhQsQOHBTTToLB/pqDOD6p+NjE1H5hcQX1UY6vZxy5HLq5aoIIXUBshcQXMcKkjYi6UFBJAUgAACCCCAAAIIIIAAAqgM0EiTzKD6ZyP3ph6vKgw1cu+vb0oFPUkFAQQQQAABBBBAAAEEEEAA1QU04HsxK1DIF4dWoPuv/xQQV3foM/1+E1JBFqBBXDlc3WHdSFNBAFUDygQggAACCCCAAAIIIIC04eIFKqhaBQEEEEAAAQQQQAABBBBAANUD1AuC9I+eASomPIq/fQYoDzTZu0h/RgsgLl5IM9ltJXn1N37Y4/KXSF9BaQZcvCBMTQHQY6CxWsVeXqg1LJkeB6DsKrb7SV9PAC2A8tsggAqr2NkOQNYK2l1tgwDSVZApAAHkBMQq5lRB/eKWGqBcHRV39gBlM2YVMwEttkHFj9Nc3SGECgLIDejhOD1fBpAG6OE43sP3i0IAJcmfkwaICvIFYhvEXgygpwUazz9F9198AcgANPkQ29y9Yy9mAHo4jg/DxuzFjKuYOlpVB/OzyyA4HAJku7oj6jHpv30vpu6KwNUdxoR89WwF6q18ACpmdtnJPAKoWD9MbmIHygcggAACCCCAAAIIIIC04eIFKqhaBQEEEEAAAQQQQAABBBBAANUElJl4ASBNwuAAINs3q79nPxUQFy+YsgBSoYIAAgigdQNlAxBAAAEEEEAAAQQQQACVAeLqDiqoWgUBBBBAAAEEEEAAAQQQQADVA9QL9rsAWaamOByGzN1hARq0pRuPPI+YgTrZ7551FZT5Belj7lWq05p6OQO1pXv7VFjqbQCSt0EVlnobgOS9WIWl3gqgXGpeaoCEpd46oHL7+VK91jiUUy+AhAAkBCAhjhvp5xuAhAAkBCAhAAkRgNIDstyRmZDVPLm9wL1b2tZnqEE6maHHUOoshes7swOlh/T5Y3sh6Ty5syvnd7pq6zVU3PHX0G8o9Ydwzu/MDpSeFMqfHXKImid3enqSuRWpPWlb36Guu7nuYpI/hHN+ZwLQ8rRi/vyinGSe3HD+qxp0pLaLHsu2nkMtZuT1GUoBub6zp6mgzDy5YdvS7lFUW8+hrlerlutQNVZQuW1QOk+uuh2yawUt2/ptg6Y/ht5DxUA1bYOSTXy8ED67lmSe3KRX4FxAqq3vUNH9tyiKPIdSq5TrO+NzkBCAhAAkBCAhAAkBSAhAQhoLdLYT9V9veiGiBgNN9s6Lt1rcQBoLFPVbxXtybyDNBbp7W7wP3AbSXKCzj03YBDUX6O79n89NKKGmAsX3ytPcKW/9aSpQYwKQEICEACQEICEACQFICEBCABICkJD/p0l2riEQmMoAAAAASUVORK5CYII=" alt="plot of chunk unnamed-chunk-2"/> </p>
+
+<p>Many scientists performed experiments and could not tell if the results were significantly different from the Null Hypothesis, for most of them had only used the normal distribution.  The engineers were unable use the scientist&#39;s results to design or improve technology. A vast majority of statisticians became non-parametric statisticians for they were so devoted to their Normal Distribution Queen that none of the other distributions appealed to them.</p>
+
+<p>In those dark times, it was revealed that the Queen had three children: two girls and a boy. Their mother had tried to keep them out of the spotlight, for they were merely students (student&#39;s t distributions) and were off at university getting their 30 required degrees.  From youngest to oldest, they had 3, 10 and 25 degrees (of freedom).</p>
+
+<pre><code class="r">c1 = rt(1e+05, 3)
+qplot(c1, geom = &quot;blank&quot;, main = &quot;The Little Prince&quot;, xlab = &quot;Value&quot;) + geom_histogram(aes(y = ..density..), 
+    binwidth = 0.25) + stat_function(fun = dt, args = c(df = 3), color = &quot;green&quot;) + 
+    xlim(-10, 10)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAADYCAMAAAAwLQHPAAAAz1BMVEUAAAAAADoAAGYAOmYAOpAAZpAAZrYA/wAzMzM6AAA6ADo6AGY6OpA6kJA6kNtmAABmADpmAGZmOgBmZmZmkJBmtv9/f39/f5V/f6t/lcF/q9aQOgCQOjqQOmaQkGaQtpCQ27aQ29uQ2/+Vf3+Vweurf6urlZWrlcGr1v+2ZgC225C2/7a2///BlX/BlZXBlavBwdbB6//Wq3/W///bkDrb29vb/7bb/9vb///l5eXrwZXr///y8vL/tmb/1qv/25D//7b//9b//9v//+v////WaKsjAAAACXBIWXMAAAsSAAALEgHS3X78AAAJh0lEQVR4nO3dC3vaNhQGYCfLYtJmIdkG65ruxtiWbOkujG1kawIl/v+/aZZviEaWdbAlyzrf9yQpBScH8SL5BiJKEJaJ+r4DSD8BPNMAnmkAzzSAZxrAMw3gmQbwTAN4pgE80wCeaQDPNIBnGsAzDeCZBvBMA3imAXzyV/HNK8HCL6M8k8148uzG7fVF9u/mciYuiu/0orzEZpz/dlIuZ/8eu02w8GnWLwSXDr64qIQXv/VwFBx4GQ7wn59FAnB7HUUnq+yWXY//Lr3y4/T7VMBLS+Tw6XLbN19HR99ezjaX3+R/Zn2WLSMtO8hwgD++S25PVhn2MrdSD/XyEiX8ZHudXpHeWP6Z9IbyV8plBxkO8Cnhw/Fd+pVJilvU8PIS1VCfLZrBS38mu1QtO8jwgS+29jJxNby8RL5xdzTLcSX4opfLyw4yjOClcbkGXlqi2iSsgx/wKJ+FD3wxRmfRDPVFauHloX7I4QOfbaUV+2d1G3e7JWrhxb/L00RedpDhA5/tgBVS4mJU7MMto1PxXe7OFUvUwovduXzDrlp2kAkZHtEE8EwDeKYhwt8rorxSm3fk3winCL1GR0UA328RwNMSTBHA0xJMEcDTEkwRwNMSTBHA0xJMEcDT4qTISMRyEcDT4qRIDHiO8HE8igHPDz4WQ32Kb7UI4KmxXSTr7CKxxSIigKfFdpHSHfBc4WnybODfKaK8sutYLrJzH8V2K/X2aKHHqyLB31O6PJseb1pFH+/g43vAAx7wbODjexmeIg94UgBPCuAtFRHQMjxBHvCkeAU/Gkmb9MUenfFxW8CTAnhSAG+lyHN3wtE7wJMCeFIAb6UI4JnCK9zN5QFPCuBJAbyVIoAHPOBFFtMv/iguTG/ChVe6G5+pCRD+8cv/0i9x4XXy/oc/Ad+miBTv4f+d77zzC9M0tePDYKOGT+K+75ft1MPfJE+/5fCL6by81vTppY9HPV4+Ey/3eMMuH3iPF/8B/OFF5HgPv1vHz4OFHylO0LCHz7fq3//0n9iqf11eaVpFH3/ga9xHI8NTdCHCK2NaRR/AkwL4rosAHvCAZwWvcTc7bAt4UgBPCuC7LgJ4wAOeE7zW3Uge8KQAnhTAd10E8IAHPCP4BneTV2OwgTedd6Pz2CjSBP/OxqwomAqFFvT4tkUAX6bmNRiAB3yzPOBJATwpDuA341PAc4RPkgf9B2eaVtHHA3jtqfgqcdNk1uHAJ/mnpk4AX8i3KaKKr/DrM9HjN1c1H5JtWkUfwJPiZB1/sqrp64CnF1HFU/isp9f295DgjdyZwG/GUZ76bm9aRZ/hwDedqAkDXtvXAU8vooqf8I0xraIP4EmxP9Rf/ZIP9sfhr+MN3XnAc+rxpvAN8iHCl1OhPL2dTrO3zQKeWkQVT+GXJ6tlftxOngolWdwA/oAiqvgJv7mcpV/rl3cfTowg4EOaCsXYPdhJUZ7tzqV9PoffTYWSdfo8pk8vffrv8ebw+jN0ofT4ZBkdzR6yoV7q8YvKHfCUIsp4Cr9LtY5/enuzu9a0ij69wzeeipfgtfIBwldToSzEun0OeHIRdTyFf+BxAIcAr381Rijwm3HdKzAATy6ijqfwHE7SGJ6Kl+XpRWrjJ3xyewF4jvAbDidpAK/o8U0xraJPz/BEd91hW8CTAnhSXMBvr6OTvy/rX1hvWkUfwJPiAH57fbE+Xz2E/Zo7srtGPhT4dHcuhQ/8VbaAr+vxS/R4bvDZ26c0r64OAf4A9/pTdMHAN8W0ij6AJ8UHeNMJVzpPd0UOge9wNhwf58Cp3kkT8pE70vmZqsfXdflgenx2rH5ZPzuCaRV9AE8K3jTZRZGD4GvPzYYCn+7OJdlrrAOFJ5+fkeVNi+jjJ3y+O6eZB8e0ij6AJ8WHrXrTKvoAnhTAty5yuHvN0TvAkwJ4UgDfukgLd7U84EkBPCmAb10E8DzhW7krz9QAnhTAt23JAUUYwx94tLaCV8iHCF9OhZJIEyQAvnVLvIev3iadPE5fBQDf4qBdlednagKEryZGePq9mBlj2FOhdAGf/om+m9FZ6uF3U6FUU6IMusd34P78gH3IPR7wsnzrlngPv1vHhwHfiTsH+GoqFMBr5EOEV8a0ij49wHfkDviGKvoMGP6DfXnAk+IYftTJrlwBvy8PeFIGDP/BURzAk+IcvkP3/Z15wJPiGr5T970NPMCTAvgDW9KmCEP4jt1lecCT4ha+c3dpnw7wpLiDH3W8YVem3LQHPCku4a24V5v2gCfFIbwl93I9D3hS3MFbcy/k2cCbzrvReQ4rYtH90OlRfJwKJbge3/LVlU1Jn1ZserxpFX2cwFvbrpPlAU+KE/jYunsqD3hSXMA7YBfyDR863EFDAG+ekYNhvqLXfGJN64bkAbxpRi6G+Z28vYbkAbxpHLKPqMM94GkxLSIc3Lpn9ObjPeBpMSzSg3pBb9rtAU+LQZGR01W7wt6o2wOeluYifXV2md6g2wOeFn2RuH/1PHEjPuBpqS0y8ga9THaH6A2pD+D3Ehfp21kZ6c61frR6mwplNydK7/CxlL5tjbJ3hw98tPp6m7T0fmmX8HuP2aCw66JqUGcP137awFcTI1QX6qZCUTWog9QORSGlv8eueSoUaU6U3of6AIp4P9Q/7/GA76KI9/B9r+NDLeI9/G4qFI+26gMo4j+8MqZV9PHUBPCAt1dkoPCqOJnuMpgivjQE8I6L+NIQwDsu4ktDAO+4iC8N6QAeGWIAzzSAZxrAMw3gmaYtfHbiTj6abyeLqfUSDlrhpB2GIi3hsw8q2jt/ZyVPv1oncdAKJ+0wFWkHn39Q0d4Zeyt5/+P309c2CySJg1a4aIexSNuhPisjv0bHSh5fZVWsxn4r3LTDUKQF/EI8eR30+EXeSR7n1ipkcdHjRWy3w2GPt792FA+W7Z7iYh3voh2GIl3Au9mqn9ut4Gyrfm65hKEI9uOZBvBMA3imATzTAJ5pOMNvryfpz/X5Kv/v+uVdr3fHbTjDJ8uL8ocI4NlEdPbtm1myPouiiYAX9uJ7M46OA38WsIbP0M9Xm8tZoV7C314ky9O+753dsIYXw3wx0m+uJHjxTEiv6PnO2Q1v+PX5P2mnT5LbKB3aJfhxFEVHs77vndXwht9+9XO6mt+MJ/tDfei9XYQ3fLL87CLfnF+/mBVj/PI4W8c/nKz6vnNWwxw+9U5/LqPoo08nwj+99MlVtlUf+EjPHZ5vAM80gGcawDMN4JkG8EwDeKYBPNMAnmkAzzT/A6VxhiP1dcBhAAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-3"/> </p>
+
+<pre><code class="r">c2 = rt(1e+05, 10)
+qplot(c2, geom = &quot;blank&quot;, main = &quot;The Younger Princess&quot;, xlab = &quot;Value&quot;) + geom_histogram(aes(y = ..density..), 
+    binwidth = 0.25) + stat_function(fun = dt, args = c(df = 10), color = &quot;blue&quot;) + 
+    xlim(-10, 10)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-3"/> </p>
+
+<pre><code class="r">c3 = rt(1e+05, 25)
+qplot(c3, geom = &quot;blank&quot;, main = &quot;The Eldest Princess&quot;, xlab = &quot;Value&quot;) + geom_histogram(aes(y = ..density..), 
+    binwidth = 0.25) + stat_function(fun = dt, args = c(df = 25), color = &quot;purple&quot;) + 
+    xlim(-10, 10)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-3"/> </p>
+
+<p>The scientists, the engineers, and especially the statisticians begged the students to come back and find their Queen mother and return the the world to its beautiful normalness.  So the three children left their studies and set out, crossing the waves of monotony&hellip;</p>
+
+<pre><code class="r">x = c(1:(100 * pi))/5
+y = sin(x)
+qplot(x, y, geom = &quot;line&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-4"/> </p>
+
+<p>But after months and months of this monotony, with their mother nowhere to be found, the eldest princess decided to give up the search and return to school.  Being the eldest, she decided that the best thing to do was to earn her last 5 degrees and take the throne, since she&#39;d approximately be her mother after those 5 degrees. </p>
+
+<p>With their sister back at school, the little prince and the younger princess continued to search the kingdom for their mother. But the evil hippies had planted random forests all throughout the kingdom! The prince and princess got lost in a random forest and were immediately classified. Without the normal distributon to guide the random forest, the prince and princess were deemed to belong to two different groups, and were transported to opposite sides of the kingdom!</p>
+
+<p>With the kingdom divided in two parts the normal princess show all her properties and the advantages in statistics to use the Normal family. For example she mention that the Normal distribution is very useful because of the central limit theorem, that says the mean of many random variables independently drawn from the same distribution is distributed approximately normally. She finish her exposition saying that the Normal distribution is the most important distribution in probability theory and if this kingdom want to be a prosper kingdom needs the normal distribution to survive.</p>
+
+<p>On the opposite side of the kingdom they was convinced that they do not need the Normal distribution to survive and then they say that with a non parametric aproach they will solve all the problems that they have.
+At the end these two kingdoms live happy with their different approach and people to each kingdom go on vacation to the other side to know the differences between these two approches.
+And each year they make a huge party to celebrate their peacefull convivence.</p>
+
+<p>&ldquo;Colorin colorado&rdquo; is the end of this story&hellip;</p>
+
+<p>Here is the huge party&hellip;</p>
+
+<pre><code class="r">library(ggplot2)
+x = rnorm(1000)
+x1 = rgamma(1000, 1, 2)
+x2 &lt;- rpois(1000, 1)
+x3 &lt;- x1 + 5
+x4 &lt;- x2 + 5
+x5 &lt;- x + 5
+x6 &lt;- rchisq(1000, 4)
+x7 &lt;- x6 + 5
+x8 &lt;- rnorm(1000, 2, 18)
+x9 &lt;- x8 + 5
+x10 &lt;- x9 + 5
+x11 &lt;- rchisq(1000, 10)
+x12 = rgamma(1000, 12, 20)
+x13 &lt;- x12 + 5
+x14 &lt;- x13 + 5
+x15 &lt;- x6 + 10
+x16 &lt;- x1 + 10
+
+x = c(x, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16)
+qplot(x, binwidth = 0.1) + geom_histogram(aes(y = ..density..), binwidth = 0.25)
+</code></pre>
+
+<pre><code>## Warning: position_stack requires constant width: output may be incorrect
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAADYCAMAAAB8685yAAAAnFBMVEUAAAAAADoAAGYAOpAAZrYzMzM6ADo6AGY6OpA6kNtmAABmADpmAGZmZmZmtv9/f39/f5V/lcF/q9aQOgCQOjqQ2/+VlcGVweurf6urq6ur1v+2ZgC2/7a2///BlX/BlavB6//Wq3/W///bkDrb/9vb///l5eXrwZXr1qvr///y8vL/tmb/1qv/25D/68H//7b//9b//9v//+v///9+4sdYAAAACXBIWXMAAAsSAAALEgHS3X78AAAE9klEQVR4nO3djXLTRhiF4fRn25LSuiQtap0WGtxGQBTcRPd/b7XslZFitEdaodUn8p5hbCBzZjcPa0n2ZNFZSYI5m3sC1gOQCEAiAIkAJAKQCEAiAIkAJAKQCEAiAIkAJDIc6CaQ96EvLqQJkGgCJJoAiSZAogmQaAIkmgCJJkCiCZBo9gbKV6uLsrxe/fJ3/QhQM0Wlsy5evDv+Aqi9gP6oVlCelf/9/ubwuPvL1S6dS+7LTCfQ9W4F5et8XT68fnN49F9I+a85R7Mv0A6lLLJHKwigjyn2K4hjUPAslnEW4zrotAJQuAmQaAIkmgCJJkCiCZBoAiSaAIkmQKIJkGgCJJoAiSZAogmQaAIkmgCJJkCiORrofWwW0mQFiSZAogmQaAIkmgCJJkCiCZBoAiSaAIkmQKIJkGgCJJoAiSZAorlIIJdwTIBEEyDRBEg0ARJNgEQTINEcAJSb+UFym0DFKiuNbEUwCfTh5dvMynYoN8egh3QC7USKrDSyHcriCsqr1WJlO5RFoLLaLsYxSAFxFuM66KQCULgZBNo+/+v4CNAJ0Pb87JBv/gUotILCGT5k/GTrphmgPhk+ZPxk66YdoNv9S+xrjkEdQNvzn1lBQSCOQeIldvUMoOAKOucYFF5BPTJ8yPjJ1k2AlgLES6zXCtoEj9TDh4yfbN00BsSbVQF0y0usC8gfg4KX08OHjJ9s3TQD1CfDh4yfbN1cFFDKvVt10yUcMwx0f6k+L3vaK+j+sjrDb/hEsQuIz6RZQbIZBOIYxGleNgESzTDQ7e4qevPVbwB1AG1/rGzuvucs1gF0f1m9DbvlLNYFdHi3Gnwz/8SBemT4kPGTrZsAARQ32boJEEBxk62bAIWbDiCA4ibrAxBAkZP1MQn08Gq1evHOxk/at4Eeac0FZOn2WR7IyxgBqpKvbewXc4f9Yn7XWNrNY8HNLBdG9osZXUH7O4yZ2C9mEujh1bpaRBaPQW2huYCu9zsOTZ3FbAF1ZviQ8ZP1AQigyMn6AARQ5GR9AAIocrI+AAEUOVkfgACKnKwPQABFTtYHIIAiJ+tTA7WephoTINEESDQBEs2FAzn7QLFbt0bsF3Pu+OSOf5pqTFaQaAIkmgCJJkCiCZBoAiSaiwZyAH0yAAEUOVkfgCSQq58A+kTcY6CWEEAeyLkGUIMIoCbQHgegdo4szUw35kKBHme6Mb8UINej+ZSBHEDHdAK5ScYESIy5NKCT81fjMHR4+MxjRgFN+5P2rtl0N/5Dn9NTe2f2lcPF9s1xZYXH7J5tDNCYvRofZ1v67+D4nbeu/QaJ9EHbn+mOv2lNxot+PqC594vNmX5Ac99fLGUzCmju+4ulbMYAzb1fzDzQ3PvF7AM1k3KyczQBEs3RQNGJv0CYo1kHIBGARAASSQi0zAAkApAIQCIAiSQDyrP2W7r+iWuNGrKRVEDFKmt/KNC/GdUaNWQziYA+vHybtT9W6p241qghm0kDtJtkkbU/mOyduNaoIZtJAHS9usj3/xlR0hU0Zshmkh2ki+THoPghm0kJlPosFj9kI1wHiQAkApAIQCIAiQAkApCIcaCrZ+Xm21lnYBxo+/zP4A0Xp49xoHJzFrwz9/SxDnT3XfBucNPHOtDVT/MegqwD3f3wz6/zLiHbQNUd88L3y5s8toEMBCARgEQAEgFIBCARgEQAEgFIBCCR/wHA/v30wr4MxwAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-5"/> </p>
+
+</body>
+
+</html>
+

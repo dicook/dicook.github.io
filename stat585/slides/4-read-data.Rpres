@@ -1,0 +1,64 @@
+STAT585X
+Different data formats
+========================================================
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 1/22/2014
+width: 1200
+height: 800
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=90)
+```
+
+Exercise 1
+========================================================
+
+This first exercise is going to examine the historical temperature measurements for Iowa. The purpose is to assess the run of cold temperatures in Ames in January 2014, relative to the historical records.
+
+___Turn in your code, and results.___
+
+Exercise 1
+========================================================
+
+- Examine the daily data avaliable on the web site [http://cdiac.ornl.gov/ftp/ushcn_daily/]
+- We will pull the data from the file us.txt.gz: DON'T DOWNLOAD IT!
+- Read the format information in the file ```data_format.txt```
+- Construct a ```read.fwf``` command that will read the format of the data but DON'T READ IT YET!
+
+Exercise 1
+========================================================
+
+- You will only want to read the data for the Iowa Falls collection station. 
+- From the ```ushcn-stations.txt``` file determine the station id
+- Work out ___approximately___ the rows of the data file that correspond to  this station. It is approximately the 300th station in order, and there are about 120 years, one line gives a month of values, and there are 5 variables on separate lines
+- Adjust your ```read.fwf``` command to ```skip``` the requisite number of lines, and just read the necessary number ```n``` of lines for this station. You can subset the records after the reading to get just Iowa Falls, so this step doesn't need to perfectly extract the right rows.
+
+Exercise 1
+========================================================
+
+- Subset the rows to only those that contain the ```TMIN``` variable
+- Subset the columns to be just the year, month and temperature variables. (Ignore the quality flags, these seem pretty flaky, actually.)
+- Rearrange the data into elementary form, and convert -9999's to missings.
+- Make a plot of the minimum temperatures by month. Describe the pattern. 
+
+
+
+Exercise 2
+===========
+
+Google flu trends is a search-based indicator of the current status on flu incidences across states and the nation. This year we seem to go from a before Christmas peak straight into another peak, see [http://www.google.org/flutrends/us/#US]. 
+
+Google makes the estimated incidence data publicly available at [http://www.google.org/flutrends/us/data.txt]
+
+Write an R script to download and read in the data to R (without first saving the file to a local copy - check parameters of ```read.table``` for appropriate changes to the defaults). Describe the format of the data in a sentence. 
+Reshape the data (think of ```melt```!) to get the data in a long form appropriate for creating an overview of all states in a time series plot facetted by states. Create that chart.
+
+Exercise 2
+===
+
+___Turn in your code, and results.___
+
+Advanced: how could you arrange states such that similar trends are in facets closer to each other?

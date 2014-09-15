@@ -1,0 +1,46 @@
+ISU Statistics 585X: Data Technologies for Statistical Analysis
+========================================================
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 1/13/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+
+Course outline
+========================================================
+
+- Syllabus: Lectures, labs, course materials
+- Schedule: List of topics
+- References: Sources of information, reading
+- Grading
+
+Slide With Code
+========================================================
+
+Lecture notes are going to be done using R presentation, uses knitr and markdown. Code will be embedded into notes
+
+```{r}
+library(tuneR)
+i1 <- readWave("../data/ilikestatistics1.wav") 
+str(i1)
+```
+
+Slide With Plot
+========================================================
+
+Lecture notes are going to be done using R presentation, using knitr and markdown. Code will be embedded into notes
+
+```{r, echo=FALSE}
+## play("/Users/dicook/Dropbox/585.2014/data/ilikestatistics1.wav",
+##  "/Applications/iTunes.app/Contents/MacOS/iTunes")
+plot(i1)
+```
+
+

@@ -1,0 +1,44 @@
+STAT 585X
+Tools for Software Development
+========================================================
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 2/5/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Keeping a clean repository
+===
+
+- Files kept on github should only be the files you need to process the final version. Do not check in the pdf's, if working on a writing project, the RStudio project if working on a data analysis, or the software binaries if working on a software project. Only the files that are needed to produce these.
+
+- Github is public. The whole world can see what you have put there, so be careful what you put there. If I am working on a private data set, I may use git for the code, but keep the data locally. And would expect my collaborators to have the same raw local data copy.
+(If you need a private account these are possible for a fee.)
+
+[Blog post on how I use RStudio and git for data projects](http://christianlemp.com/blog/2014/02/05/How-I-Manage-Data-Projects-with-RStudio-and-Git.html)
+
+Project 
+===
+
+Start thinking about your project. 
+- The basic expectation is that you use the tools in this class to pull together data to solve a problem of interest to you. Solving the problem is not expected, but gettting yourself into a position that you could solve it, is the goal. 
+- You will need to draft a proposal for your topic, outlining data sources and ways that you will pull it together, around early March. 
+- Individual projects are expected, but special exceptions for a group of two, will be granted, if sufficient justification is given. Group projects will need to detail how each individual contributed. 
+
+Examples 
+===
+
+- chess: http://wwww.chessgames.com data in .pgn format
+- popularity of linux distributions http://www.distrowatch.com - web-scraping
+- how do you become a tennis grand slam semi-finalist - web-scraping - paper published in Significance
+- how did 9/11 affect airline travel - mysql
+- what are people in china talking about - mining weibo data
+- pitch characteristics in major league baseball - web-scraping - published pitchfx package in R
+- what contributes to a world champion soccer team - web-scraping
+

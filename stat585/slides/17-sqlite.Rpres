@@ -1,0 +1,51 @@
+STAT 585X
+dplyr and databases
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 2/21/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Outline
+====
+
+* discussion/criticism of dplyr and database connection
+*
+
+
+dplyr for database connection
+===
+
+Pro:
+* connecting to databse within semi-familiar environment (```filter, mutate, summarise, ...```)
+
+Cons:
+* limited functionality: 
+  * adding rows to an existing table? 
+  * deleting a table from a database? 
+* unclear separation of SQL and R code
+  * ```mutate``` has different functionality/power in dataframe environment from databases, e.g. ```ifelse``` doesn't work, ```%/%``` is not giving the right result
+* ```dplyr``` and ```RSQLite``` don't play nice; there are subtle but important differences
+
+
+dplyr versus RSQLite: connecting to the database
+===
+
+```{r}
+library(RSQLite)
+# connects to/creates database flights
+co <- dbConnect(dbDriver("SQLite"), "flights") 
+co
+
+library(dplyr)
+# connects to/creates database flights
+my_db <- src_sqlite("flights") 
+my_db
+```

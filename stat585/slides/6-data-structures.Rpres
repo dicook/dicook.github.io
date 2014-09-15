@@ -1,0 +1,256 @@
+STAT 585X
+Data Structures
+========================================================
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 1/27/2014
+width: 1200
+height: 800
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=90)
+```
+
+Outline
+========================================================
+
+- Review of functions
+- ldply and ddply
+
+Review: functions in R
+==========
+
+Functions are objects in R (and have therefore to be defined using the assignment operator). They consist of a header and a body:
+
+```{r}
+is.currency <- function(x, currency = c("\\$", "€", "¥")) {
+  x <- as.character(x)
+  
+  # check whether at least one of the elements in 
+  # vector currency is found:
+  curr <- grep(paste(currency, collapse="|"), x)
+  
+  return (length(curr) > 0)
+}
+
+class(is.currency)
+```
+
+==========
+
+Function to convert from currency to numeric format
+
+```{r}
+currency_to_numeric <- function(x, currency = c("\\$", "€", "¥")) {
+  x <- as.character(x)
+  x <- gsub(paste(currency, collapse="|"), "", x)
+  x <- gsub(",", "", x)
+  as.numeric(x)  
+}
+```
+
+Apply both functions
+====
+
+```{r}
+library(XML)
+nba14 <- NULL
+for (i in 1:15) {
+  temp <- readHTMLTable(
+    sprintf("http://espn.go.com/nba/salaries/_/page/%d",i))[[1]]
+  nba14 <- rbind(nba14, temp)
+}
+nba14 <- subset(nba14, V1 != "RK")
+
+# find currency information and get convert it to numbers:
+for (i in 1:ncol(nba14)) {
+  if (is.currency(nba14[,i])) 
+    nba14[,i] <- currency_to_numeric(nba14[,i])
+}
+head(nba14)
+```
+
+
+What we should watch out for when programming
+====
+
+* ***Vodoo Code*** - code that you don’t quite understand, but that ‘has to be there’ so that everything works.
+* ***Yo-Yo Code*** - multiple conversions between different representations (e.g. numeric to character and back) for simple operations. 
+* ***Bulldozers*** - code that looks it’s nicely structured (and general), but only works in one specific application.
+
+
+Personal comment: I usually start with a concrete example (which makes any code a 'bulldozer'), but then try to generalize and apply my newly built functions to as many other examples as possible. 
+
+
+Recursions
+====
+
+
+* Recursions are functions, that provide a part of the solution and then call themselves again.
+* Recursions are a neat way of helping you out in more complicated situations.
+* Once we have a solution in recursive form, we should get  rid of the recursion ...
+
+Simple example: adding a vector of numbers
+```{r}
+rsum <- function(x) {
+  if (length(x) == 1) return(x) # end of recursion
+  
+  return(x[1] + rsum(x[-1]))
+}
+
+rsum(c(1,3,5,7,9,11)) == sum(c(1,3,5,7,9,11))
+```
+
+Recursions
+===
+
+* can easily be infinite
+* by default R has a cap on the number of recursions 
+
+Evaluation of ```rsum(1:1300)```
+gives the error message:
+```Error: evaluation nested too deeply: infinite recursion / options(expressions=)?```
+
+* Parameter ```expression``` allows us to reset the number of recursions:
+```{r}
+options()$expressions
+options(expressions=10000)
+rsum(1:1300)
+```
+
+
+Recursions
+====
+
+* might cause the stack to overflow (there's a physical limit to the number of recursions on a computer), this causes a segmentation error and might lead to an ungraceful exit from R.
+* are slow:
+```{r}
+system.time(rsum(1:900))
+system.time(sum(1:900))
+```
+* all recursions can be re-written in form of a loop
+
+Functions & plyr'ing
+====
+
+* small functions in the plyr functions ddply and ldply are a particularly powerful combination. 
+* Principle behind plyr: split, ***apply*** & combine
+* Example: Identity function: ```function(x) x```
+very useful when we want to convert a list to a data frame. Necessary conition: all list items must have the same number of elements
+
+```{r}
+names.list <- strsplit(as.character(nba14$V2), split=",")
+library(plyr)
+names.dframe <- ldply(names.list, function(x) x)
+head(names.dframe)
+nba14$name <- names.dframe$V1
+nba14$pos <- names.dframe$V2
+names(nba14)[c(3,4)] <- c("team", "salary")
+```
+
+Summaries with ddply
+====
+
+* ddply requires data set as input, delivers data set as output
+
+```{r}
+ddply(nba14, .(pos), summarise, 
+      mean=mean(salary), 
+      sd=sd(salary),
+      n=length(name))
+```
+* we should ignore positions F, G, and NA 
+* standard deviation of salaries are very high - usually higher than average salaries
+
+
+
+Transformations with ddply
+====
+
+* ***summarise*** aggregates the data for each level of the split variable (i.e. the output is usually shorter in length than the original)
+* ***transform*** extends the existing data set by additional variables
+
+```{r}
+# ranks of salary by position
+head(ddply(nba14, .(pos), transform, 
+           rank=rank(-salary)))[, -c(1,2)]
+```
+
+Calculations on subsets
+====
+
+Data: From the 2006 ASA Data expo challenge, http://stat-computing.org/dataexpo/2006/. The data are monthly measurements on a very coarse 24 by 24 grid covering Central America, from Jan 1995 to Dec 2000. 
+
+```{r}
+nasa <- readRDS("../data/nasadata.rds")
+head(nasa)
+```
+
+NASA data
+====
+
+For each location (unique x and y) compute a linear model of ozone over time and months:
+
+```{r}
+library(ggplot2)
+qplot(time, ozone, data=subset(nasa, (x==1) & (y==1))) + geom_line()
+```
+
+***
+
+
+```{r}
+library(ggplot2)
+qplot(time, ozone, data=subset(nasa, (x==15) & (y==20))) + geom_line()
+```
+
+List of models
+=== 
+```{r}
+modlist <- dlply(nasa, .(x, y), function(x) { # x is now a subset of the original data
+  m <- lm(ozone~time+factor(month), data= x)
+  m
+})
+length(modlist)
+summary(modlist[[1]])
+```
+
+
+Extracting elements
+====
+
+Changes in ozone over time:
+
+```{r}
+modout <- ldply(modlist, function(x) coef(x)[2]) # now x is a list element, i.e. a model
+qplot(x, y, fill=time, geom="tile", data=modout) + scale_fill_gradient2()
+```
+
+Extracting elements
+====
+
+Largest residuals:
+
+```{r}
+resids <- ldply(modlist, function(x) {
+  idx <- which.max(abs(resid(x)))
+  c(resid(x)[idx], idx)
+})
+names(resids)[c(3,4)] <- c("resid", "time")
+```
+
+***
+```{r}
+qplot(x, y, fill=resid, geom="tile", data=resids) + scale_fill_gradient2()
+```
+
+Extracting elements
+====
+
+When do large residuals occur?
+
+```{r}
+qplot(time, resid, data=resids)
+```

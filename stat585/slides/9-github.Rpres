@@ -1,0 +1,252 @@
+STAT 585X
+Tools for Software Development
+========================================================
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 2/3/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Outline
+========================================================
+
+- Problems of team work
+- git in RStudio
+
+Working as a team
+====
+
+How do you work with other people on  a team project?
+
+How often do you find yourself sending documents back and forth by email and then scanning them (at the last minute) for the changes that everybody made?
+
+... and trying to incorporate the changes you made in the last two hours ... 
+
+
+Another problem
+====
+
+You are still working in that team, and you just got feedback from your instructor ... 
+
+How do you keep track of which version is the current/best version?
+
+Do you have files named XXX-Jan15.doc, XXX-Jan16.doc, ... ?
+
+My major professor also liked XXX-Jan15-au-rev2.doc
+
+
+Version control systems 
+====
+
+Enable collaborative work
+
+Provides ***concurrency*** (merging changes by multiple people), ***reversibility*** (reverting to a previous version), ***annotation*** (documenting reasons for changes that are made)
+
+Used for software development, document writing, web site development by teams of people
+
+
+Setup and working process (git)
+====
+
+Documents are stored on a server (usually not on your own machine, but you can run git locally). This is the main reference for everybody.
+
+Contributors check out copies to their local machines and make changes
+
+Contributors check changes back into the main reference files on the server.
+This is where conflicts with other contributors' changes can occur - they have to get resolved at that point, so that the reference file is always a reflection of the current state of the project.
+
+Resources: [git](http://git-scm.com/book/en/Getting-Started)
+
+<img src="figures/18333fig0102-tn.png" alt="collaboration with git" style="width: 500px;"/>
+
+Other VCS vs git structure
+===
+
+Tradtional system: Keeps changes relative to a base version
+
+<img src="figures/18333fig0104-tn.png" alt="collaboration with git" style="width: 600px;"/>
+
+***
+
+Git: thinks of its data more like a set of snapshots of a mini filesystem. Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesn’t store the file again—just a link to the previous identical file it has already stored.
+
+<img src="figures/18333fig0105-tn.png" alt="collaboration with git" style="width: 600px;"/>
+
+
+git Workflow
+===
+
+<img src="figures/18333fig0106-tn.png" alt="collaboration with git" style="width: 650px;"/>
+
+***
+
+The basic Git workflow goes something like this:
+
+- You modify files in your working directory.
+- You stage the files, adding snapshots of them to your staging area.
+- You do a commit, which takes the files as they are in the staging area and stores that snapshot permanently to your Git directory.
+
+Project examples
+===
+
+- [cranvas](https://github.com/ggobi/cranvas) Interactive graphics project, with many contributors
+
+- [dicook](https://github.com/dicook) Di's personal repository
+
+- [heike](https://github.com/heike) Heike's personal repository
+
+- [lindsey](https://github.com/lmjackson) Lindsey's personal repository
+
+Last year's story project
+===
+
+<img src="figures/story-first-commit.png" alt="first commit" style="width: 650px;"/>
+***
+<img src="figures/story-final.png" alt="final commit" style="width: 650px;"/>
+
+
+Getting started with github
+====
+
+GitHub [https://github.com] is an implementation of git. 
+
+For "Powerful collaboration, code review, and code management for open source and private projects"
+
+Public repositories are free, you only need to pay if you want to have private repositories. 
+
+Sign up for github [https://github.com/signup/free], and send your login to Di and/or Heike, we will add you to the stat 585 repository. 
+
+
+Interfaces to github
+====
+
+RStudio has a github interface ... this might be the easiest to use for us right now.
+
+Create a new project using the option "Version Control".
+
+You can find the link to the existing repository on the repo's website under "SSH clone website" [git@github.com:heike/stat585.git]
+A repository is nothing but a folder containing files or other folders. 
+
+Pick a directory on your local machine where you have write permission.
+
+You get a copy of the current version of the repository on your machine. This process is called cloning 
+
+```git clone git@github.com:heike/stat585.git```
+
+
+Making changes - two main ways
+====
+
+(1) You can add new files to the repository (by creating them or copying them into the local folder) or remove files from the repository. Careful with that!!!
+
+```git add filename```
+
+```git remove filename```
+
+(2) You can change existing files. This is what we usually do. 
+In Rstudio, changes in existing files are marked by turning the icon on the side blue.
+
+```git status```
+
+Committing changes
+===
+
+All changes to the local repository have to be ***committed*** before we can transfer them to the main repository.
+
+```git commit filename```
+
+Committing needs a (one-line) summary of what change was done to the file (this is for annotation). 
+
+Transferring changes
+====
+
+transferring local changes to the main repository is called ***pushing***
+
+```git push```
+
+updating the local repository and integrating changes from the main repository is called ***pulling***
+
+```git pull```
+
+Conflicts
+===
+```
+# Load libraries
+library(ggplot2)
+
+# Read data
+eye <- read.csv(file.choose())
+eye <- unique(eye)
+
+# Plot
+>>>> main/header
+qplot(Left.Gaze.Point.X, -Left.Gaze.Point.Y, data=eye, colour=I("orange"), alpha=I(0.01), size=I(10)) + geom_point(aes(x=Right.Gaze.Point.X, y=-Right.Gaze.Point.Y), colour=I("blue"), alpha=I(0.01), size=I(10))
+ ====
+qplot(Left.Gaze.Point.X, -Left.Gaze.Point.Y, data=eye, colour=I("purple"), alpha=I(0.1), size=I(5)) + geom_point(aes(x=Right.Gaze.Point.X, y=-Right.Gaze.Point.Y), colour=I("green"), alpha=I(0.1), size=I(5))
+<<<<  
+```
+
+Conflicts
+===
+
+Resolve the conflict by deleting/adjusting the paragraph. 
+Get rid of the >>>>, ====, and <<<<
+
+Commit the change and push/pull
+
+Doing all of these within RStudio
+===
+
+1 Create new project, selecting version control
+
+<img src="figures/git1.png" alt="create proj" style="width: 350px;"/>
+
+2 Choose version control type git
+
+<img src="figures/git2.png" alt="choose git" style="width: 350px;"/>
+
+***
+
+3 Set it to pull from Heike's starting repository
+
+<img src="figures/git3.png" alt="clone repo" style="width: 350px;"/>
+
+4 Create a new file, or edit the normal.R file, and select it for committing
+
+<img src="figures/git4.png" alt="edit file" style="width: 350px;"/>
+
+Doing all of these within RStudio
+===
+
+5 Prepare to commit change, along with a text explanation
+
+<img src="figures/git5.png" alt="create proj" style="width: 550px;"/>
+
+6 Commit the change (stages it)
+
+<img src="figures/git6.png" alt="choose git" style="width: 550px;"/>
+
+***
+
+7 Push the change onto the repository
+
+<img src="figures/git7.png" alt="clone repo" style="width: 550px;"/>
+
+8 All done
+
+<img src="figures/git8.png" alt="edit file" style="width: 550px;"/>
+
+Git - practical advice
+===
+
+- Pull before you start working on a project - somebody might have changed things without letting you know
+
+- Push often, small changes usually do not lead to conflicts; but if they do it is generally easier to resolve them.
+
+- Once you've pushed, pull again (sometimes changes to the global repository force you to pull first).

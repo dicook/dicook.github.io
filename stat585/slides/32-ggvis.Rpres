@@ -1,0 +1,27 @@
+STAT 585X
+ggvis
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 4/2/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Finding your way - again
+====
+
+The idea of today's lab is the same as the one two weeks ago: you are asked to provide a shiny application that allows the user to select US cities to be included in a route across the country.
+
+This time, the application is supposed to be based on ggvis and enhanced by interactive functionality.
+
+(1) Contruct a map of the US using ggvis. Add points of all available cities on top of the map
+
+(2) Add interactions:
+* Using tooltip brushing, display the name of the city when hovering over it.
+* Using tooltip clicking, add a city to the current route. Make cities that are part of the route bigger in size (and/or change color?) and connect them by a path reflecting the order in which they have been added.

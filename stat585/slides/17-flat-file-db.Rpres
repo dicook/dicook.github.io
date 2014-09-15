@@ -1,0 +1,102 @@
+STAT 585X
+"flat file" databases
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 2/21/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Scenario
+====
+
+When data gets too big, databases don't work. Examples from the past:
+
+- AT&T telecommunications network, all the calls made on the network
+- email!
+- Google File System (GFS)
+- Hadoop derives from GFS
+
+Google File System
+====
+left: 40%
+
+- Data is split into same size chunks, and distributed on different nodes.
+
+- Indexes to the data help to find, and operate on the relevant chunks.
+
+- Because nodes are cheap, configuration needs to have redundancies built in, in case of node failures.
+
+- Not made freely available
+
+[Source](http://en.wikipedia.org/wiki/Google_File_System)
+
+***
+<img src="figures/GFS.png" alt="ascii image" style="width: 1000px; "/>
+
+Google File System
+====
+
+- A GFS cluster consists of multiple nodes. These nodes are divided into two types: one Master node and a large number of Chunkservers.
+- Each file is divided into fixed-size chunks. Chunkservers store these chunks.
+- Each chunk is assigned a unique 64-bit label by the master node at the time of creation, and logical mappings of files to constituent chunks are maintained.
+- Each chunk is replicated several times throughout the network, with the minimum being three, but even more for files that have high end-in demand or need more redundancy.
+- Master stores the metadata, that label chunk locations, what files the make up, where copies reside, and processes that enable reading and writing chunks.
+- Metadata is kept current by the Master server periodically receiving updates from each chunk server ("Heart-beat messages").
+- Permissions for modifications are handled by a system of time-limited, expiring "leases", where the Master server grants permission to a process for a finite period of time during which no other process will be granted permission by the Master server to modify the chunk.
+
+MapReduce
+====
+
+- Provides a programming layer over the distributed file system, for parallel distributed algorithm on the clusters. 
+- Map() procedure that performs filtering and sorting (such as sorting students by first name into queues, one queue for each name)
+- Reduce() procedure that performs a summary operation (such as counting the number of students in each queue, yielding name frequencies
+
+Mail
+====
+
+<img src="figures/Mail.png" alt="ascii image" style="width: 800px; "/>
+***
+- Flat file storage system
+- Routines for reading, searching, editing, 
+- Indexed files to facilitate searching
+
+Mail
+====
+
+<img src="figures/Mail2.png" alt="ascii image" style="width: 800px; "/>
+***
+<img src="figures/Mail3.png" alt="ascii image" style="width: 800px; "/>
+
+Mail
+====
+
+Just flat files!
+
+<img src="figures/Mail4.png" alt="ascii image" style="width: 800px; "/>
+
+***
+Mavericks OSX has problems indexing messages. 
+
+<img src="figures/Mail5.png" alt="ascii image" style="width: 800px; "/>
+
+Hadoop
+====
+
+- Hadoop Distributed File System (HDFS) is an open source system. 
+- Data is stored in a on multiple components, clusters. 
+- Based on GFS and MapReduce.
+
+Reading
+====
+
+Read this article and make a blog entry by 3pm Wednesday Feb 26.
+
+[From S to R, and working with big data](http://www.research.att.com/articles/featured_stories/2013_09/201309_SandR.html?fbid=N9BG7vStkON)
+

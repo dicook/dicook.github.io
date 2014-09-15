@@ -1,0 +1,223 @@
+STAT585X
+Different data formats
+========================================================
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 1/13/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Outline
+========================================================
+type: special
+
+- Data formats: ascii, binary, special
+- Rearranging data for analysis
+- Workflow
+- Text Editors
+- Formatting code
+
+
+ASCII
+========================================================
+
+- __A__merican __S__tandard __C__ode for __I__nformation __I__nterchange (1960, Bell Data)
+- enables text representation on computers, communication devices
+- encodes 128 specified characters, numbers 0-9, letters a-z, A-Z, some basic punctuation, and control codes
+- 7-bit binary integers
+
+ASCII REFERENCE CARD
+========================================================
+
+<img src="figures/ASCII_Code_Chart-Quick_ref_card.png" alt="ascii image" style="width: 1400px; "/>
+
+[Link to image source](://commons.wikimedia.org/wiki/File:ASCII_Code_Chart-Quick_ref_card.png)
+
+ASCII
+========================================================
+
+- printable characters: 100 0001=A, 100 0010=B, 110 0001=a, 110 0010=b, ...
+- first 32 chars are for control, e.g. 000 1000=BS=backspace, 111 1111=DEL=delete, 
+- differences: end of line in Windows is LF CR (Line feed, carriage return), and only LF on Mac OS and UNIX systems
+- Advantage of ascii: human readble, less prone to error/can be humanly checked
+
+[http://en.wikipedia.org/wiki/Ascii]
+
+COMPUTERS and HEXADECIMAL
+========================================================
+
+Grouping of bits together is necessary to represent numbers, use hexadecimal system, base 16
+
+<img src="figures/hexadecimal.png" alt="hexadecimal image" style="width: 1400px;"/>
+
+COMPUTERS and HEXADECIMAL
+========================================================
+
+- The number 3.141593 is represented in file as 33 2E 31 34 31 35 39 33 i.e needs 8 bytes (= 64 bit = space needed to represent binary number with 16 digits precision)
+- Also need separators: comma, tab, pipe (|)
+
+ASCII and R
+========================================================
+
+- ```read.table()```, ```read.csv()``` reads ascii files
+- ```write.table()``` writes ascii files
+
+BINARY
+========================================================
+
+- No restriction in terms on content, streams of bytes
+- Advantage: Generally much smaller files, and with compression even smaller, e.g. nasadata.csv is 3.7Mb, nasadata.rds is 288kb
+- Disadvantage: Can be machine-dependent
+
+BINARY and R
+========================================================
+
+- ```saveRDS()``` saves a single R object in binary format
+- ```save()``` saves all objects
+- ```readRDS()``` reads R binary file
+
+EXAMPLE
+========================================================
+
+```{r}
+d1 <- read.csv("../data/nasadata.csv")
+dim(d1)
+d1[1,]
+```
+
+EXAMPLE
+========================================================
+
+```{r}
+d2 <- readRDS("../data/nasadata.rds")
+dim(d2)
+d2[1,]
+```
+
+AWKWARD TEXT FORMATS and R
+========================================================
+
+```{r}
+temp.all<-read.table(
+  "../data/9641C_201112_raw.avg")
+dim(temp.all)
+```
+
+AWKWARD TEXT FORMATS and R
+========================================================
+
+```{r}
+colnames(temp.all)<-c("year", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec", "ann")
+head(temp.all)
+```
+
+AWKWARD TEXT FORMATS and R
+========================================================
+
+```{r}
+newpbi <- read.csv("../data/newpbi.csv")
+dim(newpbi)
+newpbi[1:4,1:4]
+```
+
+OTHER TEXT and R
+========================================================
+
+- Fixed formats can be read with ```read.fwf()```
+- For really ugly formatted text, single words can be extracted  using ```scan()```
+
+HTML FILES 
+========================================================
+
+- A lot of data is available online in the form of html tables
+- Extracting the data requires recognizing the html table format, and stripping off the html
+- The package ```xml``` helps with this
+
+HTML FILES 
+========================================================
+
+Pulling election polls off the web...
+
+```{r}
+library(XML)
+src ="http://www.realclearpolitics.com/epolls/2012/president/us/republican_presidential_nomination-1452.html"
+tables <- readHTMLTable(src)
+library(plyr)
+ldply(tables, dim)
+```
+
+HTML FILES 
+========================================================
+
+```{r}
+polls <- tables[[15]]
+head(polls) # still some work to do ...
+```
+
+OTHER BINARY FORMATS and R
+========================================================
+- Package ```foreign```: Data export/import for other (statistical) software: Stata, Epi, Octave, SPSS, Systat, SAS
+- Package ```XLConnect``` import/export with Excel spreadsheets
+e.g. web index data at http://www.visualizing.org/datasets/web-index-2013
+
+
+```{r}
+library(foreign)
+knights <- read.spss("../data/knightfoundation2008sotcdata.por")
+str(knights)
+```
+
+JSON
+========================================================
+
+- __J__avaScript __O__bject __N__otation [JSON](http://json.org/) is a lightweight data interchange format, becoming popular
+- Human readable and writable
+- Utilized by many web APIs, e.g. tumblr, twitter and Census Bureau
+
+e.g. result from get query in JSON format:
+
+[["P0010001","NAME","state"],
+["710231","Alaska","02"],
+["4779736","Alabama","01"],
+["2915918","Arkansas","05"],
+["6392017","Arizona","04"],
+["37253956","California","06"]]
+
+i.e. vector of vector format - focus is on individual rows in a data set, whereas R puts emphasis on individual columns (data set is list of vectors).
+
+
+Example: Census Bureau API
+========================================================
+
+```{r}
+library(devtools)
+install_github("cbapi", "heike")
+library(cbapi)
+setkey("7f784587c3918611ad6ca67188d9b269b3558dd4") # my key - if you want to use this, get your own :)
+# population based on 2010 Census:
+popstate <- read.census(sprintf("http://api.census.gov/data/2010/sf1?key=%s&get=P0010001,NAME&for=state:*", getkey()))
+head(popstate)
+```
+
+WHY? 
+========================================================
+
+- To solve a problem, may need to collate data from multiple sources
+- Rearranging and merging data from different sources helps to pull together the data necessary to solve the problem
+
+READING
+========================================================
+
+[Reshaping data: http://www.jstatsoft.org/v21/i12/paper](http://www.jstatsoft.org/v21/i12/paper)
+
+- What does it mean to melt data?
+- Why cast it in different forms?
+- Where would this be useful?
+
+Make a blog entry by 3pm Wednesday, Jan 15.

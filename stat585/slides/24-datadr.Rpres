@@ -1,0 +1,50 @@
+STAT 585X
+Exploring the effect ot dividing-recombining
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 3/12/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Exercise 1
+===
+
+Read [Andee Kaplan's](http://andeekaplan.com/2014/03/09/datadr/) blog on comparing dplyr and datadr
+
+Run the head to head comparison done by Andee. Do you get similar results? Using ```proc.time()``` might help to do simple timing.
+
+Exercise 2
+===
+
+Download the vehicle data from [http://www.fueleconomy.gov/feg/ws/index.shtml] 
+
+Your goal here is to compare fitting a ```glm``` of city mpg on highway mpg, cylinders, disp, fuelType and year using the full data, against ```drGLM()``` and ```drBLB()```. Examine the time taken to compute, and the values of the model estimates. 
+
+It will be best to do some cleaning of the data before trying to fit the model, or making the ```ddf```.
+
+- Remove cars listed as ```year=2015```
+- Remove missings on cylinders, displ and make into numeric variables
+- Change fuelType into categories "Regular", "Premium", "Diesel", "Electricity", "E85"
+
+Exercise 3
+===
+
+Modify the MapReduce examples (at http://hafen.github.io/datadr/#mapreduce-examples) to: 
+
+Find the make of vehicle that has the lowest mpg
+
+Exercise 4
+===
+
+Write a paragraph on: 
+
+- How data cleaning prior to constructing the distributed data objects might be important. 
+- And how the data setup might affect the types of operations that can be done efficiently 
+

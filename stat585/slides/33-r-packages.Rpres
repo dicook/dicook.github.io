@@ -1,0 +1,203 @@
+STAT 585X
+Packages in R
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 4/11/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Outline
+===
+
+* installing packages locally 
+* structure of R packages
+* documenting code
+
+Installing Packages
+===
+
+The `devtools` package allows us to -easily- install packages from other sources than the CRAN mirrors, Bioconductor or R forge
+
+in particular, `install_github` allows direct installations from github sources, where a lot of package development happens before official submissions to CRAN (e.g. the  `dplyr` package on github can deal with a larger variety of databases than the CRAN version)
+
+```
+library(devtools)
+install_github("ggplot2", "hadley") # <- this will not work on the terminal server
+```
+
+slight complication: for the installation we need to set the path to a local library explicitly -- use `.libPaths()` to find out which paths the servers are using:
+```
+[1] "\\\\iastate.edu/cyfiles/hofmann/Documents/R/win-library/3.0"
+[2] "C:/Program Files/R/R-3.0.2/library"
+```
+
+Make sure that the local library is picked:
+```
+library(devtools)
+install_github("ggplot2", "hadley", arg="-l \\\\iastate.edu/cyfiles/hofmann/Documents/R/win-library/3.0")
+```
+
+Writing R packages
+===
+
+Are you ready?
+
+```{r}
+library(devtools)
+has_devel()
+
+# If not:
+#   * on windows: install Rtools
+#   * on mac: install xcode
+#   * on linux: install gcc, make
+```
+
+Structure of R packages
+===
+
+Every package consists of a folder with
++ three files: NEWS, DESCRIPTION, NAMESPACE, and sometimes a config file
++ additional (mostly optional) subfolders:
+  + *R* with R source files
+  + *man* (for *man*ual) with help files for all of the functions/objects made available by the package
+  + *data* for datasets and objects
+  + *inst*  miscellaneous things
+  + *tests* for validation tests run during installation
+  + *src*   for C, Fortran or C++ source code
+  + *exec* executable files, such as perl or Java scripts
++ Most packages don't need all folders  
+  
+Additional reads with more details:
+- Writing R Extensions: [http://cran.r-project.org/doc/manuals/R-exts.pdf]
+- Hadley's 'Advanced R programming' [http://adv-r.had.co.nz/Package-basics.html]
+- Fritz Leisch: [http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf]
+
+A minimal R package
+===
+
+Let's make an R package `miniR`.
+
+Start by making a folder called `miniR`, and create a subfolder `R`
+
+Put the following code in a file called `hw.r`, which in turn is supposed to go into the folder `R`
+```{r}
+hw <- function() {
+  print("Hello World")
+}
+```
+
+Now we need to create a text file `DESCRIPTION`
+
+```
+Package: miniR
+Title: My first R package
+Description: The idea for this package is to try out whether we can write and install a very small package
+Version: 0.1
+Author: Your Name <name@iastate.edu>
+Maintainer: Again Your Name <name@iastate.edu>
+License: MIT
+Collate:
+    'hw.r'
+```
+
+Install `miniR`
+===
+
+Now navigate in R to the folder `miniR` and run
+```
+library(devtools)
+install()
+```
+
+Remember to include the parameter `arg='-l library/path'` if you are working on a terminal server
+
+The compilation fails because we don't have a NAMESPACE file. Include a file called NAMESPACE (just an empty file).
+Now the above code compiles - and you have your first package!
+
+Try this out:
+```
+library(miniR)
+library(help=miniR)
+```
+
+Doesn't your name look good as package author?
+
+It'd be nice if the package actually did something ...
+===
+
+```
+hw() # doesn't work
+```
+But it's there ... 
+```{r}
+miniR:::hw()
+```
+
+We need to look into the documentation of functionality a bit now ...
+
+Documenting code with `Roxygen`
+===
+
+Change the code in `hw.r` to 
+```
+#' @export
+hw <- function() {
+  print("Hello World")
+}
+```
+
+The symbol `#' ` is an indicator for R that this part is Roxygen documentation, any roxygen keyword starts with `@`
+
+`@export` indicates any function that should be made available by the package 
+
+Now run:
+```
+document()
+install()
+```
+
+`document()` added one line in the NAMESPACE file, it also created a folder `man`
+
+Extending the documentation
+===
+
+```
+#' One line descriptor
+#' 
+#' Description of the functionality in a paragraph
+#' @param x character value, optional argument
+#' @export
+#' @examples
+#'  hw("Heike")
+hw <- function(x="") {
+  chr <- "Hello World"
+  if (length(x) > 0) chr <- paste(chr, ", this is ", x, sep="")
+  print(chr)
+}
+```
+
+And, again, we run `document()` and install again.
+Load your package and check out the sophisticated help that you are offering!
+```
+library(miniR)
+?hw
+```
+full blown roxygen documentation: [http://adv-r.had.co.nz/Documenting-functions.html]
+
+
+Extending R packages
+===
+
+Strategy for extending packages: find examples and emulate/adjust to your needs
+
+Let's download an existing package and look at that - download the package `lvplot` from [https://github.com/hadley/lvplot]
+
+(It's not the best package ever written, but it's OK and fairly small, and should get the main ideas across)
+

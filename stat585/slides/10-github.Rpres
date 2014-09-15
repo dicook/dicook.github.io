@@ -1,0 +1,26 @@
+STAT 585X
+Tools for Software Development
+========================================================
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 2/5/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Exercise
+========================================================
+
+Write a story, like that, for the [http://tamingofchance.vretta.com/] competition with your working group. One person in your working group needs to create a repository, and give other group members access. Each member of your group need to pull and push at least 5 changes.
+
+The story needs to be written in R markdown, and include code and graphics, a picture story. Ideally, it also contains some data, and plots of that data.
+
+Information on R markdown is available at [http://www.rstudio.com/ide/docs/authoring/using_markdown]. 
+
+Turn in your story, as an html page, and the link to your repository. 
+

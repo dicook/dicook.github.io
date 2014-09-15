@@ -1,0 +1,252 @@
+STAT 585X
+databases in R
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 2/14/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Outline
+====
+
+* ```dplyr``` package:
+* ```mutate, arrange, select, filter, summarise```
+* ```group_by```
+* ```dplyr``` with databases
+
+
+Data for now
+===
+
+```Lahman``` package contains complete Lahman baseball database.
+We'll be using the ```Batting``` table
+
+```{r}
+library(Lahman)
+dim(Batting)
+summary(Batting)
+```
+
+dplyr functionality
+===
+
+* ```filter()``` 
+* ```arrange()```
+* ```select()```
+* ```mutate()```
+* ```summarise()```
+
+They all have similar functionality to parts of the ```plyr``` commands
+
+
+filtering
+===
+
+```filter``` allows us to select a subset of the data:
+
+```{r}
+filter(Batting, teamID=="CIN", yearID==2012)
+```
+
+filtering
+===
+
+* Note that the individual expressions get tied together by logical 'and'
+* For logical 'or' we need to use the pipe operator |
+
+arrange
+===
+
+arrange reorders row in the order of the variables provided; subsequent variables are used to break ties:
+```desc``` sorts values in descending order
+
+```{r}
+arrange(Batting, desc(yearID), desc(H))
+```
+
+select
+===
+
+```select``` is a selection of columns. ```select``` picks just the variables (or their expressions) used:
+
+```{r}
+select(Batting, yearID, playerID, teamID, H)
+```
+
+mutate
+===
+
+```mutate``` is similar to the ```transform``` function
+```{r}
+mutate(Batting, 
+       batting_avg=H/AB,
+       hr_games=HR/G)
+```
+
+summarise
+===
+
+```summarise``` without the grouping function is a bit boring, but for completeness:
+
+```{r}
+summarise(Batting, H=sum(H, na.rm=T), AB=sum(AB, na.rm=T))
+```
+
+
+Grouping
+===
+
+```group_by``` converts a dataframe into a 'grouped' dataframe, which is an extension of the regular dataframe by a list of indices specifying the grouping.
+
+Subsequent summaries are then done on the grouping structure:
+
+```{r}
+players <- group_by(Batting, playerID)
+summarise(players, 
+          years_played = max(yearID)-min(yearID)+1,
+          batting_avg = sum(H, na.rm=T)/sum(AB, na.rm=T),
+          homeruns = sum(HR, na.rm=T)
+          )
+```
+
+
+Chaining
+===
+
+The function are providing complementary functionality - usually we need some or all of them to get to one result.
+
+Saving one result and using in the next command is not very elegant
+```{r}
+r1 <- group_by(Batting, playerID)
+r2 <- select(r1, playerID, yearID, AB, H, HR)
+r3 <- summarise(r2, 
+          years_played = max(yearID)-min(yearID)+1,
+          batting_avg = sum(H, na.rm=T)/sum(AB, na.rm=T),
+          homeruns = sum(HR, na.rm=T),
+          AB = sum(AB, na.rm=T)
+          )
+r4 <- filter(r3, AB > 100)
+```
+
+Chaining
+===
+
+Using one result within the other is not very readable:
+```{r}
+r4 <- filter(
+  summarise(
+    select(
+      group_by(Batting, playerID), playerID, yearID, AB, H, HR), 
+          years_played = max(yearID)-min(yearID)+1,
+          batting_avg = sum(H, na.rm=T)/sum(AB, na.rm=T),
+          homeruns = sum(HR, na.rm=T),
+          AB = sum(AB, na.rm=T)
+          ), AB > 100)
+```
+
+
+The %.% operator for chaining:
+===
+
+idea: ```x %.% f(y)``` turns into ```f(x, y)```
+This allows us to rewrite multiple operations to ensure readability:
+
+```{r}
+res <- Batting %.%
+  group_by(playerID) %.%
+  select(playerID, yearID, AB, H, HR) %.%
+  summarise(years_played = max(yearID)-min(yearID)+1,
+          batting_avg = sum(H, na.rm=T)/sum(AB, na.rm=T),
+          homeruns = sum(HR, na.rm=T),
+          AB = sum(AB, na.rm=T)
+          ) %.%
+  filter(AB > 100)
+```
+
+
+Speed
+===
+
+Jake Russ' guest post on r4stats (http://www.r-bloggers.com/a-speed-test-comparison-of-plyr-data-table-and-dplyr/) compares the performance of plyr, dplyr and data.table ... 
+
+We'll just look at plyr versus dplyr for now:
+dplyr:
+```{r, echo=FALSE}
+system.time({
+res <- Batting %.%
+  group_by(playerID) %.%
+  select(playerID, yearID, AB, H, HR) %.%
+  summarise(years_played = max(yearID)-min(yearID)+1,
+          batting_avg = sum(H, na.rm=T)/sum(AB, na.rm=T),
+          homeruns = sum(HR, na.rm=T),
+          AB = sum(AB, na.rm=T)
+          ) %.%
+  filter(AB > 100)  
+})
+```
+
+plyr:
+```{r}
+library(plyr)
+system.time({
+  res <- ddply(Batting, .(playerID), summarise, 
+               years_played = max(yearID)-min(yearID)+1,
+          batting_avg = sum(H, na.rm=T)/sum(AB, na.rm=T),
+          homeruns = sum(HR, na.rm=T),
+          AB = sum(AB, na.rm=T))
+  plyr_out <- subset(res, AB > 100)
+})
+```
+
+dplyr 
+===
+
+Further advantage: works with seamlessly with a range of different  database systems without loading data into R's main memory:
+
+```{r}
+# first put the Batting data into a database:
+my_db <- src_sqlite("lahman", create = T)
+batting <- copy_to(my_db, Batting, temporary = FALSE, indexes = list(
+   "yearID", "playerID", "teamID", "lgID"))
+detach(package:Lahman) # now Batting is gone from the working directory
+batting
+```
+
+dplyr and databases
+====
+
+Same call as before (parameter ```na.rm``` is causing an error - not necessary for databases ... ):
+
+```{r, eval=FALSE}
+res <- batting %.%
+  group_by(playerID) %.%
+  select(playerID, yearID, AB, H, HR) %.%
+  summarise(years_played = max(yearID)-min(yearID)+1,
+          batting_avg = sum(H)/sum(AB),
+          homeruns = sum(HR),
+          AB = sum(AB)
+          ) %.%
+  filter(AB > 100)
+```
+
+```collect(res)``` executes the query and gets results from the database
+
+```res$query``` shows the command that is sent to the database:
+
+```
+<Query> SELECT "playerID", "years_played", "batting_avg", "homeruns", "AB"
+FROM (SELECT "playerID", MAX("yearID") - MIN("yearID") + 1.0 AS "years_played", SUM("H") / SUM("AB") AS "batting_avg", SUM("HR") AS "homeruns", SUM("AB") AS "AB"
+FROM "Batting"
+GROUP BY "playerID") AS "_W2"
+WHERE "AB" > 100.0
+<SQLiteConnection: DBI CON (2123, 0)> 
+```
+
+

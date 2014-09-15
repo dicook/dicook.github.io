@@ -1,0 +1,193 @@
+STAT 585X
+Interactive graphics
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 3/31/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+
+Interactive graphics
+===
+
+- gridSVG
+- iplots
+- plumbr
+- cranvas
+- animint
+- ggvis
+
+Get some data
+===
+
+```{r}
+# Read the data from the web site
+flu.data <- read.table("http://www.google.org/flutrends/us/data.txt", 
+                       skip=11, sep=",", header=TRUE)
+# Get only states
+flu.data <- flu.data[, c(1, 3:53)]
+
+# Melt data, and rename variables
+library(reshape)
+flu.melt <- melt(flu.data, id.vars="Date")
+library(lubridate)
+flu.melt$Date <- as.Date(flu.melt$Date)
+colnames(flu.melt)[2] <- "State"
+colnames(flu.melt)[3] <- "FluSearches"
+flu.melt$Month <- month(flu.melt$Date, label=TRUE)
+flu.melt$Year <- factor(year(flu.melt$Date))
+flu.melt$YDay <- yday(flu.melt$Date)
+flu.13.14 <- subset(flu.melt, (Year=="2013"&YDay>200)|Year=="2014")
+flu.13.14$days <- as.numeric(difftime(flu.13.14$Date, min(flu.13.14$Date), units="days"))
+```
+
+
+Static plot
+===
+
+```{r, fig.width=16, fig.align='center'}
+library(ggplot2)
+library(scales)
+qplot(Date, FluSearches, data=flu.13.14, group=State, geom="line") + 
+  scale_x_date(breaks = date_breaks("1 month"), labels = date_format("%m/%d"))
+```
+
+iplots
+===
+
+The ```iplots``` package provide interactive mosaic plots, bar plots, box plots, parallel plots, scatter plots and histograms that can be linked and color brushed. It is implemented through the Java GUI for R.
+
+For simple explorations of data.
+
+```
+library(iplots)
+iplot(flu.13.14$days, flu.13.14$FluSearches)
+ibar(flu.13.14$State)
+```
+
+iplots
+===
+
+<img src="figures/iplots1.png" alt="iplots" style="width: 800px; "/>
+<img src="figures/iplots2.png" alt="iplots" style="width: 800px; "/>
+<img src="figures/iplots3.png" alt="iplots" style="width: 1200px; "/>
+
+cranvas
+===
+
+Cranvas provides interactive graphics throgh mutable objects.
+
+```
+library(cranvas)
+library(maps)
+flu.13.14$State <- tolower(flu.13.14$State)
+flu.13.14$state <- gsub("[.]", " ", flu.13.14$State)
+qflu <- qdata(flu.13.14)
+qscatter(days, FluSearches, data=qflu)
+record_selector(state, data=qflu)
+qstate <- map_qdata("state")
+qmap(qstate, linkto = qflu, linkby = "state")
+```
+
+cranvas
+===
+
+<img src="figures/cranvas1.png" alt="cranvas" style="width: 800px; "/>
+<img src="figures/cranvas2.png" alt="cranvas" style="width: 800px; "/>
+
+cranvastime
+===
+left: 50%
+
+Slice and dice time series
+
+```
+qtime(days, FluSearches, data=qflu, group="State")
+```
+***
+<img src="figures/cranvas3.png" alt="cranvas" style="width: 800px; "/>
+
+What do we learn
+===
+
+- Peak flu season was around January for most states
+- Some states have a second peak, eg Alabama
+- Peak is longer for some states
+- Peak season lags in some states relative to others (North/South?)
+
+Why?
+===
+
+- Interactive graphics enables exploration of data
+- Multiple linked windows provides the ability to make connections between different aspects
+- Connected to model fitting enables better diagnostics 
+
+How does it work?
+===
+
+- Interactive graphics needs to listen to user actions and respond
+- ```iplots``` achieves this by running Java, a full programming language, but the R event loop interferes with the listening, so a separate GUI, JGR, was built to circumvent this
+- ```cranvas``` works by using a different type of data, mutaframes instead of dataframes
+- ```animint, ggvis``` - reimplement graphics in javascript and then need a browser to view the plots
+
+cranvas
+===
+
+<img src="figures/cranvas-diagram.png" alt="cranvas" style="width: 1400px; "/>
+
+plumbr
+===
+
+```{r}
+library(plumbr)
+mf <- mutaframe(x = 1:2 * pi)
+df <- data.frame(x = 1:2 * pi)
+c(mf$x[2], df$x[2])  # the 2nd elements in mf and df
+f <- function() {
+  mf$x[2] <- 10
+  df$x[2] <- 10
+}
+f()  # modified mf, but not df
+c(mf$x[2], df$x[2])
+```
+
+Changes to the elements of a mutaframe can be made anywhere rgardless of the environment.
+
+plumbr
+===
+
+Useful for interactive graphics, because it triggers updates to plots: reactive programming.
+
+```{r fig.width=10, fig.align='center'}
+mf <- mutaframe(mtcars)
+add_listener(mf, function(i, j) {
+  # i indicates the rows modified, and j indicates columns
+  plot(disp ~ mpg, data = as.data.frame(mf))
+})
+mf$disp <- sqrt(mf$disp)
+```
+
+When the column ```disp``` is transformed the plot automatically updates.
+
+plumbr and cranvas
+===
+
+```{r}
+library(cranvas)
+head(flu.13.14)
+head(qdata(flu.13.14))
+```
+
+plumbr and cranvas
+===
+
+- This provides the ability to update plots, but does not listen to the user actions (mouse clicks, etc) on a plot. 
+- For this one needs to listen to mouse events, which is done using the graphics toolkit, Qt. 
+- Qt handles the mouse events and converts the graphical object selection into changes in the mutaframe object, which triggers a plot update.

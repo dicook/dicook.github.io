@@ -1,0 +1,341 @@
+STAT 585X
+mysql databases in R
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 2/14/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Outline
+====
+
+* select queries - exploring the FARS data
+* create databases and tables
+* table definitions
+
+
+
+Select statements
+===
+
+```
+SELECT column(s)
+FROM table
+[WHERE condition(s)]
+[GROUP BY column(s)]
+```
+
+FARS data
+===
+
+We are dealing today with data downloaded from FARS, the Fatality Accident Record System, at http://www.nhtsa.gov/FARS
+
+
+***Lab Question***
+For each of the years, investigate the relationship between the percentage of accidents, in which at least one of the drivers is (legally) drunk, and the day of the week (find averages, standard deviations and number of values these summaries are based on).
+Give a graphical summary of the relationship and comment on it. 
+
+Connecting to the accidents table
+===
+
+```{r}
+library(RMySQL)
+co <- dbConnect(dbDriver("MySQL"), user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+
+dbListFields(co, "accidents")
+dbDisconnect(co)
+```
+
+Sample queries
+===
+
+```{r, echo=-(1:3)}
+library(RMySQL)
+co <- dbConnect(dbDriver("MySQL"), user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+
+# how many accidents are there total?
+dbGetQuery(co, "select count(*) from accidents")
+# table of years
+dbGetQuery(co, "select Year, count(*) as total from accidents group by Year")
+
+dbDisconnect(co)
+```
+
+Sample queries
+===
+
+DRUNK_DR is the ***number of drivers*** involved in one accident, who were legally drunk
+```{r, echo=-(1:3)}
+library(RMySQL)
+co <- dbConnect(dbDriver("MySQL"), user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+
+# Overview of DRUNK_DR
+dbGetQuery(co, "select DRUNK_DR, count(*) as total from accidents group by DRUNK_DR")
+
+dbDisconnect(co)
+```
+
+Sample queries
+===
+
+We are interested in whether ***at least one*** driver was drunk:
+```{r, echo=-(1:3)}
+library(RMySQL)
+co <- dbConnect(dbDriver("MySQL"), user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+
+dbGetQuery(co, "select DRUNK_DR>0, count(*) as total from accidents group by DRUNK_DR>0")
+# why is this query not well defined?
+dbGetQuery(co, "select DRUNK_DR, count(*) as total from accidents group by DRUNK_DR>0")
+
+dbDisconnect(co)
+```
+
+Sample queries
+===
+
+#accidents by year, classified as no drunk driver/at least one drunk driver:
+```{r, echo=-(1:3)}
+library(RMySQL)
+co <- dbConnect(dbDriver("MySQL"), user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+
+dbGetQuery(co, "select Year, DRUNK_DR>0, count(*) as total from accidents group by Year, DRUNK_DR>0")
+
+dbDisconnect(co)
+```
+
+Sample queries
+===
+
+#accidents by year, classified as no drunk driver/at least one drunk driver:
+this table allows us to compute all the averages we want, but we need to still do some data massaging in R
+```{r, echo=FALSE}
+library(RMySQL)
+co <- dbConnect(dbDriver("MySQL"), user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+
+dbGetQuery(co, "select Year, DRUNK_DR>0, count(*) as total from accidents group by Year, DRUNK_DR>0")
+
+dbDisconnect(co)
+```
+
+Sample queries
+===
+
+#accidents by year; additionally compute average of binary variable DRUNK_DR>0:
+```{r, echo=-(1:3)}
+library(RMySQL)
+co <- dbConnect(dbDriver("MySQL"), user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+
+dbGetQuery(co, "select Year, count(*), avg(DRUNK_DR>0) as total from accidents group by Year")
+
+dbDisconnect(co)
+```
+
+Sample queries
+===
+
+#accidents by year ***and day of the week***; additionally compute average of binary variable DRUNK_DR>0:
+```{r, echo=-(1:3)}
+library(RMySQL)
+co <- dbConnect(dbDriver("MySQL"), user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+
+(res <- dbGetQuery(co, "select Year, day_week as dweek, count(*) as total, avg(DRUNK_DR>0) as mean, stddev(DRUNK_DR>0) as sd from accidents group by Year, Day_week"))
+
+dbDisconnect(co)
+```
+
+Lab 'solution':
+====
+
+```{r, fig.width=12}
+library(ggplot2)
+qplot(factor(dweek), mean, data=subset(res, dweek != 9), colour=factor(Year)) + geom_line(aes(group=Year), size=1.5) + scale_colour_brewer(palette="Set1") + ylim(c(0,1))
+```
+
+The percentage of drunk drivers is the highest on Saturdays (dweek=7) and Sundays (dweek=1) - actullary it is in the mornings of those days ...
+
+Drunk drivers and time of day
+====
+
+```{r, echo=-(1:3), fig.width=15}
+library(RMySQL)
+co <- dbConnect(dbDriver("MySQL"), user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+
+res <- dbGetQuery(co, "select Year, hour, count(*) as total, avg(DRUNK_DR>0) as mean, stddev(DRUNK_DR>0) as sd from accidents group by Year, hour")
+
+qplot(factor(hour), mean, data=subset(res, hour!=99), colour=factor(Year)) + geom_line(aes(group=Year), size=1.5) + scale_colour_brewer(palette="Set1") + ylim(c(0,1))
+```
+
+Drunk drivers, day of the week and time of day
+====
+
+```{r, echo=-(1:3), fig.width=15}
+library(RMySQL)
+co <- dbConnect(dbDriver("MySQL"), user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+
+res <- dbGetQuery(co, "select Year, day_week as dweek, hour, count(*) as total, avg(DRUNK_DR>0) as mean from accidents group by Year, day_week, hour")
+
+qplot(factor(hour), mean, data=subset(res, (hour<24) & (dweek !=9)), facets=~Year, colour=factor(dweek)) + geom_line(aes(group=dweek), size=1.5) + scale_colour_brewer(palette="Set1") + ylim(c(0,1))
+```
+
+Just stay off the road Saturday and Sunday mornings ... 
+====
+
+Total number of accidents by time of day, day of week and year
+```{r, fig.width=20, fig.height=10, echo=FALSE}
+qplot(factor(hour), total, data=subset(res, (hour<24) & (dweek !=9)), facets=~Year, colour=factor(dweek)) + geom_line(aes(group=dweek), size=1.5) + scale_colour_brewer(palette="Set1")
+```
+
+Creating tables and databases
+====
+
+* We'll switch from mysql databases to a SQLite database
+* advantage: we don't need a server, everything is stored locally 
+* SQLite is a slim version of mysql (for smallish databases)
+* used in lots of applications and platforms: phones, tablets, ...
+
+```{r}
+library(RSQLite)
+co <- dbConnect(dbDriver("SQLite"))
+dbListTables(co) # nothing there, no surprise
+
+# create a database:
+co <- dbConnect(dbDriver("SQLite"), dbname="my_db") 
+dir()[grep("db", dir())]
+dbDisconnect(co)
+```
+
+Creating a table
+===
+
+brackets are optional arguments, parentheses are part of the syntax
+```
+CREATE [TEMP] TABLE dbname.tablename
+[(column-def, 
+  column-def,
+  column-def)]
+```
+Column definitions look like this:
+```
+colname type [column-constraint]
+```
+Creating a table for the tips data
+===
+
+e.g. for tips data:
+```{r}
+tips <- read.csv("http://www.ggobi.org/book/data/tips.csv")
+head(tips)
+```
+
+```
+CREATE TABLE my_db.tips (
+  obs       INT PRIMARY KEY NOT NULL,
+  totbill   DOUBLE,
+  tip       DOUBLE,
+  sex       CHAR(1),
+  smoker    CHAR(3),
+  day       CHAR(3),
+  time      CHAR(5),
+  size      INT
+  )
+```
+
+... and now in R
+===
+
+```{r}
+library(RSQLite)
+co <- dbConnect(dbDriver("SQLite"), dbname="my_db") 
+dbGetQuery(co, "CREATE TABLE IF NOT EXISTS tips (
+  obs       INT PRIMARY KEY NOT NULL,
+  totbill   DOUBLE,
+  tip       DOUBLE,
+  sex       CHAR(1),
+  smoker    CHAR(3),
+  day       CHAR(3),
+  time      CHAR(5),
+  size      INT
+  )")
+dbGetQuery(co, "select * from tips")
+dbDisconnect(co)
+```
+
+
+Fill the table
+===
+
+tables are filled one row at a time
+```
+INSERT INTO dbname.table [(colnames)] VALUES 
+(expr, expr, expr, ...)
+(expr, expr, expr, ...)
+(expr, expr, expr, ...)
+```
+
+```{r}
+library(RSQLite)
+co <- dbConnect(dbDriver("SQLite"), dbname="my_db") 
+dbGetQuery(co, "DELETE FROM tips")
+foo <- dbGetQuery(co, "INSERT INTO tips VALUES
+  (1, 16.99, 1.01, 'F', 'No', 'Sun', 'Night', 2),
+  (2, 10.34, 1.66, 'M', 'No', 'Sun', 'Night', 3),
+  (3, 21.01, 1.50, 'M', 'No', 'Sun', 'Night', 3)")
+dbGetQuery(co, "select * from tips") 
+dbDisconnect(co)
+```
+
+More rows at a time
+===
+
+```{r, echo=-(1:2)}
+library(RSQLite)
+co <- dbConnect(dbDriver("SQLite"), dbname="my_db") 
+# delete entries from the table:
+foo <- dbGetQuery(co, "DELETE FROM TIPS")
+# append whole table:
+dbWriteTable(co, name="tips", value=tips, append=TRUE, row.names=FALSE) 
+dbGetQuery(co, "SELECT * FROM tips LIMIT 6")
+dbDisconnect(co)
+```
+
+Optimizing tables
+===
+
+***Indices*** help to speed up table queries
+
+
+```{r, echo=-(1:2)}
+library(RSQLite)
+co <- dbConnect(dbDriver("SQLite"), dbname="my_db") 
+system.time(dbGetQuery(co, "SELECT size, avg(tip/(totbill+tip)) FROM tips GROUP BY size ORDER BY size"))
+foo <- dbDisconnect(co)
+```
+
+```
+CREATE INDEX IF NOT EXISTS idx1 ON tablename (colnames)
+```
+
+```{r, echo=-(1:2)}
+library(RSQLite)
+co <- dbConnect(dbDriver("SQLite"), dbname="my_db") 
+foo <- dbGetQuery(co, "CREATE INDEX IF NOT EXISTS idx1 ON tips (size)")
+system.time(dbGetQuery(co, "SELECT size, avg(tip/(totbill+tip)) FROM tips GROUP BY size ORDER BY size"))
+dbDisconnect(co)
+```
+
+Reading Material
+====
+
+Comment on the reading in a Blog entry until Wednesday Feb 19.
+
++ http://cran.r-project.org/web/packages/dplyr/vignettes/introduction.html
++ http://cran.r-project.org/web/packages/dplyr/vignettes/databases.html
+
+

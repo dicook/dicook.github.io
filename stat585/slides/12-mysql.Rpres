@@ -1,0 +1,328 @@
+STAT 585X
+Data Storage: Databases and R
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 2/10/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Outline
+===
+
+* What is a database?
+* Normal forms of data
+* Select Query Language (SQL)
+* Database software: mysql, oracle, postgreSQL, SQLite, SQL Server Express, Firebird
+* Creating and populating a mysql database
+* Access from R: RMySQL
+
+What is a database?
+===
+
+* a collection of data
+* a set of rules to manipulate data
+
+Pros:
+* efficient manipulation of large data
+* convenient processing of data
+* integration of multiple data sources
+* access to a shared resource
+
+Example
+===
+
+* 2009 data expo: 12Gb of US airline traffic information 
+* Team of faculty and students analyzing the data
+* Weather information at major airports stripped from various web sites and added as separate table, enable weather and air traffic operations to be compared
+* Data converted from individual flights, to summaries calculated across different units: hours, day, month, year, airport, airline, ...
+
+Why a database?
+* 12Gb is TOO BIG for R! (unless you have a main memory of >> 12Gb)
+* Now, data on the order of some activities today, terabytes on a frequent basis are TOO BIG for databases! Then analysts revert back to FLAT FILES.
+
+
+Relational Databases
+===
+
+* data is collection of tables (in normal form)
+* SQL (Structured Query Language) for manipulated, in particular, ***querying*** data
+* DBMS (Database management system) for managing data
+
+![alt text](figures/esm65_0801.png "Relational Database scheme")
+
+
+Keys
+====
+
+Student
+
+| ***ID***            | Name          | Major  |
+| ------------- |:-------------:| ------:|
+| 1234          | Never Ever    | Math   |
+| 4321          | Some Times    | CS     |
+| ...           | ...           | ...    |
+
+
+***Keys*** uniquely identify a record
+
+Keys are used to link between tables: what are the names of the students not in class on Feb-09?
+
+***
+
+Attendance
+
+| ***ID***            | ***Date***          | Status  |
+| ------------- |:-------------:| -------:|
+| 1234          | 02-Feb        | absent  |
+| 1234          | 09-Feb        | absent  |
+| 4321          | 02-Feb        | present |
+| 4321          | 09-Feb        | absent  |
+
+Relationships between tables:
+one-one, one-many, many-many
+
+
+Normal forms
+===
+
+DRY principle for data (Don't repeat yourself)
+
+* more consistency, less redundancy
+* harder to view and edit
+* distinction between measured data and data indices (keys)
+
+Normal forms:
+1 - the key
+2 - the whole key
+3 - nothing but the key
+
+1st normal form (the key)
+===
+
+* data is in rectangular form
+* each row has a unique key
+* order of rows, columns not important
+
+
+| ***ID***            | Name          | Major  | ***Date***          | Status  |
+| ------------- |:-------------:| ------:|:-------------:| -------:|
+| 1234          | Never Ever    | Math   | 02-Feb        | absent  |
+| 1234          | Never Ever    | Math   | 09-Feb        | absent  |
+| 4321          | Some Times    | CS     | 02-Feb        | present |
+| 4321          | Some Times    | CS     | 09-Feb        | absent  |
+
+
+Counterindication for 1st normal form: 
+e.g. duplicate rows, duplicate key entries
+
+2nd normal form (the whole key)
+===
+
+a table in 1st NF is also in 2nd NF, if 
+we need the ***whole*** key to describe any element in a row, i.e. no redundancy
+
+Only ID needed for Name and Major - table below is _not_ in 2nd normal form
+
+| ***ID***            | Name          | Major  | ***Date***          | Status  |
+| ------------- |:-------------:| ------:|:-------------:| -------:|
+| 1234          | Never Ever    | Math   | 02-Feb        | absent  |
+| 1234          | Never Ever    | Math   | 09-Feb        | absent  |
+| 4321          | Some Times    | CS     | 02-Feb        | present |
+| 4321          | Some Times    | CS     | 09-Feb        | absent  |
+
+
+split table to get it into 2nd normal form
+
+
+2nd normal form (the whole key)
+===
+
+Now the tables are in 1st NF and 2nd NF
+
+Student
+
+| ***ID***            | Name          | Major  |
+| ------------- |:-------------:| ------:|
+| 1234          | Never Ever    | Math   |
+| 4321          | Some Times    | CS     |
+
+
+***
+
+Attendance
+
+| ***ID***            | ***Date***          | Status  |
+| ------------- |:-------------:| -------:|
+| 1234          | 02-Feb        | absent  |
+| 1234          | 09-Feb        | absent  |
+| 4321          | 02-Feb        | present |
+| 4321          | 09-Feb        | absent  |
+
+
+Tables in 1st NF with a single key variable are automatically in 2nd NF
+
+
+3rd normal form (nothing but the key)
+===
+
+* No non-key field contains information on another field
+* Avoids update irregularities
+* Zipcode determines city and state, but is not key field
+
+| ***ID***            | Name          | City  | State | ZIP   |
+| ------------- |:-------------:| ------:|------|-------|
+| 5678          | Heike     | Ames   | IA | 50014 |
+| 9012          | Di        | Ames   | CA | 50011 |
+
+Why normalize?
+====
+
+* Easier to maintain
+* Reduce redundancy to detect possible errors
+* Reduce overall data size
+* Useful way of thinking about objects under study
+
+
+De-normalization
+===
+
+* So, now no redundancy, but unfortunately few statistical algorithms work with normalized data
+* So have to de-normalize it - i.e. join data from different sources
+* R: ```merge``` (base) or ```join``` (plyr)
+* or directly in the database
+
+
+
+Structured Query Language
+===
+
+* Structured Query Language (1970, E Codds)
+* Programming language used for accessing data in a database
+* ANSI standard since 1986, ISO standard since 1987
+* Still some portability issues between software systems!
+* We’ll mainly focus on SQL queries to access data
+
+Syntax
+====
+
+* SQL is not case sensitive.
+* Some systems require ```;``` at the end of each line. The semi-colon can be used to separate each SQL statement in a system that allows multiple command to be executed in a call to the server.
+
+
+Select
+===
+
+Student
+
+| ***ID***            | Name          | Major  |
+| ------------- |:-------------:| ------:|
+| 1234          | Never Ever    | Math   |
+| 4321          | Some Times    | CS     |
+
+```Select * from student```
+
+***
+
+Attendance
+
+| ***ID***            | ***Date***          | Status  |
+| ------------- |:-------------:| -------:|
+| 1234          | 02-Feb        | absent  |
+| 1234          | 09-Feb        | absent  |
+| 4321          | 02-Feb        | present |
+| 4321          | 09-Feb        | absent  |
+
+
+leads to 
+
+| ***ID***            | Name          | Major  |
+| ------------- |:-------------:| ------:|
+| 1234          | Never Ever    | Math   |
+| 4321          | Some Times    | CS     |
+
+
+Where
+===
+
+Student
+
+| ***ID***            | Name          | Major  |
+| ------------- |:-------------:| ------:|
+| 1234          | Never Ever    | Math   |
+| 4321          | Some Times    | CS     |
+
+```Select Name from student where Major='Math'```
+
+***
+
+Attendance
+
+| ***ID***            | ***Date***          | Status  |
+| ------------- |:-------------:| -------:|
+| 1234          | 02-Feb        | absent  |
+| 1234          | 09-Feb        | absent  |
+| 4321          | 02-Feb        | present |
+| 4321          | 09-Feb        | absent  |
+
+
+leads to 
+
+| Name          | 
+| ------------- |
+| Never Ever    | 
+
+
+Aggregations
+===
+
+Student
+
+| ***ID***            | Name          | Major  |
+| ------------- |:-------------:| ------:|
+| 1234          | Never Ever    | Math   |
+| 4321          | Some Times    | CS     |
+
+```Select ID, count(ID) from Attendance where Status='absent'```
+
+***
+
+Attendance
+
+| ***ID***            | ***Date***          | Status  |
+| ------------- |:-------------:| -------:|
+| 1234          | 02-Feb        | absent  |
+| 1234          | 09-Feb        | absent  |
+| 4321          | 02-Feb        | present |
+| 4321          | 09-Feb        | absent  |
+
+
+leads to 
+
+| ***ID***            | Frequency          | 
+| ------------- |-------------:| 
+| 1234          | 2    | 
+| 4321          | 1    | 
+
+
+Additional Resources
+===
+
+* W3Schools: http://www.w3schools.com/sql/default.asp
+
+* DBI package, RMySQL: 
+http://cran.r-project.org/web/packages/RMySQL/RMySQL.pdf
+
+* Getting ready for Wednesday's lab on your own machine?
+  * Install mysql (from http://dev.mysql.com/downloads/). This is a stand-alone software that allows to connect to databases.
+  * in R Install DBI and RMySQL - follow the instructions on http://biostat.mc.vanderbilt.edu/wiki/Main/RMySQL if things aren't working ...
+  * are you ready? try to run:
+  ```
+  library(RMySQL)
+  ```

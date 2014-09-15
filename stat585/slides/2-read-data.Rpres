@@ -1,0 +1,149 @@
+STAT585X
+Different data formats
+========================================================
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 1/15/2014
+width: 1200
+height: 800
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=90)
+```
+
+
+Outline
+===========
+
++ some more slides from Monday (20 min?)
++ then switch to lab problems 
+
+
+
+Workflow/Work environment
+========================================================
+
+* Project organization
+* Editors supporting programming
+* Code organization
+
+Mostly working from inside RStudio for a start
+
+
+Formatting code
+========================================================
+
+* ```formatR``` package in R, will read source code, and reformat the code
+* It makes use of existing R commands: ```parse``` (to recognize R expressions), ```deparse```, ```substring```, ```grepl```, ```gsub``` (to add spaces around operators, and clean up text), ```paste``` and ```sprintf``` (to write out cleaned up text)
+* Result: correctly indented and spaced code with highlighted key words
+
+Formatting code
+========================================================
+
+Before:
+```{r, eval=FALSE}
+# A function which calculates HotellingsT2 statistic for testing a hypothesis about a multivariate mean vector.
+f.HotellingsT2<-function(x,mu0){
+xm<-apply(x,2,mean)
+xv<-var(x)
+ev<-eigen(xv)
+xvinv<-ev$vectors%*%diag(1/ev$values)%*%t(ev$vectors)
+t2<-t(as.matrix(xm-mu0))%*%xvinv%*%as.matrix(xm-mu0)
+t2<-t2*nrow(x)
+return(t2)
+}
+```
+
+Formatting code
+========================================================
+
+After:
+```{r, eval=FALSE}
+# A function which calculates HotellingsT2 statistic for testing a hypothesis about a
+# multivariate mean vector.
+f.HotellingsT2 <- function(x, mu0) {
+    xm <- apply(x, 2, mean)
+    xv <- var(x)
+    ev <- eigen(xv)
+    xvinv <- ev$vectors %*% diag(1/ev$values) %*% t(ev$vectors)
+    t2 <- t(as.matrix(xm - mu0)) %*% xvinv %*% as.matrix(xm - mu0)
+    t2 <- t2 * nrow(x)
+    return(t2)
+} 
+```
+
+
+Text editors
+========================================================
+
+Whichever text editor you prefer, make sure it supports
+
+* Automatic indenting of code
+* Matching of parentheses
+* Syntax highlighting
+* Line numbering
+* Global changes
+
+Why? 
+
+Working directories
+=============
+
+If you are working in RStudio, make use of the project option.
+It creates a working directory (.RData file) in the folder.
+
+Working directories contain all objects (data, functions)
+
+Outside:
+```{r, eval =FALSE}
+# get the current working directory
+getwd()
+setwd("path to working directory") # Windows users beware the tricky use of \\
+```
+
+Breaking work into separate directories can help in organizing and managing code and clearer thinking, particularly when working on large data projects.
+
+
+Your turn
+========================================================
+
+- A lot of government agencies make data available in form of SAS export files, e.g. [NHANES study]([http://www.cdc.gov/nchs/nhanes/nhanes2009-2010/demo09_10.aspx]) 
+- Download data and open in R 
+- Investigate which functions in package ```foreign``` are going to help you in opening a JMP file - you might need a couple of additional steps.
+
+Your turn
+========================================================
+
+- Set up a working directory, called “Stat585” in a convenient place on your laptop
+- Start RStudio, and set this as your working directory
+- Open a new R script and write code to (0) read the NHANES data (1) summarize the variables age, and gender, and make a side-by-side boxplot of age in months at first exam by gender (as a factor). 
+- Save the code to a file, and use the ```formatR``` package to clean up the code. 
+
+
+Your turn
+========================================================
+
+- The data set of temperature measurements 9641C_201112_raw.avg can also be viewed as being a fixed width data format.
+- Use the function ```read.fwf``` to read the data.
+- Change missing values (coded as -9999) to NA
+
+This question is a warm-up for the next question, where we increase data size and complexity a bit ...
+
+Your turn
+========================================================
+
+Temperatures were horrible in Ames last week. The lows were lower than have been recorded for almost 20 years. On Tuesday last week temperatures dipped to -15, with wind chill making it considerably lower. All schools in the state were closed. Why is the historical minimum temperature for Iowa in the above data only -2.7 degF?
+
+The next exercise finds the lowest daily temperatures historically observed at each station.
+
+Your turn
+========================================================
+
+- Download daily temperature data from the USHCN for the state of Iowa, from the web site [http://cdiac.ornl.gov/ftp/ushcn_daily/]
+- Download station information from USHCN
+- Read the data format information available on the USHCN website
+- Rearrange the data into elementary form (discuss what your understanding on what 'elementary form' is), and merge the station information with the temperatures
+- Find the coldest temperature and its date by location
+- Tabulate and plot the lowest temperature recorded for each station on a map of Iowa

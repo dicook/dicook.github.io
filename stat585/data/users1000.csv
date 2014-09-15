@@ -1,0 +1,1000 @@
+id,location,fx_version,os,version,survey_answers,number_extensions
+0,en-US,4.0b7,"WINNT Windows NT 6.1",1.0.3,"",3
+1,es-ES,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+2,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",10
+3,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",2
+4,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+5,fr,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+6,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+7,en-US,4.0b7,"WINNT Windows NT 6.1",1.0.3,"",5
+8,ru,4.0b5,"WINNT Windows NT 6.0",1.0.3,"",2
+9,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+10,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",2
+11,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+12,ja,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",6
+13,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",18
+14,zh-CN,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",19
+15,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+16,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+17,ja,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+18,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+19,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+20,en-US,4.0b4,"WINNT Windows NT 6.1",1.0.2,"",5
+21,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",20
+22,et,4.0b6,"Linux Linux i686",1.0.3,"",1
+23,de,4.0b7,"WINNT Windows NT 6.1",1.0.3,"",1
+24,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",8
+25,en-US,4.0b4,"Darwin Intel Mac OS X 10.6",1.0.2,"",9
+26,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",3
+27,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+28,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+29,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+30,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+31,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",4
+32,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+33,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",3
+34,en-US,4.0b3,"WINNT Windows NT 6.1",1.0.1,"",2
+35,zh-TW,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",6
+36,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+37,ru,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",11
+38,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+39,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+40,es-ES,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+41,fr,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+42,de,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+43,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",7
+44,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",7
+45,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+46,fr,4.0b5,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+47,fr,4.0b6,"Linux Linux i686",1.0.3,"",2
+48,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+49,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+50,de,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",20
+51,zh-CN,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",6
+52,en-US,4.0b6,"Darwin Intel Mac OS X 10.5",1.0.3,"",3
+53,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+54,ru,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+55,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+56,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",4
+57,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",4
+58,hu,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+59,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",10
+60,hu,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+61,de,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",13
+62,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+63,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+64,de,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",13
+65,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",2
+66,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",6
+67,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+68,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+69,en-US,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",1
+70,pl,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+71,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+72,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+73,pt-BR,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+74,en-US,4.0b2,"WINNT Windows NT 6.1; WOW64",1.0,"",9
+75,en-US,4.0b3,"WINNT Windows NT 6.1",1.0.1,"",2
+76,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",6
+77,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+78,en-US,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",1
+79,pl,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+80,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+81,pt-PT,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",19
+82,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",5
+83,tr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+84,en-US,4.0b4,"WINNT Windows NT 6.1",1.0.2,"",1
+85,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+86,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+87,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+88,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+89,es-AR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+90,en-US,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",4
+91,en-US,4.0b7,"WINNT Windows NT 6.0",1.0.3,"",3
+92,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+93,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+94,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",13
+95,en-US,4.0b4,"WINNT Windows NT 6.0",1.0.2,"",4
+96,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+97,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+98,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+99,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+100,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",6
+101,en-US,4.0b6,"Linux Linux i686",1.0.3,"",2
+102,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+103,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+104,es-ES,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",11
+105,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+106,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+107,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+108,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",9
+109,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+110,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+111,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+112,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+113,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",7
+114,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",9
+115,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",6
+116,de,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",5
+117,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",7
+118,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+119,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+120,es-ES,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+121,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+122,de,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",4
+123,en-US,4.0b2,"WINNT Windows NT 6.1",1.0,"",1
+124,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+125,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",4
+126,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",10
+127,fr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+128,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+129,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+130,en-US,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",5
+131,it,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+132,pt-BR,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",2
+133,en-US,4.0b4,"WINNT Windows NT 6.1",1.0.2,"",7
+134,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+135,pt-BR,4.0b4,"WINNT Windows NT 6.1; WOW64",1.0.2,"",5
+136,pl,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+137,de,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",5
+138,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+139,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",5
+140,es-ES,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",6
+141,es-ES,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+142,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+143,pt-BR,4.0b5,"WINNT Windows NT 6.0",1.0.3,"",1
+144,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",7
+145,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+146,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",14
+147,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+148,pt-BR,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",3
+149,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",1
+150,tr,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+151,es-ES,4.0b5,"WINNT Windows NT 6.1",1.0.3,"",12
+152,pl,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+153,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+154,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+155,fr,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+156,it,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",10
+157,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+158,fr,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",5
+159,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+160,fr,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",6
+161,en-US,4.0b7,"WINNT Windows NT 5.1",1.0.3,"",3
+162,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+163,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+164,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+165,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+166,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+167,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+168,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+169,de,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",8
+170,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+171,nl,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+172,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+173,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+174,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+175,de,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",15
+176,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",9
+177,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+178,zh-CN,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+179,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+180,uk,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+181,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",12
+182,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",8
+183,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+184,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+185,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+186,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+187,zh-TW,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+188,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",4
+189,sv-SE,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+190,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+191,pl,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",3
+192,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+193,de,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",4
+194,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+195,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+196,en-US,4.0b4,"WINNT Windows NT 6.1",1.0.2,"",5
+197,en-US,4.0b4,"WINNT Windows NT 6.1",1.0.2,"",3
+198,cs,4.0b6,"WINNT Windows NT 6.0; WOW64",1.0.3,"",2
+199,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+200,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+201,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+202,nl,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",4
+203,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+204,pt-PT,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",6
+205,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+206,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",9
+207,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",1
+208,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+209,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",7
+210,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+211,en-US,4.0b3,"WINNT Windows NT 6.1",1.0.1,"",4
+212,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",8
+213,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",12
+214,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+215,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",4
+216,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+217,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+218,es-ES,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+219,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+220,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+221,es-AR,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",7
+222,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+223,pl,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+224,de,4.0b5,"WINNT Windows NT 6.0",1.0.3,"",2
+225,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",7
+226,cs,4.0b7,"WINNT Windows NT 6.1",1.0.3,"",3
+227,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+228,en-US,4.0b2,"WINNT Windows NT 6.1",1.0,"",2
+229,de,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+230,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+231,pl,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+232,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",8
+233,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+234,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",10
+235,en-US,4.0b7,"WINNT Windows NT 6.1",1.0.3,"",3
+236,en-US,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",3
+237,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",11
+238,en-US,4.0b2,"WINNT Windows NT 5.1",1.0,"",2
+239,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+240,fr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+241,ko,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+242,en-US,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",2
+243,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+244,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",5
+245,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",7
+246,en-US,4.0b4,"WINNT Windows NT 6.1",1.0.2,"",6
+247,fi,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+248,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+249,fr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+250,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+251,fr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+252,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",1
+253,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+254,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+255,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",9
+256,pl,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+257,sv-SE,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",13
+258,tr,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",2
+259,en-US,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",2
+260,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",6
+261,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+262,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+263,en-US,4.0b3,"WINNT Windows NT 6.1",1.0.1,"",2
+264,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",8
+265,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+266,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+267,en-US,4.0b2,"WINNT Windows NT 6.1",1.0,"",1
+268,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+269,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+270,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+271,en-US,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",1
+272,de,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+273,ru,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+274,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+275,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",9
+276,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",24
+277,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",13
+278,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+279,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+280,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",1
+281,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",1
+282,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+283,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+284,fr,4.0b6,"WINNT Windows NT 5.1; WOW64",1.0.3,"",11
+285,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",2
+286,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",3
+287,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+288,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",6
+289,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+290,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+291,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+292,en-US,4.0b5,"Darwin Intel Mac OS X 10.6",1.0.3,"",1
+293,es-ES,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",6
+294,zh-CN,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",8
+295,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+296,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",2
+297,fr,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",2
+298,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+299,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+300,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+301,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",6
+302,it,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",4
+303,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",10
+304,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+305,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",2
+306,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",9
+307,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+308,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+309,zh-CN,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",1
+310,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",13
+311,de,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+312,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",9
+313,nb-NO,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",6
+314,it,4.0b6,"Linux Linux i686",1.0.3,"",22
+315,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+316,pt-BR,4.0b2,"WINNT Windows NT 6.1",1.0,"",4
+317,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+318,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+319,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+320,cs,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",2
+321,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",7
+322,pt-BR,4.0b4,"WINNT Windows NT 6.0",1.0.2,"",4
+323,fr,4.0b7,"WINNT Windows NT 6.1",1.0.3,"",5
+324,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",3
+325,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+326,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+327,zh-CN,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+328,de,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",8
+329,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+330,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+331,pt-BR,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",4
+332,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+333,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+334,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+335,en-US,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",9
+336,fr,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+337,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+338,en-US,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",4
+339,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",3
+340,es-ES,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+341,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+342,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+343,pt-BR,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+344,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+345,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+346,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",17
+347,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+348,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+349,en-US,4.0b8pre,"Darwin Intel Mac OS X 10.6",1.0.1,"",13
+350,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+351,fr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",7
+352,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+353,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+354,en-US,4.0b7,"WINNT Windows NT 6.1; WOW64",1.0.3,"",35
+355,pt-BR,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",3
+356,pl,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+357,pt-BR,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",6
+358,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+359,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+360,cs,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",2
+361,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+362,de,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",9
+363,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+364,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+365,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+366,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+367,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+368,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",8
+369,ru,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",6
+370,pl,4.0b4,"WINNT Windows NT 6.1; WOW64",1.0.2,"",1
+371,nl,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+372,de,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",7
+373,zh-CN,4.0b4,"WINNT Windows NT 5.1",1.0.1,"",1
+374,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",6
+375,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+376,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+377,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",2
+378,de,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+379,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",12
+380,en-US,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",4
+381,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+382,en-US,4.0b6,"WINNT Windows NT 6.0; WOW64",1.0.3,"",6
+383,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+384,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+385,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+386,de,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",3
+387,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+388,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+389,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+390,en-US,4.0b6,"Darwin Intel Mac OS X 10.5",1.0.3,"",2
+391,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+392,en-US,4.0b4,"WINNT Windows NT 6.1; WOW64",1.0.2,"",4
+393,fr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+394,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+395,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+396,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+397,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+398,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",10
+399,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+400,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+401,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",12
+402,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+403,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+404,en-US,4.0b3,"WINNT Windows NT 6.1",1.0.1,"",5
+405,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+406,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+407,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",19
+408,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+409,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+410,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",3
+411,en-GB,4.0b7,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+412,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+413,en-US,4.0b2,"WINNT Windows NT 6.0",1.0,"",11
+414,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",13
+415,fr,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",11
+416,zh-CN,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",3
+417,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+418,es-ES,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",7
+419,es-ES,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",7
+420,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",8
+421,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",7
+422,en-US,4.0b2,"WINNT Windows NT 5.1",1.0,"",17
+423,zh-CN,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+424,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+425,en-US,4.0b2,"WINNT Windows NT 5.1",1.0,"",2
+426,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",1
+427,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",7
+428,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+429,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+430,ru,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+431,de,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",4
+432,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+433,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",16
+434,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+435,zh-CN,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+436,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+437,en-US,4.0b6,"WINNT Windows NT 5.0",1.0.3,"",3
+438,en-US,4.0b7,"WINNT Windows NT 6.0",1.0.3,"",7
+439,en-US,4.0b6,"WINNT Windows NT 5.2",1.0.3,"",3
+440,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",3
+441,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+442,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",11
+443,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+444,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",9
+445,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",11
+446,en-US,4.0b4,"WINNT Windows NT 6.1; WOW64",1.0.2,"",9
+447,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",1
+448,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+449,ko,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+450,en-US,4.0b2,"WINNT Windows NT 5.1",1.0,"",1
+451,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+452,it,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+453,zh-CN,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+454,hu,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",8
+455,en-US,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",6
+456,pt-BR,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",8
+457,pt-BR,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",3
+458,it,4.0b7,"WINNT Windows NT 6.0; WOW64",1.0.3,"",2
+459,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+460,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",16
+461,da,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",7
+462,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",7
+463,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+464,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+465,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+466,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",4
+468,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",6
+469,pt-BR,4.0b4,"WINNT Windows NT 6.1",1.0.2,"",5
+470,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+471,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+472,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+473,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+474,zh-CN,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+475,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+476,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+477,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",17
+478,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",11
+479,de,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",1
+480,en-US,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",2
+481,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+482,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",5
+483,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+484,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+485,es-ES,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",8
+486,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+487,es-ES,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",13
+488,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+489,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+490,de,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+491,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+492,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",11
+493,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+494,en-US,4.0b2,"WINNT Windows NT 5.1",1.0,"",1
+495,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+496,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+497,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",4
+498,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+499,fr,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",8
+500,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+501,pt-BR,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+502,en-US,4.0b7,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+503,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+504,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+505,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",2
+506,pt-BR,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+507,es-ES,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+508,en-US,4.0b2,"WINNT Windows NT 5.1",1.0,"",6
+509,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+510,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+511,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",8
+512,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+513,en-US,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",5
+514,pt-BR,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+515,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+516,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",1
+517,fr,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",15
+518,fr,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+519,zh-CN,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+520,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+521,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",6
+522,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",10
+523,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+524,zh-CN,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+525,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",6
+526,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+527,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",9
+528,de,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+529,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+530,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",12
+531,de,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+532,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+533,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+534,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",8
+535,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+536,de,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",11
+537,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+538,de,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",7
+539,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",12
+540,pt-BR,4.0b4,"WINNT Windows NT 6.1",1.0.2,"",5
+541,en-US,4.0b3,"Darwin Intel Mac OS X 10.6",1.0.1,"",1
+542,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+543,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+544,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",12
+545,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+546,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",8
+547,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+548,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+549,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",4
+550,id,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",1
+551,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",20
+552,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+553,pt-BR,4.0b3,"WINNT Windows NT 6.1",1.0.1,"",4
+554,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+555,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",10
+556,en-US,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",3
+557,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",2
+558,zh-CN,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",9
+559,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+560,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+561,en-US,4.0b6,"Darwin Intel Mac OS X 10.5",1.0.3,"",7
+562,pt-BR,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+563,en-US,4.0b6,"Darwin Intel Mac OS X 10.5",1.0.3,"",1
+564,fr,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+565,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",3
+566,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",10
+567,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+568,zh-CN,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+569,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",9
+570,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+571,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+572,en-US,4.0b4,"WINNT Windows NT 6.1",1.0.2,"",4
+573,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+574,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",9
+575,zh-TW,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+576,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+577,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+578,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+579,fr,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+580,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+581,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",7
+582,pl,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+583,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",2
+584,es-ES,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",3
+585,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+586,fr,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+587,en-US,4.0b6,"WINNT Windows NT 6.0; WOW64",1.0.3,"",10
+588,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+589,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+590,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",7
+591,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+592,id,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+593,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+594,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+595,de,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+596,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+597,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+598,pt-BR,4.0b6,"WINNT Windows NT 6.0; WOW64",1.0.3,"",4
+599,zh-CN,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+600,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+601,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",10
+602,es-AR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",8
+603,tr,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+604,sv-SE,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",5
+605,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",12
+606,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+607,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+608,it,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+609,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",9
+610,en-US,4.0b6,"WINNT Windows NT 6.0; WOW64",1.0.3,"",5
+611,fr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+612,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+613,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+614,en-US,4.0b7,"WINNT Windows NT 6.0",1.0.3,"",5
+615,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+616,hu,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+617,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+618,en-US,4.0b6,"WINNT Windows NT 6.0; WOW64",1.0.3,"",5
+619,en-US,4.0b7,"WINNT Windows NT 5.1",1.0.3,"",3
+620,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+621,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+622,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+623,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",8
+624,de,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",4
+625,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+626,ko,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+627,id,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+628,ru,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+629,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+630,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+631,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",8
+632,fr,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+633,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+634,pt-BR,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",3
+635,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",8
+636,zh-CN,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+637,de,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",5
+638,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+639,en-US,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",5
+640,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",7
+641,en-US,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",5
+642,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",1
+643,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",9
+644,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+645,zh-TW,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",19
+646,ko,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",1
+647,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+648,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+649,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+650,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+651,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+652,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",10
+653,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+654,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",4
+655,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+656,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+657,pl,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+658,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+659,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+660,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",8
+661,en-US,4.0b7,"WINNT Windows NT 6.1",1.0.3,"",3
+662,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+663,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+664,es-ES,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",2
+665,zh-CN,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",10
+666,pt-BR,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",9
+667,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+668,ru,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+669,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",6
+670,en-US,4.0b4,"WINNT Windows NT 6.1; WOW64",1.0.2,"",2
+671,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+672,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",19
+673,en-US,4.0b4,"WINNT Windows NT 6.1; WOW64",1.0.2,"",2
+674,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+675,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",6
+676,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+677,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",1
+678,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+679,de,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",12
+680,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+681,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+682,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+683,en-US,4.0b5,"WINNT Windows NT 6.0",1.0.3,"",3
+684,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",2
+685,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",9
+686,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",8
+687,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",3
+688,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+689,sv-SE,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+690,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+691,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+692,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+693,fr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+694,sv-SE,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",1
+695,en-US,4.0b7,"WINNT Windows NT 5.1",1.0.3,"",4
+696,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+697,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+699,de,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",5
+700,pt-BR,4.0b2,"WINNT Windows NT 6.1",1.0,"",2
+701,en-US,4.0b7,"WINNT Windows NT 6.1",1.0.3,"",3
+702,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+703,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+704,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+705,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+706,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+707,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+708,pt-BR,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",2
+709,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",3
+710,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",14
+711,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+712,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+713,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+714,tr,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+715,tr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",7
+716,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+717,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+718,en-US,4.0b2,"WINNT Windows NT 6.1",1.0,"",1
+719,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+720,ru,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+721,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+722,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",10
+723,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",11
+724,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+725,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+726,zh-CN,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+727,zh-CN,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+728,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+729,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+730,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+731,pt-BR,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",5
+732,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+733,cs,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+734,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+735,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+736,tr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",8
+737,it,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",9
+738,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+739,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",9
+740,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",8
+741,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+742,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+744,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+745,hu,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",7
+746,es-ES,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+747,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",3
+748,zh-CN,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+749,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+750,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+751,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",4
+752,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+753,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+754,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+755,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+756,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+757,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",8
+758,zh-CN,4.0b7,"WINNT Windows NT 6.1",1.0.3,"",1
+759,it,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+760,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",4
+761,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+762,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+763,tr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+764,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",8
+765,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+766,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+767,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",5
+768,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",9
+769,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+770,pt-BR,4.0b5,"WINNT Windows NT 6.1",1.0.3,"",1
+771,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+772,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+773,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",15
+774,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",9
+775,zh-CN,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+776,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+777,en-US,4.0b6,"WINNT Windows NT 6.0; WOW64",1.0.3,"",5
+778,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+779,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+780,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",10
+781,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",15
+782,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+783,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",6
+784,en-US,4.0b4,"WINNT Windows NT 6.1",1.0.2,"",2
+785,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+786,fr,4.0b7,"WINNT Windows NT 6.1",1.0.3,"",5
+787,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+788,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+789,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+790,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+791,ru,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",8
+792,pl,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+793,nl,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",13
+794,de,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",2
+795,fr,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",12
+796,tr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",10
+797,zh-CN,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+798,fr,4.0b6,"WINNT Windows NT 6.0; WOW64",1.0.3,"",7
+799,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+800,en-US,4.0b2,"WINNT Windows NT 5.1",1.0,"",2
+801,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+802,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+803,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",17
+804,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+805,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",19
+806,en-US,4.0b2,"WINNT Windows NT 6.1",1.0,"",5
+807,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+808,pl,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+809,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",2
+810,ru,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+811,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+812,tr,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+813,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",4
+814,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",11
+815,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",11
+816,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",10
+817,pl,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+818,en-US,4.0b7,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+819,de,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+820,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+821,sv-SE,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+822,en,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",10
+823,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+824,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+825,it,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+826,fr,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+827,zh-CN,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+828,fr,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+829,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+830,fi,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+831,tr,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+832,zh-TW,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+833,es-ES,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+834,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+835,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+836,it,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+837,zh-CN,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+838,zh-CN,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+839,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",6
+840,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+841,en-US,4.0b2,"WINNT Windows NT 5.1",1.0,"",1
+842,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+843,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+844,en-US,4.0b7,"Darwin Intel Mac OS X 10.6",1.0.3,"",3
+845,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+846,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+847,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+848,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+849,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",8
+850,ru,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",10
+851,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+852,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+853,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+854,cs,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",13
+855,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",19
+856,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",5
+857,en-US,4.0b6,"WINNT Windows NT 6.0; WOW64",1.0.3,"",6
+858,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+859,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+860,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+861,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+862,es-ES,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+863,en-US,4.0b2,"WINNT Windows NT 6.1",1.0,"",2
+864,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+865,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+866,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+867,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+868,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+869,en-US,4.0b7,"WINNT Windows NT 6.0",1.0.3,"",12
+870,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+871,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+872,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+873,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",13
+874,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+875,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+876,fr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+877,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+878,zh-CN,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+879,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+880,pl,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+881,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+882,de,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+883,en-US,4.0b5,"Linux Linux i686",1.0.3,"",11
+884,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+885,de,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",6
+886,pt-BR,4.0b5,"WINNT Windows NT 6.1; WOW64",1.0.3,"",14
+887,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+888,tr,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+889,es-AR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",11
+890,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+891,en-US,4.0b6,"WINNT Windows NT 5.0",1.0.3,"",2
+892,en-US,4.0b7,"WINNT Windows NT 5.2",1.0.3,"",1
+893,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+894,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",4
+895,en-US,4.0b2,"WINNT Windows NT 5.1",1.0,"",4
+896,en-US,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",2
+897,pt-BR,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",1
+898,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",3
+899,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+900,en-US,4.0b6,"WINNT Windows NT 6.0; WOW64",1.0.3,"",7
+901,tr,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+902,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+903,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+904,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",1
+905,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",16
+906,de,4.0b7,"WINNT Windows NT 6.1; WOW64",1.0.3,"",3
+907,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+908,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+909,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+910,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+911,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+912,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+913,hu,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",11
+914,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",6
+915,ru,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+916,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+917,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+918,zh-CN,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+919,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+920,pt-BR,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",2
+921,en-US,4.0b4,"WINNT Windows NT 6.1; WOW64",1.0.2,"",11
+922,fr,4.0b7,"WINNT Windows NT 5.1",1.0.3,"",2
+923,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+924,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",12
+925,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",5
+926,es-ES,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+927,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",8
+928,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+929,en-US,4.0b7,"WINNT Windows NT 5.1",1.0.3,"",1
+930,de,4.0b7,"WINNT Windows NT 5.1",1.0.3,"",7
+931,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+932,zh-CN,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+933,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+934,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+935,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",1
+936,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+937,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",6
+938,en-US,4.0b2,"WINNT Windows NT 5.1",1.0,"",3
+939,ru,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",11
+940,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",2
+941,tr,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+942,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",14
+943,en-US,4.0b7,"WINNT Windows NT 6.1",1.0.3,"",6
+944,en-US,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",6
+945,zh-CN,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",1
+946,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+947,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",15
+948,de,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",7
+949,en-US,4.0b3,"WINNT Windows NT 5.1",1.0.1,"",2
+950,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",3
+951,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",25
+952,en-US,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",4
+953,zh-CN,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",8
+954,en-US,4.0b2,"WINNT Windows NT 6.1",1.0,"",1
+955,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+956,en-US,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",1
+957,de,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+958,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",4
+959,it,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+960,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+961,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",4
+962,pt-PT,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",8
+963,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+965,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",4
+966,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+967,ru,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",7
+968,zh-CN,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",2
+969,de,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+970,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6
+971,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",20
+972,tr,4.0b7,"WINNT Windows NT 5.1",1.0.3,"",3
+973,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",3
+974,it,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",17
+975,en-US,4.0b5,"WINNT Windows NT 5.1",1.0.3,"",1
+976,es-ES,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+977,es-ES,4.0b7,"WINNT Windows NT 6.0",1.0.3,"",7
+978,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+979,pt-BR,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",3
+980,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",1
+981,pt-BR,4.0b4,"WINNT Windows NT 6.1",1.0.2,"",14
+982,en-US,4.0b4,"WINNT Windows NT 5.1",1.0.2,"",1
+983,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",4
+984,de,4.0b6,"WINNT Windows NT 6.0",1.0.3,"",7
+985,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",5
+986,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",8
+987,de,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",11
+988,id,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",5
+989,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",7
+990,en-US,4.0b6,"WINNT Windows NT 6.1",1.0.3,"",2
+991,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",9
+992,en-US,4.0b3,"WINNT Windows NT 6.1",1.0.1,"",3
+993,pt-BR,4.0b3,"WINNT Windows NT 6.1",1.0.1,"",4
+994,pt-PT,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",8
+995,es-ES,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",14
+996,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",5
+997,en-US,4.0b6,"Darwin Intel Mac OS X 10.6",1.0.3,"",8
+998,en-US,4.0b4,"WINNT Windows NT 6.1",1.0.2,"",5
+999,en-US,4.0b6,"WINNT Windows NT 6.1; WOW64",1.0.3,"",7
+1000,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",8
+1001,en-US,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",11
+1002,pt-BR,4.0b6,"WINNT Windows NT 5.1",1.0.3,"",6

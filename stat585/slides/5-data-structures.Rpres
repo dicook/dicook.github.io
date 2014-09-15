@@ -1,0 +1,284 @@
+STAT 585X
+Different data formats
+========================================================
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 1/24/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Outline
+==========
+
+* standard types in R
+* object classes 
+* checking data quality
+
+Basic R objects
+====
+
+* Data types: numeric, integer, character, double
+* Basic data structures: vector, matrix, character, factor, list
+
+Numeric values
+====
+
+Numeric objects have double precision, i.e. work with 53 bits 
+```{r, echo=TRUE}
+pi <- as.numeric(gsub(" ","","3.14159 26535 89793 23846 26433 83279 50288 41971 69399 37510 58209 74944 59230"))
+print(pi, digits=18) # digits maximum is 22, last few digits are suspicious
+```
+
+Precision is machine dependent:
+
+```{r}
+1 + .Machine$double.eps == 1
+1 + .Machine$double.eps/2 == 1
+```
+
+***
+
+```{r}
+.Machine
+```
+
+Characters
+===
+
+Character covers all text formats.
+
+```{r, echo=TRUE}
+x <- "Hello World"
+class(x)
+is.character(x)
+```
+
+We will be dealing with text in much more detail when we are looking at regular expressions ...
+
+
+Basic types in R
+====
+
+* Vectors: one-dimensional array of values of the same type; vectors have a length, but no dimension
+
+* Matrix: two-dimensional array of values of the same type; matrices have a dimension given as (row, column), length returns the number of items (row x column)
+
+* Array: any higher dimensional array (e.g. output of temperature data from netcdf data)
+
+***
+
+```{r}
+x <- c("4.5", 3, TRUE, "elephant")
+as.numeric(x) # note that the cast from logical to character doesn't survive intact
+length(x)
+
+X <- matrix(c(1,2,3, 11,12,13), nrow = 2,
+   ncol=3, byrow=TRUE, dimnames = 
+   list(c("row1", "row2"), c("C.1", "C.2", "C.3")))
+X
+```
+
+Data frames
+====
+
+Data frame: collection of vectors of same length but possibly different data type
+```{r}
+L3 <- LETTERS[1:3]
+(d <- data.frame(cbind(x=1, y=1:10), 
+     fac=sample(L3, 10, replace=TRUE)))
+str(d)
+```
+
+Lists
+===
+
+* lists allow the most flexibility, i.e. are not very structured. 
+* a list element can be anything, including another list
+* very useful (and common) as output from analytic methods
+
+```{r}
+mod<-glm(mpg~cyl+disp+hp+drat+wt, data=mtcars)
+head(str(mod))
+```
+
+Working with lists
+===
+
+* single bracket operator [ ] returns sub-list
+* double bracket operator [[ ]] returns single list element (i.e. only single positive integer is allowed)
+
+```{r}
+mod[c(1,6,8)]
+mod[[1]]
+```
+
+
+Objects in R
+====
+
+* S3, S4 objects or reference class objects are used for more advanced and customized objects
+* S3 objects are organized like a hybrid between regular data frames and lists
+* the @ takes the role of $ in data frames
+
+```{r}
+library(maptools)
+xx <- readShapeSpatial(
+  "../data/australia/region.shp")
+class(xx)
+slotNames(xx)
+xx@bbox
+```
+
+====
+
+* special functions can be implemented to deal with S3 objects. These are called __methods__
+
+```{r}
+methods(class=class(xx))
+head(as.data.frame(xx))
+```
+
+Cleaning data
+===
+
+Most data scraped from the web (or from more official sources) come in various shapes of cleanliness.
+
+Our definition of clean: data suitable for further analysis (rectangular shaped: records in rows, variables in columns, first row contains variable names = first normal form)
+- units do not belong with the numbers
+- commas to bundle three digits change number format to text
+- missing values should be made ```NA```s
+
+Example: NBA salaries
+====
+
+ESPN provides basketball players' salaries for the 2013-2014 season at [http://espn.go.com/nba/salaries]
+```{r}
+library(XML)
+nba14 <- NULL
+for (i in 1:50) {
+  temp <- readHTMLTable(
+    sprintf("http://espn.go.com/nba/salaries/_/page/%d",i))[[1]]
+  nba14 <- rbind(nba14, temp)
+}
+head(nba14)
+str(nba14)
+```
+
+
+Cleaning NBA salaries data
+====
+The data is reasonably well oragnized, but in typical shape for scraped data
+
+```{r}
+# get first line of data into header
+nba14[1,]
+as.character(unlist(nba14[1,])) # why unlist? - compare to result without
+as.character(nba14[1,])
+
+names(nba14) <- as.character(unlist(nba14[1,]))
+nba14 <- nba14[-1,]
+```
+
+Cleaning NBA salaries data
+====
+
+```{r, warning=TRUE}
+head(nba14$SALARY)
+
+# get rid of $ and , in salaries and convert to numeric:
+gsub("[$,]", "", head(as.character(nba14$SALARY)))
+nba14$SALARY <- as.numeric(gsub("[$,]", "", as.character(nba14$SALARY)))
+```
+Where does the warning come from?
+
+Cleaning NBA salaries data: hunting the warning
+====
+
+```{r}
+head(subset(nba14, is.na(SALARY)))
+```
+We don't need these rows - delete all of them
+```{r}
+dim(nba14)
+nba14 <- nba14[-which(nba14$RK=="RK"),]
+dim(nba14)
+```
+
+Cleaning NBA data
+====
+
+Separate names into first, last, and position
+
+```{r}
+library(stringr)
+splits <- str_split(as.character(nba14$NAME), pattern="(, )| ")
+splits[1:3]
+library(plyr)
+numnames <- ldply(splits, length)
+summary(numnames) # some players have multiple names, ... sigh 
+```
+
+Cleaning data
+====
+
+There's only limited possibilities in terms of what we can do automatically about people with multiple names - we will deal with them alongside the other ones and flag them ... maybe we should leave first and last name together
+```{r}
+head(splits[numnames>3], 5)
+sum(numnames>3)
+```
+
+Cleaning NBA data
+===
+
+```{r}
+splitnames <- ldply(splits, function(x) c(name=paste(x[-length(x)], collapse=" "), position=x[length(x)]))
+head(splitnames) # looks OK
+# now copy into the nba14 data frame
+nba14$name <- as.factor(splitnames$name)
+nba14$position <- as.factor(splitnames$position)
+```
+
+Cleaned data ...?
+===
+
+```{r}
+summary(nba14)
+```
+
+Who knows about this team null Unknown? 
+
+```{r}
+nba14$TEAM[nba14$TEAM=="null Unknown"] <- NA
+```
+
+Cleaned data ...?
+===
+
+Numbers might still be wrong, but now we are in a position to check for that.
+
+```{r}
+library(ggplot2)
+qplot(SALARY, geom="histogram", data=nba14)
+```
+
+***
+```{r}
+qplot(position, SALARY, geom="boxplot", data=nba14)
+```
+
+READING
+========================================================
+
+[Working with date and time: http://www.jstatsoft.org/v40/i03/](http://www.jstatsoft.org/v40/i03/)
+
+- What are intervals, durations, periods, and instants?
+- (Why) do we need these distinctions?
+
+Make a blog entry by 3pm Wednesday, Jan 29.
+

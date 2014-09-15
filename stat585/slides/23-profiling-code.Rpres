@@ -1,0 +1,175 @@
+STAT 585X
+Profiling code
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 3/7/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Outline
+===
+
+* some more lab work: 10 min
+* profiling nasa temperature trends
+* more details on the projects 
+
+Exercise 4: Temperature trends in NASA data
+====
+
+We have been discussing two blocks of code, block #1 and block #2, for computing temperature trends in the NASA data set. 
+The goal of this week's lab is to profile the code in block #1 and make (small) changes to it to increase its execution speed. 
+By small we mean that you should not change the code chunk completely (we already know that block #2 or #3 are faster), but identify the slow routines/statements in the block and try to replace these with faster alternatives. 
+For your report, keep track of the ideas you had (together with a motivation of what gave you the idea) and the execution times, even if the idea did not lead to a speed-up. This will give us a list of things that worked and that did not work. 
+
+Aim for a final speed-up of at least 30% based on the original runtime of block #1
+
+Spend 10 minutes on trying to answer this question.
+
+
+Block #1
+===
+
+baseline to beat: 
+
+```{r, echo=FALSE}
+nasa <- readRDS(file="../data/nasadata.rds") 
+library(MASS)
+ptm <- proc.time()
+# Block #1 
+  nasa.trend<-unique(nasa[,c("x","y")])
+  nasa.trend$temperature <- 0
+  ny<-length(unique(nasa$y))
+  for (i in unique(nasa$x)) {
+    for (j in unique(nasa$y)) {
+      x <- subset(nasa, x==i&y==j)
+      nasa.trend$temperature[(i-1)*ny+j] <- coefficients(rlm(temperature~year+month, data=x))[2]
+      }
+    }
+(pt1 <- proc.time() - ptm)
+```
+
+```{r}
+# Block #1 
+library(profr)
+profr.res <- profr({
+  nasa.trend<-unique(nasa[,c("x","y")])
+  nasa.trend$temperature <- 0
+  ny<-length(unique(nasa$y))
+  for (i in unique(nasa$x)) {
+    for (j in unique(nasa$y)) {
+      x <- subset(nasa, x==i&y==j)
+      nasa.trend$temperature[(i-1)*ny+j] <- coefficients(rlm(temperature~year+month, data=x))[2]
+      }
+    }
+  })
+```
+
+Identifying slow expressions/functions
+====
+
+* first 15 levels are due to Rpres - ignore it
+* bridging at higher levels??? - ignore it 
+* what is slow? - subsetting
+
+```{r, echo=FALSE, fig.width=20, fig.height=10}
+plot(subset(profr.res, level >=16))
+```
+
+Understanding profr output
+====
+
+* at each time point (every 0.02 seconds), a snapshot of the stack is taken (using the command `Rprof`)
+* profr is a wrapper around that output, that tries to associate start and end time to the commands
+* 'bridging' is therefore impossible (a function can't exist in the stack if its surrounding function doesn't exist anymore)
+
+```{r}
+library(dplyr)
+subset(profr.res,  (start <= 0.10) & level>=16) %.% arrange(start, level)
+```
+
+Idea #1 Alternative to subsets
+===
+
+use indices instead of subsets:
+
+```{r}
+ptm <- proc.time()
+  nasa.trend<-unique(nasa[,c("x","y")])
+  nasa.trend$temperature <- 0
+  ny<-length(unique(nasa$y))
+  for (i in unique(nasa$x)) {
+    for (j in unique(nasa$y)) {
+      idx <- which(nasa$x==i & nasa$y==j)
+      nasa.trend$temperature[(i-1)*ny+j] <- coefficients(rlm(temperature~year+month, data=nasa[idx,]))[2]
+      }
+    }
+(pt2 <- proc.time() - ptm)
+```
+
+`which` is better than `subset`
+===
+
+* huge savings (about four times faster) when using `which` instead of `subset`
+
+```{r}
+pt1
+pt2
+```
+* generally: any data frame operation is fairly slow
+
+Idea #2: eliminate double for loop
+====
+
+```{r}
+ptm <- proc.time()
+  nasa.trend<-unique(nasa[,c("x","y", "id")])
+  nasa.trend$temperature <- 0
+  for (i in 1:nrow(nasa.trend)) {
+    idx <- which(nasa$id==nasa.trend$id[i])
+    nasa.trend$temperature[i] <- coefficients(rlm(temperature~year+month, data=nasa[idx,]))[2]
+  }
+(pt3 <- proc.time() - ptm)
+```
+
+doesn't seem to make a difference
+
+Idea #3: exploit sorting of dataset
+===
+
+```{r}
+ptm <- proc.time()
+  nasa.trend<-unique(nasa[,c("y","x")])
+  nasa.trend$temperature <- 0
+  ny<-length(unique(nasa$y))
+  nx<-length(unique(nasa$x))
+  for (j in 1:unique(nasa$y)) {
+    for (i in 1:unique(nasa$x)) {
+    nasa.trend$temperature[(j-1)*ny+i] <- coefficients(rlm(temperature~year+month, data=nasa[(0:71)*nx*ny + (nx*(j-1)) +i,]))[2]
+    }
+  }
+(pt4 <- proc.time() - ptm)
+```
+
+* very fast!
+* **breaks easily!** doesn't work when the order of nasa data is changed ahead of time 
+* indexing is also very fiddly ... why does it work?
+
+
+Are you set up for programming?
+===
+
+Run the following code to see:
+
+```
+library(devtools)
+has_devel()
+```
+
+We will be dealing with setting up an R package on Wednesday in the lab ...

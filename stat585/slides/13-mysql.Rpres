@@ -1,0 +1,96 @@
+STAT 585X
+mysql databases in R
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 2/12/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Are you ready to get started?
+====
+
+Run the following code - it helps you to connect to today's data: 
+
+```{r}
+library(RMySQL)
+
+drv <- dbDriver("MySQL")
+co <- dbConnect(drv, user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+
+dbListTables(co)
+dbDisconnect(co)
+```
+
+FARS
+===
+
+We are dealing today with data downloaded from FARS, the Fatality Accident Record System, at http://www.nhtsa.gov/FARS
+
+We have downloaded data from three of the system's datasets: the accident data set, the vehicle data set, and the person data.
+
+The manual with an overview of the data and an explanation of each of the variables can be found at http://www-nrd.nhtsa.dot.gov/Pubs/811529.pdf
+  
+Mini Intro to RMySQL
+===
+
+```{r}
+drv <- dbDriver("MySQL")
+co <- dbConnect(drv, user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+
+# get a list of all avilable tables
+dbListTables(co)
+# which variables are in the accidents data set? (equivalent to names in a data frame)
+dbListFields(co, "accidents")
+dbDisconnect(co)
+```
+
+Mini Intro (2)
+===
+
+```{r}
+drv <- dbDriver("MySQL")
+co <- dbConnect(drv, user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+
+# send an SQL Query
+dbGetQuery(co, "select count(*) from accidents")
+# slightly more complex query
+dbGetQuery(co, "select Year, count(*) from accidents group by Year")
+
+dbDisconnect(co)
+```
+
+Mini Intro (2)
+===
+
+Why would we use ```dbSendQuery```?
+```{r}
+?dbSendQuery
+co <- dbConnect(dbDriver("MySQL"), user="2009Expo", password="R R0cks", port=3306, dbname="accidents", host="headnode.stat.iastate.edu")
+res <- dbSendQuery(co, "SELECT * FROM accidents")
+fetch (res, 10)
+dbClearResult(res)
+dbDisconnect(co)
+```
+
+
+FARS data
+===
+
+Important!! While it is feasible to download the complete database locally and work with it in the regular fashion, this is not the purpose, and those solutions will not count! All of the data management and data query pieces have to be done completely on the database side.
+
+***Question #1:***
+
+DRUNK_DR is a variable in the accidents data, that gives the number of (legally) drunk drivers involved in an accident. 
+
+For each of the years, investigate the relationship between the percentage of accidents, in which at least one of the drivers is (legally) drunk, and the day of the week (find averages, standard deviations and number of values these summaries are based on).
+Give a graphical summary of the relationship and comment on it. 
+
+Note: day of the week is not a variable in the accidents data, but there are ways to derive this variable. Consider date/time functions [http://dev.mysql.com/doc/refman/5.5/en/datetime.html]. 
+

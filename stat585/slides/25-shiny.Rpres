@@ -1,0 +1,275 @@
+STAT 585X
+Web-applications with shiny
+===
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 3/24/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Outline
+===
+
+- Why?
+- Getting started
+- Interface design
+- Reactive programming
+- Widgets
+
+What is shiny?
+===
+
+* a package for making web applications
+* provided by RStudio
+* showcases available at [http://www.rstudio.com/shiny/showcase/]
+
+Motivation
+===
+
+- Too much data to make a few simple overview plots
+- Model results too complex, for a few simple diagnostics
+- Working with non-statisticians (non-R users) and need their input on the data context
+
+Motivating Examples
+===
+
+- Soybean genomics study (Susan Vanderplas): 80 soybean lines, 20 chromosomes, millions of base pairs, copy number variation analysis, genealogy from literature, phenotypic features, [http://gsoja.agron.iastate.edu:3838/Soybeans/] (Need to be on ISU network to view)
+- Soul of the community (Andee Kaplan, Eric Hare) Survey data on community features and attachment over multiple years and locations, [http://glimmer.rstudio.com/andeek/DataExpo2013/]
+
+Getting started
+===
+
+Valid examples are "01_hello", "02_text", "03_reactivity", "04_mpg", "05_sliders", "06_tabsets", "07_widgets", "08_html", "09_upload", "10_download", "11_timer"
+
+
+```
+library(shiny)
+# this is not going to work in presentation mode, 
+# copy & paste into your console:
+runExample("01_hello")
+```
+
+Two files are necessary for making your own application:
+`ui.R` and `server.R`
+
+ui.R deals with all aspects of the user interface, i.e. buttons, messages, menus and such.
+
+
+ui.R
+===
+
+```
+library(shiny)
+
+# Define UI for application that plots random distributions 
+shinyUI(pageWithSidebar(
+
+  # Application title
+  headerPanel("Hello Shiny!"),
+
+  # Sidebar with a slider input for number of observations
+  sidebarPanel(
+    sliderInput("obs", 
+                "Number of observations:", 
+                min = 1,
+                max = 1000, 
+                value = 500)
+  ),
+
+  # Show a plot of the generated distribution
+  mainPanel(
+    plotOutput("distPlot")
+  )
+))
+```
+
+user interface
+===
+
+* `pageWithSidebar`: `headerPanel`, `sidebarPanel`, `mainPanel` 
+part of the first example, but deprecated ??? 
+[https://github.com/rstudio/shiny/wiki/Shiny-Application-Layout-Guide]
+* better: `fluidPage`, has elements `titlePanel`, `sidebarPanel`, and `mainPanel`
+
+* input elements: `selectInput, actionButton; animationOptions, sliderInput; checkboxGroupInput; checkboxInput; dateInput; dateRangeInput; fileInput; numericInput; radioButtons; submitButton; textInput`
+
+* output elements: `htmlOutput`, `imageOutput`, `plotOutput`, `tableOutput`, `textOutput`, `verbatimTextOutput`
+
+revamped `ui.R`
+===
+
+```
+library(shiny)
+
+# Define UI for application that plots random distributions 
+shinyUI(fluidPage(
+
+  # Application title
+  titlePanel("Hello Shiny!"),
+
+  # Sidebar with a slider input for number of observations
+  sidebarPanel(
+    sliderInput("obs", 
+                "Number of observations:", 
+                min = 1,
+                max = 1000, 
+                value = 500)
+  ),
+
+  # Show a plot of the generated distribution
+  mainPanel(
+    plotOutput("distPlot")
+  )
+))
+```
+
+
+`distPlot` needs to be defined on the server side
+
+`server.R`
+===
+
+```
+library(shiny)
+
+# Define server logic required to generate and plot a random distribution
+shinyServer(function(input, output) {
+
+  # Expression that generates a plot of the distribution. The expression
+  # is wrapped in a call to renderPlot to indicate that:
+  #
+  #  1) It is "reactive" and therefore should be automatically 
+  #     re-executed when inputs change
+  #  2) Its output type is a plot 
+  #
+  output$distPlot <- renderPlot({
+
+    # generate an rnorm distribution and plot it
+    dist <- rnorm(input$obs)
+    hist(dist)
+  })
+})
+```
+
+`shinyServer` defines a function with parameters `input` and `output`. `input` deals with arguments and values collected from the website.
+`output` delivers the values for the output on the website. 
+Ways to communicate with the website are: 
+renderImage, renderPlot, renderPrint, renderTable, renderText, renderUI (for a Shiny tag object or HTML)
+
+
+reactive programming
+===
+
+whenever a parameter value in the web interface is changed, it triggers a call to any function that uses the input parameters
+
+`isolate` suppresses this call
+
+action buttons can be used to structure the flow of the reactions
+
+Take a look at the second example `runExample("02_text")`
+
+
+naive version of `server.R`
+===
+
+```
+library(shiny)
+library(datasets)
+
+# Define server logic required to summarize and view the selected dataset
+shinyServer(function(input, output) {
+  
+  
+  # Generate a summary of the dataset
+  output$summary <- renderPrint({
+    dataset <- switch(input$dataset,
+                      "rock" = rock,
+                      "pressure" = pressure,
+                      "cars" = cars)
+    summary(dataset)
+  })
+  
+  # Show the first "n" observations
+  output$view <- renderTable({
+    head(switch(input$dataset,
+                "rock" = rock,
+                "pressure" = pressure,
+                "cars" = cars), n = input$obs)
+  })
+})
+```
+
+better: extract dataset only once
+===
+
+```
+library(shiny)
+library(datasets)
+
+# Define server logic required to summarize and view the selected dataset
+shinyServer(function(input, output) {
+  
+  inputData <- reactive({
+    switch(input$dataset,
+                "rock" = rock,
+                "pressure" = pressure,
+                "cars" = cars), n = input$obs)
+  })
+  
+  # Generate a summary of the dataset
+  output$summary <- renderPrint({
+    dataset <- inputData()
+    summary(dataset)
+  })
+  
+  # Show the first "n" observations
+  output$view <- renderTable({
+    head(inputData())
+  })
+})
+```
+
+
+action button
+===
+
+`actionButton("abutton", "text to be displayed")` goes into `ui.R`
+
+`abutton` starts out with a value of 0. Every click by the user increases its value by one.
+
+Call `input$abutton` in a function to set up a dependency:
+
+```
+library(shiny)
+
+# Define server logic required to generate and plot a random distribution
+shinyServer(function(input, output) {
+    output$distPlot <- renderPlot({
+    require(ggplot2)
+
+    # Set a dependency on input$goButton - 
+    # doesn't do anything, but makes the function reactive to the goButton
+    input$goButton
+    
+    # Use isolate() to avoid dependency on input$obs
+    dist <- isolate(rnorm(input$obs))
+    print(qplot(dist, geom="histogram", binwidth=4/sqrt(length(dist))))
+  })
+})
+```
+
+Your own app
+===
+
+Download files server.R and ui.R into a local folder,
+
+then call 
+`runApp(path to local folder)`
+
+to run the shiny app ... 

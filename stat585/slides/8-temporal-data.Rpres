@@ -1,0 +1,297 @@
+STAT 585X
+Temporal data structures
+========================================================
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 1/31/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+Outline
+========================================================
+
+- Seasonality: month, year
+- Time indexes
+- Differencing dates
+- Week day, week end, day of the year
+- Time zones
+
+Getting started
+========================================================
+
+Birds affected by the BP Oil Spill as recorded by the [US Fish and Wildlife Service](http://gomex.erma.noaa.gov/erma.html)
+
+```{r}
+library(shapefiles)
+birds.dbf<-read.dbf("../data/birds/birds.dbf")$dbf
+dim(birds.dbf)
+head(birds.dbf)
+```
+
+Checking the Date Variable
+========================================================
+
+```{r}
+library(lubridate)
+is.Date(birds.dbf$Date_)
+colnames(birds.dbf)[7] <- "Date"
+summary(birds.dbf$Date)
+```
+
+Extracting Month
+========================================================
+
+```{r}
+birds.dbf$Month <- month(birds.dbf$Date)
+table(birds.dbf$Month)
+is.factor(birds.dbf$Month)
+birds.dbf$Month <- month(birds.dbf$Date, label=TRUE)
+table(birds.dbf$Month)
+is.factor(birds.dbf$Month)
+```
+
+Days Since Spill
+========================================================
+
+```{r}
+birds.dbf$YDay <- yday(birds.dbf$Date)
+head(birds.dbf$YDay)
+head(birds.dbf$Date)
+birds.dbf$Day<-mday(birds.dbf$Date)
+head(birds.dbf$Day)
+birds.dbf$ASDay <- yday(birds.dbf$Date) - yday("2010-04-20")
+head(birds.dbf$ASDay)
+```
+
+Making summaries
+========================================================
+
+Data comes as counts for each species, lots of different species. Aggregate the counts by day, using ```table```, and get into elemental form
+
+```{r}
+library(ggplot2)
+library(reshape)
+birds.m <- melt(table(birds.dbf$ASDay, 
+        birds.dbf$Oiling))
+colnames(birds.m)<-c("ASDay", 
+        "Oiling","count")
+```
+***
+
+```{r fig.width=12, fig.align='center'}
+qplot(ASDay, count, 
+  colour=Oiling, data=birds.m, 
+  geom="line", xlab="Days since spill")
+```
+
+Aggregating at a lower resolution - weekly
+========================================================
+
+```{r}
+birds.dbf$Week <- 
+  week(birds.dbf$Date)
+head(birds.dbf$Week)
+birds.dbf$ASWeek <- 
+  week(birds.dbf$Date) - 
+  week("2010-04-20")
+head(birds.dbf$ASWeek)
+birds.m <- melt(table(birds.dbf$Week, 
+        birds.dbf$Oiling))
+colnames(birds.m)<-c("ASWeek", 
+    "Oiling","count")
+```
+
+***
+
+```{r fig.width=12, fig.align='center'}
+qplot(ASWeek, count, 
+  colour=Oiling, data=birds.m, 
+  geom="line", xlab="Weeks since spill")
+```
+
+Algebra with dates
+========================================================
+
+```{r}
+head(birds.dbf$Date)
+head(yday(birds.dbf$Date)/7+1)
+head(week(birds.dbf$Date))
+head(wday(birds.dbf$Date))
+```
+***
+```{r}
+wday("2014-01-01")
+wday(as.Date("2014-01-01")-years(1))
+wday(as.Date("2014-01-01")-years(10))
+```
+
+Work day or weekend?
+========================================================
+
+```{r}
+birds.dbf$WDay <- wday(birds.dbf$Date)
+head(birds.dbf$WDay)
+birds.dbf$WDay <- wday(birds.dbf$Date, label=TRUE)
+head(birds.dbf$WDay)
+birds.dbf$Weekend <- ifelse(birds.dbf$WDay=="Sat"| 
+    birds.dbf$WDay=="Sun", TRUE, FALSE)
+table(birds.dbf$Weekend)
+```
+
+Check for Weekend collection difference
+========================================================
+left: 60%
+
+```{r}
+birds.june <- subset(birds.dbf, 
+                Month=="Jun")
+table(birds.june$WDay)
+table(birds.june$Weekend)
+xm<-data.frame(table(birds.june$WDay))
+colnames(xm)[1] <- "WeekDay"
+```
+
+***
+```{r}
+qplot(WeekDay, Freq, 
+  data=xm, geom="bar")
+```
+
+Quick quiz
+========================================================
+
+What do these do?
+
+```today()```, ```now()```, ```week(now())```
+
+```week(now() - years(1))```
+
+```week(now() - years(10))```
+
+
+Reading different date formats
+========================================================
+
+Source: http://www.eoddata.com/
+
+```{r}
+Apple <- read.csv("../data/AAPL_20130101_20140130.csv")
+head(Apple)
+is.Date(Apple$Date)
+Apple$Date <- as.Date(Apple$Date, format="%d-%b-%Y")
+summary(Apple$Date)
+```
+
+Reading different date formats
+========================================================
+
+| Format   | Date       |
+|----------|:-----------:|
+| %d-%m-%Y | 01-01-2014 |
+| %d-%b-%Y | 01-Jan-2014 |
+| %d-%b-%y | 01-Jan-14 |
+
+Quarterly reports
+========================================================
+
+```{r fig.width=12}
+Apple$quarter <- factor(quarter(Apple$Date, with_year = TRUE))
+head(Apple$quarter)
+library(plyr)
+Apple.qsum <- ddply(Apple, "quarter", summarise, 
+                    Low=min(Low, na.rm=T),
+                    High=max(High, na.rm=T))
+Apple.qsum
+```
+
+Time zones
+========================================================
+
+Workhorse underlying lubridate is ```as.POSIXlt()```
+
+```{r}
+as.POSIXlt(Sys.time(), "America/Chicago")
+as.POSIXlt(Sys.time(), "Australia/Darwin")
+```
+
+Why are both listed at "CST"? What is the time zone for Sydney?
+
+Time zones
+========================================================
+
+Airline data from [Data Expo 2009](http://stat-computing.org/dataexpo/2009/)
+
+```{r}
+airlines <- read.csv("../data/airlines.1996.DFW.SEA.csv", row.names=1)
+dim(airlines)
+airlines[7484,]
+```
+
+Time zones
+========================================================
+
+```{r fig.width=12, fig.align='center'}
+timedif <- airlines$CRSArrTime-airlines$CRSDepTime
+summary(timedif)
+qplot(timedif, geom="histogram")
+```
+
+Time zones
+========================================================
+
+Flight originated in Seattle, destined for Dallas
+
+```{r}
+airlines$CRSDepTime[7484]
+airlines$CRSArrTime[7484]
+airlines$CRSElapsedTime[7484]
+airlines$AirTime[7484]
+```
+
+Time zones
+========================================================
+left:80%
+
+Converting arrival time to a date variable
+
+```{r}
+arr <- parse_date_time(paste(airlines$Year[7484],
+              airlines$Month[7484],
+              airlines$DayofMonth[7484],
+              airlines$CRSArrTime[7484]%/%100,
+              airlines$CRSArrTime[7484]%%100),
+        "%Y %m %d %H %M", truncated=5, tz="CST5CDT")
+arr
+dep <- parse_date_time(paste(airlines$Year[7484],
+                      airlines$Month[7484],
+                      airlines$DayofMonth[7484],
+                      airlines$CRSDepTime[7484]%/%100,
+                      airlines$CRSDepTime[7484]%%100),
+                "%Y %m %d %H %M", truncated=5, tz="PST5PDT")
+dep
+```
+
+***
+```{r}
+arr-dep
+```
+
+Why is this different from ```CRSElapsedTime=200```?
+
+Reading
+========================================================
+
+"Statistical Analyses and Reproducible Research", Robert Gentleman and Duncan Temple Lang, 2004 (pdf on blackboard), some questions to initiate discussion:
+
++ What is a compendium?
++ How was David Donoho involved in reproducible research?
++ What is literate programming?
++ What components are necessary to produce a compendium?
++ Give an example of transformation software.
+

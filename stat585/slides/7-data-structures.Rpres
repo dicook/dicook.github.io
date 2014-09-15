@@ -1,0 +1,146 @@
+STAT 585X
+Data structures
+========================================================
+font-import: http://fonts.googleapis.com/css?family=Marcellus
+font-family: 'Marcellus'
+author: Di Cook, Heike Hofmann
+date: 1/24/2014
+width: 1680
+height: 1050
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+options(width=80)
+```
+
+
+
+Exercise 1: Accessing polygon data from shapefiles
+====
+
+The main objective of this lab is to write a function that allows us to read in data from a shapefile and access the data in a way that allows us to use it in the ```ggplot2``` framework.
+
+We will be using the australia shapefile for a concrete example and then try to bundle  general ideas into a function. 
+
+Quick review
+====
+
+A map in ggplot2 consists a couple of variables to make things work:
+
+```{r}
+library(ggplot2)
+library(maps)
+states <- map_data("state")
+head(states)
+```
+
+We need an x and y variable for longitude and latitude. ```group``` identifies a polygon part. ```order``` specifies in which order the points in a polygon should be connected. The order can be given within a group (i.e. there could be a lot of 1s) or overall. 
+```region``` usually allows us to connect information from the outside to the map. ```subregion``` has no function for the states map, but takes on functionality for other maps, such as the world map. 
+Other nice variables would be labelling positions for each region.
+
+Quick review
+====
+
+```{r}
+michigan <- subset(states, 
+        region=="michigan")
+table(michigan$group, 
+      michigan$region)
+```
+
+***
+```{r, fig.width=16, fig.height=10, fig.align='center'}
+ggplot(states, aes(x=long, y=lat, 
+    group=group)) + geom_polygon()
+```
+
+Australia shapefile
+====
+
+For a concrete example, load in the data from the Australia shapefile (and thin the nodes to get a reasonable sized data set)
+
+```{r}
+library(maptools)
+xx <- readShapeSpatial(
+  "../data/australia/region.shp")
+xxx <- thinnedSpatialPoly(as(xx, "SpatialPolygons"), 
+  tolerance=0.1, minarea=0.001, topologyPreserve=TRUE)
+class(xxx)
+slotNames(xxx)
+```
+
+Australia shapefile
+====
+
+Now work your way into the inner structure of the ```SpatialPolygonDataFrame```. There are 150 electoral districts, and these may be composed of multiple polygons. 
+
+Extract the polygons, store the additional information you need (order, group), and generalize your code into a function, that could be used on other ```SpatialPolygonDataFrame``` objects. 
+
+Testing
+====
+
+Assuming the function you wrote is called ```extractPolygons``` and takes as an argument a SpatialPolygonDataFrame, run the following code (you might need to adjust some of the names, like x and y variable and/or the xxx object):
+
+```
+oz <- extractPolygons(xxx)
+library(ggplot2)
+qplot(x,y,  order=order, group=group, data=oz, geom="polygon")
+```
+
+Trying it on another data set
+===
+
+Try out your function on the shapefile for a map of Africa:
+
+```
+africa <- extractPolygons(readShapeSpatial("../data/Africa/Africa.shp"))
+qplot(X1, X2,  order=order, group=group, data=africa, geom="polygon")
+```
+
+Australia electoral data frame
+====
+
+The ```thinnedSpatialPoly``` function only operated on the polygons, ignoring the electorate demographics, name of the electorate, area,  state, population. For the region information, you will have extract it separately and merge with polygon data. Assume the order of the regions was not disturbed by the thinning. 
+
+```{r}
+slotNames(xx)
+slotNames(xxx)
+```
+
+***
+
+```{r}
+head(xx@data)
+```
+
+
+Incorporating electorate information
+===
+
+Merge the electorate data with the polygons, and color the polygons by the size of the electorate. You will need to set up an id variable in the electorate data, that matches the polygon data, eg 1-150.
+
+Add polling places
+===
+
+Read the polling places data in from this web site: [polling places](http://www.aec.gov.au/About_AEC/cea-notices/files/2013/prdelms.gaz.statics.130901.09.00.02.csv)
+
+Now there is an error in this file which interferes with the reading:
+
+```
+Warning message:
+In scan(file, what, nmax, sep, dec, quote, skip, nlines, na.strings,  :
+  EOF within quoted string
+```
+What does this mean? Find the problem, and fix it. How many polling places are listed in the file?
+
+Add polling places
+===
+
+Plot the active polling places for the 2013 election on the electoral map. You will need to convert the latitude and longitude variables from character to numeric to do this.
+
+There are some polling places seemingly in the ocean. What are these? Likewise there are some strings/near straight lines of polling places? What do you think they are? And also there are a some empty areas close to the high population density areas along the east coast. Any suggestions for why?
+
+Hand-in
+===
+
+Submit your answers to questions, a documented form of your code, functions, and output the plots. 
