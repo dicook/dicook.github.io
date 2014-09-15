@@ -342,8 +342,8 @@ input.button {
 #main1 h1 { 
 	font: normal 1.8em Georgia, "Times New Roman", Times, serif;
 	color: #336699; 	
-	padding: 0 0 5px 0;
-	margin: 15px 15px 20px 15px;
+	padding: 0 0 0px 0;
+	margin: 0px 0px 0px 0px;
 	margin-left: 10px;
 	background: url(../images/bk_dotted.gif) repeat-x left bottom;
 }
