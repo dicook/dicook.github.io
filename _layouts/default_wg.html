@@ -48,7 +48,7 @@
 			
 			<!-- Menu Tabs -->
 			<ul>
-				{% for link in site.navigation %}
+				{% for link in site.wg %}
 				  {% assign current = nil %}
 				  {% if page.url == link.url or page.layout == link.layout or page.post == link.text %}
 					{% assign current = 'current' %}
@@ -70,18 +70,12 @@
 			
 			<div id="sidebar">			
 				<ul class="sidemenu">
-				<h1>My Material</h1>
-					<li><a href="blog.html">Visiphilia Blog</a></li>
-					<li><a href="graphics.html">Graphics Working Group</a></li>
-					<li><a href="research.html">Research</a></li>
-					<li><a href="students.html">Students</a></li>
-				</ul>
-				<h1>Interesting Links</h1>
-				<ul class="sidemenu">
-					<li><a href="http://robjhyndman.com/hyndsight/" target="_blank"> Hyndsight </a></li>
-					<li><a href="http://niemiconsulting.com/" target="_blank"> Jarad Niemi</a></li>
-					<li><a href="http://www.forbes.com/sites/naomirobbins/" target="_blank"> Naomi Robbins at Forbes </a></li>
-				</ul>
+				<h1>Members</h1>
+					<li><a href="http://xycheng.public.iastate.edu/" target="_blank">Xiaoyue Cheng </a></li>
+					<li><a href="http://dicook.github.io" target="_blank">Di Cook</a></li>
+					<li><a href="http://ndasilva.public.iastate.edu/" target="_blank">Natalia Da Silva</a></li>
+					<li><a href="http://hofmann.public.iastate.edu/" target="_blank">Heike Hofmann</a></li>
+				      </ul>
 			</div>
 		</div></div>
 		
