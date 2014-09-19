@@ -31,6 +31,10 @@ navigation:
 wg:
 - text: Fall 2014
   url: /graphics.html
+  layout: default_wg
+- text: Blog
+  url: /blog.html
+  layout: post_ak
 
 
 # The production_url is only used when full-domain names are needed
