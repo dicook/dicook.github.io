@@ -13,11 +13,11 @@ When there are two categorical variables it is common to make a stacked barchart
 
 This is a bar chart showing the husband view, with his wife's view forming the stacking. The primary message is that mostly husband's say that Sex is "Always Fun".  Separately we can see that the color strips are not of equal length in each bar, which would indicated some difference with the wife's viewpoint, but it takes some work to dig in deeper to digest how they are different.
 
-!["stacked bar 1"](stackedbar-husband.png)
+!["stacked bar 1"](stackedbar-husband.jpg)
 
 Same data, arranged differently. The bars represent the wife's view, and the husband's response forms the stacking. The distribution of wifes' responses is different to the husbands (previous barchart) - wives respond with "Fairly Often" more frequently than husbands.
 
-!["stacked bar 2"](stackedbar-wife.png)
+!["stacked bar 2"](stackedbar-wife.jpg)
 
 It would also be common to show these as 100% charts, to read off the proportions. Showing both the barchart and the 100% chart enables viewing the overall frequencies, and the proportions within each category. It requires that the reader shift back and forward between the two plots to take both requency and proportion into account, which is hard work. 
 
