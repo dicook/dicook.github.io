@@ -8,9 +8,9 @@ tags: [education,business analytics,data visualization,barcharts,mosaic plots,fa
 
 {% include JB/setup %}
 
-When there are two categorical variables it is common to make a stacked barchart. The stackedbarchart primarily allows the reader to see the overall count, but it is harder to compare the counts of categories, the colored segments. Using data from the vcd package in R, here is an example. The data describes the responses of couples on questions about their sex life.
+When there are two categorical variables it is common to make a stacked barchart. The stacked barchart primarily allows the reader to see the overall count, but it is harder to compare the counts of categories, the colored segments. Using data from the vcd package in R, here is an example. The data describes the responses of couples on questions about their sex life.
 
-This is a bar chart showing the husband view, with his wife's view forming the stacking. The primary message is that mostly husband's say that Sex is "Always Fun".  Separately we can see that the color strips are not of equal length in each bar, which would indicated some difference with the wife's viewpoint, but it takes some work to dig in deeper to digest how they are different.
+This is a bar chart showing the husband view, with his wife's view forming the stacking. The primary message is that mostly husbands say that Sex is "Always Fun".  Separately we can see that the color strips are not of equal length in each bar, which would indicated some difference with the wife's viewpoint, but it takes some work to dig in deeper to digest how they are different.
 
 !["stacked bar 1"]({{ site.url }}/assets/stackedbar-husband.jpg)
 
@@ -28,7 +28,7 @@ Rearranging in the opposite order changes the focus to wifes' response given the
 
 !["stacked bar 2"]({{ site.url }}/assets/facettedbar-wife.jpg)
 
-Using both arrangements we can the the asymmetry between each member of the couples responses. 
+Using both arrangements we can the asymmetry between each member of the couples responses. 
 
 To better read the symmetry, or asymmetry, show the data as a fluctuation diagram. Here the boxes reflect the count for the combination of the categories. The main message is that the couples agree, roughly, on the perception of sex (bigger boxes on leading diagonal), and there is asymmetry in the responses (boxes above and below diagonal are not equal size). 
 
