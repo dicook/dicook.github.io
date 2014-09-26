@@ -3,7 +3,6 @@ layout: post
 title: "Facetted barcharts, and fluctuation diagrams are good alternatives to stacked barcharts"
 description: "This is a post based on a discussion that arose from Symantha Tyner's summer internship work"
 author: visnut
-category: [chance]
 tags: [education,business analytics,data visualization,barcharts,mosaic plots,facetting]
 ---
 
@@ -14,6 +13,7 @@ When there are two categorical variables it is common to make a stacked barchart
 This is a bar chart showing the husband view, with his wife's view forming the stacking. The primary message is that mostly husband's say that Sex is "Always Fun".  Separately we can see that the color strips are not of equal length in each bar, which would indicated some difference with the wife's viewpoint, but it takes some work to dig in deeper to digest how they are different.
 
 !["stacked bar 1"](stackedbar-husband.jpg)
+<img src="stackedbar-husband.jpg">
 
 Same data, arranged differently. The bars represent the wife's view, and the husband's response forms the stacking. The distribution of wifes' responses is different to the husbands (previous barchart) - wives respond with "Fairly Often" more frequently than husbands.
 
