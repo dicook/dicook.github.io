@@ -30,11 +30,11 @@ Rearranging in the opposite order changes the focus to wifes' responses given th
 
 Using both arrangements we can the asymmetry between each member of the couples responses. 
 
-To better read the symmetry, or asymmetry, show the data as a fluctuation diagram. Here the boxes reflect the count for the combination of the categories. The main message is that the couples agree, roughly, on the perception of sex (bigger boxes on leading diagonal), and there is asymmetry in the responses (boxes above and below diagonal are not equal size). 
+To better read the symmetry, or asymmetry, show the data as a fluctuation diagram. Here the boxes reflect the count for the combination of the categories. The main message is that the couples agree, roughly, on the perception of sex (bigger boxes on leading diagonal), and there is asymmetry in the couples separate responses (boxes above and below diagonal are not equal size). 
 
 !["fluctuation"]({{ site.url }}/assets/fluctuation2.jpg)
 
-In summary, it is recommended to do a suite of plots rather than one single plot for problems like this. 
+In summary, it is recommended to do a suite of plots rather than one single plot for problems like this, with the suggested set being:
 
 - overall frequency for each variable using a single barchart for each variable
 - facetted bar chart, arranged in two ways
