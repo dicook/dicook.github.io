@@ -10,11 +10,11 @@ tags: [education,business analytics,data visualization,barcharts,mosaic plots,fa
 
 When there are two categorical variables it is common to make a stacked barchart. The stacked barchart primarily allows the reader to see the overall count, but it is harder to compare the counts of categories, the colored segments. Using data from the vcd package in R, here is an example. The data describes the responses of couples on questions about their sex life.
 
-This is a bar chart showing the husband view, with his wife's view forming the stacking. The primary message is that mostly husbands say that Sex is "Always Fun".  Separately we can see that the color strips are not of equal length in each bar, which would indicated some difference with the wife's viewpoint, but it takes some work to dig in deeper to digest how they are different.
+This is a bar chart showing the husbands views, with his wifes' views forming the stacking. The primary message is that mostly husbands say that Sex is "Always Fun".  Separately, we can see that the color strips are not of equal length in each bar, which would indicated some difference with the wife's viewpoint, but it takes some work to dig in deeper to digest how they are different.
 
 !["stacked bar 1"]({{ site.url }}/assets/stackedbar-husband.jpg)
 
-Same data, arranged differently. The bars represent the wife's view, and the husband's response forms the stacking. The distribution of wifes' responses is different to the husbands (previous barchart) - wives respond with "Fairly Often" more frequently than husbands.
+Same data, arranged differently. The bars represent the wifes' views, and the husbands' responses forming the stacking. The distribution of wifes' responses is different to the husbands (previous barchart) - wives respond with "Fairly Often" more frequently than husbands.
 
 !["stacked bar 2"]({{ site.url }}/assets/stackedbar-wife.jpg)
 
