@@ -20,11 +20,11 @@ Same data, arranged differently. The bars represent the wifes' views, and the hu
 
 It would also be common to show these as 100% charts, to read off the proportions. Showing both the barchart and the 100% chart enables viewing the overall frequencies, and the proportions within each category. It requires that the reader shift back and forward between the two plots to take both requency and proportion into account, which is hard work. 
 
-One alternative is to create separate bar charts for each response category for the other variable, as done below. The distribution of frequencies in each category are now easy to read (but overall count is more difficult). The main message is that the distribution of husbands' responses is different depending on the wifes' responses. When the wife responds "Never Fun" the husband typically also responds "Never Fun",. If the wife responds "Always Fun" the husband tends to respond "Always Fun" too. When the wife responds "Fairly Often" the husbands' responses are uniform across the four possible answers.
+One alternative is to create separate bar charts for each response category for the other variable, as done below. The distribution of frequencies in each category are now easy to read (but overall count is more difficult). The main message is that the distribution of husbands' responses is different depending on the wifes' responses. When the wife responds "Never Fun" the husband typically also responds "Never Fun". If the wife responds "Always Fun" the husband tends to respond "Always Fun" too. When the wife responds "Fairly Often" the husbands' responses are uniform across the four possible answers.
 
 !["stacked bar 1"]({{ site.url }}/assets/facettedbar-husband.jpg)
 
-Rearranging in the opposite order changes the focus to wifes' response given the husbands' responses. 
+Rearranging in the opposite order changes the focus to wifes' responses given the husbands' responses. 
 
 !["stacked bar 2"]({{ site.url }}/assets/facettedbar-wife.jpg)
 
