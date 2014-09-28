@@ -275,7 +275,7 @@ input.button {
 /* content */
 #content-wrap {
 	clear: both;
-	background: #FFF url(../images/contentbg.jpg) repeat-y center top;
+	background: #FFF #FFF;
 	float: left;		
 	width: 100%;
 }
