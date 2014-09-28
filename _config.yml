@@ -32,6 +32,9 @@ blognav:
 - text: Home
   url: /blog.html
   layout: post_ak
+- text: ISU Statistical Graphics Working Group
+  url: /graphics.html
+  layout: default_wg
 
 wg:
 - text: Fall 2014
