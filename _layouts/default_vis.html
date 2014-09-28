@@ -50,7 +50,7 @@
 			
 			<!-- Menu Tabs -->
 			<ul>
-				{% for link in site.navigation %}
+				{% for link in site.blognav %}
 				  {% assign current = nil %}
 				  {% if page.url == link.url or page.layout == link.layout or page.post == link.text %}
 					{% assign current = 'current' %}
