@@ -293,6 +293,7 @@ input.button {
 
 /* sidebar */
 #sidebar {
+	position: relative;
 	float: left;
 	width: 190px;
 	margin: 0 0 10px 0;
