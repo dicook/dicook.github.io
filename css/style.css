@@ -299,7 +299,6 @@ input.button {
 	padding: 5px 0 0 0;
 }
 #sidebar h1 {
-	position: relative;
 	font: normal 1.4em Georgia, "Times New Roman", Times, serif;
 	color: #336699;
 	padding: 0;
@@ -307,18 +306,15 @@ input.button {
 	letter-spacing:0px;	
 }
 #sidebar ul.sidemenu {
-	position: relative;
 	margin: 5px 0 15px 0;
 	padding: 0;	
 }
 #sidebar ul.sidemenu li {
-	position: relative;
 	font: normal 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
 	list-style: none;
 	border-bottom: 1px dashed #E1E1E1;
 }
 #sidebar ul.sidemenu a {
-	position: relative;
 	display: block;
 	color: #666666; 
 	text-decoration: none;
@@ -326,7 +322,6 @@ input.button {
 	width: 94%;
 }
 #sidebar ul.sidemenu a:hover {
-	position: relative;
 	padding: .3em 0 .3em 10px;
 	color: #336699;
 	background: #FFF;	
