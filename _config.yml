@@ -28,6 +28,11 @@ navigation:
 - text: CV
   url: /cv.html
 
+blognav:
+- text: Home
+  url: /blog.html
+  layout: post_ak
+
 wg:
 - text: Fall 2014
   url: /graphics.html
