@@ -24,4 +24,4 @@ More than a decade ago, I documented a discussion between four attendees at a wo
 
 Although, it is is still not easy, to a large extent statistical computing research has made the leap. The authors of three of these four papers are in academic positions.  In numerous departments around the world, statistical computing research is thriving. Some examples are University of Auckland, University of Waterloo, Augsburg University, Harvard Biostats (please add more in the comments!). From personal experience, we have had steady support from the administration at Iowa State University in promoting statistical computing research, especially focusing on graphics. In addition, new homes in industry have emerged,  like [RStudio](http://www.rstudio.com/) which is a hot-bed of open-source development,  and Genentech and FHCRC have brought us bioconductor. 
 
-With the growing importance of data science, statistical computing research is a critical area for the Statistics discipline, to help tackle big data problems. 
+With the growing importance of data science, to tackle big data problems, statistical computing is a critical area for the Statistics research. 
