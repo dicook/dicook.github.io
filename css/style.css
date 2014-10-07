@@ -432,7 +432,7 @@ input.button {
 	font: italic 1.1em Candara, 'Trebuchet MS', Tahoma, sans-serif;
         font-weight: 150;
 	color: #F88F26;
-	margin-left: 10px;
+	margin-left: 1px;
 }
 #main2 li a:hover { 
 	font: bold 1.1em Candara, 'Trebuchet MS', Tahoma, sans-serif;
