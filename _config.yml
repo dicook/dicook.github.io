@@ -37,8 +37,11 @@ blognav:
   layout: default_wg
 
 wg:
-- text: Fall 2014
+- text: Spring 2015
   url: /graphics.html
+  layout: default_wg
+- text: Fall 2014
+  url: /graphics-f14.html
   layout: default_wg
 - text: Blog
   url: /blog.html
