@@ -17,6 +17,8 @@ Its exciting to report on the graduations from the working group this year.
 - Sam Tyner defended her MS in April, titled "A Geometry for Network Visualization in ggplot2" under the direction of Professor Heike Hofmann. She will continue on to a PhD at ISU.
 - Danny Bero defended his MS, titled "Ranking Iowa High School Soccer Teams", in April, under my direction. You check out the [web app](https://berodaniel.shinyapps.io/rankings_app) to explore rankings of high school teams, and predict match outcomes. He will take a position at an internet sales company in Monroe, WI, in June.
 
+Congratulations on the hard, and creative work!
+
 Below are some photos from the spring barbecue celebrating the graduation, and the graduation photos. (Some of the people at the bbq: Ian, Lari, Alex, Andee, Cari, Vianey, Natalia, Ignacio, Eric,Raine, Heike, Mattias, Grace.)
 
 ![spring bbq 1]({{ site.url }}/assets/wg-bbq-2015.jpg)
