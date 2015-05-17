@@ -19,7 +19,7 @@ Its exciting to report on the graduations from the working group this year.
 
 Congratulations on the hard, and creative work!
 
-Below are some photos from the spring barbecue celebrating the graduation, and the graduation photos. (Some of the people at the bbq: Ian, Lari, Alex, Andee, Cari, Vianey, Natalia, Ignacio, Eric,Raine, Heike, Mattias, Grace.)
+Below are some photos from the spring barbecue celebrating the graduation, and the graduation photos. (Some of the people at the bbq: Ian, Lari, Alex, Andee, Cari, Vianey, Natalia, Ignacio, Eric, Rainie, Heike, Mattias, Grace.)
 
 ![spring bbq 1]({{ site.url }}/assets/wg-bbq-2015.jpg)
 ![spring bbq 2]({{ site.url }}/assets/wg-bbq-2015-2.jpg)
