@@ -15,7 +15,7 @@ Its exciting to report on the graduations from the working group this year.
 - Karsten Maurer will defend his PhD late this summer, and will start as an assistant professor at Miami University, Ohio in August.
 - Sam Helmich defended his MS in March, titled "Board Game Recommendation" under the direction of Professor Heike Hofmann. He works for John Deere, Iowa. 
 - Sam Tyner defended her MS in April, titled "A Geometry for Network Visualization in ggplot2" under the direction of Professor Heike Hofmann. She will continue on to a PhD at ISU.
-- Danny Bero defended his MS, titled "Ranking Iowa High School Soccer Teams", in April, under my direction. You check out the [web app](https://berodaniel.shinyapps.io/rankings_app) to explore rankings of high school teams, and predict match outcomes. He will take a position at an internet sales company in Monroe, WI, in June.
+- Danny Bero defended his MS, titled "Ranking Iowa High School Soccer Teams", in April, under my direction. You can check out the [web app](https://berodaniel.shinyapps.io/rankings_app) to explore rankings of high school teams, and predict match outcomes. He will take a position at an internet sales company in Monroe, WI, in June.
 
 Congratulations on the hard, and creative work!
 
