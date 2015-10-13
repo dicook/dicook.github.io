@@ -7,6 +7,8 @@ tags: [data science,data visualization,EDA,data mining,R,statistical computing,s
 ---
 {% include JB/setup %}
 
-Spent a couple of hours this morning talking at the [http://it.monash.edu/data-science](Data Science for Managers) workshop organised by Michael Brand from Monash University. Good questions, good discussion. A link to my slides are below. 
+Spent a couple of hours this morning talking at the [http://it.monash.edu/data-science](Data Science for Managers) workshop organised by Michael Brand from Monash University. Good questions, good discussion. 
 
-[slides]({{ site.url }}/assets/DataWrangling.pdf)
+Here is a link to my [slides]({{ site.url }}/assets/DataWrangling.pdf). 
+
+
