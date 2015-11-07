@@ -11,7 +11,7 @@ This week I have been visiting the Department of Statistical Sciences at Cornell
 
 Its been an interesting week. Professor Marty Wells has been comparing results from collecting data using Amazon's Mechanical Turk with traditional telephone surveys. Professor Jim Booth, chair of Biological Statistics and Computational Biology, has worked in many areas, most currently focused on high-throughput data, and discussed Gordon Smyth's new work on VOOM. Professor Giles Hooker, a fellow Australian, has some recent inference results for random forests, which might be useful in my student Natalia Da Silva's thesis research. I had several detailed discussions with Professor  Jacob Jien on R packages and optimization, and using Hadley's development tools and Yihui's documenting. Professor Stanislav Volgushev suggested that we could build models from crowdsourcing by having people sketch, which might do better than smoothing and logistic regression sometimes! Professors Marten Wegkamp and and Flori Bunea are colleagues from a 2008 semester long workshop at Cambridge on high-dimensional problems in Statistics.  
 
-Look out for Amy Willis! She will graduate in about a year, after working statistical methods for high-throughput data collected on microbial biomes. She has an R package called `breakaway`. 
+Look out for Amy Willis! She will graduate in about a year, after working on statistics for high-throughput data collected on microbial biomes. She has an R package called `breakaway`. 
 
 Here is a link to my [slides]({{ site.url }}/assets/slides-Cook-Cornell.pdf) on Statistical Inference by Crowd-sourcing.
 
