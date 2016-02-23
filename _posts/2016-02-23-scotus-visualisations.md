@@ -28,7 +28,7 @@ election year was 84 years ago in 1932 (when President Herbert Hoover
 nominated Benjamin Cardozo as a replacement for retiring justice Oliver
 Wendell Holmes).
 
-![](assets/SCOTUS_files/unnamed-chunk-2-1.png)
+![]({{ site.url }}/assets/SCOTUS_files/unnamed-chunk-2-1.png)
 
 Russell Wheeler (Brookings Institution) is quoted saying "Justices in
 the modern era rarely die in office." There does not seem to be a
@@ -47,7 +47,7 @@ Associate Justice from 1972 onwards until becoming Chief Justice in
 1986. In the chart below, he shows up as having resigned from the AJ
 seat, and later as having died while serving as CJ).
 
-<img src="assets/SCOTUS_files/unnamed-chunk-3-1.png" title="" alt="" width="600" />
+![]({{ site.url }}/assets/SCOTUS_files/unnamed-chunk-3-1.png)
 
 Another question that we might be asking is, how often justices in the
 modern era leave the office during an election year. This is shown in
@@ -57,13 +57,13 @@ and post 1920 era, we see that there is actually a trend for justices in
 the post 1920 era to leave office during the beginning of the
 presidential term.
 
-<img src="assets/SCOTUS_files/unnamed-chunk-4-1.png" title="" alt="" width="600" />
+![]({{ site.url }}/assets/SCOTUS_files/unnamed-chunk-4-1.png)
 
 Accordingly, the number of supreme court nominations a president makes
 during his term in the post 1920 era is skewed towards the first years
 of his presidency, as can be seen in the chart below.
 
-<img src="assets/SCOTUS_files/unnamed-chunk-5-1.png" title="" alt="" width="600" />
+![]({{ site.url }}/assets/SCOTUS_files/unnamed-chunk-5-1.png)
 
 ### Retirement plans? - above the party!
 
@@ -89,103 +89,6 @@ Fillmore could get confirmations from the Senate for their candidate.
 So rather than if - we should focus on who will President Barack Obama
 nominate for the vacant seat?
 
-<!--
-  - John Adams nominated John Marshall on January 20 1801, fifteen days before Thomas Jefferson took office - and the senate approved the nomination on January 27 for fear "lest another not so qualified, and more disgusting to the Bench, should be substituted, and because it appeared that this gentleman [Marshall] was not privy to his own nomination" (Senator Jonathan Dayton). Not exactly a "delay, delay, delay" tactic, even though the seven days were already seen as delaying the confirmation.
-
-  - President Andrew Jackson nominated two(!) supreme court justices on his last full day in office. Catron accepted the nomination and was confirmed by the Congress five days later.
-
-  - President Van Buren nominated Peter Vivan Daniel during his last week as president, and Daniel was confirmed by the senate on March 2, 1841.
-  
-  - On February 4, 1845, Nelson was nominated by President John Tyler to a seat as an Associate Justice on the Supreme Court, it took the Senate only a couple of days to confirm his appointment.
-  
-  - President Fillmore attempted to fill Justice McKinley's seat four times, but only his successor was successful in that.
-  
-  - Howell Edmunds Jackson's  nomination for the supreme court was announced on February 2, 1893 by outgoing president B. Harrison.
-  
-  - President Warren Harding nominated Sanford to the Supreme Court on January 24, 1923, to the seat vacated by Mahlon Pitney. Sanford was confirmed by the Senate, and received his commission, on January 29, 1923.
-  
-
-
-
-```
-##                          Judge   President.x President.y
-## 15          Bushrod Washington      J. Adams       Adams
-## 16                Alfred Moore      J. Adams       Adams
-## 17                    John Jay      J. Adams       Adams
-## 18               John Marshall      J. Adams   Jefferson
-## 28              Robert Trimble   J. Q. Adams       Adams
-## 29          John J. Crittenden   J. Q. Adams       Adams
-## 36                 John Catron       Jackson       Buren
-## 37               William Smith       Jackson       Buren
-## 38               John McKinley     Van Buren       Buren
-## 39         Peter Vivian Daniel     Van Buren       Tyler
-## 47               Samuel Nelson         Tyler        Polk
-## 48                John M. Read         Tyler        Polk
-## 54        George Edmund Badger      Fillmore      Pierce
-## 55            William C. Micou      Fillmore      Pierce
-## 58           Jeremiah S. Black      Buchanan     Lincoln
-## 64              Henry Stanbery    A. Johnson     Johnson
-## 75            Stanley Matthews         Hayes      Arthur
-## 76            Stanley Matthews      Garfield      Arthur
-## 82         David Josiah Brewer   B. Harrison    Harrison
-## 83        Henry Billings Brown   B. Harrison    Harrison
-## 84          George Shiras, Jr.   B. Harrison    Harrison
-## 85      Howell Edmunds Jackson   B. Harrison   Cleveland
-## 92  Oliver Wendell Holmes, Jr.  T. Roosevelt   Roosevelt
-## 93              William R. Day  T. Roosevelt   Roosevelt
-## 94         William Henry Moody  T. Roosevelt   Roosevelt
-## 108       Edward Terry Sanford       Harding    Coolidge
-## 114                 Hugo Black  F. Roosevelt   Roosevelt
-## 115        Stanley Forman Reed  F. Roosevelt   Roosevelt
-## 116          Felix Frankfurter  F. Roosevelt   Roosevelt
-## 117         William O. Douglas  F. Roosevelt   Roosevelt
-## 118               Frank Murphy  F. Roosevelt   Roosevelt
-## 119            Harlan F. Stone  F. Roosevelt   Roosevelt
-## 120            James F. Byrnes  F. Roosevelt   Roosevelt
-## 121          Robert H. Jackson  F. Roosevelt   Roosevelt
-## 122      Wiley Blount Rutledge  F. Roosevelt   Roosevelt
-## 135                 Abe Fortas    L. Johnson     Johnson
-## 136          Thurgood Marshall    L. Johnson     Johnson
-## 137                 Abe Fortas    L. Johnson     Johnson
-## 138           Homer Thornberry    L. Johnson     Johnson
-## 151               David Souter G. H. W. Bush        Bush
-## 152            Clarence Thomas G. H. W. Bush        Bush
-## 155            John G. Roberts    G. W. Bush        Bush
-## 156            John G. Roberts    G. W. Bush        Bush
-## 157              Harriet Miers    G. W. Bush        Bush
-## 158               Samuel Alito    G. W. Bush        Bush
-```
-
-```
-## , , OutAlive = Death, modern2 = pre 1920
-## 
-##                factor(Party.y)
-## factor(Party.x) Democrat Republican Whig
-##      Democrat          2          7    4
-##      Republican        5          9    0
-## 
-## , , OutAlive = Resignation/Retirement, modern2 = pre 1920
-## 
-##                factor(Party.y)
-## factor(Party.x) Democrat Republican Whig
-##      Democrat          2          6    0
-##      Republican        2         12    0
-## 
-## , , OutAlive = Death, modern2 = post 1920
-## 
-##                factor(Party.y)
-## factor(Party.x) Democrat Republican Whig
-##      Democrat          3          2    0
-##      Republican        3          2    0
-## 
-## , , OutAlive = Resignation/Retirement, modern2 = post 1920
-## 
-##                factor(Party.y)
-## factor(Party.x) Democrat Republican Whig
-##      Democrat          5          8    0
-##      Republican        8         10    0
-```
--->
 ### Data and such
 
 All data was scraped from various website and I have taken care to not
