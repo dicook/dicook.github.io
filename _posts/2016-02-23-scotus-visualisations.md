@@ -1,3 +1,11 @@
+---
+layout: post
+title: "SCOTUS over the years"
+author: heike_hh
+tags: [politics,statistics,EDA,data mining,R,statistical computing,statistical graphics,data wrangling]
+---
+{% include JB/setup %}
+
 In the days since the death of Justice Antonin Scalia, there has been a
 lot of discussion on what is going to happen now - whether President
 Obama should or should not nominate a candidate to fill the vacancy in
