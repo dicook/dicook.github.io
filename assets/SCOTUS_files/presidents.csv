@@ -1,0 +1,265 @@
+"No.","Name","Term","Vice-President","Party","Congress","House Majority","Senate Majority","start","end","Last"
+"1","George Washington","1789-1797","John Adams","None","1st
+2nd
+3rd
+4th","N/A","N/A",1789,1797,"Washington"
+"2","John Adams","1797-1801","Thomas Jefferson","Federalist","5th
+6th","N/A
+Fed","N/A
+Fed",1797,1801,"Adams"
+"3","Thomas Jefferson","1801-1809","Aaron Burr (1801-05)
+George Clinton (1805-09)","Democratic-Republican","7th
+8th
+9th
+10th","Dem-Rep
+Dem-Rep
+Dem-Rep
+Dem-Rep","Dem-Rep
+Dem-Rep
+Dem-Rep
+Dem-Rep",1801,1809,"Jefferson"
+"4","James Madison","1809-1817","George Clinton (1809-12)(a)
+Elbridge Gerry (1813-14)(a)","Democratic-Republican","11th
+12th
+13th
+14th","Dem-Rep
+Dem-Rep
+Dem-Rep
+Dem-Rep","Dem-Rep
+Dem-Rep
+Dem-Rep
+Dem-Rep",1809,1817,"Madison"
+"5","James Monroe","1817-1825","Daniel D. Tompkins","Democratic-Republican","15th
+16th
+17th
+18th","Dem-Rep
+Dem-Rep
+Dem-Rep
+Dem-Rep","Dem-Rep
+Dem-Rep
+Dem-Rep
+Dem-Rep",1817,1825,"Monroe"
+"6","John Quincy Adams","1825-1829","John C. Calhoun","National-Republican","19th
+20th","Nat-Rep
+Dem","Nat-Rep
+Dem",1825,1829,"Adams"
+"7","Andrew Jackson","1829-1837","John C. Calhoun (1829-32)(b)
+Martin Van Buren (1833-37)","Democrat","21st
+22nd
+23rd
+24th","Dem
+Dem
+Dem
+Dem","Dem
+Dem
+Dem
+Dem",1829,1837,"Jackson"
+"8","Martin Van Buren","1837-1841","Richard M. Johnson","Democrat","25th
+26th","Dem
+Dem","Dem
+Dem",1837,1841,"Buren"
+"9","William H. Harrison","1841 (a)","John Tyler","Whig","","","",1841,1841,"Harrison"
+"10","John Tyler","1841-1845","vacant","Whig","27th
+28th","Whig
+Dem","Whig
+Dem",1841,1845,"Tyler"
+"11","James K. Polk","1845-1849","George M. Dallas","Democrat","29th
+30th","Dem
+Whig","Dem
+Dem",1845,1849,"Polk"
+"12","Zachary Taylor","1849-1850 (a)","Millard Fillmore","Whig","31st","Dem","Dem",1849,1850,"Taylor"
+"13","Millard Fillmore","1850-1853","vacant","Whig","32nd","Dem","Dem",1850,1853,"Fillmore"
+"14","Franklin Pierce","1853-1857","William R.D. King","Democrat","33rd
+34th","Dem
+Rep","Dem
+Dem",1853,1857,"Pierce"
+"15","James Buchanan","1857-1861","John C. Breckinridge","Democrat","35th
+36th","Dem
+Rep","Dem
+Dem",1857,1861,"Buchanan"
+"16","Abraham Lincoln","1861-1865 (a)","Hannibal Hamlin (1861-65)
+Andrew Johnson (1865)","Republican","37th
+38th","Rep
+Rep","Rep
+Rep",1861,1865,"Lincoln"
+"17","Andrew Johnson","1865-1869","vacant","Republican","39th
+40th","Union
+Rep","Union
+Rep",1865,1869,"Johnson"
+"18","Ulysses S. Grant","1869-1877","Schuyler Colfax (1869-73)
+Henry Wilson (1873-75)(a)","Republican","41st
+42nd
+43rd
+44th","Rep
+Rep
+Rep
+Dem","Rep
+Rep
+Rep
+Rep",1869,1877,"Grant"
+"19","Rutherford B. Hayes","1877-1881","William A. Wheeler","Republican","45th
+46th","Dem
+Dem","Rep
+Dem",1877,1881,"Hayes"
+"20","James A. Garfield","1881 (a)","Chester A. Arthur","Republican","47th","Rep","Rep",1881,1881,"Garfield"
+"21","Chester A. Arthur","1881-1885","vacant","Republican","48th","Dem","Rep",1881,1885,"Arthur"
+"22","Grover Cleveland","1885-1889","Thomas A. Hendricks (1885)(a)","Democrat","49th
+50th","Dem
+Dem","Rep
+Rep",1885,1889,"Cleveland"
+"23","Benjamin Harrison","1889-1893","Levi P. Morton","Republican","51st
+52nd","Rep
+Dem","Rep
+Rep",1889,1893,"Harrison"
+"24","Grover Cleveland","1893-1897","Adlai E. Stevenson","Democrat","53rd
+54th","Dem
+Rep","Dem
+Rep",1893,1897,"Cleveland"
+"25","William McKinley","1897-1901 (a)","Garret A. Hobart (1897-99)
+Theodore Roosevelt (1901)","Republican","55th
+56th","Rep
+Rep","Rep
+Rep",1897,1901,"McKinley"
+"26","Theodore Roosevelt","1901-1909","vacant (1901-05)
+Charles W. Fairbanks (1905-09)","Republican","57th
+58th
+59th
+60th","Rep
+Rep
+Rep
+Rep","Rep
+Rep
+Rep
+Rep",1901,1909,"Roosevelt"
+"27","William Howard Taft","1909-1913","James S. Sherman (1909-12)(a)","Republican","61st
+62nd","Rep
+Dem","Rep
+Rep",1909,1913,"Taft"
+"28","Woodrow Wilson","1913-1921","Thomas R. Marshall","Democrat","63rd
+64th
+65th
+66th","Dem
+Dem
+Dem
+Rep","Dem
+Dem
+Dem
+Rep",1913,1921,"Wilson"
+"29","Warren G. Harding","1921-1923 (a)","Calvin Coolidge","Republican","67th","Rep","Rep",1921,1923,"Harding"
+"30","Calvin Coolidge","1923-1929","vacant(1923-25)
+Charles G. Dawes (1925-29)","Republican","68th
+69th
+70th","Rep
+Rep
+Rep","Rep
+Rep
+Rep",1923,1929,"Coolidge"
+"31","Herbert Hoover","1929-1933","Charles Curtis","Republican","71st
+72nd","Rep
+Dem","Rep
+Rep",1929,1933,"Hoover"
+"32","Franklin D. Roosevelt","1933-1945 (a)","John N. Garner (1933-41)
+Henry A. Wallace (1941-45)
+Harry S. Truman (1945)","Democrat","73rd
+74th
+75th
+76th
+77th
+78th
+79th","Dem
+Dem
+Dem
+Dem
+Dem
+Dem
+Dem","Dem
+Dem
+Dem
+Dem
+Dem
+Dem
+Dem",1933,1945,"Roosevelt"
+"33","Harry S Truman","1945-1953","vacant(1945-49)
+Alben W. Barkley (1949-53)","Democrat","80th
+81st
+82nd","Rep
+Dem
+Dem","Rep
+Dem
+Dem",1945,1953,"Truman"
+"34","Dwight D. Eisenhower","1953-1961","Richard M. Nixon","Republican","83rd
+84th
+85th
+86th","Rep
+Dem
+Dem
+Dem","Rep
+Dem
+Dem
+Dem",1953,1961,"Eisenhower"
+"35","John F. Kennedy","1961-1963 (a)","Lyndon B. Johnson","Democrat","87th
+88th","Dem
+Dem","Dem
+Dem",1961,1963,"Kennedy"
+"36","Lyndon B. Johnson","1963-1969","vacant(1963-65)
+Hubert H. Humphrey (1965-69)","Democrat","89th
+90th","Dem
+Dem","Dem
+Dem",1963,1969,"Johnson"
+"37","Richard M. Nixon","1969-1974 (c)","Spiro T. Agnew (1969-73)
+Gerald R. Ford (1973-74)(d)","Republican","91st
+92nd
+93rd","Dem
+Dem
+Dem","Dem
+Dem
+Dem",1969,1974,"Nixon"
+"38","Gerald R. Ford","1974-1977","Nelson A. Rockefeller (d)","Republican","94th","Dem","Dem",1974,1977,"Ford"
+"39","James Earl Carter","1977-1981","Walter Mondale","Democrat","95th
+96th","Dem
+Dem","Dem
+Dem",1977,1981,"Carter"
+"40","Ronald Reagan","1981-1989","George Bush","Republican","97th
+98th
+99th
+100th","Dem
+Dem
+Dem
+Dem","Rep
+Rep
+Rep
+Dem",1981,1989,"Reagan"
+"41","George Bush","1989-1993","J. Danforth Quayle","Republican","101st
+102nd","Dem
+Dem","Dem
+Dem",1989,1993,"Bush"
+"42","William J. Clinton","1993-2001","Albert Gore Jr.","Democrat","103rd
+104th
+105th
+106th","Dem
+Rep
+Rep
+Rep","Dem
+Rep
+Rep
+Rep",1993,2001,"Clinton"
+"43","George W. Bush","2001-2009","Dick Cheney","Republican","107th
+108th
+109th
+110th","Rep
+Rep
+Rep
+Dem","Dem
+Rep
+Rep
+Dem",2001,2009,"Bush"
+"44","Barack H. Obama","2009-","Joe Biden","Democrat","111th
+112th
+113th
+114th","Dem
+Rep
+Rep
+Rep","Dem
+Dem
+Dem
+Rep",2009,2016,"Obama"
