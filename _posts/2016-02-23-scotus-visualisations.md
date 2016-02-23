@@ -1,11 +1,3 @@
----
-layout: post
-title: "SCOTUS over the years"
-author: Heike
-tags: [data visualization,statistics,EDA,data mining,R,statistical computing,statistical graphics,data wrangling]
----
-{% include JB/setup %}
-
 In the days since the death of Justice Antonin Scalia, there has been a
 lot of discussion on what is going to happen now - whether President
 Obama should or should not nominate a candidate to fill the vacancy in
@@ -36,7 +28,7 @@ election year was 84 years ago in 1932 (when President Herbert Hoover
 nominated Benjamin Cardozo as a replacement for retiring justice Oliver
 Wendell Holmes).
 
-![](2016-02-23-scotus-visualisations_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+![](assets/SCOTUS_files/unnamed-chunk-2-1.png)
 
 Russell Wheeler (Brookings Institution) is quoted saying "Justices in
 the modern era rarely die in office." There does not seem to be a
@@ -55,7 +47,7 @@ Associate Justice from 1972 onwards until becoming Chief Justice in
 1986. In the chart below, he shows up as having resigned from the AJ
 seat, and later as having died while serving as CJ).
 
-<img src="2016-02-23-scotus-visualisations_files/figure-markdown_strict/unnamed-chunk-3-1.png" title="" alt="" width="600" />
+<img src="assets/SCOTUS_files/unnamed-chunk-3-1.png" title="" alt="" width="600" />
 
 Another question that we might be asking is, how often justices in the
 modern era leave the office during an election year. This is shown in
@@ -65,13 +57,13 @@ and post 1920 era, we see that there is actually a trend for justices in
 the post 1920 era to leave office during the beginning of the
 presidential term.
 
-<img src="2016-02-23-scotus-visualisations_files/figure-markdown_strict/unnamed-chunk-4-1.png" title="" alt="" width="600" />
+<img src="assets/SCOTUS_files/unnamed-chunk-4-1.png" title="" alt="" width="600" />
 
 Accordingly, the number of supreme court nominations a president makes
 during his term in the post 1920 era is skewed towards the first years
 of his presidency, as can be seen in the chart below.
 
-<img src="2016-02-23-scotus-visualisations_files/figure-markdown_strict/unnamed-chunk-5-1.png" title="" alt="" width="600" />
+<img src="assets/SCOTUS_files/unnamed-chunk-5-1.png" title="" alt="" width="600" />
 
 ### Retirement plans? - above the party!
 
@@ -202,5 +194,10 @@ might have, so if you find any problems with the data, just email and
 we'll get the problems fixed. Here's the csv files for all of the data
 used in the above charts:
 
--   [Supreme court justices and nominations](justices-nominations.csv)
--   [Presidents of the United States](presidents.csv)
+-   [Supreme court justices and
+    nominations](assets/SCOTUS_files/justices-nominations.csv)
+-   [Presidents of the United
+    States](assets/SCOTUS_files/presidents.csv)
+
+Data and figures were scraped/processed/made with the R packages: knitr,
+rvest, lubridate, ggplot2. Thank you!
