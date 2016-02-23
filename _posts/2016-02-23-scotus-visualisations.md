@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "SCOTUS over the years"
-author: heike_hh
+author: heike
 tags: [politics,statistics,EDA,data mining,R,statistical computing,statistical graphics,data wrangling]
 ---
 {% include JB/setup %}
