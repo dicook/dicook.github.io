@@ -11,7 +11,7 @@ name : Di Cook
 description: Professor at Iowa State University Statistics
 url: http://dicook.github.io
 auto: true
-markdown: rdiscount
+markdown: kramdown
 permalink: /:year/:month/:day/:title 
 rdiscount extensions: [smart]
 
