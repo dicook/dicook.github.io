@@ -8,7 +8,7 @@ highlighter: rouge
 # so be sure to set them if your theme uses them.
 #
 name : Di Cook
-description: Professor at Iowa State University Statistics
+description: Professor at Monash University Econometrics and Business Statistics
 url: http://dicook.github.io
 auto: true
 markdown: kramdown
