@@ -31,7 +31,7 @@ blognav:
 - text: Home
   url: /blog.html
   layout: post_ak
-- text: ISU Statistical Graphics Working Group
+- text: ISU Statistical Graphics
   url: /graphics.html
   layout: default_wg
 - text: NUMBATS
