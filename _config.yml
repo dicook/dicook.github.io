@@ -34,6 +34,8 @@ blognav:
 - text: ISU Statistical Graphics Working Group
   url: /graphics.html
   layout: default_wg
+- text: NUMBATS
+  url: http://numbats.github.io
 
 wg:
 - text: Spring 2015
