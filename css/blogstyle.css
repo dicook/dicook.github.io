@@ -315,8 +315,7 @@ input.button {
 	display: inline;
 }
 #header-content li a {
-	float: left;
-	display: block;
+s	display: block;
 	padding: 10px 18px 7px 18px;	
 	color: #336699; 
 	text-decoration: none;
@@ -451,7 +450,7 @@ input.button {
 
 /* footer */
 #footer-wrap {
-	position: relative;
+	position: absolute;
 	height: 200px;
 	clear: both;
 	padding: 2.5em 0;
