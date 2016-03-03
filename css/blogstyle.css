@@ -37,7 +37,7 @@ a:hover {
 
 /* headers */
 h1, h2, h3 {
-	font: normal 1.4em Candara, 'Trebuchet MS', Tahoma, sans-serif;
+	font: bold 1.4em Candara, 'Trebuchet MS', Tahoma, sans-serif;
 	color: #F88F26;
 }
 h1 { font-size: 3em; }
