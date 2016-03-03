@@ -266,7 +266,6 @@ input.button {
 	background: #FFF 0 0;			
 }
 #header-content {
-	position: relative;
 	margin: 0 auto; 
 	padding: 0;
 }
@@ -587,7 +586,6 @@ input.button {
 .container {
 width:800px;
 margin:0 auto;
-position:relative;
 }
 
 #leftbox {
