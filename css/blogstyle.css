@@ -51,13 +51,13 @@ h1, h2, h3 {
 }
 
 p {
-	margin: 0px 10px;
+	margin: 10px 10px;
 	padding: 0;
 }
 
 ul, ol {
-	margin: 10px 0px;
-	padding: 0 0px;	
+	margin: 10px 10px;
+	padding: 0 15px;	
 }
 
 /* posts index */
@@ -122,9 +122,8 @@ ul, ol {
 
 /* images */
 img {
-  border: 1px solid #DADADA;
-  padding: 5px;
-  margin: 5px 5px 5px 5px;  
+	border: 1px solid #DADADA;
+	padding: 5px;
 }
 img.no-border {
 	border: none;
