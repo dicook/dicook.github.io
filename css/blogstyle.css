@@ -19,7 +19,7 @@
 body {
 	margin: 0; 	
         padding: 0;
-	font: normal .90em/1.9em Candara, 'Trebuchet MS', Tahoma, sans-serif;
+	font: normal .90em/2.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
 	color: #555;
 	text-align: left;
 	background: #FFFFFF;	
@@ -597,23 +597,19 @@ float:right;
 width:800px;
 }
 
-#duo1{float:left;width:50%;}
-#duo2{float:right;width:50%;}
-.inner{margin:5px 30px;}
-
 /* Clearing fix */
 .clearfix:after{clear:both;content:".";display:block;height:0;visibility:hidden;}
 
 .knitr.r {
   background-color: #f7f7f7;
   /*border:solid 1px #B0B0B0;*/
-  font-size: 1.25em
+  font-size: 1.1em
 }
 
 .knitr.inline {
   background-color: #f7f7f7;
   /*border:solid 1px #B0B0B0;*/
-  font-size: 1.25em
+  font-size: 1.1em
 }
 .error {
 	font-weight: bold;
