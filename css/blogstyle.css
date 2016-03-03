@@ -351,7 +351,7 @@ input.button {
 #content {
 	text-align: left;	
 	margin: 0px auto;
-        margin-left: 40px;
+        margin-left: 10px;
 	padding: 0;	
 }
 
@@ -364,7 +364,7 @@ input.button {
 #sidebar {
 	position: relative;
 	float: left;
-	width: 190px;
+	width: 10px;
 	margin: 0 0 10px 0;
 	padding: 5px 0 0 0;
 }
