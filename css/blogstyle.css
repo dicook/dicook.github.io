@@ -202,7 +202,7 @@ input {
 	color: #666666;
 }
 textarea {
-	width: 280px;
+	width: 480px;
 	padding:2px;
 	border: 1px solid #EFEFEF;
 	font: normal 1em Verdana, 'Trebuchet MS', Tahoma, sans-serif;
@@ -351,7 +351,7 @@ input.button {
 #content {
 	text-align: left;	
 	margin: 0px auto;
-        margin-left: 80px;
+        margin-left: 40px;
 	padding: 0;	
 }
 
