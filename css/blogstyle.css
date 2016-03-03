@@ -450,7 +450,7 @@ s	display: block;
 
 /* footer */
 #footer-wrap {
-	position: absolute;
+	position: relative;
 	height: 200px;
 	clear: both;
 	padding: 2.5em 0;
