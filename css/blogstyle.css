@@ -68,7 +68,7 @@ ul, ol {
 }
 
 .post > h2.title span.date {
-  position: absolute;
+  position: relative;
   right: 0;
   font-size: 0.9em; 
   color: #F88F26;
