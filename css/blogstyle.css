@@ -17,7 +17,8 @@
 * { padding: 0; margin: 0; }
 
 body {
-	margin: 0; 	padding: 0;
+	margin: 0; 	
+        padding: 0;
 	font: normal .70em/1.7em Candara, 'Trebuchet MS', Tahoma, sans-serif;
 	color: #555;
 	text-align: left;
@@ -202,7 +203,7 @@ input {
 	color: #666666;
 }
 textarea {
-	width: 480px;
+	width: 780px;
 	padding:2px;
 	border: 1px solid #EFEFEF;
 	font: normal 1em Verdana, 'Trebuchet MS', Tahoma, sans-serif;
@@ -441,15 +442,15 @@ input.button {
 #main {
 	margin: 0 20px 10px 0; 
 	padding: 0;		
-	width: 590px;
+	width: 800px;
 	float: left;	
 }
 #main h1 { 
 	font: normal 1.8em Georgia, "Times New Roman", Times, serif;
 	color: #F88F26; 	
 	padding: 0 0 5px 0;
-	margin: 15px 15px 20px 15px;
-	margin-left: 30px;
+	margin: 0px 15px 20px 15px;
+	margin-left: 0px;
 	background: url(../images/bk_dotted.gif) repeat-x left bottom;
 }
 #main li { 
@@ -478,48 +479,6 @@ input.button {
 	margin: 15px;
 }
 
-/* main working group */
-#main2 {
-	margin: 0 20px 10px 0; 
-	padding: 0;		
-	width: 590px;
-	float: left;	
-}
-#main2 h1 { 
-	font: normal 1.8em Georgia, "Times New Roman", Times, serif;
-	color: #F88F26; 	
-	padding: 0 0 5px 0;
-	margin: 15px 15px 20px 15px;
-	margin-left: 30px;
-	background: url(../images/bk_dotted.gif) repeat-x left bottom;
-}
-#main2 li { 
-	font: normal 1.2em Candara, 'Trebuchet MS', Tahoma, sans-serif;
-	padding: 0 0 5px 0;
-}
-#main2 li a { 
-	font: italic 1.1em Candara, 'Trebuchet MS', Tahoma, sans-serif;
-        font-weight: 150;
-	color: #F88F26;
-	margin-left: 1px;
-}
-#main2 li a:hover { 
-	font: bold 1.1em Candara, 'Trebuchet MS', Tahoma, sans-serif;
-        font-style: italic;
-	color: #F88F26;
-}
-#main2 h1 a {
-	color: #111;
-	text-decoration: none;
-}
-#main2 p, #main h2, #main h3, #main blockquote, #main form, #main table {
-	margin-left: 0;
-}
-#main2 form p {
-	margin: 15px;
-}
-
-
 /* footer */
 #footer-wrap {
 	position: relative;
@@ -533,30 +492,7 @@ input.button {
 	width: 100%;
 	float: left;	
 }
-#footer-wrap2 {
-	position: relative;
-	height: 200px;
-	clear: both;
-	padding: 2.5em 0;
-	font: normal .95em 'Trebuchet MS', Tahoma, sans-serif;
-	text-align: left;	
-	background: url(../images/stkilda.jpg) 0 0;
-	color: #336699;
-	width: 100%;
-	float: left;	
-}
-#footer-wrap3 {
-	position: relative;
-	height: 200px;
-	clear: both;
-	padding: 2.5em 0;
-	font: normal .95em 'Trebuchet MS', Tahoma, sans-serif;
-	text-align: left;	
-	background: url(../images/prairielite.jpg) 0 0;
-	color: #336699;
-	width: 100%;
-	float: left;	
-}
+
 #footer-wrap p {
 	margin-left: 0;
 }
