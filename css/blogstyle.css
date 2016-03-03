@@ -581,20 +581,20 @@ input.button {
 }
 
 .container {
-width:590px;
+width:800px;
 margin:0 auto;
 position:relative;
 }
 
 #leftbox {
 float:left;
-width:200px;
+width:0px;
 }
 
 #rightbox {
 margin-top: 10px;
 float:right;
-width:360px;
+width:800px;
 }
 
 #duo1{float:left;width:50%;}
