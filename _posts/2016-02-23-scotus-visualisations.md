@@ -19,7 +19,7 @@ right](http://www.politifact.com/truth-o-meter/article/2016/feb/17/misleading-no
 (which could also be read as half wrong, just to indicate my side of
 things). So what better way to add to the general hubbub than to look at
 some actual data?
-<p>
+
 Here goes: the first chart is an overview of the two major time series
 in question: in black and white from left to right we have the Chief
 Justice line and the ten Associate Justice (AJ) lines on a time line
