@@ -55,14 +55,18 @@ ul, ol {
 }
 
 /* posts index */
-.post > h3.title {
+.post > h2.title {
   position: relative;
-  padding-top: 10px; }
+  padding-top: 10px; 
+  color: #336699;
+}
 
-.post > h3.title span.date {
+.post > h2.title span.date {
   position: absolute;
   right: 0;
-  font-size: 0.9em; }
+  font-size: 0.9em; 
+  color: #336699;
+}
 
 .post > .more {
   margin: 10px 0;
