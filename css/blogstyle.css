@@ -58,14 +58,14 @@ ul, ol {
 .post > h2.title {
   position: relative;
   padding-top: 10px; 
-  color: #336699;
+  color: #F88F26;
 }
 
 .post > h2.title span.date {
   position: absolute;
   right: 0;
   font-size: 0.9em; 
-  color: #336699;
+  color: #F88F26;
 }
 
 .post > .more {
