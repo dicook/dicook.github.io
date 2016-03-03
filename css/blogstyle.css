@@ -142,7 +142,7 @@ code {
   margin: 10px 10px 10px 10px;
   text-align: left;
   overflow: auto;  
-  font: 0.9em/2.0em 'Lucida Console', 'courier new', monospace;
+  font: 0.9em/1.5em 'Lucida Console', 'courier new', monospace;
   /* white-space: pre; */   
   background: #FCFCF9;
 }
