@@ -75,7 +75,6 @@ of his presidency, as can be seen in the chart below.
 
 ### Retirement plans? - above the party!
 
-<!--Another question worth asking is, whether or not supreme court justices tend to leave office by retiring or resigning when a supporting party president is in office.-->
 Another question worth asking is, whether supreme court justices tend to
 leave office by retiring or resigning when a president from the same
 party is in office as when they were nominated. Visually this means that
@@ -105,10 +104,8 @@ might have, so if you find any problems with the data, just email and
 we'll get the problems fixed. Here's the csv files for all of the data
 used in the above charts:
 
--   [Supreme court justices and
-    nominations](assets/SCOTUS_files/justices-nominations.csv)
--   [Presidents of the United
-    States](assets/SCOTUS_files/presidents.csv)
+-   [Supreme court justices and nominations](/assets/SCOTUS_files/justices-nominations.csv)
+-   [Presidents of the United States](/assets/SCOTUS_files/presidents.csv)
 
-Data and figures were scraped/processed/made with the R packages: knitr,
-rvest, lubridate, ggplot2. Thank you!
+Data and figures were scraped/processed/made with the R packages: `knitr`,
+`rvest`, `lubridate`, `ggplot2`. Thank you for these tools!
