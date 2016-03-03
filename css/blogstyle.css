@@ -122,8 +122,9 @@ ul, ol {
 
 /* images */
 img {
-	border: 1px solid #DADADA;
-	padding: 5px;
+  border: 0px solid #DADADA;
+  padding: 5px;
+  margin: 5px 5px 5px 5px;
 }
 img.no-border {
 	border: none;
