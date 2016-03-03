@@ -13,7 +13,7 @@ the supreme court. As I write this, FoxNews reports that Americans are
 almost
 [2:1](http://www.foxnews.com/politics/interactive/2016/02/18/fox-news-poll-national-presidential-race-february-18-2016/)
 in favor of a nomination by President Obama, politifact has rated the
-claim from the Republican rumour mill of an \`80 year old tradition to
+claim from the Republican rumour mill of an `80 year old tradition to
 not nominate a supreme court candidate during an election' as [half
 right](http://www.politifact.com/truth-o-meter/article/2016/feb/17/misleading-notion-supreme-court-vacancy-hasnt-been/)
 (which could also be read as half wrong, just to indicate my side of
