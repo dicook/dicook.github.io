@@ -140,7 +140,7 @@ img.float-left {
 
 code {
   margin: 5px 0;
-  padding: 0px;
+  padding: 10px;
   text-align: left;
   overflow: auto;  
   font: 500 1em/1.5em 'Lucida Console', 'courier new', monospace;
