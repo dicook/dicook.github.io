@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <!-- Insert any scripts or links here -->
+    </head>
+    <body>
+<?php
+// This will send the e-mail and print a success/fail message
+if(isset($_POST['email'])){
+    if(!check_email_address($_POST['email'])){
+        echo "<h3 class='error'>Sorry! Please enter a valid e-mail address!</h3>";
+        echo "<h4 class=error'>Problems? Please contact dicook@iastate.edu</h4>";
+    } else if($_POST['answer'] != $QUESTIONS[$_POST['idx']]['ans']){
+        echo "<h3 class='error'>Sorry that was an incorrect response.</h3>";
+        echo "<h4 class='error'>Try again!</h4>";
+    } else {
+        $fh = fopen("addresses.txt",'a');
+        fwrite($fh, $_POST['email']."\n");
+        fclose($fh);
+
+        $to      = $_POST['email'];
+        $headers = "From: $FROM \r\n".
+                   "Reply-To: $FROM \r\n".
+                   "X-Mailer: PHP/".phpversion();
+
+        $suc = mail($to, $SUBJECT, $MESSAGE, $headers);
+
+        if($suc){
+            echo "<h3>That's right! An e-mail has been sent to ".$to."</h3>";
+            echo "<h4>Thank you for your interest in this material.</h4>";
+            exit;
+        } else {
+            echo "<h3 class='error'>You were correct! However, the e-mail failed to send!</h3>";
+            echo "<h4>Please contact dicook@iastate.edu</h4>";
+        }
+    }
+}
+?>
+        <!-- Insert Rest of HTML body here -->
+
+        <form method="POST">
+            <?php
+            $idx = rand(0,count($QUESTIONS)-1)
+            ?>
+            <img src="<?php echo $QUESTIONS[$idx]['img']; ?>"><br>
+            <input type="hidden" id="idx" name="idx" value="<?php echo $idx;?>">
+            <label for="answer"><?php echo $QUESTIONS[$idx]['que']; ?></label>
+            <input id="answer" name="answer" type="text"><br><br>
+
+            <label for="email">E-mail:</label>
+            <input id="email" name="email" type="text">
+            <button type="submit">Get Username/Password</button>
+        </form>
+
+    </body>
+</html>
