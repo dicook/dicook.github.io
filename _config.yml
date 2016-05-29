@@ -24,8 +24,6 @@ navigation:
   url: /research.html
 - text: Teaching
   url: /teaching.html
-- text: CV
-  url: /cv.html
 
 blognav:
 - text: Home
