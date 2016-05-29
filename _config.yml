@@ -18,7 +18,7 @@ navigation:
 - text: Home
   url: /index.html
 - text: Blog
-  url: /blog.html
+  url: http://visiphilia.org
   layout: post_ak
 - text: Research
   url: /research.html
