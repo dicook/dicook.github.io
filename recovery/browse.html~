@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <link type="text/css" href="http://streaming.stat.iastate.edu/recovery/resources/css/main.css" rel="stylesheet"></link>
+    <title>Recovery Act: Browse the data</title> 
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" id="ss">
+      function initialize(kml) {
+      var myLatlng = new google.maps.LatLng(41.875696,-87.624207);
+      var myOptions = {
+      zoom: 8,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      var map = new google.maps.Map(document.getElementById("map_canvas"),
+      myOptions);
+      var Layer = new  google.maps.KmlLayer(kml); 
+      Layer.setMap(map); 
+      };
+      function getKml(){
+      var kml=document.getElementById('sel').value;
+      initialize(kml)
+      }
+    </script>
+  </head>
+  <body onload="getKml();"> 
+    <div id="container"> 
+      <div class="top_menu"> 
+        <span> 
+          <a href="index.html">Giving</a> 
+        </span> 
+        <span> 
+          <a href="getting.html">Getting</a> 
+        </span> 
+        <span> 
+          <a href="where.html">Where</a> 
+        </span> 
+        <span> 
+          <a href="what.html">What</a> 
+        </span> 
+        <span> 
+          <a href="how.html">How</a> 
+        </span> 
+        <span> 
+          <a href="jobs.html">Jobs</a> 
+        </span> 
+        <span> 
+          <a href="politics.html">Politics</a> 
+        </span> 
+        <span> 
+          <a href="huh.html">Huh?</a> 
+        </span> 
+        <span class="here"> 
+          <a href="browse.html">Browse</a> 
+        </span> 
+        <span> 
+          <a href="analysts.html">Analysts</a> 
+        </span> 
+      </div> 
+
+      <div class="header"> 
+        <h1>Design For America</h1> 
+        <h2>Recovery And Reinvestment Act</h2> 
+      </div> 
+
+        <div class="center">
+            <div id="map_canvas" style="width:100%; height:300px;"></div>
+        </div>
+      <div class="center">
+        <form action="">
+          <p>
+            <select name="cars" id="sel">
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200901prime.kmz">Prime for 2009-01</option>
+              <option  value="http://tengfei.name/recovery_data_expo/kmlnew/200901sub.kmz">Sub for 2009-01</option>
+              <option  value="http://tengfei.name/recovery_data_expo/kmlnew/200902prime.kmz">Prime for 2009-02</option>
+              <option  value="http://tengfei.name/recovery_data_expo/kmlnew/200902sub.kmz">Sub for 2009-02</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200903prime.kmz">Prime for 2009-03</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200903sub.kmz">Sub for 2009-03</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200904prime.kmz">Prime for 2009-04</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200904sub.kmz">Sub for 2009-04</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200905prime.kmz">Prime for 2009-05</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200905sub.kmz">Sub for 2009-05</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200906prime.kmz">Prime for 2009-06</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200906sub.kmz">Sub for 2009-06</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200907prime.kmz">Prime for 2009-07</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200907sub.kmz">Sub for 2009-07</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200908prime.kmz">Prime for 2009-08</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200908sub.kmz">Sub for 2009-08</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200909prime.kmz">Prime for 2009-09</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/200909sub.kmz">Sub for 2009-09</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/2009010prime.kmz">Prime for 2009-10</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/2009010sub.kmz">Sub for 2009-10</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/2009011prime.kmz">Prime for 2009-11</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/2009011sub.kmz">Sub for 2009-11</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/2009012prime.kmz">Prime for 2009-12</option>
+              <option value="http://tengfei.name/recovery_data_expo/kmlnew/2009012sub.kmz">Sub for 2009-12</option>
+            </select>
+            <button type="button" onclick="getKml()">Go</button>
+          </p>
+  </form>
+
+Some months contain a lot of data and may take <br />
+a couple of seconds to display in googlemaps. <br /><br />
+  </div>
+  <div class="footer"> 
+    <h2>Acknowledgements</h2> 
+    
+                <p>
+                    This analysis was conducted by students and faculty in the<br>
+                 <a style='text-decoration: none;' href="http://www.stat.iastate.edu"> Department of Statistics </a> graphics working group<br>
+                 at Iowa State University.
+	            </p>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a style='text-decoration: none;' rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+
+            <br />
+            <br />
+            <p>Last modified: Mon May 17 11:07:00 CDT 2010</p>
+
+  </div> 
+</div> 
+</body>
+</html>
+

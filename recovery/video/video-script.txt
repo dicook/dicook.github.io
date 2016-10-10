@@ -1,0 +1,23 @@
+Introduction
+
+The Sunlight Foundation through its "Design for America" contest has offered the opportunity for designers to come up with creative ways to make sense of the recently passed American Recovery and Reinvestment Act.  The Statistical Graphics group at Iowa State saw this as a chance to use their expertise to help their fellow citizens digest the large amount of data released.  To keep with the spirit of the Design for America contest, we chose to use graphical methods that would appeal to intuition and pique the interest of the reader.  
+
+Overview
+
+When an interested citizen first views our website they are greeted with information right away!  The homepage contains information on who is giving away the money. We chose to present our findings in a web site, so that many different aspects of the recovery funds spending could be displayed. Findings were divided into smaller sub sections that, when put together, give a comprehensive view of the A.R.R.A.  The other subsections, each with their own tab, discuss: Who is getting the money, where in the United States the money is going,  What the money is being spent on?  How the money is dispersed?  and What jobs have been created?     Other tabs such as politics and "huh?" try to dig deeper into the data.  We examined if the democratic congress was showing favor to friendly democratic districts by giving them extra recovery money.    The "huh" section is a collection of things that made us say "huh" while looking at the data.  When creating a data set as massive as this one there will inevitably be small hiccups that pop up.  These problems can range from typos, miscoded variables, and missing values to inconsistent and completely non sensical values.  It is a tough job collecting this data and when dealing with thousands of reports, it is expected that something will go wrong.  The "huh" section points out a few of those small errors that were caught.  The "Browse" tab gives the reader an opportunity to see the data for themselves in an interactive map.  The last section highlights who we are and what resources we used to complete our entry.
+
+Giving
+
+The America Reinvestment and Recovery Act signed in 2009 earmarked seven hundred and seven billion dollars for distribution.  There were a total of forty three primary funding agencies given the task of distributing funds.  The bar-chart under the giving tab highlights, in order, the agencies by the amount of money they distributed.  The scale is in the billions of dollars and it is immediately obvious that the Department of Education was the biggest distributer of recovery funds.  Alone they awarded over sixty billion dollars.  The next highest agencies were the Department of Transportation and Department of Energy, who appropriated forty billion dollars and thirty billion dollars, respectively.
+
+Where
+
+An obvious question that might enter a readers head is "where did the money go?"  By clicking on the link "Browse the prime recipients across the globe" under the "Where" tab we are given the opportunity to look at exactly who received recovery funds, where they were located, and how much they received.  We see that the locations of the recipients are quite diverse.     The red dots not only completely cover the united states and its territories but also appear in other places around the world.  If you pay close attention you may also see some oddities in the data, such as award amounts without a recipient name, recipient names without award amounts, or even recipients who have been misplaced on the map.  
+
+Why we got involved
+
+The ISU Graphics group saw this contest as a great opportunity to make sense of current events, by getting involved in a real life project that will help educate the public and help make progress towards a more transparent government.  That said, the prospect of winning prize money was also a motivating factor. 
+
+Overall impressions
+
+Our group was overall impressed with the goal of the contest.  One of the best ways to facilitate transparency is through the release of data and there are few better ways to interpret data than through visualization.  There were many choices of topics, but looking at the Recovery act data seemed too be the best fit for us.  After the entry deadline, we noticed few other contestants focused on data analysis, and we were pleased at the route we took.  Hopefully we were able to help the recovery.gov website clean up the data, explain more about the spending of the stimulus funds and bring the American reinvestment and recovery act to life.  
