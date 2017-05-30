@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Visualisation for Data Mining</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Di Cook &amp; Eun-Kyung Lee" />
+    <link href="VisualDM_files/remark-css/example.css" rel="stylesheet" />
+    <script src="VisualDM_files/htmlwidgets/htmlwidgets.js"></script>
+    <script src="VisualDM_files/plotly-binding/plotly.js"></script>
+    <script src="VisualDM_files/typedarray/typedarray.min.js"></script>
+    <script src="VisualDM_files/jquery/jquery.min.js"></script>
+    <link href="VisualDM_files/crosstalk/css/crosstalk.css" rel="stylesheet" />
+    <script src="VisualDM_files/crosstalk/js/crosstalk.min.js"></script>
+    <link href="VisualDM_files/plotlyjs/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="VisualDM_files/plotlyjs/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="myremark.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Visualisation for Data Mining
+### Di Cook &amp; Eun-Kyung Lee
+### May 30, 2017 <br> <br> Slides on <a href="http://bit.ly/dmvis2017" class="uri">http://bit.ly/dmvis2017</a>
+
+---
+
+
+
+
+
+
+class: inverse middle 
+## Who are we?
+
+.pull-left[
+Di is
+  - Professor of Business Analytics at Monash Uni
+  - Editor of the Journal of Computational and Graphical Statistics
+  - Fellow of the American Statistical Association
+  - Ordinary Member of the R Foundation
+  - Loves tennis, soccer and cricket
+]
+
+.pull-right[
+Eun-Kyung is
+  - Associate Professor at EWHA Women's University, Seoul, Korea
+  - Chair of the Department for 3 more months!
+  - Associate Editor of the Journal of Computational and Graphical Statistics
+  - Author of many R packages, including PPtreeViz, PPtree, EMSaov, asVPC
+  - Loves sleeping!
+]
+
+---
+
+class: inverse middle 
+## Getting setup
+
+- Download a zipped copy of the slides and data from [https://github.com/EK-Lee/WOMBAT-2017](https://github.com/EK-Lee/WOMBAT-2017)
+- To follow along with the slides, open the file `VisualDM.html`
+- To run the code examples, open `VisualDM.Rmd` in RStudio
+- Cheatsheets for [rmarkdown](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf), [ggplot2](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf), [shiny](https://www.rstudio.com/wp-content/uploads/2016/01/shiny-cheatsheet.pdf)
+
+---
+
+## Conceptual framework
+
+- Visual methods for high-dimensional data are well-developed and understood. Toolbox includes:
+    + scatterplot matrices
+    + parallel coordinate plots
+    + interactive tools like brushing and linking
+    + dynamic methods like tours
+- These methods can also be used to visualise our models, often leading to some surprise that the fitted models may be different from expected.
+
+---
+
+## Questions to answer
+
+- What does the model look like? How does the model change when its parameters change? How do the parameters change when the data is changed?
+- How well does the model fit the data? How does the shape of the model compare to the shape of the data? Is the model fitting uniformly good, or good in some regions but poor in other regions? Where might the fit be improved?
+
+---
+
+
+## Key strategies
+
+- Display the model in data space (m-in-ds), as well as the data in the model space.
+- Look at all members of a collection of a model, not just a single one.
+- Explore the process of fitting, not just the end result.
+
+---
+
+
+## Model in the data space
+
+&lt;img src="figure/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+## Model in the data space
+
+&lt;img src="figure/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+class: inverse middle center
+## Your Turn
+
+For each of the two previous displays, write down one thing that you learn differently from the two different ways of looking at the model and data.
+
+
+
+---
+
+
+class: inverse middle center
+## Your Turn
+
+This is a typical diagram used to explain how to build a Support Vector Machine. Is it M-in-DS or D-in-MS??
+
+![produced by cyc, creative commons license, available on wikipedia](svm.png)
+
+Illustration produced by cyc, creative commons license, available on wikipedia
+
+
+
+---
+
+
+## All members of a collective
+
+- All possible models,  e.g. for a linear regression, we can generate all possible main effects models.
+- Same model fit to subsets: neural networks (ensembles of logistic models), random forests (ensembles of trees)
+
+---
+
+
+## Linear regression
+
+- Model level: model fit statistics. `\(m\)` observations.
+- Model-estimate level: coefficient estimates on various scales. `\(m \times p\)` observations.
+- Estimate level: summary of estimates over the models. `\(p\)` observations.
+- Model-observation level: residuals and influence measures. `\(m \times n\)` observations.
+ Observation level: the original data, plus summaries of residual behavior. `\(n\)` observations.
+
+---
+
+
+## All possible models
+
+
+
+<div id="1643ec8ab45c" style="width:648px;height:504px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="1643ec8ab45c">{"x":{"data":[{"x":[2,2,3,3,4,4,5,2,3,3,4,4,5,5,6,2,3,3,4,4,5,5,6,3,4,4,5,5,6,6,7,2,3,3,4,4,5,5,6,3,4,4,5,5,6,6,7,3,4,4,5,5,6,6,7,4,5,5,6,6,7,7,8],"y":[0.392010833296683,0.206801884406457,0.478086617500185,0.100858470093011,0.563073395045698,0.236317861028658,0.582238554957379,0.00705475659604356,0.423761988858629,0.220485795234073,0.513401672541796,0.102056481144179,0.576868833836977,0.242841399155277,0.599159559132491,0.105515158465232,0.449544577246612,0.265846094179209,0.530892838437479,0.270846158253605,0.58881476560873,0.338116703569813,0.609830436945863,0.138619048638002,0.463852746161147,0.301950408071467,0.548353848996478,0.289905840567218,0.595630076300652,0.361615618133914,0.618769398556097,0.239563940512596,0.392016330051572,0.379832840570939,0.478548586589883,0.404107657817152,0.564480172420086,0.458677278669754,0.583888012878694,0.251450938600556,0.424022403909788,0.397594366400413,0.513407707353402,0.406393443424955,0.577475849020185,0.464577220949235,0.59986437110751,0.240026276892515,0.453511183317593,0.383132925659982,0.537257135138627,0.406246417407251,0.594958116387015,0.458753552438523,0.61675339282836,0.251724024719733,0.465640502788283,0.397775657588054,0.551640989874312,0.410513809055582,0.599834011938539,0.465661749618338,0.623360592856449],"text":["df: 2<br />val: 0.392010833<br />name: livingArea","df: 2<br />val: 0.206801884<br />name: size","df: 3<br />val: 0.478086618<br />name: livingArea,size","df: 3<br />val: 0.100858470<br />name: zoneRM,zoneRS","df: 4<br />val: 0.563073395<br />name: livingArea,zoneRM,zoneRS","df: 4<br />val: 0.236317861<br />name: size,zoneRM,zoneRS","df: 5<br />val: 0.582238555<br />name: livingArea,size,zoneRM,zoneRS","df: 2<br />val: 0.007054757<br />name: acTypeNo AC","df: 3<br />val: 0.423761989<br />name: livingArea,acTypeNo AC","df: 3<br />val: 0.220485795<br />name: size,acTypeNo AC","df: 4<br />val: 0.513401673<br />name: livingArea,size,acTypeNo AC","df: 4<br />val: 0.102056481<br />name: zoneRM,zoneRS,acTypeNo AC","df: 5<br />val: 0.576868834<br />name: livingArea,zoneRM,zoneRS,acTypeNo AC","df: 5<br />val: 0.242841399<br />name: size,zoneRM,zoneRS,acTypeNo AC","df: 6<br />val: 0.599159559<br />name: livingArea,size,zoneRM,zoneRS,acTypeNo AC","df: 2<br />val: 0.105515158<br />name: bedrms","df: 3<br />val: 0.449544577<br />name: livingArea,bedrms","df: 3<br />val: 0.265846094<br />name: size,bedrms","df: 4<br />val: 0.530892838<br />name: livingArea,size,bedrms","df: 4<br />val: 0.270846158<br />name: zoneRM,zoneRS,bedrms","df: 5<br />val: 0.588814766<br />name: livingArea,zoneRM,zoneRS,bedrms","df: 5<br />val: 0.338116704<br />name: size,zoneRM,zoneRS,bedrms","df: 6<br />val: 0.609830437<br />name: livingArea,size,zoneRM,zoneRS,bedrms","df: 3<br />val: 0.138619049<br />name: acTypeNo AC,bedrms","df: 4<br />val: 0.463852746<br />name: livingArea,acTypeNo AC,bedrms","df: 4<br />val: 0.301950408<br />name: size,acTypeNo AC,bedrms","df: 5<br />val: 0.548353849<br />name: livingArea,size,acTypeNo AC,bedrms","df: 5<br />val: 0.289905841<br />name: zoneRM,zoneRS,acTypeNo AC,bedrms","df: 6<br />val: 0.595630076<br />name: livingArea,zoneRM,zoneRS,acTypeNo AC,bedrms","df: 6<br />val: 0.361615618<br />name: size,zoneRM,zoneRS,acTypeNo AC,bedrms","df: 7<br />val: 0.618769399<br />name: livingArea,size,zoneRM,zoneRS,acTypeNo AC,bedrms","df: 2<br />val: 0.239563941<br />name: bathrms","df: 3<br />val: 0.392016330<br />name: livingArea,bathrms","df: 3<br />val: 0.379832841<br />name: size,bathrms","df: 4<br />val: 0.478548587<br />name: livingArea,size,bathrms","df: 4<br />val: 0.404107658<br />name: zoneRM,zoneRS,bathrms","df: 5<br />val: 0.564480172<br />name: livingArea,zoneRM,zoneRS,bathrms","df: 5<br />val: 0.458677279<br />name: size,zoneRM,zoneRS,bathrms","df: 6<br />val: 0.583888013<br />name: livingArea,size,zoneRM,zoneRS,bathrms","df: 3<br />val: 0.251450939<br />name: acTypeNo AC,bathrms","df: 4<br />val: 0.424022404<br />name: livingArea,acTypeNo AC,bathrms","df: 4<br />val: 0.397594366<br />name: size,acTypeNo AC,bathrms","df: 5<br />val: 0.513407707<br />name: livingArea,size,acTypeNo AC,bathrms","df: 5<br />val: 0.406393443<br />name: zoneRM,zoneRS,acTypeNo AC,bathrms","df: 6<br />val: 0.577475849<br />name: livingArea,zoneRM,zoneRS,acTypeNo AC,bathrms","df: 6<br />val: 0.464577221<br />name: size,zoneRM,zoneRS,acTypeNo AC,bathrms","df: 7<br />val: 0.599864371<br />name: livingArea,size,zoneRM,zoneRS,acTypeNo AC,bathrms","df: 3<br />val: 0.240026277<br />name: bedrms,bathrms","df: 4<br />val: 0.453511183<br />name: livingArea,bedrms,bathrms","df: 4<br />val: 0.383132926<br />name: size,bedrms,bathrms","df: 5<br />val: 0.537257135<br />name: livingArea,size,bedrms,bathrms","df: 5<br />val: 0.406246417<br />name: zoneRM,zoneRS,bedrms,bathrms","df: 6<br />val: 0.594958116<br />name: livingArea,zoneRM,zoneRS,bedrms,bathrms","df: 6<br />val: 0.458753552<br />name: size,zoneRM,zoneRS,bedrms,bathrms","df: 7<br />val: 0.616753393<br />name: livingArea,size,zoneRM,zoneRS,bedrms,bathrms","df: 4<br />val: 0.251724025<br />name: acTypeNo AC,bedrms,bathrms","df: 5<br />val: 0.465640503<br />name: livingArea,acTypeNo AC,bedrms,bathrms","df: 5<br />val: 0.397775658<br />name: size,acTypeNo AC,bedrms,bathrms","df: 6<br />val: 0.551640990<br />name: livingArea,size,acTypeNo AC,bedrms,bathrms","df: 6<br />val: 0.410513809<br />name: zoneRM,zoneRS,acTypeNo AC,bedrms,bathrms","df: 7<br />val: 0.599834012<br />name: livingArea,zoneRM,zoneRS,acTypeNo AC,bedrms,bathrms","df: 7<br />val: 0.465661750<br />name: size,zoneRM,zoneRS,acTypeNo AC,bedrms,bathrms","df: 8<br />val: 0.623360593<br />name: livingArea,size,zoneRM,zoneRS,acTypeNo AC,bedrms,bathrms"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2,3,4,5,6,7,8],"y":[0.392010833296683,0.478086617500185,0.563073395045698,0.58881476560873,0.609830436945863,0.618769398556097,0.623360592856449],"text":["df: 2<br />val: 0.3920108<br />name: livingArea","df: 3<br />val: 0.4780866<br />name: livingArea,size","df: 4<br />val: 0.5630734<br />name: livingArea,zoneRM,zoneRS","df: 5<br />val: 0.5888148<br />name: livingArea,zoneRM,zoneRS,bedrms","df: 6<br />val: 0.6098304<br />name: livingArea,size,zoneRM,zoneRS,bedrms","df: 7<br />val: 0.6187694<br />name: livingArea,size,zoneRM,zoneRS,acTypeNo AC,bedrms","df: 8<br />val: 0.6233606<br />name: livingArea,size,zoneRM,zoneRS,acTypeNo AC,bedrms,bathrms"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":25.3933463796477,"r":7.30593607305936,"b":39.3476842791911,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"range":[1.7,8.3],"tickmode":"array","ticktext":["2","4","6","8"],"tickvals":[2,4,6,8],"categoryorder":"array","categoryarray":["2","4","6","8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"Degrees of Freedom","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"range":[-0.0237605352169767,0.654175884669469],"tickmode":"array","ticktext":["0.0","0.2","0.4","0.6"],"tickvals":[0,0.2,0.4,0.6],"categoryorder":"array","categoryarray":["0.0","0.2","0.4","0.6"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"R2","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","width":648,"height":504,"barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"source":"A","attrs":{"1643e13195e94":{"x":{},"y":{},"label":{},"type":"scatter"},"1643e66905057":{"x":{},"y":{},"label":{}}},"cur_data":"1643e13195e94","visdat":{"1643e13195e94":["function (y) ","x"],"1643e66905057":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
+
+---
+
+
+## Coefficients
+
+
+
+<div id="1643e4b32b57c" style="width:648px;height:504px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="1643e4b32b57c">{"x":{"data":[{"x":[1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7,null,1,2,3,4,5,6,7],"y":[0.626107685064383,0,0,0,0,0,0,null,0,0.4547547519339,0,0,0,0,0,null,0.541886123367522,0.30523606546108,0,0,0,0,0,null,0,0,-0.144840007577429,0.543539514270682,0,0,0,null,0.688247535190442,0,-0.3651629799066,0.543225330256411,0,0,0,null,0,0.398477112325029,-0.291301600854365,0.0925609283993708,0,0,0,null,0.635772330770966,0.160046328208391,-0.407190090536195,0.362116004085744,0,0,0,null,0,0,0,0,-0.22956097491402,0,0,null,0.65265182022588,0,0,0,-0.492382768382373,0,0,null,0,0.463183756270689,0,0,-0.320543291754452,0,0,null,0.568123223585292,0.311659048706256,0,0,-0.519561846895643,0,0,null,0,0,-0.12234201984655,0.55320286115311,-0.0967055415884621,0,0,null,0.702691334685206,0,-0.292880450712389,0.576251570151035,-0.330574705599579,0,0,null,0,0.409379868846119,-0.242403002368688,0.102945862844991,-0.22741135506733,0,0,null,0.647494800150812,0.17327034069976,-0.330300527493347,0.383869472969374,-0.367525574352652,0,0,null,0,0,0,0,0,0.324830969067411,0,null,0.911355812147819,0,0,0,0,-0.372693222308289,0,null,0,0.4078158380443,0,0,0,0.247482264839096,0,null,0.817625111880073,0.296915158009781,0,0,0,-0.357269219039134,0,null,0,0,-0.385312224195057,0.524674599215441,0,0.426567365088492,0,null,0.878089788259868,0,-0.281990756216738,0.554431062911984,0,-0.255339996251638,0,null,0,0.293491581662311,-0.447210387793582,0.196120709251718,0,0.345012368822221,0,null,0.829958157100969,0.167729096344856,-0.323028738566098,0.365032946370812,0,-0.264570219846372,0,null,0,0,0,0,-0.517878975385748,0.377746750479513,0,null,0.891270101112737,0,0,0,-0.342453954672195,-0.322329003409834,0,null,0,0.411696833629087,0,0,-0.540948132571838,0.302019112066683,0,null,0.793526021548484,0.302900608779831,0,0,-0.378665352378407,-0.301268511815055,0,null,0,0,-0.31284687565505,0.562820498231705,-0.397443134666645,0.462040423360372,0,null,0.865280586475769,0,-0.239950728722572,0.57692033779562,-0.238838987791799,-0.22407548464529,0,null,0,0.303527476440702,-0.368729385568605,0.227312596333702,-0.442045242356843,0.381677547194639,0,null,0.812702341503676,0.176574168213354,-0.276889327088193,0.380885098848462,-0.27442331560415,-0.229134396133356,0,null,0,0,0,0,0,0,0.48945269486713,null,0.623191173475514,0,0,0,0,0,0.0037420308304893,null,0,0.380452834757518,0,0,0,0,0.422553820312363,null,0.514689391867879,0.30669519280194,0,0,0,0,0.0343782080981205,null,0,0,-0.209247186917453,0.683421501554564,0,0,0.558650376278776,null,0.641664184845606,0,-0.357193960279907,0.558326368540159,0,0,0.0602244867457098,null,0,0.261818820351072,-0.298166168637191,0.371223139453774,0,0,0.495215931518742,null,0.584973728939601,0.161096739909838,-0.39883471570002,0.377283212697524,0,0,0.0652288458467532,null,0,0,0,0,-0.298370293696017,0,0.495005073866063,null,0.673083612393974,0,0,0,-0.497011038900367,0,-0.0258948841098222,null,0,0.389135797450201,0,0,-0.365469410009769,0,0.427828034904589,null,0.564963744124328,0.311818127142926,0,0,-0.51886979849292,0,0.00394958537201339,null,0,0,-0.178295767255315,0.697064124676716,-0.133617454973925,0,0.559811895169571,null,0.671563821984521,0,-0.289304635595143,0.585459901651346,-0.322839513500338,0,0.0398057281922953,null,0,0.272374697284551,-0.251652382216849,0.380718392126684,-0.216276702751121,0,0.494538478920988,null,0.613825182334319,0.173664210320489,-0.326532159633634,0.393355394733896,-0.359273842934503,0,0.0428961106310655,null,0,0,0,0,0,-0.029914610872976,0.510250472723432,null,0.84946153638793,0,0,0,0,-0.397401648268622,0.103677332389297,null,0,0.386038101050286,0,0,0,-0.0802873324872116,0.477390520566977,null,0.737557072431218,0.301774296369886,0,0,0,-0.388367904055998,0.131550223207565,null,0,0,-0.241278542403911,0.66937782664382,0,0.0659091933397705,0.514204815112358,null,0.800772732587933,0,-0.254770516838687,0.588297630389533,0,-0.286236411586063,0.129655847448952,null,0,0.260221291819373,-0.303752623839525,0.370440893449346,0,0.0126113299441252,0.487098594415643,null,0.746925800122613,0.170904749081302,-0.294894179472585,0.397417860385148,0,-0.297561109498541,0.137711877774106,null,0,0,0,0,-0.314707987307981,0.0244450702352515,0.478313957646013,null,0.850327496414876,0,0,0,-0.320463688701655,-0.342422406219255,0.0707422599529997,null,0,0.390212808931764,0,0,-0.352302513665078,-0.0199786710759295,0.441283563762358,null,0.736940149609655,0.305982433358005,0,0,-0.349175656329219,-0.328336820391486,0.0960530082587233,null,0,0,-0.211527738437652,0.68252569993731,-0.191990630135458,0.0962024701605082,0.495445632513714,null,0.802105755620498,0,-0.222989987479592,0.602217460931869,-0.205233980094646,-0.254439736887464,0.108962524970064,null,0,0.267470130196184,-0.267528507456191,0.3788913203549,-0.244995505633161,0.0497833021290272,0.462405283920521,null,0.746221919931448,0.178078153605415,-0.259475984251913,0.405656805700414,-0.239601257900415,-0.260915283103926,0.113891509639854],"text":["var: livingArea<br />val:  0.626107685<br />id:  1","var: size<br />val:  0.000000000<br />id:  1","var: zoneRM<br />val:  0.000000000<br />id:  1","var: zoneRS<br />val:  0.000000000<br />id:  1","var: acTypeNo.AC<br />val:  0.000000000<br />id:  1","var: bedrms<br />val:  0.000000000<br />id:  1","var: bathrms<br />val:  0.000000000<br />id:  1",null,"var: livingArea<br />val:  0.000000000<br />id:  2","var: size<br />val:  0.454754752<br />id:  2","var: zoneRM<br />val:  0.000000000<br />id:  2","var: zoneRS<br />val:  0.000000000<br />id:  2","var: acTypeNo.AC<br />val:  0.000000000<br />id:  2","var: bedrms<br />val:  0.000000000<br />id:  2","var: bathrms<br />val:  0.000000000<br />id:  2",null,"var: livingArea<br />val:  0.541886123<br />id:  3","var: size<br />val:  0.305236065<br />id:  3","var: zoneRM<br />val:  0.000000000<br />id:  3","var: zoneRS<br />val:  0.000000000<br />id:  3","var: acTypeNo.AC<br />val:  0.000000000<br />id:  3","var: bedrms<br />val:  0.000000000<br />id:  3","var: bathrms<br />val:  0.000000000<br />id:  3",null,"var: livingArea<br />val:  0.000000000<br />id:  4","var: size<br />val:  0.000000000<br />id:  4","var: zoneRM<br />val: -0.144840008<br />id:  4","var: zoneRS<br />val:  0.543539514<br />id:  4","var: acTypeNo.AC<br />val:  0.000000000<br />id:  4","var: bedrms<br />val:  0.000000000<br />id:  4","var: bathrms<br />val:  0.000000000<br />id:  4",null,"var: livingArea<br />val:  0.688247535<br />id:  5","var: size<br />val:  0.000000000<br />id:  5","var: zoneRM<br />val: -0.365162980<br />id:  5","var: zoneRS<br />val:  0.543225330<br />id:  5","var: acTypeNo.AC<br />val:  0.000000000<br />id:  5","var: bedrms<br />val:  0.000000000<br />id:  5","var: bathrms<br />val:  0.000000000<br />id:  5",null,"var: livingArea<br />val:  0.000000000<br />id:  6","var: size<br />val:  0.398477112<br />id:  6","var: zoneRM<br />val: -0.291301601<br />id:  6","var: zoneRS<br />val:  0.092560928<br />id:  6","var: acTypeNo.AC<br />val:  0.000000000<br />id:  6","var: bedrms<br />val:  0.000000000<br />id:  6","var: bathrms<br />val:  0.000000000<br />id:  6",null,"var: livingArea<br />val:  0.635772331<br />id:  7","var: size<br />val:  0.160046328<br />id:  7","var: zoneRM<br />val: -0.407190091<br />id:  7","var: zoneRS<br />val:  0.362116004<br />id:  7","var: acTypeNo.AC<br />val:  0.000000000<br />id:  7","var: bedrms<br />val:  0.000000000<br />id:  7","var: bathrms<br />val:  0.000000000<br />id:  7",null,"var: livingArea<br />val:  0.000000000<br />id:  8","var: size<br />val:  0.000000000<br />id:  8","var: zoneRM<br />val:  0.000000000<br />id:  8","var: zoneRS<br />val:  0.000000000<br />id:  8","var: acTypeNo.AC<br />val: -0.229560975<br />id:  8","var: bedrms<br />val:  0.000000000<br />id:  8","var: bathrms<br />val:  0.000000000<br />id:  8",null,"var: livingArea<br />val:  0.652651820<br />id:  9","var: size<br />val:  0.000000000<br />id:  9","var: zoneRM<br />val:  0.000000000<br />id:  9","var: zoneRS<br />val:  0.000000000<br />id:  9","var: acTypeNo.AC<br />val: -0.492382768<br />id:  9","var: bedrms<br />val:  0.000000000<br />id:  9","var: bathrms<br />val:  0.000000000<br />id:  9",null,"var: livingArea<br />val:  0.000000000<br />id: 10","var: size<br />val:  0.463183756<br />id: 10","var: zoneRM<br />val:  0.000000000<br />id: 10","var: zoneRS<br />val:  0.000000000<br />id: 10","var: acTypeNo.AC<br />val: -0.320543292<br />id: 10","var: bedrms<br />val:  0.000000000<br />id: 10","var: bathrms<br />val:  0.000000000<br />id: 10",null,"var: livingArea<br />val:  0.568123224<br />id: 11","var: size<br />val:  0.311659049<br />id: 11","var: zoneRM<br />val:  0.000000000<br />id: 11","var: zoneRS<br />val:  0.000000000<br />id: 11","var: acTypeNo.AC<br />val: -0.519561847<br />id: 11","var: bedrms<br />val:  0.000000000<br />id: 11","var: bathrms<br />val:  0.000000000<br />id: 11",null,"var: livingArea<br />val:  0.000000000<br />id: 12","var: size<br />val:  0.000000000<br />id: 12","var: zoneRM<br />val: -0.122342020<br />id: 12","var: zoneRS<br />val:  0.553202861<br />id: 12","var: acTypeNo.AC<br />val: -0.096705542<br />id: 12","var: bedrms<br />val:  0.000000000<br />id: 12","var: bathrms<br />val:  0.000000000<br />id: 12",null,"var: livingArea<br />val:  0.702691335<br />id: 13","var: size<br />val:  0.000000000<br />id: 13","var: zoneRM<br />val: -0.292880451<br />id: 13","var: zoneRS<br />val:  0.576251570<br />id: 13","var: acTypeNo.AC<br />val: -0.330574706<br />id: 13","var: bedrms<br />val:  0.000000000<br />id: 13","var: bathrms<br />val:  0.000000000<br />id: 13",null,"var: livingArea<br />val:  0.000000000<br />id: 14","var: size<br />val:  0.409379869<br />id: 14","var: zoneRM<br />val: -0.242403002<br />id: 14","var: zoneRS<br />val:  0.102945863<br />id: 14","var: acTypeNo.AC<br />val: -0.227411355<br />id: 14","var: bedrms<br />val:  0.000000000<br />id: 14","var: bathrms<br />val:  0.000000000<br />id: 14",null,"var: livingArea<br />val:  0.647494800<br />id: 15","var: size<br />val:  0.173270341<br />id: 15","var: zoneRM<br />val: -0.330300527<br />id: 15","var: zoneRS<br />val:  0.383869473<br />id: 15","var: acTypeNo.AC<br />val: -0.367525574<br />id: 15","var: bedrms<br />val:  0.000000000<br />id: 15","var: bathrms<br />val:  0.000000000<br />id: 15",null,"var: livingArea<br />val:  0.000000000<br />id: 16","var: size<br />val:  0.000000000<br />id: 16","var: zoneRM<br />val:  0.000000000<br />id: 16","var: zoneRS<br />val:  0.000000000<br />id: 16","var: acTypeNo.AC<br />val:  0.000000000<br />id: 16","var: bedrms<br />val:  0.324830969<br />id: 16","var: bathrms<br />val:  0.000000000<br />id: 16",null,"var: livingArea<br />val:  0.911355812<br />id: 17","var: size<br />val:  0.000000000<br />id: 17","var: zoneRM<br />val:  0.000000000<br />id: 17","var: zoneRS<br />val:  0.000000000<br />id: 17","var: acTypeNo.AC<br />val:  0.000000000<br />id: 17","var: bedrms<br />val: -0.372693222<br />id: 17","var: bathrms<br />val:  0.000000000<br />id: 17",null,"var: livingArea<br />val:  0.000000000<br />id: 18","var: size<br />val:  0.407815838<br />id: 18","var: zoneRM<br />val:  0.000000000<br />id: 18","var: zoneRS<br />val:  0.000000000<br />id: 18","var: acTypeNo.AC<br />val:  0.000000000<br />id: 18","var: bedrms<br />val:  0.247482265<br />id: 18","var: bathrms<br />val:  0.000000000<br />id: 18",null,"var: livingArea<br />val:  0.817625112<br />id: 19","var: size<br />val:  0.296915158<br />id: 19","var: zoneRM<br />val:  0.000000000<br />id: 19","var: zoneRS<br />val:  0.000000000<br />id: 19","var: acTypeNo.AC<br />val:  0.000000000<br />id: 19","var: bedrms<br />val: -0.357269219<br />id: 19","var: bathrms<br />val:  0.000000000<br />id: 19",null,"var: livingArea<br />val:  0.000000000<br />id: 20","var: size<br />val:  0.000000000<br />id: 20","var: zoneRM<br />val: -0.385312224<br />id: 20","var: zoneRS<br />val:  0.524674599<br />id: 20","var: acTypeNo.AC<br />val:  0.000000000<br />id: 20","var: bedrms<br />val:  0.426567365<br />id: 20","var: bathrms<br />val:  0.000000000<br />id: 20",null,"var: livingArea<br />val:  0.878089788<br />id: 21","var: size<br />val:  0.000000000<br />id: 21","var: zoneRM<br />val: -0.281990756<br />id: 21","var: zoneRS<br />val:  0.554431063<br />id: 21","var: acTypeNo.AC<br />val:  0.000000000<br />id: 21","var: bedrms<br />val: -0.255339996<br />id: 21","var: bathrms<br />val:  0.000000000<br />id: 21",null,"var: livingArea<br />val:  0.000000000<br />id: 22","var: size<br />val:  0.293491582<br />id: 22","var: zoneRM<br />val: -0.447210388<br />id: 22","var: zoneRS<br />val:  0.196120709<br />id: 22","var: acTypeNo.AC<br />val:  0.000000000<br />id: 22","var: bedrms<br />val:  0.345012369<br />id: 22","var: bathrms<br />val:  0.000000000<br />id: 22",null,"var: livingArea<br />val:  0.829958157<br />id: 23","var: size<br />val:  0.167729096<br />id: 23","var: zoneRM<br />val: -0.323028739<br />id: 23","var: zoneRS<br />val:  0.365032946<br />id: 23","var: acTypeNo.AC<br />val:  0.000000000<br />id: 23","var: bedrms<br />val: -0.264570220<br />id: 23","var: bathrms<br />val:  0.000000000<br />id: 23",null,"var: livingArea<br />val:  0.000000000<br />id: 24","var: size<br />val:  0.000000000<br />id: 24","var: zoneRM<br />val:  0.000000000<br />id: 24","var: zoneRS<br />val:  0.000000000<br />id: 24","var: acTypeNo.AC<br />val: -0.517878975<br />id: 24","var: bedrms<br />val:  0.377746750<br />id: 24","var: bathrms<br />val:  0.000000000<br />id: 24",null,"var: livingArea<br />val:  0.891270101<br />id: 25","var: size<br />val:  0.000000000<br />id: 25","var: zoneRM<br />val:  0.000000000<br />id: 25","var: zoneRS<br />val:  0.000000000<br />id: 25","var: acTypeNo.AC<br />val: -0.342453955<br />id: 25","var: bedrms<br />val: -0.322329003<br />id: 25","var: bathrms<br />val:  0.000000000<br />id: 25",null,"var: livingArea<br />val:  0.000000000<br />id: 26","var: size<br />val:  0.411696834<br />id: 26","var: zoneRM<br />val:  0.000000000<br />id: 26","var: zoneRS<br />val:  0.000000000<br />id: 26","var: acTypeNo.AC<br />val: -0.540948133<br />id: 26","var: bedrms<br />val:  0.302019112<br />id: 26","var: bathrms<br />val:  0.000000000<br />id: 26",null,"var: livingArea<br />val:  0.793526022<br />id: 27","var: size<br />val:  0.302900609<br />id: 27","var: zoneRM<br />val:  0.000000000<br />id: 27","var: zoneRS<br />val:  0.000000000<br />id: 27","var: acTypeNo.AC<br />val: -0.378665352<br />id: 27","var: bedrms<br />val: -0.301268512<br />id: 27","var: bathrms<br />val:  0.000000000<br />id: 27",null,"var: livingArea<br />val:  0.000000000<br />id: 28","var: size<br />val:  0.000000000<br />id: 28","var: zoneRM<br />val: -0.312846876<br />id: 28","var: zoneRS<br />val:  0.562820498<br />id: 28","var: acTypeNo.AC<br />val: -0.397443135<br />id: 28","var: bedrms<br />val:  0.462040423<br />id: 28","var: bathrms<br />val:  0.000000000<br />id: 28",null,"var: livingArea<br />val:  0.865280586<br />id: 29","var: size<br />val:  0.000000000<br />id: 29","var: zoneRM<br />val: -0.239950729<br />id: 29","var: zoneRS<br />val:  0.576920338<br />id: 29","var: acTypeNo.AC<br />val: -0.238838988<br />id: 29","var: bedrms<br />val: -0.224075485<br />id: 29","var: bathrms<br />val:  0.000000000<br />id: 29",null,"var: livingArea<br />val:  0.000000000<br />id: 30","var: size<br />val:  0.303527476<br />id: 30","var: zoneRM<br />val: -0.368729386<br />id: 30","var: zoneRS<br />val:  0.227312596<br />id: 30","var: acTypeNo.AC<br />val: -0.442045242<br />id: 30","var: bedrms<br />val:  0.381677547<br />id: 30","var: bathrms<br />val:  0.000000000<br />id: 30",null,"var: livingArea<br />val:  0.812702342<br />id: 31","var: size<br />val:  0.176574168<br />id: 31","var: zoneRM<br />val: -0.276889327<br />id: 31","var: zoneRS<br />val:  0.380885099<br />id: 31","var: acTypeNo.AC<br />val: -0.274423316<br />id: 31","var: bedrms<br />val: -0.229134396<br />id: 31","var: bathrms<br />val:  0.000000000<br />id: 31",null,"var: livingArea<br />val:  0.000000000<br />id: 32","var: size<br />val:  0.000000000<br />id: 32","var: zoneRM<br />val:  0.000000000<br />id: 32","var: zoneRS<br />val:  0.000000000<br />id: 32","var: acTypeNo.AC<br />val:  0.000000000<br />id: 32","var: bedrms<br />val:  0.000000000<br />id: 32","var: bathrms<br />val:  0.489452695<br />id: 32",null,"var: livingArea<br />val:  0.623191173<br />id: 33","var: size<br />val:  0.000000000<br />id: 33","var: zoneRM<br />val:  0.000000000<br />id: 33","var: zoneRS<br />val:  0.000000000<br />id: 33","var: acTypeNo.AC<br />val:  0.000000000<br />id: 33","var: bedrms<br />val:  0.000000000<br />id: 33","var: bathrms<br />val:  0.003742031<br />id: 33",null,"var: livingArea<br />val:  0.000000000<br />id: 34","var: size<br />val:  0.380452835<br />id: 34","var: zoneRM<br />val:  0.000000000<br />id: 34","var: zoneRS<br />val:  0.000000000<br />id: 34","var: acTypeNo.AC<br />val:  0.000000000<br />id: 34","var: bedrms<br />val:  0.000000000<br />id: 34","var: bathrms<br />val:  0.422553820<br />id: 34",null,"var: livingArea<br />val:  0.514689392<br />id: 35","var: size<br />val:  0.306695193<br />id: 35","var: zoneRM<br />val:  0.000000000<br />id: 35","var: zoneRS<br />val:  0.000000000<br />id: 35","var: acTypeNo.AC<br />val:  0.000000000<br />id: 35","var: bedrms<br />val:  0.000000000<br />id: 35","var: bathrms<br />val:  0.034378208<br />id: 35",null,"var: livingArea<br />val:  0.000000000<br />id: 36","var: size<br />val:  0.000000000<br />id: 36","var: zoneRM<br />val: -0.209247187<br />id: 36","var: zoneRS<br />val:  0.683421502<br />id: 36","var: acTypeNo.AC<br />val:  0.000000000<br />id: 36","var: bedrms<br />val:  0.000000000<br />id: 36","var: bathrms<br />val:  0.558650376<br />id: 36",null,"var: livingArea<br />val:  0.641664185<br />id: 37","var: size<br />val:  0.000000000<br />id: 37","var: zoneRM<br />val: -0.357193960<br />id: 37","var: zoneRS<br />val:  0.558326369<br />id: 37","var: acTypeNo.AC<br />val:  0.000000000<br />id: 37","var: bedrms<br />val:  0.000000000<br />id: 37","var: bathrms<br />val:  0.060224487<br />id: 37",null,"var: livingArea<br />val:  0.000000000<br />id: 38","var: size<br />val:  0.261818820<br />id: 38","var: zoneRM<br />val: -0.298166169<br />id: 38","var: zoneRS<br />val:  0.371223139<br />id: 38","var: acTypeNo.AC<br />val:  0.000000000<br />id: 38","var: bedrms<br />val:  0.000000000<br />id: 38","var: bathrms<br />val:  0.495215932<br />id: 38",null,"var: livingArea<br />val:  0.584973729<br />id: 39","var: size<br />val:  0.161096740<br />id: 39","var: zoneRM<br />val: -0.398834716<br />id: 39","var: zoneRS<br />val:  0.377283213<br />id: 39","var: acTypeNo.AC<br />val:  0.000000000<br />id: 39","var: bedrms<br />val:  0.000000000<br />id: 39","var: bathrms<br />val:  0.065228846<br />id: 39",null,"var: livingArea<br />val:  0.000000000<br />id: 40","var: size<br />val:  0.000000000<br />id: 40","var: zoneRM<br />val:  0.000000000<br />id: 40","var: zoneRS<br />val:  0.000000000<br />id: 40","var: acTypeNo.AC<br />val: -0.298370294<br />id: 40","var: bedrms<br />val:  0.000000000<br />id: 40","var: bathrms<br />val:  0.495005074<br />id: 40",null,"var: livingArea<br />val:  0.673083612<br />id: 41","var: size<br />val:  0.000000000<br />id: 41","var: zoneRM<br />val:  0.000000000<br />id: 41","var: zoneRS<br />val:  0.000000000<br />id: 41","var: acTypeNo.AC<br />val: -0.497011039<br />id: 41","var: bedrms<br />val:  0.000000000<br />id: 41","var: bathrms<br />val: -0.025894884<br />id: 41",null,"var: livingArea<br />val:  0.000000000<br />id: 42","var: size<br />val:  0.389135797<br />id: 42","var: zoneRM<br />val:  0.000000000<br />id: 42","var: zoneRS<br />val:  0.000000000<br />id: 42","var: acTypeNo.AC<br />val: -0.365469410<br />id: 42","var: bedrms<br />val:  0.000000000<br />id: 42","var: bathrms<br />val:  0.427828035<br />id: 42",null,"var: livingArea<br />val:  0.564963744<br />id: 43","var: size<br />val:  0.311818127<br />id: 43","var: zoneRM<br />val:  0.000000000<br />id: 43","var: zoneRS<br />val:  0.000000000<br />id: 43","var: acTypeNo.AC<br />val: -0.518869798<br />id: 43","var: bedrms<br />val:  0.000000000<br />id: 43","var: bathrms<br />val:  0.003949585<br />id: 43",null,"var: livingArea<br />val:  0.000000000<br />id: 44","var: size<br />val:  0.000000000<br />id: 44","var: zoneRM<br />val: -0.178295767<br />id: 44","var: zoneRS<br />val:  0.697064125<br />id: 44","var: acTypeNo.AC<br />val: -0.133617455<br />id: 44","var: bedrms<br />val:  0.000000000<br />id: 44","var: bathrms<br />val:  0.559811895<br />id: 44",null,"var: livingArea<br />val:  0.671563822<br />id: 45","var: size<br />val:  0.000000000<br />id: 45","var: zoneRM<br />val: -0.289304636<br />id: 45","var: zoneRS<br />val:  0.585459902<br />id: 45","var: acTypeNo.AC<br />val: -0.322839514<br />id: 45","var: bedrms<br />val:  0.000000000<br />id: 45","var: bathrms<br />val:  0.039805728<br />id: 45",null,"var: livingArea<br />val:  0.000000000<br />id: 46","var: size<br />val:  0.272374697<br />id: 46","var: zoneRM<br />val: -0.251652382<br />id: 46","var: zoneRS<br />val:  0.380718392<br />id: 46","var: acTypeNo.AC<br />val: -0.216276703<br />id: 46","var: bedrms<br />val:  0.000000000<br />id: 46","var: bathrms<br />val:  0.494538479<br />id: 46",null,"var: livingArea<br />val:  0.613825182<br />id: 47","var: size<br />val:  0.173664210<br />id: 47","var: zoneRM<br />val: -0.326532160<br />id: 47","var: zoneRS<br />val:  0.393355395<br />id: 47","var: acTypeNo.AC<br />val: -0.359273843<br />id: 47","var: bedrms<br />val:  0.000000000<br />id: 47","var: bathrms<br />val:  0.042896111<br />id: 47",null,"var: livingArea<br />val:  0.000000000<br />id: 48","var: size<br />val:  0.000000000<br />id: 48","var: zoneRM<br />val:  0.000000000<br />id: 48","var: zoneRS<br />val:  0.000000000<br />id: 48","var: acTypeNo.AC<br />val:  0.000000000<br />id: 48","var: bedrms<br />val: -0.029914611<br />id: 48","var: bathrms<br />val:  0.510250473<br />id: 48",null,"var: livingArea<br />val:  0.849461536<br />id: 49","var: size<br />val:  0.000000000<br />id: 49","var: zoneRM<br />val:  0.000000000<br />id: 49","var: zoneRS<br />val:  0.000000000<br />id: 49","var: acTypeNo.AC<br />val:  0.000000000<br />id: 49","var: bedrms<br />val: -0.397401648<br />id: 49","var: bathrms<br />val:  0.103677332<br />id: 49",null,"var: livingArea<br />val:  0.000000000<br />id: 50","var: size<br />val:  0.386038101<br />id: 50","var: zoneRM<br />val:  0.000000000<br />id: 50","var: zoneRS<br />val:  0.000000000<br />id: 50","var: acTypeNo.AC<br />val:  0.000000000<br />id: 50","var: bedrms<br />val: -0.080287332<br />id: 50","var: bathrms<br />val:  0.477390521<br />id: 50",null,"var: livingArea<br />val:  0.737557072<br />id: 51","var: size<br />val:  0.301774296<br />id: 51","var: zoneRM<br />val:  0.000000000<br />id: 51","var: zoneRS<br />val:  0.000000000<br />id: 51","var: acTypeNo.AC<br />val:  0.000000000<br />id: 51","var: bedrms<br />val: -0.388367904<br />id: 51","var: bathrms<br />val:  0.131550223<br />id: 51",null,"var: livingArea<br />val:  0.000000000<br />id: 52","var: size<br />val:  0.000000000<br />id: 52","var: zoneRM<br />val: -0.241278542<br />id: 52","var: zoneRS<br />val:  0.669377827<br />id: 52","var: acTypeNo.AC<br />val:  0.000000000<br />id: 52","var: bedrms<br />val:  0.065909193<br />id: 52","var: bathrms<br />val:  0.514204815<br />id: 52",null,"var: livingArea<br />val:  0.800772733<br />id: 53","var: size<br />val:  0.000000000<br />id: 53","var: zoneRM<br />val: -0.254770517<br />id: 53","var: zoneRS<br />val:  0.588297630<br />id: 53","var: acTypeNo.AC<br />val:  0.000000000<br />id: 53","var: bedrms<br />val: -0.286236412<br />id: 53","var: bathrms<br />val:  0.129655847<br />id: 53",null,"var: livingArea<br />val:  0.000000000<br />id: 54","var: size<br />val:  0.260221292<br />id: 54","var: zoneRM<br />val: -0.303752624<br />id: 54","var: zoneRS<br />val:  0.370440893<br />id: 54","var: acTypeNo.AC<br />val:  0.000000000<br />id: 54","var: bedrms<br />val:  0.012611330<br />id: 54","var: bathrms<br />val:  0.487098594<br />id: 54",null,"var: livingArea<br />val:  0.746925800<br />id: 55","var: size<br />val:  0.170904749<br />id: 55","var: zoneRM<br />val: -0.294894179<br />id: 55","var: zoneRS<br />val:  0.397417860<br />id: 55","var: acTypeNo.AC<br />val:  0.000000000<br />id: 55","var: bedrms<br />val: -0.297561109<br />id: 55","var: bathrms<br />val:  0.137711878<br />id: 55",null,"var: livingArea<br />val:  0.000000000<br />id: 56","var: size<br />val:  0.000000000<br />id: 56","var: zoneRM<br />val:  0.000000000<br />id: 56","var: zoneRS<br />val:  0.000000000<br />id: 56","var: acTypeNo.AC<br />val: -0.314707987<br />id: 56","var: bedrms<br />val:  0.024445070<br />id: 56","var: bathrms<br />val:  0.478313958<br />id: 56",null,"var: livingArea<br />val:  0.850327496<br />id: 57","var: size<br />val:  0.000000000<br />id: 57","var: zoneRM<br />val:  0.000000000<br />id: 57","var: zoneRS<br />val:  0.000000000<br />id: 57","var: acTypeNo.AC<br />val: -0.320463689<br />id: 57","var: bedrms<br />val: -0.342422406<br />id: 57","var: bathrms<br />val:  0.070742260<br />id: 57",null,"var: livingArea<br />val:  0.000000000<br />id: 58","var: size<br />val:  0.390212809<br />id: 58","var: zoneRM<br />val:  0.000000000<br />id: 58","var: zoneRS<br />val:  0.000000000<br />id: 58","var: acTypeNo.AC<br />val: -0.352302514<br />id: 58","var: bedrms<br />val: -0.019978671<br />id: 58","var: bathrms<br />val:  0.441283564<br />id: 58",null,"var: livingArea<br />val:  0.736940150<br />id: 59","var: size<br />val:  0.305982433<br />id: 59","var: zoneRM<br />val:  0.000000000<br />id: 59","var: zoneRS<br />val:  0.000000000<br />id: 59","var: acTypeNo.AC<br />val: -0.349175656<br />id: 59","var: bedrms<br />val: -0.328336820<br />id: 59","var: bathrms<br />val:  0.096053008<br />id: 59",null,"var: livingArea<br />val:  0.000000000<br />id: 60","var: size<br />val:  0.000000000<br />id: 60","var: zoneRM<br />val: -0.211527738<br />id: 60","var: zoneRS<br />val:  0.682525700<br />id: 60","var: acTypeNo.AC<br />val: -0.191990630<br />id: 60","var: bedrms<br />val:  0.096202470<br />id: 60","var: bathrms<br />val:  0.495445633<br />id: 60",null,"var: livingArea<br />val:  0.802105756<br />id: 61","var: size<br />val:  0.000000000<br />id: 61","var: zoneRM<br />val: -0.222989987<br />id: 61","var: zoneRS<br />val:  0.602217461<br />id: 61","var: acTypeNo.AC<br />val: -0.205233980<br />id: 61","var: bedrms<br />val: -0.254439737<br />id: 61","var: bathrms<br />val:  0.108962525<br />id: 61",null,"var: livingArea<br />val:  0.000000000<br />id: 62","var: size<br />val:  0.267470130<br />id: 62","var: zoneRM<br />val: -0.267528507<br />id: 62","var: zoneRS<br />val:  0.378891320<br />id: 62","var: acTypeNo.AC<br />val: -0.244995506<br />id: 62","var: bedrms<br />val:  0.049783302<br />id: 62","var: bathrms<br />val:  0.462405284<br />id: 62",null,"var: livingArea<br />val:  0.746221920<br />id: 63","var: size<br />val:  0.178078154<br />id: 63","var: zoneRM<br />val: -0.259475984<br />id: 63","var: zoneRS<br />val:  0.405656806<br />id: 63","var: acTypeNo.AC<br />val: -0.239601258<br />id: 63","var: bedrms<br />val: -0.260915283<br />id: 63","var: bathrms<br />val:  0.113891510<br />id: 63"],"key":["1","1","1","1","1","1","1",null,"2","2","2","2","2","2","2",null,"3","3","3","3","3","3","3",null,"4","4","4","4","4","4","4",null,"5","5","5","5","5","5","5",null,"6","6","6","6","6","6","6",null,"7","7","7","7","7","7","7",null,"8","8","8","8","8","8","8",null,"9","9","9","9","9","9","9",null,"10","10","10","10","10","10","10",null,"11","11","11","11","11","11","11",null,"12","12","12","12","12","12","12",null,"13","13","13","13","13","13","13",null,"14","14","14","14","14","14","14",null,"15","15","15","15","15","15","15",null,"16","16","16","16","16","16","16",null,"17","17","17","17","17","17","17",null,"18","18","18","18","18","18","18",null,"19","19","19","19","19","19","19",null,"20","20","20","20","20","20","20",null,"21","21","21","21","21","21","21",null,"22","22","22","22","22","22","22",null,"23","23","23","23","23","23","23",null,"24","24","24","24","24","24","24",null,"25","25","25","25","25","25","25",null,"26","26","26","26","26","26","26",null,"27","27","27","27","27","27","27",null,"28","28","28","28","28","28","28",null,"29","29","29","29","29","29","29",null,"30","30","30","30","30","30","30",null,"31","31","31","31","31","31","31",null,"32","32","32","32","32","32","32",null,"33","33","33","33","33","33","33",null,"34","34","34","34","34","34","34",null,"35","35","35","35","35","35","35",null,"36","36","36","36","36","36","36",null,"37","37","37","37","37","37","37",null,"38","38","38","38","38","38","38",null,"39","39","39","39","39","39","39",null,"40","40","40","40","40","40","40",null,"41","41","41","41","41","41","41",null,"42","42","42","42","42","42","42",null,"43","43","43","43","43","43","43",null,"44","44","44","44","44","44","44",null,"45","45","45","45","45","45","45",null,"46","46","46","46","46","46","46",null,"47","47","47","47","47","47","47",null,"48","48","48","48","48","48","48",null,"49","49","49","49","49","49","49",null,"50","50","50","50","50","50","50",null,"51","51","51","51","51","51","51",null,"52","52","52","52","52","52","52",null,"53","53","53","53","53","53","53",null,"54","54","54","54","54","54","54",null,"55","55","55","55","55","55","55",null,"56","56","56","56","56","56","56",null,"57","57","57","57","57","57","57",null,"58","58","58","58","58","58","58",null,"59","59","59","59","59","59","59",null,"60","60","60","60","60","60","60",null,"61","61","61","61","61","61","61",null,"62","62","62","62","62","62","62",null,"63","63","63","63","63","63","63"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(0,0,0,0.2)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","_isNestedKey":false,"frame":null},{"x":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7],"y":[0.626107685064383,0,0.541886123367522,0,0.688247535190442,0,0.635772330770966,0,0.65265182022588,0,0.568123223585292,0,0.702691334685206,0,0.647494800150812,0,0.911355812147819,0,0.817625111880073,0,0.878089788259868,0,0.829958157100969,0,0.891270101112737,0,0.793526021548484,0,0.865280586475769,0,0.812702341503676,0,0.623191173475514,0,0.514689391867879,0,0.641664184845606,0,0.584973728939601,0,0.673083612393974,0,0.564963744124328,0,0.671563821984521,0,0.613825182334319,0,0.84946153638793,0,0.737557072431218,0,0.800772732587933,0,0.746925800122613,0,0.850327496414876,0,0.736940149609655,0,0.802105755620498,0,0.746221919931448,0,0.4547547519339,0.30523606546108,0,0,0.398477112325029,0.160046328208391,0,0,0.463183756270689,0.311659048706256,0,0,0.409379868846119,0.17327034069976,0,0,0.4078158380443,0.296915158009781,0,0,0.293491581662311,0.167729096344856,0,0,0.411696833629087,0.302900608779831,0,0,0.303527476440702,0.176574168213354,0,0,0.380452834757518,0.30669519280194,0,0,0.261818820351072,0.161096739909838,0,0,0.389135797450201,0.311818127142926,0,0,0.272374697284551,0.173664210320489,0,0,0.386038101050286,0.301774296369886,0,0,0.260221291819373,0.170904749081302,0,0,0.390212808931764,0.305982433358005,0,0,0.267470130196184,0.178078153605415,0,0,0,-0.144840007577429,-0.3651629799066,-0.291301600854365,-0.407190090536195,0,0,0,0,-0.12234201984655,-0.292880450712389,-0.242403002368688,-0.330300527493347,0,0,0,0,-0.385312224195057,-0.281990756216738,-0.447210387793582,-0.323028738566098,0,0,0,0,-0.31284687565505,-0.239950728722572,-0.368729385568605,-0.276889327088193,0,0,0,0,-0.209247186917453,-0.357193960279907,-0.298166168637191,-0.39883471570002,0,0,0,0,-0.178295767255315,-0.289304635595143,-0.251652382216849,-0.326532159633634,0,0,0,0,-0.241278542403911,-0.254770516838687,-0.303752623839525,-0.294894179472585,0,0,0,0,-0.211527738437652,-0.222989987479592,-0.267528507456191,-0.259475984251913,0,0,0,0.543539514270682,0.543225330256411,0.0925609283993708,0.362116004085744,0,0,0,0,0.55320286115311,0.576251570151035,0.102945862844991,0.383869472969374,0,0,0,0,0.524674599215441,0.554431062911984,0.196120709251718,0.365032946370812,0,0,0,0,0.562820498231705,0.57692033779562,0.227312596333702,0.380885098848462,0,0,0,0,0.683421501554564,0.558326368540159,0.371223139453774,0.377283212697524,0,0,0,0,0.697064124676716,0.585459901651346,0.380718392126684,0.393355394733896,0,0,0,0,0.66937782664382,0.588297630389533,0.370440893449346,0.397417860385148,0,0,0,0,0.68252569993731,0.602217460931869,0.3788913203549,0.405656805700414,0,0,0,0,0,0,0,-0.22956097491402,-0.492382768382373,-0.320543291754452,-0.519561846895643,-0.0967055415884621,-0.330574705599579,-0.22741135506733,-0.367525574352652,0,0,0,0,0,0,0,0,-0.517878975385748,-0.342453954672195,-0.540948132571838,-0.378665352378407,-0.397443134666645,-0.238838987791799,-0.442045242356843,-0.27442331560415,0,0,0,0,0,0,0,0,-0.298370293696017,-0.497011038900367,-0.365469410009769,-0.51886979849292,-0.133617454973925,-0.322839513500338,-0.216276702751121,-0.359273842934503,0,0,0,0,0,0,0,0,-0.314707987307981,-0.320463688701655,-0.352302513665078,-0.349175656329219,-0.191990630135458,-0.205233980094646,-0.244995505633161,-0.239601257900415,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.324830969067411,-0.372693222308289,0.247482264839096,-0.357269219039134,0.426567365088492,-0.255339996251638,0.345012368822221,-0.264570219846372,0.377746750479513,-0.322329003409834,0.302019112066683,-0.301268511815055,0.462040423360372,-0.22407548464529,0.381677547194639,-0.229134396133356,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.029914610872976,-0.397401648268622,-0.0802873324872116,-0.388367904055998,0.0659091933397705,-0.286236411586063,0.0126113299441252,-0.297561109498541,0.0244450702352515,-0.342422406219255,-0.0199786710759295,-0.328336820391486,0.0962024701605082,-0.254439736887464,0.0497833021290272,-0.260915283103926,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.48945269486713,0.0037420308304893,0.422553820312363,0.0343782080981205,0.558650376278776,0.0602244867457098,0.495215931518742,0.0652288458467532,0.495005073866063,-0.0258948841098222,0.427828034904589,0.00394958537201339,0.559811895169571,0.0398057281922953,0.494538478920988,0.0428961106310655,0.510250472723432,0.103677332389297,0.477390520566977,0.131550223207565,0.514204815112358,0.129655847448952,0.487098594415643,0.137711877774106,0.478313957646013,0.0707422599529997,0.441283563762358,0.0960530082587233,0.495445632513714,0.108962524970064,0.462405283920521,0.113891509639854],"text":["var: livingArea<br />val:  0.626107685<br />id:  1","var: livingArea<br />val:  0.000000000<br />id:  2","var: livingArea<br />val:  0.541886123<br />id:  3","var: livingArea<br />val:  0.000000000<br />id:  4","var: livingArea<br />val:  0.688247535<br />id:  5","var: livingArea<br />val:  0.000000000<br />id:  6","var: livingArea<br />val:  0.635772331<br />id:  7","var: livingArea<br />val:  0.000000000<br />id:  8","var: livingArea<br />val:  0.652651820<br />id:  9","var: livingArea<br />val:  0.000000000<br />id: 10","var: livingArea<br />val:  0.568123224<br />id: 11","var: livingArea<br />val:  0.000000000<br />id: 12","var: livingArea<br />val:  0.702691335<br />id: 13","var: livingArea<br />val:  0.000000000<br />id: 14","var: livingArea<br />val:  0.647494800<br />id: 15","var: livingArea<br />val:  0.000000000<br />id: 16","var: livingArea<br />val:  0.911355812<br />id: 17","var: livingArea<br />val:  0.000000000<br />id: 18","var: livingArea<br />val:  0.817625112<br />id: 19","var: livingArea<br />val:  0.000000000<br />id: 20","var: livingArea<br />val:  0.878089788<br />id: 21","var: livingArea<br />val:  0.000000000<br />id: 22","var: livingArea<br />val:  0.829958157<br />id: 23","var: livingArea<br />val:  0.000000000<br />id: 24","var: livingArea<br />val:  0.891270101<br />id: 25","var: livingArea<br />val:  0.000000000<br />id: 26","var: livingArea<br />val:  0.793526022<br />id: 27","var: livingArea<br />val:  0.000000000<br />id: 28","var: livingArea<br />val:  0.865280586<br />id: 29","var: livingArea<br />val:  0.000000000<br />id: 30","var: livingArea<br />val:  0.812702342<br />id: 31","var: livingArea<br />val:  0.000000000<br />id: 32","var: livingArea<br />val:  0.623191173<br />id: 33","var: livingArea<br />val:  0.000000000<br />id: 34","var: livingArea<br />val:  0.514689392<br />id: 35","var: livingArea<br />val:  0.000000000<br />id: 36","var: livingArea<br />val:  0.641664185<br />id: 37","var: livingArea<br />val:  0.000000000<br />id: 38","var: livingArea<br />val:  0.584973729<br />id: 39","var: livingArea<br />val:  0.000000000<br />id: 40","var: livingArea<br />val:  0.673083612<br />id: 41","var: livingArea<br />val:  0.000000000<br />id: 42","var: livingArea<br />val:  0.564963744<br />id: 43","var: livingArea<br />val:  0.000000000<br />id: 44","var: livingArea<br />val:  0.671563822<br />id: 45","var: livingArea<br />val:  0.000000000<br />id: 46","var: livingArea<br />val:  0.613825182<br />id: 47","var: livingArea<br />val:  0.000000000<br />id: 48","var: livingArea<br />val:  0.849461536<br />id: 49","var: livingArea<br />val:  0.000000000<br />id: 50","var: livingArea<br />val:  0.737557072<br />id: 51","var: livingArea<br />val:  0.000000000<br />id: 52","var: livingArea<br />val:  0.800772733<br />id: 53","var: livingArea<br />val:  0.000000000<br />id: 54","var: livingArea<br />val:  0.746925800<br />id: 55","var: livingArea<br />val:  0.000000000<br />id: 56","var: livingArea<br />val:  0.850327496<br />id: 57","var: livingArea<br />val:  0.000000000<br />id: 58","var: livingArea<br />val:  0.736940150<br />id: 59","var: livingArea<br />val:  0.000000000<br />id: 60","var: livingArea<br />val:  0.802105756<br />id: 61","var: livingArea<br />val:  0.000000000<br />id: 62","var: livingArea<br />val:  0.746221920<br />id: 63","var: size<br />val:  0.000000000<br />id:  1","var: size<br />val:  0.454754752<br />id:  2","var: size<br />val:  0.305236065<br />id:  3","var: size<br />val:  0.000000000<br />id:  4","var: size<br />val:  0.000000000<br />id:  5","var: size<br />val:  0.398477112<br />id:  6","var: size<br />val:  0.160046328<br />id:  7","var: size<br />val:  0.000000000<br />id:  8","var: size<br />val:  0.000000000<br />id:  9","var: size<br />val:  0.463183756<br />id: 10","var: size<br />val:  0.311659049<br />id: 11","var: size<br />val:  0.000000000<br />id: 12","var: size<br />val:  0.000000000<br />id: 13","var: size<br />val:  0.409379869<br />id: 14","var: size<br />val:  0.173270341<br />id: 15","var: size<br />val:  0.000000000<br />id: 16","var: size<br />val:  0.000000000<br />id: 17","var: size<br />val:  0.407815838<br />id: 18","var: size<br />val:  0.296915158<br />id: 19","var: size<br />val:  0.000000000<br />id: 20","var: size<br />val:  0.000000000<br />id: 21","var: size<br />val:  0.293491582<br />id: 22","var: size<br />val:  0.167729096<br />id: 23","var: size<br />val:  0.000000000<br />id: 24","var: size<br />val:  0.000000000<br />id: 25","var: size<br />val:  0.411696834<br />id: 26","var: size<br />val:  0.302900609<br />id: 27","var: size<br />val:  0.000000000<br />id: 28","var: size<br />val:  0.000000000<br />id: 29","var: size<br />val:  0.303527476<br />id: 30","var: size<br />val:  0.176574168<br />id: 31","var: size<br />val:  0.000000000<br />id: 32","var: size<br />val:  0.000000000<br />id: 33","var: size<br />val:  0.380452835<br />id: 34","var: size<br />val:  0.306695193<br />id: 35","var: size<br />val:  0.000000000<br />id: 36","var: size<br />val:  0.000000000<br />id: 37","var: size<br />val:  0.261818820<br />id: 38","var: size<br />val:  0.161096740<br />id: 39","var: size<br />val:  0.000000000<br />id: 40","var: size<br />val:  0.000000000<br />id: 41","var: size<br />val:  0.389135797<br />id: 42","var: size<br />val:  0.311818127<br />id: 43","var: size<br />val:  0.000000000<br />id: 44","var: size<br />val:  0.000000000<br />id: 45","var: size<br />val:  0.272374697<br />id: 46","var: size<br />val:  0.173664210<br />id: 47","var: size<br />val:  0.000000000<br />id: 48","var: size<br />val:  0.000000000<br />id: 49","var: size<br />val:  0.386038101<br />id: 50","var: size<br />val:  0.301774296<br />id: 51","var: size<br />val:  0.000000000<br />id: 52","var: size<br />val:  0.000000000<br />id: 53","var: size<br />val:  0.260221292<br />id: 54","var: size<br />val:  0.170904749<br />id: 55","var: size<br />val:  0.000000000<br />id: 56","var: size<br />val:  0.000000000<br />id: 57","var: size<br />val:  0.390212809<br />id: 58","var: size<br />val:  0.305982433<br />id: 59","var: size<br />val:  0.000000000<br />id: 60","var: size<br />val:  0.000000000<br />id: 61","var: size<br />val:  0.267470130<br />id: 62","var: size<br />val:  0.178078154<br />id: 63","var: zoneRM<br />val:  0.000000000<br />id:  1","var: zoneRM<br />val:  0.000000000<br />id:  2","var: zoneRM<br />val:  0.000000000<br />id:  3","var: zoneRM<br />val: -0.144840008<br />id:  4","var: zoneRM<br />val: -0.365162980<br />id:  5","var: zoneRM<br />val: -0.291301601<br />id:  6","var: zoneRM<br />val: -0.407190091<br />id:  7","var: zoneRM<br />val:  0.000000000<br />id:  8","var: zoneRM<br />val:  0.000000000<br />id:  9","var: zoneRM<br />val:  0.000000000<br />id: 10","var: zoneRM<br />val:  0.000000000<br />id: 11","var: zoneRM<br />val: -0.122342020<br />id: 12","var: zoneRM<br />val: -0.292880451<br />id: 13","var: zoneRM<br />val: -0.242403002<br />id: 14","var: zoneRM<br />val: -0.330300527<br />id: 15","var: zoneRM<br />val:  0.000000000<br />id: 16","var: zoneRM<br />val:  0.000000000<br />id: 17","var: zoneRM<br />val:  0.000000000<br />id: 18","var: zoneRM<br />val:  0.000000000<br />id: 19","var: zoneRM<br />val: -0.385312224<br />id: 20","var: zoneRM<br />val: -0.281990756<br />id: 21","var: zoneRM<br />val: -0.447210388<br />id: 22","var: zoneRM<br />val: -0.323028739<br />id: 23","var: zoneRM<br />val:  0.000000000<br />id: 24","var: zoneRM<br />val:  0.000000000<br />id: 25","var: zoneRM<br />val:  0.000000000<br />id: 26","var: zoneRM<br />val:  0.000000000<br />id: 27","var: zoneRM<br />val: -0.312846876<br />id: 28","var: zoneRM<br />val: -0.239950729<br />id: 29","var: zoneRM<br />val: -0.368729386<br />id: 30","var: zoneRM<br />val: -0.276889327<br />id: 31","var: zoneRM<br />val:  0.000000000<br />id: 32","var: zoneRM<br />val:  0.000000000<br />id: 33","var: zoneRM<br />val:  0.000000000<br />id: 34","var: zoneRM<br />val:  0.000000000<br />id: 35","var: zoneRM<br />val: -0.209247187<br />id: 36","var: zoneRM<br />val: -0.357193960<br />id: 37","var: zoneRM<br />val: -0.298166169<br />id: 38","var: zoneRM<br />val: -0.398834716<br />id: 39","var: zoneRM<br />val:  0.000000000<br />id: 40","var: zoneRM<br />val:  0.000000000<br />id: 41","var: zoneRM<br />val:  0.000000000<br />id: 42","var: zoneRM<br />val:  0.000000000<br />id: 43","var: zoneRM<br />val: -0.178295767<br />id: 44","var: zoneRM<br />val: -0.289304636<br />id: 45","var: zoneRM<br />val: -0.251652382<br />id: 46","var: zoneRM<br />val: -0.326532160<br />id: 47","var: zoneRM<br />val:  0.000000000<br />id: 48","var: zoneRM<br />val:  0.000000000<br />id: 49","var: zoneRM<br />val:  0.000000000<br />id: 50","var: zoneRM<br />val:  0.000000000<br />id: 51","var: zoneRM<br />val: -0.241278542<br />id: 52","var: zoneRM<br />val: -0.254770517<br />id: 53","var: zoneRM<br />val: -0.303752624<br />id: 54","var: zoneRM<br />val: -0.294894179<br />id: 55","var: zoneRM<br />val:  0.000000000<br />id: 56","var: zoneRM<br />val:  0.000000000<br />id: 57","var: zoneRM<br />val:  0.000000000<br />id: 58","var: zoneRM<br />val:  0.000000000<br />id: 59","var: zoneRM<br />val: -0.211527738<br />id: 60","var: zoneRM<br />val: -0.222989987<br />id: 61","var: zoneRM<br />val: -0.267528507<br />id: 62","var: zoneRM<br />val: -0.259475984<br />id: 63","var: zoneRS<br />val:  0.000000000<br />id:  1","var: zoneRS<br />val:  0.000000000<br />id:  2","var: zoneRS<br />val:  0.000000000<br />id:  3","var: zoneRS<br />val:  0.543539514<br />id:  4","var: zoneRS<br />val:  0.543225330<br />id:  5","var: zoneRS<br />val:  0.092560928<br />id:  6","var: zoneRS<br />val:  0.362116004<br />id:  7","var: zoneRS<br />val:  0.000000000<br />id:  8","var: zoneRS<br />val:  0.000000000<br />id:  9","var: zoneRS<br />val:  0.000000000<br />id: 10","var: zoneRS<br />val:  0.000000000<br />id: 11","var: zoneRS<br />val:  0.553202861<br />id: 12","var: zoneRS<br />val:  0.576251570<br />id: 13","var: zoneRS<br />val:  0.102945863<br />id: 14","var: zoneRS<br />val:  0.383869473<br />id: 15","var: zoneRS<br />val:  0.000000000<br />id: 16","var: zoneRS<br />val:  0.000000000<br />id: 17","var: zoneRS<br />val:  0.000000000<br />id: 18","var: zoneRS<br />val:  0.000000000<br />id: 19","var: zoneRS<br />val:  0.524674599<br />id: 20","var: zoneRS<br />val:  0.554431063<br />id: 21","var: zoneRS<br />val:  0.196120709<br />id: 22","var: zoneRS<br />val:  0.365032946<br />id: 23","var: zoneRS<br />val:  0.000000000<br />id: 24","var: zoneRS<br />val:  0.000000000<br />id: 25","var: zoneRS<br />val:  0.000000000<br />id: 26","var: zoneRS<br />val:  0.000000000<br />id: 27","var: zoneRS<br />val:  0.562820498<br />id: 28","var: zoneRS<br />val:  0.576920338<br />id: 29","var: zoneRS<br />val:  0.227312596<br />id: 30","var: zoneRS<br />val:  0.380885099<br />id: 31","var: zoneRS<br />val:  0.000000000<br />id: 32","var: zoneRS<br />val:  0.000000000<br />id: 33","var: zoneRS<br />val:  0.000000000<br />id: 34","var: zoneRS<br />val:  0.000000000<br />id: 35","var: zoneRS<br />val:  0.683421502<br />id: 36","var: zoneRS<br />val:  0.558326369<br />id: 37","var: zoneRS<br />val:  0.371223139<br />id: 38","var: zoneRS<br />val:  0.377283213<br />id: 39","var: zoneRS<br />val:  0.000000000<br />id: 40","var: zoneRS<br />val:  0.000000000<br />id: 41","var: zoneRS<br />val:  0.000000000<br />id: 42","var: zoneRS<br />val:  0.000000000<br />id: 43","var: zoneRS<br />val:  0.697064125<br />id: 44","var: zoneRS<br />val:  0.585459902<br />id: 45","var: zoneRS<br />val:  0.380718392<br />id: 46","var: zoneRS<br />val:  0.393355395<br />id: 47","var: zoneRS<br />val:  0.000000000<br />id: 48","var: zoneRS<br />val:  0.000000000<br />id: 49","var: zoneRS<br />val:  0.000000000<br />id: 50","var: zoneRS<br />val:  0.000000000<br />id: 51","var: zoneRS<br />val:  0.669377827<br />id: 52","var: zoneRS<br />val:  0.588297630<br />id: 53","var: zoneRS<br />val:  0.370440893<br />id: 54","var: zoneRS<br />val:  0.397417860<br />id: 55","var: zoneRS<br />val:  0.000000000<br />id: 56","var: zoneRS<br />val:  0.000000000<br />id: 57","var: zoneRS<br />val:  0.000000000<br />id: 58","var: zoneRS<br />val:  0.000000000<br />id: 59","var: zoneRS<br />val:  0.682525700<br />id: 60","var: zoneRS<br />val:  0.602217461<br />id: 61","var: zoneRS<br />val:  0.378891320<br />id: 62","var: zoneRS<br />val:  0.405656806<br />id: 63","var: acTypeNo.AC<br />val:  0.000000000<br />id:  1","var: acTypeNo.AC<br />val:  0.000000000<br />id:  2","var: acTypeNo.AC<br />val:  0.000000000<br />id:  3","var: acTypeNo.AC<br />val:  0.000000000<br />id:  4","var: acTypeNo.AC<br />val:  0.000000000<br />id:  5","var: acTypeNo.AC<br />val:  0.000000000<br />id:  6","var: acTypeNo.AC<br />val:  0.000000000<br />id:  7","var: acTypeNo.AC<br />val: -0.229560975<br />id:  8","var: acTypeNo.AC<br />val: -0.492382768<br />id:  9","var: acTypeNo.AC<br />val: -0.320543292<br />id: 10","var: acTypeNo.AC<br />val: -0.519561847<br />id: 11","var: acTypeNo.AC<br />val: -0.096705542<br />id: 12","var: acTypeNo.AC<br />val: -0.330574706<br />id: 13","var: acTypeNo.AC<br />val: -0.227411355<br />id: 14","var: acTypeNo.AC<br />val: -0.367525574<br />id: 15","var: acTypeNo.AC<br />val:  0.000000000<br />id: 16","var: acTypeNo.AC<br />val:  0.000000000<br />id: 17","var: acTypeNo.AC<br />val:  0.000000000<br />id: 18","var: acTypeNo.AC<br />val:  0.000000000<br />id: 19","var: acTypeNo.AC<br />val:  0.000000000<br />id: 20","var: acTypeNo.AC<br />val:  0.000000000<br />id: 21","var: acTypeNo.AC<br />val:  0.000000000<br />id: 22","var: acTypeNo.AC<br />val:  0.000000000<br />id: 23","var: acTypeNo.AC<br />val: -0.517878975<br />id: 24","var: acTypeNo.AC<br />val: -0.342453955<br />id: 25","var: acTypeNo.AC<br />val: -0.540948133<br />id: 26","var: acTypeNo.AC<br />val: -0.378665352<br />id: 27","var: acTypeNo.AC<br />val: -0.397443135<br />id: 28","var: acTypeNo.AC<br />val: -0.238838988<br />id: 29","var: acTypeNo.AC<br />val: -0.442045242<br />id: 30","var: acTypeNo.AC<br />val: -0.274423316<br />id: 31","var: acTypeNo.AC<br />val:  0.000000000<br />id: 32","var: acTypeNo.AC<br />val:  0.000000000<br />id: 33","var: acTypeNo.AC<br />val:  0.000000000<br />id: 34","var: acTypeNo.AC<br />val:  0.000000000<br />id: 35","var: acTypeNo.AC<br />val:  0.000000000<br />id: 36","var: acTypeNo.AC<br />val:  0.000000000<br />id: 37","var: acTypeNo.AC<br />val:  0.000000000<br />id: 38","var: acTypeNo.AC<br />val:  0.000000000<br />id: 39","var: acTypeNo.AC<br />val: -0.298370294<br />id: 40","var: acTypeNo.AC<br />val: -0.497011039<br />id: 41","var: acTypeNo.AC<br />val: -0.365469410<br />id: 42","var: acTypeNo.AC<br />val: -0.518869798<br />id: 43","var: acTypeNo.AC<br />val: -0.133617455<br />id: 44","var: acTypeNo.AC<br />val: -0.322839514<br />id: 45","var: acTypeNo.AC<br />val: -0.216276703<br />id: 46","var: acTypeNo.AC<br />val: -0.359273843<br />id: 47","var: acTypeNo.AC<br />val:  0.000000000<br />id: 48","var: acTypeNo.AC<br />val:  0.000000000<br />id: 49","var: acTypeNo.AC<br />val:  0.000000000<br />id: 50","var: acTypeNo.AC<br />val:  0.000000000<br />id: 51","var: acTypeNo.AC<br />val:  0.000000000<br />id: 52","var: acTypeNo.AC<br />val:  0.000000000<br />id: 53","var: acTypeNo.AC<br />val:  0.000000000<br />id: 54","var: acTypeNo.AC<br />val:  0.000000000<br />id: 55","var: acTypeNo.AC<br />val: -0.314707987<br />id: 56","var: acTypeNo.AC<br />val: -0.320463689<br />id: 57","var: acTypeNo.AC<br />val: -0.352302514<br />id: 58","var: acTypeNo.AC<br />val: -0.349175656<br />id: 59","var: acTypeNo.AC<br />val: -0.191990630<br />id: 60","var: acTypeNo.AC<br />val: -0.205233980<br />id: 61","var: acTypeNo.AC<br />val: -0.244995506<br />id: 62","var: acTypeNo.AC<br />val: -0.239601258<br />id: 63","var: bedrms<br />val:  0.000000000<br />id:  1","var: bedrms<br />val:  0.000000000<br />id:  2","var: bedrms<br />val:  0.000000000<br />id:  3","var: bedrms<br />val:  0.000000000<br />id:  4","var: bedrms<br />val:  0.000000000<br />id:  5","var: bedrms<br />val:  0.000000000<br />id:  6","var: bedrms<br />val:  0.000000000<br />id:  7","var: bedrms<br />val:  0.000000000<br />id:  8","var: bedrms<br />val:  0.000000000<br />id:  9","var: bedrms<br />val:  0.000000000<br />id: 10","var: bedrms<br />val:  0.000000000<br />id: 11","var: bedrms<br />val:  0.000000000<br />id: 12","var: bedrms<br />val:  0.000000000<br />id: 13","var: bedrms<br />val:  0.000000000<br />id: 14","var: bedrms<br />val:  0.000000000<br />id: 15","var: bedrms<br />val:  0.324830969<br />id: 16","var: bedrms<br />val: -0.372693222<br />id: 17","var: bedrms<br />val:  0.247482265<br />id: 18","var: bedrms<br />val: -0.357269219<br />id: 19","var: bedrms<br />val:  0.426567365<br />id: 20","var: bedrms<br />val: -0.255339996<br />id: 21","var: bedrms<br />val:  0.345012369<br />id: 22","var: bedrms<br />val: -0.264570220<br />id: 23","var: bedrms<br />val:  0.377746750<br />id: 24","var: bedrms<br />val: -0.322329003<br />id: 25","var: bedrms<br />val:  0.302019112<br />id: 26","var: bedrms<br />val: -0.301268512<br />id: 27","var: bedrms<br />val:  0.462040423<br />id: 28","var: bedrms<br />val: -0.224075485<br />id: 29","var: bedrms<br />val:  0.381677547<br />id: 30","var: bedrms<br />val: -0.229134396<br />id: 31","var: bedrms<br />val:  0.000000000<br />id: 32","var: bedrms<br />val:  0.000000000<br />id: 33","var: bedrms<br />val:  0.000000000<br />id: 34","var: bedrms<br />val:  0.000000000<br />id: 35","var: bedrms<br />val:  0.000000000<br />id: 36","var: bedrms<br />val:  0.000000000<br />id: 37","var: bedrms<br />val:  0.000000000<br />id: 38","var: bedrms<br />val:  0.000000000<br />id: 39","var: bedrms<br />val:  0.000000000<br />id: 40","var: bedrms<br />val:  0.000000000<br />id: 41","var: bedrms<br />val:  0.000000000<br />id: 42","var: bedrms<br />val:  0.000000000<br />id: 43","var: bedrms<br />val:  0.000000000<br />id: 44","var: bedrms<br />val:  0.000000000<br />id: 45","var: bedrms<br />val:  0.000000000<br />id: 46","var: bedrms<br />val:  0.000000000<br />id: 47","var: bedrms<br />val: -0.029914611<br />id: 48","var: bedrms<br />val: -0.397401648<br />id: 49","var: bedrms<br />val: -0.080287332<br />id: 50","var: bedrms<br />val: -0.388367904<br />id: 51","var: bedrms<br />val:  0.065909193<br />id: 52","var: bedrms<br />val: -0.286236412<br />id: 53","var: bedrms<br />val:  0.012611330<br />id: 54","var: bedrms<br />val: -0.297561109<br />id: 55","var: bedrms<br />val:  0.024445070<br />id: 56","var: bedrms<br />val: -0.342422406<br />id: 57","var: bedrms<br />val: -0.019978671<br />id: 58","var: bedrms<br />val: -0.328336820<br />id: 59","var: bedrms<br />val:  0.096202470<br />id: 60","var: bedrms<br />val: -0.254439737<br />id: 61","var: bedrms<br />val:  0.049783302<br />id: 62","var: bedrms<br />val: -0.260915283<br />id: 63","var: bathrms<br />val:  0.000000000<br />id:  1","var: bathrms<br />val:  0.000000000<br />id:  2","var: bathrms<br />val:  0.000000000<br />id:  3","var: bathrms<br />val:  0.000000000<br />id:  4","var: bathrms<br />val:  0.000000000<br />id:  5","var: bathrms<br />val:  0.000000000<br />id:  6","var: bathrms<br />val:  0.000000000<br />id:  7","var: bathrms<br />val:  0.000000000<br />id:  8","var: bathrms<br />val:  0.000000000<br />id:  9","var: bathrms<br />val:  0.000000000<br />id: 10","var: bathrms<br />val:  0.000000000<br />id: 11","var: bathrms<br />val:  0.000000000<br />id: 12","var: bathrms<br />val:  0.000000000<br />id: 13","var: bathrms<br />val:  0.000000000<br />id: 14","var: bathrms<br />val:  0.000000000<br />id: 15","var: bathrms<br />val:  0.000000000<br />id: 16","var: bathrms<br />val:  0.000000000<br />id: 17","var: bathrms<br />val:  0.000000000<br />id: 18","var: bathrms<br />val:  0.000000000<br />id: 19","var: bathrms<br />val:  0.000000000<br />id: 20","var: bathrms<br />val:  0.000000000<br />id: 21","var: bathrms<br />val:  0.000000000<br />id: 22","var: bathrms<br />val:  0.000000000<br />id: 23","var: bathrms<br />val:  0.000000000<br />id: 24","var: bathrms<br />val:  0.000000000<br />id: 25","var: bathrms<br />val:  0.000000000<br />id: 26","var: bathrms<br />val:  0.000000000<br />id: 27","var: bathrms<br />val:  0.000000000<br />id: 28","var: bathrms<br />val:  0.000000000<br />id: 29","var: bathrms<br />val:  0.000000000<br />id: 30","var: bathrms<br />val:  0.000000000<br />id: 31","var: bathrms<br />val:  0.489452695<br />id: 32","var: bathrms<br />val:  0.003742031<br />id: 33","var: bathrms<br />val:  0.422553820<br />id: 34","var: bathrms<br />val:  0.034378208<br />id: 35","var: bathrms<br />val:  0.558650376<br />id: 36","var: bathrms<br />val:  0.060224487<br />id: 37","var: bathrms<br />val:  0.495215932<br />id: 38","var: bathrms<br />val:  0.065228846<br />id: 39","var: bathrms<br />val:  0.495005074<br />id: 40","var: bathrms<br />val: -0.025894884<br />id: 41","var: bathrms<br />val:  0.427828035<br />id: 42","var: bathrms<br />val:  0.003949585<br />id: 43","var: bathrms<br />val:  0.559811895<br />id: 44","var: bathrms<br />val:  0.039805728<br />id: 45","var: bathrms<br />val:  0.494538479<br />id: 46","var: bathrms<br />val:  0.042896111<br />id: 47","var: bathrms<br />val:  0.510250473<br />id: 48","var: bathrms<br />val:  0.103677332<br />id: 49","var: bathrms<br />val:  0.477390521<br />id: 50","var: bathrms<br />val:  0.131550223<br />id: 51","var: bathrms<br />val:  0.514204815<br />id: 52","var: bathrms<br />val:  0.129655847<br />id: 53","var: bathrms<br />val:  0.487098594<br />id: 54","var: bathrms<br />val:  0.137711878<br />id: 55","var: bathrms<br />val:  0.478313958<br />id: 56","var: bathrms<br />val:  0.070742260<br />id: 57","var: bathrms<br />val:  0.441283564<br />id: 58","var: bathrms<br />val:  0.096053008<br />id: 59","var: bathrms<br />val:  0.495445633<br />id: 60","var: bathrms<br />val:  0.108962525<br />id: 61","var: bathrms<br />val:  0.462405284<br />id: 62","var: bathrms<br />val:  0.113891510<br />id: 63"],"key":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":0.5,"size":0.00377952755905512,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","_isNestedKey":false,"frame":null}],"layout":{"margin":{"t":25.3933463796477,"r":7.30593607305936,"b":24.7358121330724,"l":48.9497716894977},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"range":[0.4,7.6],"tickmode":"array","ticktext":["livingArea","size","zoneRM","zoneRS","acTypeNo.AC","bedrms","bathrms"],"tickvals":[1,2,3,4,5,6,7],"categoryorder":"array","categoryarray":["livingArea","size","zoneRM","zoneRS","acTypeNo.AC","bedrms","bathrms"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"range":[-0.613563329807821,0.983971009383802],"tickmode":"array","ticktext":["-0.5","0.0","0.5"],"tickvals":[-0.5,0,0.5],"categoryorder":"array","categoryarray":["-0.5","0.0","0.5"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"Standardised coefficients","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","width":648,"height":504,"barmode":"relative","dragmode":"select"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"source":"A","attrs":{"1643e18c5d197":{"x":{},"y":{},"key":{},"text":{},"type":"scatter"},"1643e63431d35":{"x":{},"y":{},"key":{},"text":{}}},"cur_data":"1643e18c5d197","visdat":{"1643e18c5d197":["function (y) ","x"],"1643e63431d35":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
+
+---
+
+
+## Neural networks
+
+`$$P(y \in \textrm{class}_j | x_{1}, ..., x_{p}) = k \cdot \phi ( \alpha + \sum_{h=1}^s w_{hj} \phi (\alpha_h + \sum_{i=1}^p w_{ih} x_i ))$$`
+
+
+
+&lt;img src="figure/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+## Hidden nodes
+
+&lt;img src="figure/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+class: inverse middle 
+## Your Turn
+
+- In the formula for the model, what is `\(s\)` and `\(p\)`?
+- Sketch the neural network diagram that corresponds to the best model.
+
+---
+
+
+## Explore the process of fitting
+
+&lt;iframe src="https://player.vimeo.com/video/767832" width="640" height="483" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+---
+
+
+## Model comparison
+
+&lt;img src="figure/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+## Boundaries for each model
+
+&lt;img src="figure/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+## Random forest
+
+- Tree-level: each tree has its own training/test samples
+- Variable-level: each variable is ranked by the drop in model performance for each tree
+- Observation-level: for each observation we have the distribution of predictions across all trees
+
+We will come back to this later, because the area is very rich.
+
+---
+
+
+## Visualisation Toolbox
+
+* Grammar of graphics: map variables to graphical elements
+* Multivariate data plots: go beyond 2D
+* Dimension reduction: get back to 2D 
+* Interactive graphics: to explore various aspects quickly, see beyond 2D 
+
+---
+
+## Grammar of graphics
+
+* Tidy data is in a form where variables are provided in columns, and observations in rows. Statistically we have random variables, and a sample from a population. 
+* The grammar of graphics (Wilkinson, 1999; Wickham, 2009) provides the mapping of variables to graphical elements:
+
+
+```r
+ggplot(df, aes(x=res)) + geom_histogram(binwidth=0.5) 
+ggplot(df, aes(x=x, y=y)) + geom_point() +
+  geom_abline(intercept=coefs[1], slope=coefs[2]) 
+ggplot(df_grid, aes(x=x1, y=x2, colour=pred)) + 
+  geom_point(alpha=0.1) +
+  geom_point(data=df, aes(x=x1, y=x2, colour=g), 
+             shape=4, size=3, inherit.aes = FALSE) +
+  scale_colour_brewer("", palette="Dark2")
+```
+
+---
+
+## Multivariate plots
+
+* Scatterplot matrix: Matrix layout of all pairs of variables
+* Parallel coordinate plot: axes are laid out in parallel, rather than orthogonal, and observations are connected by lines.
+* Tours: Movie of all possible low-dimensional projections
+
+---
+
+## Scatterplot matrix
+
+&lt;img src="figure/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse middle 
+
+## Your Turn
+
+- What do you learn about the relationship between the four variables?
+- What transformations might be recommended?
+- Are there other cleaning that you would recommend before modeling?
+
+
+
+---
+
+## Parallel coordinate plot
+
+&lt;img src="figure/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+## Side-by-side boxplots
+
+&lt;img src="figure/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Parallel coordinate plot
+
+- Values on each variable are standardised. Other choices of scaling are reasonable.
+- Ordering of variables helps perceive structure. Here variables have been ordered by any class difference.
+- Structure to be seen:
+    + because the coloured lines flow differently, there are large differences between the three classes
+    + eicosenoic completely separates south
+    + sardinia and north separated in oleic and linoleic
+    + linolenic is discrete
+
+---
+
+## Tours
+
+A sequence of `\(d\)`-dimensional projections, `\(XA\)`, of `\(p\)`-dimensional data is shown in an animation or movie.
+
+`$$X = \left[ \begin{array}{rrrr} 
+         x_{11} &amp; x_{12} &amp; \dots &amp; x_{1p}\\
+         x_{21} &amp; x_{22} &amp; \dots &amp; x_{2p}\\
+         \vdots &amp; \vdots &amp;  &amp; \vdots \\
+         x_{n1} &amp; x_{n2} &amp; \dots &amp; x_{nd}
+         \end{array} \right]
+         ~~~ A = \left[ \begin{array}{rrrr} 
+         a_{11} &amp; a_{12} &amp; \dots &amp; a_{1d}\\
+         a_{21} &amp; a_{22} &amp; \dots &amp; a_{2d}\\
+         \vdots &amp; \vdots &amp;  &amp; \vdots \\
+         a_{p1} &amp; a_{p2} &amp; \dots &amp; a_{pd}
+         \end{array} \right]$$`
+         
+- Grand: random walk over all possible projections
+- Guided: follows an optimisation path of a function
+- Little: interpolates between all marginal views
+- Manual: user controls contributions from a variable, rotating a variable into or out of a projection
+ 
+---
+
+## Tours
+
+&lt;iframe src="https://player.vimeo.com/video/137916478" width="277" height="264" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt; 
+
+&lt;iframe src="https://player.vimeo.com/video/137802511" width="277" height="264" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt; 
+
+&lt;iframe src="https://player.vimeo.com/video/127615225" width="640" height="203" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt; 
+
+---
+
+## Tours focus on shapes
+
+- From example 1, you should see 4 clusters. Based on (1) a group separates out in a fleeting moment, (2) following the motion path of the groups, three are easily seen, and eventually largest group breaks into 2. The clusters are primarily spherical.
+- In example 2, the two groups are almost always shifted from each other. Never a gap between the two, and some blue and orange tend to hang with the other group. The clusters are not spherical, and form different shapes in different projections. 
+- Shape can be important for making distributional assumptions about data
+
+---
+class: inverse middle
+
+## Your Turn
+
+- Make a parallel coordinate plot of the ratcns data in the tourr package
+- Read the description of the data `?ratcns`, and decide what scaling choice would be appropriate. Re-make the parallel coordinates accordingly.
+- Make a side-by-side boxplot of the ratcns data 
+- What do you learn differently from the two displays? Is one better than the other?
+
+
+---
+
+class: inverse middle
+
+## Your Turn
+
+- Make a grand tour of the olive oils data, with points coloured by region
+- Are the three regions perfectly separable?
+- How many clusters, in addition to the classes, do you see?
+- Are there any outliers?
+
+
+
+
+
+---
+
+## Dimension reduction
+
+* Principal component analysis (PCA): reduce the dimension by making linear combinations of the original variables, that capture as much of the original variance-covariance as possible. Also called "sphering".
+* Multidimensional scaling (MDS): A super-set of PCA that enables creating low-dimensional mapping of data points to best match their distances in the original `\(p\)`-space. Often used, when the starting point is purely a distance matrix. There are many variations, e.g. sammon and a recent method, t-SNE could be considered related.
+* Projection pursuit (PP): A super-set of PCA which creates linear combinations of orginal variables, that optimise something other than variance-covariance: e.g. holes, outliers, class differences
+* Linear discriminant analysis (LDA) is also a useful method for finding a low-dimensional projection revealing group differences. 
+
+---
+
+## Dimension reduction
+
+&lt;img src="figure/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+## Interactive graphics
+
+I use two current technologies for interactive graphics in R:
+
+- shiny: reactive plots and graphical user interfaces
+- plotly: javascript conversion of ggplot2 objects
+
+Example shiny app for a projection pursuit forest: 
+
+[https://natydasilva.shinyapps.io/shinyppforest/](https://natydasilva.shinyapps.io/shinyppforest/)
+
+---
+
+## Back-story: underlying the app
+
+- Classification tree: Looking at a tree, investigate number of samples at each node, impurity at each node, variable used to split
+- Projection pursuit tree: node is based on combination of variable, otherwise the same
+- Random forest: Across many trees, examine the error distribution, variable importance, vote matrix, proximity
+- Projection pursuit forest: Nodes and variable importance based on projection coefficients.
+
+---
+
+## rpart: A single tree
+
+Using `rpart` library to fit the tree, and the `plot` function of `partykit` library to display the tree.
+
+&lt;img src="figure/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## rpart: A single tree, node-level 
+
+
+&lt;img src="figure/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+## PPtree: A single tree, nodes are combinations of vars
+
+&lt;img src="figure/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+## PPtree: A single tree, node level
+
+&lt;img src="figure/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="figure/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+class: inverse middle
+
+## Your Turn
+
+- Examine nodes 3, 4, 9. 
+- How well are the classes separated now?
+
+---
+
+## Exploring the random forest ensemble model
+
+- Tree level: examine error distribution across trees
+- Variable level: importance
+- Observation level: misclassifications, votes, proximity
+
+---
+
+## Random forest: tree level
+
+Each point is one tree.
+
+&lt;img src="figure/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse middle
+
+## Your Turn
+
+- There is something missing in the display shown. What is it?
+- Turn this into a parallel coordinate plot, connecting the dots for each model.
+
+
+
+---
+
+## Random forest: Variable level
+
+Across all trees, importance computed by class
+
+&lt;img src="figure/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse middle
+
+## Your Turn
+
+In each of the previous displays, the focus is different. 
+- How are variables mapped to graphical elements in each?
+- For each display: What is easy to read off? What is hard? 
+
+
+
+---
+
+## Random forest: observation level exploring votes
+
+Each point is an observation.
+
+&lt;img src="figure/unnamed-chunk-34-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse middle
+
+## Your Turn
+
+Is a heatmap M-in-DS or D-in-MS? Or something else?
+
+---
+
+## Exploring a forest ensemble
+
+[https://natydasilva.shinyapps.io/shinyppforest/](https://natydasilva.shinyapps.io/shinyppforest/)
+
+- Individuals: Attributes of observations, data plot, MDS, vote matrix.
+- Models: Examine aspects of each model, in comparison to others ni the ensemble - variable importance, tree structure, overall error, node splits, confusion.
+- Performance comparison: PPForest vs random forest, and performance by class.
+---
+
+## Smaller set of linked plots
+
+The file `app.R` in the `pcp-mds` directory contains interactively linked plots, a parallel coordinate plot and an MDS plot of the olive data. If you open the `app.R` file in RStudio you will be able to click on a point or profile, and the focus will be placed on this observation.
+
+![Place holder for illustrating linked plots](pcp-mds.png)
+
+Key parts of the app are the `ui` and `server` functions.
+
+---
+
+## Linked plots
+
+- `ui`: here there is very little user interface in this app. The layout of the two plots is done here.
+- `server`: this part makes the two plots, re-does them with plotly, with the linking variable set. The event handling is defined, and the behaviour of the plots when the user selects points.
+
+---
+
+class: inverse middle
+
+## Your Turn
+
+- Way back on slides 11-12, we looked at scatterplot of `\(R^2\)` vs degrees of freedon, and a parallel coordinate plot of the coefficients for the "All Models Example"
+- Following the `pcp-mds` example make these two plots linked. 
+
+---
+
+## Extracting components of model
+
+Support vector machine model: 
+
+- find points which define the boundary between two classes (support vectors)
+- boundary plane defined by these points
+- predicted values are data projected onto the norm of this plane
+
+
+```
+#&gt; 
+#&gt; Call:
+#&gt; svm(formula = g ~ ., data = simd3, kernel = "linear", scale = FALSE)
+#&gt; 
+#&gt; 
+#&gt; Parameters:
+#&gt;    SVM-Type:  C-classification 
+#&gt;  SVM-Kernel:  linear 
+#&gt;        cost:  1 
+#&gt;       gamma:  0.5 
+#&gt; 
+#&gt; Number of Support Vectors:  53
+```
+
+
+
+---
+
+## Support vectors
+
+These are the coefficients' weight each support vector, `simd3_svm$coefs`.
+
+
+```
+#&gt;  [1]  1.00  1.00  1.00  1.00  1.00  0.70  1.00  1.00  1.00  1.00  1.00
+#&gt; [12]  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00
+#&gt; [23]  1.00  1.00  1.00  1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00
+#&gt; [34] -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00
+#&gt; [45] -1.00 -1.00 -1.00 -1.00 -1.00 -0.56 -0.14 -1.00 -1.00
+```
+
+Most are bounded (1.00 or -1.00). 
+
+
+
+
+---
+
+## Show SVs and model in data space
+
+&lt;img src="figure/unnamed-chunk-39-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## More than two variables
+
+The process remains the same in higher dimensions. 
+- To examine boundaries, generate grid covering domain, and predict
+- If dimension is too large, keep only points in the grid within a small distance of the boundary
+- For complex boundaries, focus on one group at a time, keeping overall scale fixed
+
+&lt;iframe src="https://player.vimeo.com/video/125405961" width="340" height="277" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;iframe src="https://player.vimeo.com/video/125405962" width="340" height="277" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+---
+
+## Different aspects of SVM fit
+
+&lt;iframe src="https://player.vimeo.com/video/219242389" width="640" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+---
+
+## Final challenge!
+
+There is an additional data set provided, `numbat.csv`. It is purely synthetic data. We have hidden something in it. Can you find it?
+
+---
+## Summary
+
+* The toolbox: Grammar of graphics, multivariate data plots, dimension reduction, interactive graphics
+* Supervised classification: Checking assumptions, examining misclassifications, variable importance, visualising boundaries, exploring ensembles.
+* Unsupervised classification: Once you have a clustering, all of these methods can be applied to examine the groupings, and also compare different groupings.
+* High-dimension, small sample size can allow you to find virtually anything in the data. 
+* Plot the data! 
+
+---
+## Sources
+
+- Wickham, Cook, Hofmann (2015) Visualizing statistical models: Removing the blindfold, Statistical Analysis and Data Mining, (http://dx.doi.org/10.1002/sam.11271)
+- Cook and Swayne (2007) Interactive and Dynamic Graphics for Data Analysis: With Examples Using R and GGobi (http://www.ggobi.org/book/)
+- Cheatsheets for [rmarkdown](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf), [ggplot2](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf), [shiny](https://www.rstudio.com/wp-content/uploads/2016/01/shiny-cheatsheet.pdf)
+
+---
+
+## Acknowledgements
+
+- Slides powered by the R package [xaringan](https://github.com/yihui/xaringan)
+  for [remark.js](https://remarkjs.com/) and [R Markdown](https://rmarkdown.rstudio.com)
+- The source files to reproduce the slides are available at [https://github.com/EK-Lee/WOMBAT-2017](https://github.com/EK-Lee/WOMBAT-2017).
+- The R packages used for the slides: `knitr`, `rmarkdown`, `tidyverse`, `stringr`, `gridExtra`, `mvtnorm`, `MASS`, `e1071`, `randomForest`, `nnet`, `caret`, `meifly`, `plotly`, `GGally`, `tourr`, `RColorBrewer`, `PPtreeVis`, `tsne`, `barcode` and their dependencies.
+
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('showSlide', function (slide) {setTimeout(function() {window.dispatchEvent(new Event('resize'));}, 100)});</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
