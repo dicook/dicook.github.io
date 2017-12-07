@@ -9,7 +9,7 @@ highlighter: rouge
 #
 name : Di Cook
 description: Professor at Monash University Econometrics and Business Statistics
-url: http://dicook.github.io
+url: http://dicook.org
 auto: true
 markdown: kramdown
 permalink: /:year/:month/:day/:title 
