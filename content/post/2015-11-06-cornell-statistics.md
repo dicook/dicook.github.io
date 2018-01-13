@@ -21,6 +21,6 @@ Its been an interesting week. Professor Marty Wells has been comparing results f
 
 Look out for Amy Willis! She will graduate in about a year, after working on statistics for high-throughput data collected on microbial biomes. She has an R package called `breakaway`. 
 
-Here is a link to my [slides]({{ site.url }}/assets/slides-Cook-Cornell.pdf) on Statistical Inference by Crowd-sourcing.
+Here is a link to my [slides](/post/slides-Cook-Cornell.pdf) on Statistical Inference by Crowd-sourcing.
 
 

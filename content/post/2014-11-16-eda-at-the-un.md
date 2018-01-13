@@ -25,7 +25,7 @@ There were a few questions posted, and this is the main reason for this blog. It
 
 I answered this live, perhaps not very well, but I have also been asked similar questions at various times over the years, and it is a good question, worth further attention. The question arises because I looked just at differences in math scores just for one covariate, separately by country - this is what the "one predictor at a time" means. By only looking at gender, and not at school, age, hours spent studying, parents' socioeconomic status, truancy, number of possessions, number of math teachers, attitude to math, ... there is a danger that the results change at a finer resolution. Yes, this is something that you should always be cautious about. 
 
-![gender bias in math by country]({{ site.url }}/assets/gendermath.png)
+![gender bias in math by country](/post/gendermath.png)
 
 To counter this, a modeler would fit many, many variables and the interactions simultaneously and look at the coefficients for the predictors in the model, in order to make a statement about gender and math scores. However, this is at odds, to a large extent with EDA, where the fundamentals dictate light processing of the data. If you overly process the data you might miss key features like outliers, clusters, small pockets of heterogeneity. My first instincts with the gender bias is not universal observation was to be skeptical: could it really be that in Qatar girls score 15 points better than boys on average? This could be an artifact induced by small sample size, or unequal proportions of gender in the sample. Simpson's paradox can occur when proportions and counts are different between categories that are aggregated - look up the famous Berkeley admissions data. 
 
@@ -33,7 +33,7 @@ Neither of these are culprits for these five countries with the reverse gender g
 
 Another check can be done, which is the lineup protocol discussed in an [earlier blog](http://dicook.github.io/2014/11/03/nullabor/). Put the plot of the data in amongst a field of plots of null data. We can create the null data sets for this data by permuting the gender labels of students, within each country, recalculate the difference in average math scores, and remake the dotplot. This is done below. 
 
-![gender bias lineup]({{ site.url }}/assets/gendermath-lineup.png)
+![gender bias lineup](/post/gendermath-lineup.png)
 
 The plot of the data (f) stands out amongst the rest of the plots. The largest gap that is produced by random labels is on the order of 5 points, and we see a pretty even spread between boys and girls. The data stands out in this bunch because there are more countries that have a higher boys average score and because some countries have much bigger average differences than 5 points. The nearest that we get to something odd is on plot (e) where there is one country where there is a gender gap in favor of girls of about 18 points. However, this is due to the one country with small numbers, Lichtenstein, which only measured 300 students. It should have been removed from the analysis ahead of time. 
 
