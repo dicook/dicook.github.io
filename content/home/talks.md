@@ -4,14 +4,14 @@ widget = "talks"
 active = true
 date = "2016-04-20T00:00:00"
 
-title = "Recent & Upcoming Talks"
+title = "Upcoming Talks"
 subtitle = ""
 
 # Order that this section will appear in.
 weight = 30
 
 # Number of talks to list.
-count = 10
+count = 3
 
 # List format.
 #   0 = Simple
