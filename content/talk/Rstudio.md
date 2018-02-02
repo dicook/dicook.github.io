@@ -20,7 +20,7 @@ projects = []
 
 # Links (optional).
 url_pdf = ""
-url_slides = "dicook.org/files/rstudio/index.html"
+url_slides = "http://www.dicook.org/files/rstudio/#1"
 url_video = ""
 url_code = ""
 
