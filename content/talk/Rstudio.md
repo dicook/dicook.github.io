@@ -2,7 +2,7 @@
 date = 2017-01-01T00:00:00  # Schedule page publish date.
 
 title = "To the Tidyverse and Beyond: Challenges for the Future in Data Science"
-time_start = 2018-02-02T09:30:00
+time_start = 2018-02-02T09:00:00
 time_end = 2018-02-02T10:30:00
 abstract = ""
 abstract_short = ""
