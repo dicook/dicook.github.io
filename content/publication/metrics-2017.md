@@ -36,7 +36,7 @@ selected = false
 projects = ["http://mamajumder.github.io/html/experiments.html"]
 
 # Links (optional).
-url_pdf = "http://www.tandfonline.com/doi/full/10.1080/10618600.2017.1356323"
+url_pdf = "http://www.tandfonline.com/eprint/PkhYwRNpIQwChgS7bzI4/full "
 url_preprint = "http://www.tandfonline.com/doi/full/10.1080/10618600.2017.1356323"
 url_code = "#"
 url_dataset = "#"
@@ -44,7 +44,7 @@ url_project = "http://mamajumder.github.io/html/experiments.html"
 url_slides = "#"
 url_video = "#"
 url_poster = "#"
-url_source = "#"
+url_source = "https://github.com/niladrir/metrics-paper"
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.
