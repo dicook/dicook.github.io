@@ -22,7 +22,7 @@ projects = []
 url_pdf = ""
 url_slides = "http://www.dicook.org/files/rstudio/#1"
 url_video = ""
-url_code = ""
+url_code = "https://github.com/dicook/RStudio-keynote"
 
 # Does the content use math formatting?
 math = true
