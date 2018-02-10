@@ -11,7 +11,7 @@ This talk will discuss new work in adapting tour methods to examine multi-parame
 The new developments include ways to conduct guided tours to search for mismatches in distribution in high-dimensions, and new software for conducting tours in R."
 abstract_short = ""
 event = "NUS/IMS  Workshop and Tutorial on Social Networks"
-event_url = "http://ims.nus.edu.sg/events/2018/wstat/wk2.php"
+event_url = "http://ims.nus.edu.sg/events/2018/wstat"
 location = "Singapore"
 
 # Is this a selected talk? (true/false)
