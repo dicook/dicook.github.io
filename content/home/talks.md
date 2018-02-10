@@ -2,7 +2,7 @@
 # Recent and Upcoming Talks widget.
 widget = "talks"
 active = true
-date = "2017-04-20T00:00:00"
+date = 2018-01-12
 
 title = "Upcoming Talks"
 subtitle = ""
@@ -11,7 +11,7 @@ subtitle = ""
 weight = 30
 
 # Number of talks to list.
-count = 3
+count = 5
 
 # List format.
 #   0 = Simple
