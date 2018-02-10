@@ -1,5 +1,5 @@
 +++
-date = 2018-02-10T00:00:00  # Schedule page publish date.
+date = 2018-02-09T00:00:00  # Schedule page publish date.
 
 title = "Visualising high-dimensional spaces with
 application to particle physics models"
