@@ -24,9 +24,9 @@ projects = []
 
 # Links (optional).
 url_pdf = ""
-url_slides = ""
+url_slides = "http://www.dicook.org/files/ims/#1"
 url_video = ""
-url_code = ""
+url_code = "https://github.com/dicook/IMS-Singapore-talk"
 
 # Does the content use math formatting?
 math = true
