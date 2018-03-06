@@ -2,7 +2,7 @@
 date = 2017-01-01T00:00:00  # Schedule page publish date.
 
 title = "Myth busting and apophenia in data visualisation: is what you see really there?"
-time_start = 2018-02-02T18:00:00
+time_start = 2018-03-07T18:00:00
 time_end = 2018-03-07T19:00:00
 abstract = ""
 abstract_short = ""
