@@ -6,7 +6,7 @@ time_start = 2018-03-07T18:00:00
 time_end = 2018-03-07T19:00:00
 abstract = ""
 abstract_short = ""
-event = "Ihaka Lecture Series
+event = "Ihaka Lecture Series"
 event_url = "https://www.stat.auckland.ac.nz/en/about/our-department/ihaka-lectures.html#8f3b58f2c5e4bbf4076e2d5083ce666e"
 location = "Auckland, NZ"
 
