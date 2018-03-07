@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><i class="fa  fa-eye "></i> <i class="fa  fa-eye "></i>   Myth busting and apophenia in data visualisation: is what you see really there?</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Di Cook    Monash University" />
+    <link href="index_files/remark-css/default.css" rel="stylesheet" />
+    <link href="index_files/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="myremark.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# <i class="fa  fa-eye "></i> <i class="fa  fa-eye "></i> <br> Myth busting and apophenia in data visualisation: is what you see really there?
+### Di Cook <br><br> Monash University
+### <a href="bit.ly/ihaka-cook" class="uri">bit.ly/ihaka-cook</a> <br><br> Mar 7, 2018
+
+---
+
+
+
+
+
+class: middle center
+# My data stories
+
+What I have learned about the world by making pictures of data.
+
+---
+class: middle center
+
+*Boys are better at math than girls*
+
+e.g. [CNN, October 12, 2016](https://edition.cnn.com/2016/10/12/health/female-scientists-engineers-math-gender-gap/index.html)
+
+---
+# Data: OECD PISA
+
+- OECD PISA survey is the world's global metric for quality, equity and efficiency in school education.
+- Workforce readiness of 15-year old students
+- 4520 students tested in New Zealand in 2015
+- 183 schools
+- Math, reading and science tests, surveys on school and home environment, 921 variables
+- Data available from [http://www.oecd.org/pisa/data/](http://www.oecd.org/pisa/data/)
+
+
+
+
+---
+
+
+
+&lt;img src="figure/dotplot-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="figure/unnamed-chunk-2-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle center
+
+There are many countries in the world where girls do better on average than boys.
+
+---
+class: middle center
+
+On the other hand.....
+
+---
+
+&lt;img src="figure/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="figure/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle center
+
+And from individual to individual, just looking at New Zealand...
+
+---
+
+&lt;img src="figure/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle center
+
+On an individual there is no important difference between girls and boys on anything. The differences are overblown. 
+
+---
+# Carbon capture
+
+[New technology offers hope for storing carbon dioxide underground](https://theconversation.com/new-technology-offers-hope-for-storing-carbon-dioxide-underground-60707)
+
+---
+# Data: CO2
+
+- Data is collected at a number of locations world wide. 
+- See [Scripps Inst. of Oceanography](http://scrippsco2.ucsd.edu/data/atmospheric_co2) 
+- Let's pull the data from the web and take a look ...
+- 
+- Recordings from South Pole (SPO), Kermadec Islands (KER), La Jolla Pier, California (LJO), Point Barrow, Alaska (PTB).
+
+---
+
+
+
+&lt;img src="figure/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle center
+
+We have not made a dent in reducing CO2 in the atmosphere. To the contrary its just increasing. 
+
+Interestingly, the concentrations are seasonal in the northern hemisphere, but not in the southern. 
+
+---
+# More
+
+- Political pollsters are in large part biased
+- You are not over the hill in tennis at 40 - over 40 year old women (and men) regularly win grand slam singles matches
+- If you are flying from small airports in the US, don't be late - more than half of flights leave early
+
+---
+class: middle center
+
+I've learned these things by making plots of data. 
+
+Its not from statistical hypothesis testing. 
+
+Statistical inference provides support for findings, or negates a hypothesis. Its an important tool.
+
+---
+class: middle center
+
+We probably agree with the plots that I have shown you, that there is no argument, the patterns are too strong to have occurred by chance. That's the basis of inference. 
+
+The evidence may be so strong in the plots shown that I don't need additional support from p-values or confidence bands.
+
+---
+# What about this one?
+
+&lt;img src="figure/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+.pull-left[# Apophenia
+
+*Apophenia is the human experience of seeing meaningful patterns or connections in random or meaningless data.*
+
+]
+.pull-right[
+
+![](img/cloud-shapes.jpg)
+
+]
+.footnote[Original image and quote can be found at [here](https://sites.google.com/site/ribboneyes/home/final-exam/apophenia).]
+
+
+---
+
+&lt;img src="figure/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
+
+.footnote[Which plot shows more separation betwen the groups?]
+
+---
+
+.pull-left[
+&lt;img src="figure/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+
+Null plots were generated by randomly sampling the group label, and re-doing the dimension reduction.
+
+This shows that what was perceived to be big separation in the original data, was not real separation. In high dimensions (42), four randomly assigned groups in 50 observations can be easily separated. 
+]
+
+---
+class: middle center
+
+What we have just used is the **lineup protocol**, which can be used to do significance testing with data plot.
+
+It can also possible to compute p-values and power related to a hypothesis test conducted this way.
+
+---
+
+background-image: url(img/hyptesting.pdf)
+background-size: 90%
+
+
+---
+class: center middle
+
+# Interesting tidbit
+
+The first lineup was done by Neyman, Scott and Shane (1953) to examine the universe .orange["If one actually distributed the cluster centres in space and then
+placed the galaxies in the clusters exactly as prescribed by the
+model, would the resulting picture on the photographic plate look
+anything like that on an actual plate...?"]
+
+.footnote[The hard work was of course done by .orange[Computers], consisting of an office with three female assistants whose work was acknowledged as requiring a tremendous amount of care and attention.]
+
+---
+class: middle center
+
+How does this tie in to Hadley Wickham's work, the tidyverse, and to statistics?
+
+---
+class: middle center
+
+background-image: url(img/messy_to_tidy1.png)
+background-size: 100%
+
+.footnote[Example from Hadley Wickham's workshops]
+---
+
+class: middle center
+
+background-image: url(img/messy_to_tidy2.png)
+background-size: 100%
+
+---
+
+class: middle center
+
+background-image: url(img/messy_to_tidy3.png)
+background-size: 100%
+
+---
+# A statistic is a function of the data
+
+For example, the sample mean,
+
+`$$\bar{X}=\frac{1}{n}\sum_{i=1}^{n} X_i$$` 
+
+and standard deviation,
+
+`$$s_{X}=\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar{X})^2}$$`
+
+---
+class: middle center
+
+# This is what I really like about ggplot2, it makes plots another type of statistic.
+
+---
+
+
+
+
+
+```r
+tidy_data %&gt;% 
+  filter(iso2 == "NZ") %&gt;% 
+  ggplot(aes(x = year, y = count, fill = gender)) +
+  geom_bar(stat = "identity", position = "fill") +
+  facet_grid(~ age) +
+  scale_fill_manual("",
+                    values=c(ochre_palettes$lorikeet[1],
+                            ochre_palettes$lorikeet[2])) 
+```
+
+&lt;img src="figure/unnamed-chunk-12-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+```r
+tidy_data %&gt;% 
+  filter(iso2 == "NZ") %&gt;% 
+  ggplot(aes(x = year, y = count, fill = gender)) +
+  geom_bar(stat = "identity") +
+  facet_grid(~ age) +
+  scale_fill_manual("", 
+                    values=c(ochre_palettes$lorikeet[1],
+                            ochre_palettes$lorikeet[2])) 
+```
+
+&lt;img src="figure/unnamed-chunk-13-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+```r
+tidy_data %&gt;% 
+  filter(iso2 == "NZ") %&gt;% 
+  ggplot(aes(x = year, y = count, fill = gender)) +
+  geom_bar(stat = "identity", position="dodge") +
+  facet_grid(~ age) +
+  scale_fill_manual("", 
+                    values=c(ochre_palettes$lorikeet[1],
+                            ochre_palettes$lorikeet[2])) 
+```
+
+&lt;img src="figure/unnamed-chunk-14-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+```r
+tidy_data %&gt;% 
+  filter(iso2 == "NZ") %&gt;% 
+  ggplot(aes(x = year, y = count, fill = gender)) +
+  geom_bar(stat = "identity") +
+  facet_grid(gender ~ age) +
+  scale_fill_manual("",
+                  values=c(ochre_palettes$lorikeet[1],
+                          ochre_palettes$lorikeet[2])) 
+```
+
+&lt;img src="figure/unnamed-chunk-15-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+```r
+tidy_data %&gt;% 
+  filter(iso2 == "NZ") %&gt;% 
+  ggplot(aes(x = year, y = count, fill = gender)) +
+  geom_bar(stat = "identity") +
+  facet_grid(gender ~ age) +
+  scale_fill_manual("",
+                values=c(ochre_palettes$lorikeet[1],
+                         ochre_palettes$lorikeet[2])) + 
+  coord_polar()
+```
+
+&lt;img src="figure/unnamed-chunk-16-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+```r
+tidy_data %&gt;% 
+  filter(iso2 == "NZ") %&gt;% 
+  ggplot(aes(x = year, y = count, fill = gender)) +
+  geom_bar(stat = "identity") +
+  facet_grid(gender ~ age) +
+  scale_fill_manual("", 
+                    values=c(ochre_palettes$lorikeet[1],
+                          ochre_palettes$lorikeet[2])) + 
+  coord_polar()
+```
+
+&lt;img src="figure/unnamed-chunk-17-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+```r
+tidy_data %&gt;% 
+  filter(iso2 == "NZ") %&gt;% 
+  ggplot(aes(x = 1, y = count, fill = factor(year))) +
+  geom_bar(stat = "identity", position="fill") +
+  facet_grid(gender ~ age) +
+  scale_fill_ochre("year", palette="lorikeet") +
+  theme(legend.position="bottom") 
+```
+
+&lt;img src="figure/unnamed-chunk-18-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+```r
+tidy_data %&gt;% 
+  filter(iso2 == "NZ") %&gt;% 
+  ggplot(aes(x = 1, y = count, fill = factor(year))) +
+  geom_bar(stat = "identity", position="fill") +
+  facet_grid(gender ~ age) +
+  scale_fill_ochre("year", palette="lorikeet") +
+  coord_polar(theta="y") + theme(legend.position="bottom")
+```
+
+&lt;img src="figure/unnamed-chunk-19-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="https://www.wired.com/wp-content/uploads/2016/01/DB-Transformation-Colour.gif" width="600px" align="middle"&gt;
+
+.footnote[Source: https://www.wired.com/wp-content/uploads/2016/01/DB-Transformation-Colour.gif]
+
+---
+class: middle center
+
+# Now we can start doing statistics with plots, actually statistical inference
+
+---
+class: middle center
+
+WHY? A recent apophenia example
+
+---
+
+class: middle center
+
+background-image: url(img/drob_twitter.png)
+background-size: 60%
+
+---
+# Followed by 
+
+*Below is a simple scatterplot of the two variables of interest. A slight negative slope is observed, but it does not look very large. There are a lot of states whose capitals are less than 5% of the total population. The two outliers are Hawaii (government rank 33 and capital population 25%) and Arizona (government rank 26 and capital population 23%). Without those two the downward trend (an improvement in ranking) would be much stronger.*
+
+*I ran linear regressions of government rank on the percentage of each state’s population living in the capital city, state population (in 100,000s), and state GDP (in $100,000s).... The .orange[coefficient is not significant] for any regression at the traditional 5% level.*
+
+*... .orange[I'm not convinced that the lack of significance is itself significant.]*
+
+.footnote[Analysis in Tick Tock blog, by Graham Tierney.]
+
+---
+class: middle center
+
+.medium[Because we make inference with plots anyway, without a firm foundation.]
+
+---
+class: middle center
+
+.medium[Let's do some inference....]
+
+# Which one of the following plots shows the strongest relationship between the two variables?
+
+---
+
+class: middle center
+
+background-image: url(img/govt_lineup.png)
+background-size: 80%
+---
+.left-column[
+# How do you generate null samples?
+]
+.right-column[
+- **Permutation**: Take one of the variables of interest (one columnm of tidy data) and scramble the order. This breaks any association with other variables. 
+- **Simulation**: Assume that a variable has values that follow a given statistical distribution. Sample values from this distribution.
+]
+
+.footnote[Answer from previous slide: plot number 12]
+
+---
+class: middle center
+
+# Putting this all together
+
+---
+
+.left-column[
+# When you make a plot think about...
+]
+.right-column[
+- What is the .orange[question] you are trying the answer from the plot, hence explicitly stating the .orange[null hypothesis and alternative]. 
+- How .orange[variables] are mapped to graphical elements.
+- What a .orange[null generating mechanism] could be, that woud ensure samples are drawn from a null scenario, of nothing to be seen.
+- What are possible .orange[alternative plot designs].
+]
+
+---
+
+# Worked examples
+
+- good government
+- cancer map
+- flying etiquette
+
+---
+
+.left-column[
+&lt;img src="img/drob_twitter.png" width="100%"&gt;
+]
+.right-column[
+- **Question**: Is good government related to population centres?
+    - **Null**: Nope
+    - **Alternative**: Yes
+- Variables mapped to graphical elements
+    - x=%Pop, y=Rank, geom=point
+    - geom=smooth/lm, se
+- Null generating method:
+    - Permute x, resulting in *no real association*
+- Alternatives: 
+    - log the %Pop values
+    - No lm, no se
+]
+
+---
+class: middle center
+
+background-image: url(img/govt_lineup.png)
+background-size: 80%
+
+---
+
+.left-column[
+&lt;img src="figure/unnamed-chunk-20-1.svg" style="display: block; margin: auto;" /&gt;
+Cancer incidence across the US 2010-2014, all cancer types, per 100k.
+
+.footnote[Data from American Cancer Society, https://cancerstatisticscenter.cancer.org]
+]
+.right-column[
+
+- **Question**: Is there spatial dependency?
+    - Null: Nope
+    - Alternative: Yep
+- Variables mapped to graphical elements
+    - x=long, y=lat, geom=map/polygon
+    - color=Incidence
+- Null generating method:
+    - Permute Incidence, breaks any spatial dependence
+
+]
+
+---
+class: middle center
+
+# Melanoma
+
+a .orange[different cancer] from what we just looked at, because once you've seen the data its .orange[hard to "unsee it"]
+
+---
+
+&lt;img src="figure/unnamed-chunk-21-1.svg" style="display: block; margin: auto;" /&gt;
+
+
+
+
+---
+class: middle center 
+
+[41% Of Fliers Think You’re Rude If You Recline Your Seat](http://fivethirtyeight.com/datalab/airplane-etiquette-recline-seat/)
+
+FiveThirtyEight article by Walt Hickey, Sep 2014
+
+---
+
+&lt;img src="figure/unnamed-chunk-23-1.svg" style="display: block; margin: auto;" /&gt;
+
+
+# p-values 
+
+The *p*-value is the probability that the data plot is extreme, if there really is no structure in the population. **The lower the better!**
+
+
+```r
+library(nullabor)
+data(turk_results)
+turk_results %&gt;% filter(pic_id == "105") %&gt;% count(detected)
+```
+
+```
+#&gt; # A tibble: 2 x 2
+#&gt;   detected     n
+#&gt;      &lt;int&gt; &lt;int&gt;
+#&gt; 1        0     4
+#&gt; 2        1    13
+```
+
+```r
+pvisual(13, 17)
+```
+
+```
+#&gt;       x simulated        binom
+#&gt; [1,] 13         0 2.398082e-14
+```
+
+---
+# p-values 
+
+
+```r
+turk_results %&gt;% filter(pic_id == "116") %&gt;% count(detected)
+```
+
+```
+#&gt; # A tibble: 2 x 2
+#&gt;   detected     n
+#&gt;      &lt;int&gt; &lt;int&gt;
+#&gt; 1        0    14
+#&gt; 2        1     2
+```
+
+```r
+pvisual(2, 16)
+```
+
+```
+#&gt;      x simulated     binom
+#&gt; [1,] 2    0.2056 0.1892403
+```
+
+---
+# Our trial
+
+.pull-left[
+&lt;img src="figure/unnamed-chunk-26-1.svg" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+
+```r
+pvisual(20, 50)
+```
+
+```
+#&gt;       x simulated        binom
+#&gt; [1,] 20         0 1.042499e-13
+```
+]
+
+.footnote[run directly in R]
+---
+# ...and power
+
+Power is the probability that the data plot is detected when there really is some structure in the population. **The higher the better!**
+
+
+```r
+visual_power(turk_results)
+```
+
+```
+#&gt; # A tibble: 6 x 3
+#&gt;   pic_id power     n
+#&gt;    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;
+#&gt; 1     36 0        18
+#&gt; 2    105 0.746    17
+#&gt; 3    116 0.125    16
+#&gt; 4    131 0.842    14
+#&gt; 5    159 0.656    15
+#&gt; 6    225 0.130    15
+```
+
+---
+
+.pull-left[
+&lt;img src="figure/unnamed-chunk-29-1.svg" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+&lt;img src="figure/unnamed-chunk-30-1.svg" style="display: block; margin: auto;" /&gt;
+]
+
+Best design to answer this question: "Do males and females perceive the etiquette of bringing a baby on board differently?"
+
+.footnote[Hofmann et al (2012) InfoVis]
+
+---
+
+.pull-left[
+&lt;img src="img/hyptesting2.pdf"&gt;
+]
+.pull-right[
+Hypothesis testing provides rigor to data analysis. Its very important to do it rigorously. 
+
+.orange[**The hypothesis for data plots comes from the type of plot being used.**] 
+
+When you add the data to the plot, it becomes a test statistic. Hypotheses never come from looking at the data first, but from the underlying problem to be solved.
+]
+
+---
+# The nullabor package
+
+
+```r
+fly_sub_lineup &lt;- lineup(
+  null_dist(var="gender", dist="binomial", 
+             params=list(p=0.533, n=809, size=1)), 
+  fly_sub, n=12)
+```
+
+```
+#&gt; decrypt("MZTt zASA FG 6Q3FSFQG sp")
+```
+
+.footnote[https://github.com/dicook/nullabor]
+
+---
+# Summary
+
+- Tidy data provides the glue from raw data to the data in the statistics textbooks 
+    - it fills that vast chasm that has existed and exasperated for eons.
+    - No longer do statisticians have to request the clean tabular format csv file before they can get started
+    
+---
+# Summary
+    
+- The grammar of graphics provides the functional mapping of variable to plot element that makes data plots become statistics that we can do inference on
+    - Visual inference protocol gives some "teeth" to the discoveries 
+    - ... and helps to avoid apophenia
+    - Prevents *p*-hacking and supports practical significance
+
+---
+# Epilogue
+
+Can the computer beat a human?
+
+[Book 'Em Danno!](http://giorasimchoni.com/2018/02/07/2018-02-07-book-em-danno/) is a blog post explaining a quick analysis examining deep learning as a replacement for a human evaluator. 
+
+.footnote[Not yet!]
+
+---
+
+class: inverse 
+
+# Joint work!
+
+- Inference: Andreas Buja, Heike Hofmann, Mahbub Majumder, Hadley Wickham, Eric Hare, Susan Vanderplas, Niladri Roy Chowdhury, Nat Tomasetti, Debby Swayne, Eun-kyung Lee.
+
+Contact: [<i class="fa  fa-envelope "></i>](http://www.dicook.org) dicook@monash.edu, [<i class="fa  fa-twitter "></i>](https://twitter.com/visnut) visnut, [<i class="fa  fa-github "></i>](https://github.com/dicook) dicook
+
+.footnote[Slides made with Rmarkdown, xaringan package by Yihui Xie, and lorikeet theme using the [ochRe package](https://github.com/ropenscilabs/ochRe). Available at [github.com/dicook/Ihaka-talk](github.com/dicook/Ihaka-talk].)
+
+---
+# Further reading
+
+- Buja et al (2009) Statistical Inference for Exploratory Data Analysis and Model Diagnostics, Roy. Soc. Ph. Tr., A
+- Majumder et al (2013) Validation of Visual Statistical Inference, Applied to Linear Models, JASA
+- Wickham et al (2010) Graphical Inference for Infovis, InfoVis, Best paper
+- Hofmann et al (2012) Graphical Tests for Power Comparison of Competing Design, InfoVis
+    
+---
+class: middle center
+
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
