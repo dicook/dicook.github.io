@@ -20,9 +20,9 @@ projects = []
 
 # Links (optional).
 url_pdf = ""
-url_slides = ""
+url_slides = "http://www.dicook.org/files/ihaka/#1"
 url_video = ""
-url_code = ""
+url_code = "https://github.com/dicook/Ihaka-talk"
 
 # Does the content use math formatting?
 math = true
