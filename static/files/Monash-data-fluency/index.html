@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coding Tools and   Reproducible Workflow</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Di Cook   Econometrics and   Business Statistics   Monash University" />
+    <link href="index_files/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="myremark.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Coding Tools and <br> Reproducible Workflow
+### Di Cook <br> Econometrics and <br> Business Statistics <br> Monash University
+### <a href="bit.ly/data-fluency" class="uri">bit.ly/data-fluency</a> <br><br> Mar 23, 2018
+
+---
+
+
+
+
+
+# Outline
+
+- Talks, these slides
+- Lecture notes
+- Web site
+- Publications
+- Collaborative research
+
+---
+class: large center middle
+
+All of these are made using the open source software R
+
+[https://cran.r-project.org](https://cran.r-project.org)
+
+---
+class: large center middle
+
+*"The goal of reproducible research is to tie specific instructions to data analysis and experimental data so that scholarship can be recreated, better understood and verified."* 
+
+Max Kuhn, [CRAN Task View](https://cran.r-project.org/web/views/ReproducibleResearch.html) 
+
+---
+# Lecture notes
+
+- Produced using the R packages `learnr`, `knitr`
+- Data, code, explanations kept together
+- Uploaded to the departmental [Shiny Server Pro](https://ebsmonash.shinyapps.io/lecture4a_visualisation/#section-example-tuberculosis-data)
+- Students can re-run my slides, re-do the analysis, do parts of the analysis
+
+![](img/files.png)
+---
+# What it looks like
+
+![](img/rmd.png)
+
+---
+# Web site
+
+- Produced with the R package `blogdown`
+- Integrate data analysis examples into blog posts
+
+![](img/webpage.png)
+
+---
+# useR! 2018 is coming to Australia
+
+- [useR! 2018 conference](https://user2018.r-project.org) web site built with R `pkgdown`
+- Abstract submissions through Google forms, to Google sheets to automatically build program page
+- Shiny app called "cooee" to review abstracts, draws directly from the Google sheet. Reviewers are blinded to name, affiliation, review based entirely on title, abstract, keywords and type of presentation. 
+
+---
+# Publications
+
+- Written with R packages `Rmarkdown`, `knitr` with journal templates formats
+- Code, data and explanations in one place
+- Reviewers can reproduce the results reported, verify the work
+- Books written with the R package `bookdown`
+
+![](img/paper.png)
+
+---
+# Student thesis
+
+- Students work with the [Monash thesis template produce by Rob Hyndman](https://github.com/robjhyndman/MonashThesis)
+
+![](img/thesis.png)
+
+
+---
+# Collaborative work
+
+- **github:** a web-based hosting service for version control using git
+- **appear.in:** for virtual meetings
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

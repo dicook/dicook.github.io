@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css?family=Assistant:400,700');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600);
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+body {
+  font-family: 'Assistant', sans-serif;
+}
+h1, h2, h3 {
+  font-family: 'PT Sans Narrow', sans-serif;
+  margin-bottom: 0;
+  color: #002B52;
+}
+.remark-slide-content h1 { font-size: 2.4em; }
+.remark-slide-content h2 { font-size: 1.6em; }
+.remark-slide-content h3 { font-size: 1.2em; }
+.remark-slide-content {
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: table-cell;
+  font-size: 21px;
+  padding: 1em 4em 1em 4em;
+}
+.footnote {
+  position: absolute;
+  bottom: 3em;
+  font-style: italic;
+  font-size: 70%;
+}
+
+li {
+  line-height: 1.65em;
+  font-size: 1.5em;
+}
+li p { line-height: 1.25em; }
+li {
+  list-style-type: none;
+}
+ul li:before {
+  content: "\f080";
+  font-family: "FontAwesome";
+  margin-right: 10px;
+  color: #3F88C5;
+}
+ul li li:before {
+  content: "\f1fe";
+  font-family: "FontAwesome";
+  margin-right: 10px;
+}
+.x ul li:before {
+  content: "\f00d";
+  font-family: "FontAwesome";
+  color: #D00000;
+}
+.checked ul li:before {
+  content: "\f00c";
+  font-family: "FontAwesome";
+  color: #31a354;
+}
+.block {
+	display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+}
+.flowchart li {
+  margin: 12px 20px 0 0;
+  max-width: 145px;
+  padding: 5px;
+  float: left;
+  text-align: center;
+  line-height: 1.2em;
+  border-radius: 12px;
+  background-color: #f7f7f7;
+  font-size: 18px;
+  /* overflow-wrap: break-word; */
+  /* word-wrap: break-word; */
+  /* hyphens: auto; */
+}
+.flowchart li:last-child {
+  background-color: #fee8c8;
+}
+.flowchart ul li {
+  display: inline;
+}
+.flowchart ul li:before {
+  content: none;
+}
+.red { color: #D00000; }
+.orange { color: #FFBA08; }
+.blue { color: #3F88C5; }
+.large { font-size: 36px; }
+.center {
+  text-align: center;
+}
+.top {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+a, a > code {
+  text-decoration: none;
+  color: #b4783c;
+}
+code {
+  background: #f8f8f8;
+  border-radius: 5px;
+}
+.remark-code, .remark-inline-code { font-family: 'Source Code Pro'; font-size: 28px; }
+.remark-code, .remark-code-line { font-family: 'Source Code Pro'; font-size: 86%; }
+.remark-code-line-highlighted {
+  background-color: #fee8c8;
+}
+.pull-left {
+  float: left;
+  width: 47%;
+}
+.pull-right {
+  float: right;
+  width: 47%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+#slideshow .slide .content code {
+  font-size: 0.8em;
+}
+#slideshow .slide .content pre code {
+  font-size: 0.9em;
+  padding: 15px;
+}
+.inverse {
+  background: \url("img/M.png");
+  /* background: rgb(18, 11, 49); */
+  background-color: #FFF;
+  text-shadow: 0 0 20px #FFF;
+}
+.inverse h1, .inverse h2 {
+  color: #002B52;
+  font-size: 2.6em;
+  line-height: 1.2em;
+  text-align: right;
+}
+.inverse h3 {
+  color: #005487;
+  font-size: 2.1em;
+  line-height: 1.2em;
+  text-align: right;
+}
+
+/* Slide-specific styling */
+#slide-inverse .footnote {
+  bottom: 12px;
+  left: 20px;
+}
+#slide-how .slides {
+  font-size: 0.9em;
+  position: absolute;
+  top:  151px;
+  right: 140px;
+}
+#slide-how .slides h3 {
+  margin-top: 0.2em;
+}
+#slide-how .slides .first, #slide-how .slides .second {
+  padding: 1px 20px;
+  height: 90px;
+  width: 120px;
+  -moz-box-shadow: 0 0 10px #777;
+  -webkit-box-shadow: 0 0 10px #777;
+  box-shadow: 0 0 10px #777;
+}
+#slide-how .slides .first {
+  background: #fff;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  z-index: 1;
+}
+#slide-how .slides .second {
+  position: relative;
+  background: #fff;
+  z-index: 0;
+}
+
+/* Two-column layout */
+.left-column {
+  color: #777;
+  width: 20%;
+  height: 92%;
+  float: left;
+}
+  .left-column h2:last-of-type, .left-column h3:last-child {
+    color: #000;
+  }
+.right-column {
+  width: 75%;
+  float: right;
+  padding-top: 1em;
+}
+
+/* animation */
+.scale-up {
+  animation: scaleUp 3s;
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    font-size: 0.1em;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.shake{
+  display: inline-block;
+  animation: shake 0.58s infinite cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.shake:hover {
+  animation: none;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
