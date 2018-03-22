@@ -104,3 +104,33 @@ Max Kuhn, [CRAN Task View](https://cran.r-project.org/web/views/ReproducibleRese
 - **github:** a web-based hosting service for version control using git
 - **appear.in:** for virtual meetings
 
+---
+# And you can do things like ...
+
+```{r echo=FALSE, fig.height=4, fig.width=10}
+library(rwalkr)
+library(lubridate)
+
+ped <- walk_melb(from=dmy("01032018"),
+                 to=dmy("22032018"))
+ped <- ped %>% 
+  filter(Sensor %in% c("Melbourne Central", "Flinders Street Station Underpass"))
+
+ggplot(ped) + 
+  geom_line(aes(x=Date_Time, y=Count, colour=Sensor)) +
+  scale_colour_brewer(palette="Dark2") + 
+  theme(legend.position="bottom")
+```
+
+```{r eval=FALSE, echo=FALSE}
+library(sugrrants)
+calendar_df <- ped %>% 
+  group_by(Sensor) %>%
+  frame_calendar(x = Time, y = Count, date = Date, nrow = 4)
+calendar_df %>% 
+  filter(Sensor == "Melbourne Central") %>%
+ggplot(aes(x = .Time, y = .Count, group = Date)) +
+     geom_line()
+prettify(p1, size = 3, label.padding = unit(0.15, "lines"))
+    
+```
