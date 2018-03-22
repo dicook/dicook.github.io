@@ -1,7 +1,7 @@
 ---
 title: "Coding Tools and <br> Reproducible Workflow"
 author: "Di Cook <br> Econometrics and <br> Business Statistics <br> Monash University"
-date: "[bit.ly/data-fluency](bit.ly/data-fluency)  <br><br>  Mar 23, 2018"
+date: "[bit.ly/M-data-fluency](bit.ly/M-data-fluency)  <br><br>  Mar 23, 2018"
 output:
   xaringan::moon_reader:
     css: ["default", "myremark.css"]
