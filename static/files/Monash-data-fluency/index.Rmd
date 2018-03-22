@@ -76,6 +76,9 @@ Max Kuhn, [CRAN Task View](https://cran.r-project.org/web/views/ReproducibleRese
 - [useR! 2018 conference](https://user2018.r-project.org) web site built with R `pkgdown`
 - Abstract submissions through Google forms, to Google sheets to automatically build program page
 - Shiny app called "cooee" to review abstracts, draws directly from the Google sheet. Reviewers are blinded to name, affiliation, review based entirely on title, abstract, keywords and type of presentation. 
+---
+
+![](img/cooee.png)
 
 ---
 # Publications
@@ -90,7 +93,7 @@ Max Kuhn, [CRAN Task View](https://cran.r-project.org/web/views/ReproducibleRese
 ---
 # Student thesis
 
-- Students work with the [Monash thesis template produce by Rob Hyndman](https://github.com/robjhyndman/MonashThesis)
+- Students work with the [Monash thesis template produced by Rob Hyndman](https://github.com/robjhyndman/MonashThesis)
 
 ![](img/thesis.png)
 
