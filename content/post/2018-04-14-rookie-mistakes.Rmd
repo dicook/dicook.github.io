@@ -305,7 +305,7 @@ plot_1 <- ggplot(survey, aes(x=Q8, y=Q5, label=Q30, colour = Q8)) +
     ylab("Time Spent on Internet per week (Hours)") +
   theme(legend.position="none")
 
-ggplotly(plot_1)
+plot_1
 ```
 
 Correction: There's only three students in the category, of spending too much 
