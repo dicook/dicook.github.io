@@ -1,8 +1,13 @@
 ---
-title: "Rookie mistakes and how to fix them when making plots of data"
-author: "Stuart Lee and Di Cook"
-date: "13 April 2018"
-output: html_document
+title: Rookie mistakes and how to fix them when making plots of data
+author: Stuart Lee, Di Cook
+date: '2018-04-14'
+slug: content/post/2018-04-14-rookie-mistakes
+categories: [education,statistical graphics,data visualisation,R,ggplot2]
+tags: [education,statistical graphics,data visualisation,R,ggplot2]
+header:
+  caption: ''
+  image: ''
 ---
 
 ```{r setup, include=FALSE}

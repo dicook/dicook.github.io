@@ -1,0 +1,129 @@
+---
+title: Rookie mistakes and how to fix them when making plots of data
+author: Stuart Lee, Di Cook
+date: '2018-04-14'
+slug: content/post/2018-04-14-rookie-mistakes
+categories: [education,statistical graphics,data visualisation,R,ggplot2]
+tags: [education,statistical graphics,data visualisation,R,ggplot2]
+header:
+  caption: ''
+  image: ''
+---
+
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/plotly-binding/plotly.js"></script>
+<script src="/rmarkdown-libs/typedarray/typedarray.min.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/rmarkdown-libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/crosstalk/js/crosstalk.min.js"></script>
+<link href="/rmarkdown-libs/plotlyjs/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/plotlyjs/plotly-latest.min.js"></script>
+
+
+<p>In this assignment, the focus was to practice data cleaning. Students suggested questions to build a class survey, to get to know the interests of other class members, and then completed the composed survey. After cleaning the data, a few summary plots of interesting aspects of the data were made. There are some common mistakes that rookies often make when constructing data plots: packing too much into a single graphic, leaving categorical variables unordered, reversing norms for response and explanatory variables, conditioning in wrong order, plotting counts when proportions should be the focus, not normalizing by counts, using a boxplot for small sample size.</p>
+<p>This is an explanation of how to avoid common mistakes. We have taken example plots from different group submissions for the assignment, and show how to re-work the plot so that it is more effective at communicating the intended information. The fixes follow these basic principles:</p>
+<ul>
+<li>Reduce complexity</li>
+<li>Order</li>
+<li>Comparing proportions rather than counts</li>
+<li>Sample size appropriate plots</li>
+<li>Order of conditioning</li>
+</ul>
+<p>Please don’t be discouraged if you see one of the plots you made in this document, you all did a great job of creating plots and these are suggestions to take your creations and make them better!</p>
+<div id="reduce-complexity" class="section level2">
+<h2>Reduce complexity</h2>
+<p>There is a temptation to pack as much as possible in a single plot. After all, you only get to put a small number of plots in a report. This makes it harder to read anything from the plot, and thus more difficult for the reader to learn about the data.</p>
+<p>It is better to break up information dense graphics into smaller chunks. If there is a constraint on the number of plots you can put in a report, you could make an ensemble graphic containing a number of plots, which would count as a single plot. Facetting is an inbuilt way that the grammar of graphics facilitates chunking, to make an ensemble of plots.</p>
+<p>Let’s look at an example of an overly complex plot of the interaction between three variables - Q30, Q31, and Q17. There’s a lot going on in this plot.</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>We interpret the information that we want to communicate is: <em>how enjoyment of the unit, and whether you are struggling, depends on having prior coding experience or not</em>. The chunks are the three pairwise combinations of the three variables. This is a good start to tackling the primary purpose.</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-2-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>From the three pairwise plots we learn:</p>
+<ol style="list-style-type: decimal">
+<li>Prior coding experience leads to more likely enjoying the class.</li>
+<li>Struggling with the unit tends to lead to less enjoyment.</li>
+<li>Prior coding experience strongly indicates less struggling.</li>
+</ol>
+<p>It may be better to also reflect the sample sizes in each group, using a mosaic plot.</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-3-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>Now let’s put it all into one plot again. Using the mosaic plot, prior coding experience (Q17), and struggling (Q31) are woven into the horizontal axis, and enjoyment (Q30) is mapped to colour, and splits the vertical bars.</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>What do we learn?</p>
+<ol style="list-style-type: decimal">
+<li>There are few people with no coding experience and are not struggling.</li>
+<li>The largest group of unhappy class members have no prior coding experience, and are struggling.</li>
+<li>Most people who have prior coding experience and are not struggling, are enjoying the class.</li>
+<li>About a third of the students who have prior coding experience, and struggling with the class, are unhappy.</li>
+</ol>
+<p>Remember one purpose of plots is to communicate what you’ve found in the data to the reader - a more complex plot forces a reader to take longer to understand your findings and has a narrow viewpoint. Breaking a complex plot into chunks allows your reader to slowly gain a richer understanding of the data.</p>
+</div>
+<div id="order" class="section level2">
+<h2>Order</h2>
+<p>Which is easier to read. This:</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>or this:</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>In an unordered bar chart, the reader has to spend more time searching for which is the most frequent category, and it isn’t immediately obvious what the second or third most popular superpower is.</p>
+<p>By reordering the categories by the count, this information is more readily available to the reader.</p>
+<p>It is hard to re-order! And hence, taking the extra time to make this happen can be dispiriting. However, it is realy <strong>easy</strong> with the <strong>forcats</strong> package. Simply use the <code>fct_infreq</code> function when you set the x variable in ggplot:</p>
+<pre><code>aes(x=fct_infreq(Q6)), fill=variable)</code></pre>
+</div>
+<div id="comparing-proportions-rather-than-counts" class="section level2">
+<h2>Comparing proportions rather than counts</h2>
+<p>The plot below was submitted to show examine if the hours studied by students differed whether they were doing a single or double degree. The expectation would be that double degree students need to spend more time studying.</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>It is helpful to think about which is the explanatory variable and which the response. Here it would be: degree type is explaining study hours. Therefore we need to examine study hours, conditional on degree type.</p>
+<p>The plot above would be ok to answer this question, <em>if the same total number of students were doing single vs double degrees</em>. It almost is, but because there is a different number of students in each category, the counts for study hours for each degree type cannot be directly compared. We need to examine <em>proportion of single degree students in each of the study times, and similarly for double degree students</em>.</p>
+<p>This would correspond to the plot below.</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The problem that we have in digesting the proportions from this plot, is that only the very bottom group (0-3, more than 12) and top groups are easy to compare. The rest start and end at different positions, and hence the height of the bars difficult to compare.</p>
+<p>Ideally the bars for degree type, would be side-by-side for each study hour category. That’s very close to the original design, with the exception that the heights of the bars should represent proportions.</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>What do we learn?</p>
+<ol style="list-style-type: decimal">
+<li>Both degree type students tend to put a lot of study time in each week.</li>
+<li>Double degree students are not putting in more study time than single degree students.</li>
+</ol>
+<p>Here’s another plot submitted to study a similar relationship, study by year in university. The group summary was:</p>
+<p><em>“We can see overall 3rd year students put a lot more hours into study per week. This could perhaps be due to increased workload during the 3rd year as opposed to 1st year.”</em></p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>To answer the original question you need to look at the distribution of hours studying, within each year.</p>
+<p>Facet by year in school, and then make a bar chart in each facet. You can see that most students are in year 2 or 3, and the counts increase over hours spent studying. Both years have this pattern.</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Because numbers are so small in all other groups, drop them, and focus only on years 2 and 3. Then we need to do the same calculations as the previous problem, to compare proportion in each study time, within year.</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>What do we learn?</p>
+<ol style="list-style-type: decimal">
+<li>Both years spend long hours studying</li>
+<li>More third years report spending more than 12 hours, but its a fairly small difference in proportions. And by contrast the proportions for second years is higher in the next two most study time groups.</li>
+<li>Its hard to argue that the third years are spending more time studying.</li>
+</ol>
+</div>
+<div id="sample-size-appropriate-plots" class="section level2">
+<h2>Sample size appropriate plots</h2>
+<p>When a plot performs a statistical transformation of a variable, be aware of the sample size used to calculate the transformation. In a boxplot 5 numbers are computed to summarise a distribution, if the sample size is small, the boxplot can be misleading:</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Interpretation: People spending few study hours are spending too much time on the internet.</p>
+<div id="htmlwidget-1" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"data":[{"x":[1,1,1,1,1],"y":[100,30,15,100,112],"text":["Q8: [0,3)<br />Q5: 100<br />Q30: yes<br />Q8: [0,3)","Q8: [0,3)<br />Q5:  30<br />Q30: yes<br />Q8: [0,3)","Q8: [0,3)<br />Q5:  15<br />Q30: yes<br />Q8: [0,3)","Q8: [0,3)<br />Q5: 100<br />Q30: yes<br />Q8: [0,3)","Q8: [0,3)<br />Q5: 112<br />Q30: no<br />Q8: [0,3)"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":0.5,"size":7.55905511811024,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"[0,3)","legendgroup":"[0,3)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2,2,2,2,2,2,2],"y":[4,40,10,4,null,21,15],"text":["Q8: [3,6)<br />Q5:   4<br />Q30: no<br />Q8: [3,6)","Q8: [3,6)<br />Q5:  40<br />Q30: yes<br />Q8: [3,6)","Q8: [3,6)<br />Q5:  10<br />Q30: yes<br />Q8: [3,6)","Q8: [3,6)<br />Q5:   4<br />Q30: no<br />Q8: [3,6)","Q8: [3,6)<br />Q5:  NA<br />Q30: yes<br />Q8: [3,6)","Q8: [3,6)<br />Q5:  21<br />Q30: yes<br />Q8: [3,6)","Q8: [3,6)<br />Q5:  15<br />Q30: yes<br />Q8: [3,6)"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(163,165,0,1)","opacity":0.5,"size":7.55905511811024,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(163,165,0,1)"}},"hoveron":"points","name":"[3,6)","legendgroup":"[3,6)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[3,3,3,3,3,3,3,3,3,3,3,3],"y":[10,20,40,24,35,8,50,null,5,6,25,30],"text":["Q8: [6,9)<br />Q5:  10<br />Q30: no<br />Q8: [6,9)","Q8: [6,9)<br />Q5:  20<br />Q30: yes<br />Q8: [6,9)","Q8: [6,9)<br />Q5:  40<br />Q30: no<br />Q8: [6,9)","Q8: [6,9)<br />Q5:  24<br />Q30: yes<br />Q8: [6,9)","Q8: [6,9)<br />Q5:  35<br />Q30: yes<br />Q8: [6,9)","Q8: [6,9)<br />Q5:   8<br />Q30: yes<br />Q8: [6,9)","Q8: [6,9)<br />Q5:  50<br />Q30: yes<br />Q8: [6,9)","Q8: [6,9)<br />Q5:  NA<br />Q30: no<br />Q8: [6,9)","Q8: [6,9)<br />Q5:   5<br />Q30: yes<br />Q8: [6,9)","Q8: [6,9)<br />Q5:   6<br />Q30: no<br />Q8: [6,9)","Q8: [6,9)<br />Q5:  25<br />Q30: yes<br />Q8: [6,9)","Q8: [6,9)<br />Q5:  30<br />Q30: no<br />Q8: [6,9)"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,191,125,1)","opacity":0.5,"size":7.55905511811024,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,191,125,1)"}},"hoveron":"points","name":"[6,9)","legendgroup":"[6,9)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],"y":[35,35,40,49,40,10,35,48,20,28,20,12,20,24,30,56,72],"text":["Q8: [9,12)<br />Q5:  35<br />Q30: yes<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  35<br />Q30: yes<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  40<br />Q30: no<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  49<br />Q30: yes<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  40<br />Q30: no<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  10<br />Q30: yes<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  35<br />Q30: no<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  48<br />Q30: yes<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  20<br />Q30: yes<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  28<br />Q30: yes<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  20<br />Q30: yes<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  12<br />Q30: yes<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  20<br />Q30: no<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  24<br />Q30: yes<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  30<br />Q30: no<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  56<br />Q30: yes<br />Q8: [9,12)","Q8: [9,12)<br />Q5:  72<br />Q30: yes<br />Q8: [9,12)"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,176,246,1)","opacity":0.5,"size":7.55905511811024,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,176,246,1)"}},"hoveron":"points","name":"[9,12)","legendgroup":"[9,12)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],"y":[50,50,112,30,55,14,35,27,20,17,70,84,20,16,55,53,40,14,25,10,20,50],"text":["Q8: More than 12<br />Q5:  50<br />Q30: yes<br />Q8: More than 12","Q8: More than 12<br />Q5:  50<br />Q30: yes<br />Q8: More than 12","Q8: More than 12<br />Q5: 112<br />Q30: yes<br />Q8: More than 12","Q8: More than 12<br />Q5:  30<br />Q30: yes<br />Q8: More than 12","Q8: More than 12<br />Q5:  55<br />Q30: yes<br />Q8: More than 12","Q8: More than 12<br />Q5:  14<br />Q30: no<br />Q8: More than 12","Q8: More than 12<br />Q5:  35<br />Q30: yes<br />Q8: More than 12","Q8: More than 12<br />Q5:  27<br />Q30: yes<br />Q8: More than 12","Q8: More than 12<br />Q5:  20<br />Q30: no<br />Q8: More than 12","Q8: More than 12<br />Q5:  17<br />Q30: no<br />Q8: More than 12","Q8: More than 12<br />Q5:  70<br />Q30: yes<br />Q8: More than 12","Q8: More than 12<br />Q5:  84<br />Q30: no<br />Q8: More than 12","Q8: More than 12<br />Q5:  20<br />Q30: no<br />Q8: More than 12","Q8: More than 12<br />Q5:  16<br />Q30: no<br />Q8: More than 12","Q8: More than 12<br />Q5:  55<br />Q30: no<br />Q8: More than 12","Q8: More than 12<br />Q5:  53<br />Q30: yes<br />Q8: More than 12","Q8: More than 12<br />Q5:  40<br />Q30: yes<br />Q8: More than 12","Q8: More than 12<br />Q5:  14<br />Q30: no<br />Q8: More than 12","Q8: More than 12<br />Q5:  25<br />Q30: no<br />Q8: More than 12","Q8: More than 12<br />Q5:  10<br />Q30: yes<br />Q8: More than 12","Q8: More than 12<br />Q5:  20<br />Q30: no<br />Q8: More than 12","Q8: More than 12<br />Q5:  50<br />Q30: no<br />Q8: More than 12"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(231,107,243,1)","opacity":0.5,"size":7.55905511811024,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(231,107,243,1)"}},"hoveron":"points","name":"More than 12","legendgroup":"More than 12","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":37.2602739726027},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"range":[0.4,5.6],"tickmode":"array","ticktext":["[0,3)","[3,6)","[6,9)","[9,12)","More than 12"],"tickvals":[1,2,3,4,5],"categoryorder":"array","categoryarray":["[0,3)","[3,6)","[6,9)","[9,12)","More than 12"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"Time Spent Studying","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"range":[-1.4,117.4],"tickmode":"array","ticktext":["0","30","60","90"],"tickvals":[0,30,60,90],"categoryorder":"array","categoryarray":["0","30","60","90"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"Time Spent on Internet per week (Hours)","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"source":"A","attrs":{"3041a922222":{"x":{},"y":{},"label":{},"colour":{},"type":"scatter"}},"cur_data":"3041a922222","visdat":{"3041a922222":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+<p>Correction: There’s only three students in the category, of spending too much time on the web and too little time studying.</p>
+</div>
+<div id="order-of-conditioning" class="section level2">
+<h2>Order of conditioning</h2>
+<p>We should condition the response variable (or the variable we are trying to understand) by other variables we think will explain the response. This allows us to examine how the response varies by levels of the explanatory variable.</p>
+<p>Goal: how does core or elective vary by year in school.</p>
+<p>Which plot is appropriate here?</p>
+<p>This:</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>or this:</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>or this:</p>
+<p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Explanatory variable is year in school, and response is core/elective. This tells us that either of the latter two plots is better than the first.</p>
+<p>Because the counts are different in the years in school variable, the last plot (mosaic) is better. It let’s us know that there are few students in years 1 and 4.</p>
+<p>What do we learn? There are a few more third year students doing this as an elective.</p>
+</div>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>Making effective plots can tell you a LOT about data. Its hard! Its an under-rated but very powerful skill to develop.</p>
+</div>
