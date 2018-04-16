@@ -1,5 +1,6 @@
 +++
 title = "{{ replace .TranslationBaseName "-" " " | title }}"
+author = {{ author }}
 date = {{ .Date }}
 draft = false
 
