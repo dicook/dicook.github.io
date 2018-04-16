@@ -9,7 +9,7 @@ title = "Visiphilia blog"
 subtitle = ""
 
 # Order that this section will appear in.
-weight = 40
+weight = 4
 
 # Filter posts by tag.
 #  By default, show all recent posts.

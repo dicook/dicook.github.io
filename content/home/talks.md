@@ -8,7 +8,7 @@ title = "Upcoming Talks"
 subtitle = ""
 
 # Order that this section will appear in.
-weight = 80
+weight = 3
 
 # Number of talks to list.
 count = 5

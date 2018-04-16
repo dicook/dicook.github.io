@@ -9,7 +9,7 @@ title = "Selected Publications"
 subtitle = ""
 
 # Order that this section will appear in.
-weight = 20
+weight = 2
 
 # Number of publications to list.
 count = 5
