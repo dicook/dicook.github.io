@@ -1,6 +1,6 @@
 ---
 title: SCOTUS over the years
-author: heike
+author: Heike Hofmann
 date: '2016-02-23'
 tags:
   - politics
