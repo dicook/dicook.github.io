@@ -356,3 +356,7 @@ What do we learn? There are a few more third year students doing this as an elec
 ## Summary
 
 Making effective plots can tell you a LOT about data. Its hard! Its an under-rated but very powerful skill to develop.
+
+## Sources
+
+[Data](https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/data/survey_tidy.csv) and [code](https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/2018-04-14-rookie-mistakes.Rmd)
