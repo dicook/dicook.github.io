@@ -3,8 +3,8 @@ title: Analysing my energy usage
 author: Di Cook
 date: '2018-04-22'
 slug: content/post/2018-04-22-smart-meter
-categories: [statistical graphics,data visualisation,R,tidyverse,ggplot2,time series,smart meter]
-tags: [statistical graphics,data visualisation,R,tidyverse,ggplot2,time series,smart meter]
+categories: [data visualisation,R,tidyverse,time series,smart meter]
+tags: [data visualisation,R,tidyverse,time series,smart meter]
 header:
   caption: ''
   image: ''
@@ -14,7 +14,8 @@ header:
 knitr::opts_chunk$set(echo = FALSE, 
                       warning = FALSE, 
                       message = FALSE, 
-                      error = FALSE)
+                      error = FALSE,
+                      fig.align = "center")
 ```
 
 ## Download your data
@@ -74,15 +75,6 @@ elec <- elec %>%
 save(elec, file="data/deidentified-usage.rda")
 ```
 
-```{r plots, eval=FALSE}
-load("data/deidentified-usage.rda")
-ggplot(elec, aes(x=days, y=kwh, colour=meter)) + geom_line() + scale_colour_brewer(palette = "Dark2")
-ggplot(elec, aes(x=halfhour, y=kwh, colour=meter, group=date)) + geom_line() +
-  facet_grid(month~wday) + scale_colour_brewer(palette = "Dark2")
-d <- elec %>% filter(date == ymd("20180321"))
-ggplot(d, aes(x=halfhour, y=kwh)) + geom_line() + facet_wrap(~meter)
-```
-
 # Calendar plots
 
 A nice way to look at this data is using [Earo Wang](https://earo.me)'s calendar plot functions from her R package [sugrrants](https://github.com/earowang/sugrrants).
@@ -103,6 +95,7 @@ Meter 1 seems to be the daily activity. You can see
 This meter seems to show regular use, not related to our activity. It comes on late at night, every day, and sometimes has an extra early peak also. I suspect the water heater is on this meter, alone. This is something that I could check, I guess.
 
 ```{r calendar}
+load("data/deidentified-usage.rda")
 library(sugrrants)
 hols <- c(au_holiday(2018, state = "VIC")$date, au_holiday(2017, state = "VIC")$date)
 elec_hr <- elec %>% 
@@ -162,25 +155,6 @@ p3 <- daily_calendar %>%
 prettify(p3, size = 3, label.padding = unit(0.15, "lines"))
 ```
 
-
-```{r eval = FALSE}
-march <- elec_hr %>% filter(month == "Mar")
-ggplot(march, aes(x=hour, y=kwh, group = date, colour = meter)) +
-  geom_line() + 
-  facet_grid(meter~work) + 
-  scale_colour_brewer(palette = "Dark2")
-ggplot(march, aes(x=hour, y=kwh, colour = meter)) +
-  geom_point(alpha=0.5) + 
-  geom_smooth(se=FALSE) + 
-  facet_grid(meter~work) + 
-  scale_colour_brewer(palette = "Dark2")
-ggplot(elec_hr, aes(x=hour, y=kwh, colour = meter)) +
-  geom_line(aes(group=date), alpha=0.2) + 
-  geom_smooth(se=FALSE, size=1) + 
-  facet_grid(meter+month~work) + 
-  scale_colour_brewer(palette = "Dark2")
-```
-
 ## Sources
 
-[Code is here.](https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/2018-04-22-smart-meters.Rmd)
+[Code](https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/2018-04-22-smart-meters.Rmd) and [data](https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/data/deidentified-usage.rda)
