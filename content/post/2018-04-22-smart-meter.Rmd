@@ -16,6 +16,8 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE, 
                       error = FALSE,
                       fig.align = "center")
+library(tidyverse)
+library(lubridate)
 ```
 
 ## Download your data
@@ -39,9 +41,7 @@ The code to read the data does the following steps:
 4. Gather the data into long form, to create a variable indicating the half hourly intervals, and the kwh in each.
 5. Create some new time variables, day, month, year.
 
-```{r}
-library(tidyverse)
-library(lubridate)
+```{r eval=FALSE}
 elec <- read_csv("data/usage.csv", skip=1, 
     col_names = c("id", "date", paste0("d", 1:48), paste0("stuff", 1:5)), 
     col_types = "ccddddddddddddddddddddddddddddddddddddddddddddddddccccc")
