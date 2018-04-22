@@ -1,0 +1,186 @@
+---
+title: Analysing my energy usage
+author: Di Cook
+date: '4/22/2018'
+slug: content/post/2018-04-22-smart-meter
+categories: [statistical graphics,data visualisation,R,tidyverse,ggplot2,time series,smart meter]
+tags: [statistical graphics,data visualisation,R,tidyverse,ggplot2,time series,smart meter]
+header:
+  caption: ''
+  image: ''
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE, 
+                      message = FALSE, 
+                      error = FALSE)
+```
+
+## Download your data
+
+You can get access to your own electricity and gas usage data from https://www.citipower.com.au/our-services/myenergy. You will need a copy of your power bill, which has your smart meter number and meter id, to register for an account.
+
+## Reading the data
+
+The data structure is described [here](https://customermeterdata.portal.powercor.com.au/customermeterdata/articles/Question/A12-How-do-I-read-the-detailed-report?retURL=%2Fcustomermeterdata%2Fapex%2FCADArticleList&popup=true).
+
+The data is not especially nicely formatted (surprise). The main components are:
+
+- The time resolution is half-hourly. And values for each day are spread across the columns.
+- The first column has an id variable which indicates what type of information is in the row. If it is "200" is indicates a new meter. You may have multiple meters running, and hence multiple recordings per day. Only id's equal to "300" are actually measurements. 
+
+The code to read the data does the following steps:
+
+1. Skip the first row
+2. Check the number of meters, create a meter id and day index for each meter
+3. Filter only rows with id "300"
+4. Gather the data into long form, to create a variable indicating the half hourly intervals, and the kwh in each.
+5. Create some new time variables, day, month, year.
+
+```{r}
+library(tidyverse)
+library(lubridate)
+elec <- read_csv("data/usage.csv", skip=1, 
+    col_names = c("id", "date", paste0("d", 1:48), paste0("stuff", 1:5)), 
+    col_types = "ccddddddddddddddddddddddddddddddddddddddddddddddddccccc")
+meter_id_pos <- which(elec$id == "200")
+meter_id <- elec$date[meter_id_pos] # Two meters!!
+# Filter out these rows
+elec <- elec %>% filter(id != "200")
+# If meter_id same, rename them A, B, ...
+elec <- elec %>% mutate(meter = "A")
+rows_start <- 0
+if (length(meter_id) > 1) {
+  for (i in 2:length(meter_id)) {
+    rows_start <- rows_start+meter_id_pos[i]-meter_id_pos[i-1]
+    rows_end <- rows_start + (meter_id_pos[i]-meter_id_pos[i-1]) - 1
+    elec$meter[rows_start:rows_end] <- LETTERS[i]
+  }
+}
+# Filter only actual measurements
+elec <- elec %>% filter(id == 300) 
+nrecords <- nrow(elec[elec$meter == "A",])
+elec <- elec %>%
+  mutate(date = ymd(date), 
+         days = c(rep(1:nrecords, length(meter_id)))) %>%
+  select(id:d48, meter, days) %>%
+  gather(halfhour, kwh, d1:d48) %>%
+  mutate(halfhour = as.numeric(sub("d", "", halfhour))/2) %>%
+  mutate(wday = wday(date, label = TRUE, abbr = TRUE, 
+                     week_start = 1),
+         month = month(date, label = TRUE, abbr = TRUE),
+         year = year(date))
+save(elec, file="data/deidentified-usage.rda")
+```
+
+```{r plots, eval=FALSE}
+load("data/deidentified-usage.rda")
+ggplot(elec, aes(x=days, y=kwh, colour=meter)) + geom_line() + scale_colour_brewer(palette = "Dark2")
+ggplot(elec, aes(x=halfhour, y=kwh, colour=meter, group=date)) + geom_line() +
+  facet_grid(month~wday) + scale_colour_brewer(palette = "Dark2")
+d <- elec %>% filter(date == ymd("20180321"))
+ggplot(d, aes(x=halfhour, y=kwh)) + geom_line() + facet_wrap(~meter)
+```
+
+# Calendar plots
+
+A nice way to look at this data is using [Earo Wang](https://earo.me)'s calendar plot functions from her R package [sugrrants](https://github.com/earowang/sugrrants).
+
+Below are the calendar plots for the two meters that are running at my apartment. 
+
+### Meter 1
+
+Meter 1 seems to be the daily activity. You can see
+
+- We move into the apartment Nov 30. We were supposed to move in Nov 24, but a mess up with the loan documents delayed this for almost a week.
+- There is more usage in Dec-Feb, primarily because we had the air conditioner running probably a little too much. 
+- Usage in Mar an April is more on weekends (or non work days).
+- You can see a number of zero usage days, when we were away for the Christmas period, arriving back late New Year's Eve, or snorkelling on the peninsula for the day. 
+
+### Meter 2
+
+This meter seems to show regular use, not related to our activity. It comes on late at night, every day, and sometimes has an extra early peak also. I suspect the water heater is on this meter, alone. This is something that I could check, I guess.
+
+```{r calendar}
+library(sugrrants)
+hols <- c(au_holiday(2018, state = "VIC")$date, au_holiday(2017, state = "VIC")$date)
+elec_hr <- elec %>% 
+  mutate(hour = ceiling(halfhour)) %>%
+  group_by(date, hour, meter) %>%
+  summarise(kwh = sum(kwh)) %>% 
+  ungroup() %>% 
+  mutate(wday = wday(date, label = TRUE, abbr = TRUE, 
+                     week_start = 1)) %>%
+  mutate(work = if_else(wday %in% c("Sat", "Sun"), "no", "yes")) %>%
+  mutate(work = if_else(date %in% hols, "no", work)) %>%
+  mutate(month = month(date, label = TRUE, abbr = TRUE), year = year(date)) %>%
+  #filter(month != "Nov") %>%
+  mutate(month = factor(month, levels = c("Nov", "Dec", "Jan", "Feb", "Mar", "Apr"))) 
+
+# Remove small noise, to do local scaling
+elec_hr <- elec_hr %>% mutate(kwh = if_else(kwh < 1, 0, kwh))
+calendar_df <-  elec_hr %>%
+  filter(meter == "A") %>%
+  frame_calendar(x=hour, y=kwh, date=date) #, scale="free")
+p1 <- calendar_df %>% 
+     ggplot(aes(x = .hour, y = .kwh, group = date, colour = work)) +
+     geom_line() + 
+  scale_colour_brewer(palette = "Dark2") +
+  theme(legend.position = "bottom")
+prettify(p1, size = 3, label.padding = unit(0.15, "lines"))
+calendar_df <-  elec_hr %>%
+  filter(meter == "B") %>%
+  frame_calendar(x=hour, y=kwh, date=date)
+p2 <- calendar_df %>% 
+     ggplot(aes(x = .hour, y = .kwh, group = date, colour = work)) +
+     geom_line() + 
+  scale_colour_brewer(palette = "Dark2") +
+  theme(legend.position = "bottom")
+prettify(p2, size = 3, label.padding = unit(0.15, "lines"))
+```
+
+### Total usage
+
+The plot below shows total daily usage. The heavy usage in January, December before holidaying at Christmas, and a few days in February, are clearer to see using the heatmap calendar. 
+
+Understanding our usage, is difficult, given that our son was visiting from the US. The high peak in daily usage Monday, Dec 18 was when he arrived. He has high internet usage, and likes long showers. Its hard to tell if there was an effect, because there were plenty of high usage days when he wasn't around. It seems to be mostly the weather-related air conditioning usage. Will be interesting to see how heating affects the winter electricity use.
+
+```{r}
+library(viridis)
+elec_daily <- elec %>%
+  group_by(date) %>%
+  summarise(total = sum(kwh)) %>%
+  ungroup()
+daily_calendar <- elec_daily %>%
+  frame_calendar(x = 1, y = 1, date = date, calendar = "monthly")
+p3 <- daily_calendar %>%
+  ggplot(aes(x = .x, y = .y)) +
+  geom_tile(aes(fill = total), colour = "grey50") +
+  scale_fill_viridis() +
+  theme(legend.position = "bottom")
+prettify(p3, size = 3, label.padding = unit(0.15, "lines"))
+```
+
+
+```{r eval = FALSE}
+march <- elec_hr %>% filter(month == "Mar")
+ggplot(march, aes(x=hour, y=kwh, group = date, colour = meter)) +
+  geom_line() + 
+  facet_grid(meter~work) + 
+  scale_colour_brewer(palette = "Dark2")
+ggplot(march, aes(x=hour, y=kwh, colour = meter)) +
+  geom_point(alpha=0.5) + 
+  geom_smooth(se=FALSE) + 
+  facet_grid(meter~work) + 
+  scale_colour_brewer(palette = "Dark2")
+ggplot(elec_hr, aes(x=hour, y=kwh, colour = meter)) +
+  geom_line(aes(group=date), alpha=0.2) + 
+  geom_smooth(se=FALSE, size=1) + 
+  facet_grid(meter+month~work) + 
+  scale_colour_brewer(palette = "Dark2")
+```
+
+## Sources
+
+[Code is here.](https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/2018-04-22-smart-meters.Rmd)

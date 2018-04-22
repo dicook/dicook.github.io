@@ -1,0 +1,65 @@
+---
+title: Analysing my energy usage
+author: Di Cook
+date: '4/22/2018'
+slug: content/post/2018-04-22-smart-meter
+categories: [statistical graphics,data visualisation,R,tidyverse,ggplot2,time series,smart meter]
+tags: [statistical graphics,data visualisation,R,tidyverse,ggplot2,time series,smart meter]
+header:
+  caption: ''
+  image: ''
+---
+
+
+
+<div id="download-your-data" class="section level2">
+<h2>Download your data</h2>
+<p>You can get access to your own electricity and gas usage data from <a href="https://www.citipower.com.au/our-services/myenergy" class="uri">https://www.citipower.com.au/our-services/myenergy</a>. You will need a copy of your power bill, which has your smart meter number and meter id, to register for an account.</p>
+</div>
+<div id="reading-the-data" class="section level2">
+<h2>Reading the data</h2>
+<p>The data structure is described <a href="https://customermeterdata.portal.powercor.com.au/customermeterdata/articles/Question/A12-How-do-I-read-the-detailed-report?retURL=%2Fcustomermeterdata%2Fapex%2FCADArticleList&amp;popup=true">here</a>.</p>
+<p>The data is not especially nicely formatted (surprise). The main components are:</p>
+<ul>
+<li>The time resolution is half-hourly. And values for each day are spread across the columns.</li>
+<li>The first column has an id variable which indicates what type of information is in the row. If it is “200” is indicates a new meter. You may have multiple meters running, and hence multiple recordings per day. Only id’s equal to “300” are actually measurements.</li>
+</ul>
+<p>The code to read the data does the following steps:</p>
+<ol style="list-style-type: decimal">
+<li>Skip the first row</li>
+<li>Check the number of meters, create a meter id and day index for each meter</li>
+<li>Filter only rows with id “300”</li>
+<li>Gather the data into long form, to create a variable indicating the half hourly intervals, and the kwh in each.</li>
+<li>Create some new time variables, day, month, year.</li>
+</ol>
+</div>
+<div id="calendar-plots" class="section level1">
+<h1>Calendar plots</h1>
+<p>A nice way to look at this data is using <a href="https://earo.me">Earo Wang</a>’s calendar plot functions from her R package <a href="https://github.com/earowang/sugrrants">sugrrants</a>.</p>
+<p>Below are the calendar plots for the two meters that are running at my apartment.</p>
+<div id="meter-1" class="section level3">
+<h3>Meter 1</h3>
+<p>Meter 1 seems to be the daily activity. You can see</p>
+<ul>
+<li>We move into the apartment Nov 30. We were supposed to move in Nov 24, but a mess up with the loan documents delayed this for almost a week.</li>
+<li>There is more usage in Dec-Feb, primarily because we had the air conditioner running probably a little too much.</li>
+<li>Usage in Mar an April is more on weekends (or non work days).</li>
+<li>You can see a number of zero usage days, when we were away for the Christmas period, arriving back late New Year’s Eve, or snorkelling on the peninsula for the day.</li>
+</ul>
+</div>
+<div id="meter-2" class="section level3">
+<h3>Meter 2</h3>
+<p>This meter seems to show regular use, not related to our activity. It comes on late at night, every day, and sometimes has an extra early peak also. I suspect the water heater is on this meter, alone. This is something that I could check, I guess.</p>
+<p><img src="/post/2018-04-22-smart-meter_files/figure-html/calendar-1.png" width="672" /><img src="/post/2018-04-22-smart-meter_files/figure-html/calendar-2.png" width="672" /></p>
+</div>
+<div id="total-usage" class="section level3">
+<h3>Total usage</h3>
+<p>The plot below shows total daily usage. The heavy usage in January, December before holidaying at Christmas, and a few days in February, are clearer to see using the heatmap calendar.</p>
+<p>Understanding our usage, is difficult, given that our son was visiting from the US. The high peak in daily usage Monday, Dec 18 was when he arrived. He has high internet usage, and likes long showers. Its hard to tell if there was an effect, because there were plenty of high usage days when he wasn’t around. It seems to be mostly the weather-related air conditioning usage. Will be interesting to see how heating affects the winter electricity use.</p>
+<p><img src="/post/2018-04-22-smart-meter_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="sources" class="section level2">
+<h2>Sources</h2>
+<p><a href="https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/2018-04-22-smart-meters.Rmd">Code is here.</a></p>
+</div>
+</div>
