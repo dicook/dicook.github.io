@@ -1,0 +1,172 @@
+@import url(https://fonts.googleapis.com/css?family=Actor);
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600);
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+body {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 30px;
+}
+h1, h2, h3 {
+  font-family: 'Fira Sans';
+  font-weight: 750;
+  margin-bottom: 0;
+  color: #3F88C5;
+}
+.remark-slide-content h1 { font-size: 3em; }
+.remark-slide-content h2 { font-size: 1.9em; }
+.remark-slide-content h3 { font-size: 1.5em; }
+.remark-slide-content {
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: table-cell;
+  font-size: 26px;
+  padding: 0em 1em;
+}
+.footnote {
+  position: absolute;
+  bottom: 3em;
+  font-style: italic;
+  font-size: 70%;
+}
+li { line-height: 1.85em; }
+li p { line-height: 1.25em; }
+ul li {
+  list-style-type: none;
+  padding-left: 1.5em;
+}
+ul li:before {
+  content: "\f201";
+  font-family: "FontAwesome";
+  color: #3F88C5;
+  display: inline-block;
+  margin-left: -1.5em; /* same as padding-left set on li */
+  width: 1.5em; /* same as padding-left set on li */
+}
+ul li li:before {
+  content: "\f1fe";
+  font-family: "FontAwesome";
+  display: inline-block;
+  margin-left: -1.5em; /* same as padding-left set on li */
+  width: 1.5em; /* same as padding-left set on li */
+}
+.red { color: #D00000; }
+.orange { color: #FFBA08; }
+.blue { color: #3F88C5; }
+.large { font-size: 2em; }
+a, a > code {
+  text-decoration: none;
+}
+code {
+  background: #f8f8f8;
+  border-radius: 5px;
+}
+.remark-code, .remark-inline-code { font-family: 'Source Code Pro'; font-size: 90%; }
+.remark-code-line-highlighted { background-color: #fee8c8; }
+.pull-left {
+  float: left;
+  width: 47%;
+}
+.pull-right {
+  float: right;
+  width: 47%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+#slideshow .slide .content code {
+  font-size: 0.8em;
+}
+#slideshow .slide .content pre code {
+  font-size: 0.9em;
+  padding: 15px;
+}
+.inverse {
+  background: linear-gradient(0deg, rgb(115, 115, 130), rgb(18, 11, 49));
+  /* background: rgb(18, 11, 49); */
+  color: rgb(223, 73, 66);
+  text-shadow: 0 0 20px #333;
+}
+.inverse h1, .inverse h2 {
+  color: #FFBA08;
+  font-size: 2.5em;
+  line-height: 1.2em;
+}
+
+/* Slide-specific styling */
+#slide-inverse .footnote {
+  bottom: 12px;
+  left: 20px;
+}
+#slide-how .slides {
+  font-size: 0.9em;
+  position: absolute;
+  top:  151px;
+  right: 140px;
+}
+#slide-how .slides h3 {
+  margin-top: 0.2em;
+}
+#slide-how .slides .first, #slide-how .slides .second {
+  padding: 1px 2px;
+  height: 90px;
+  width: 120px;
+  -moz-box-shadow: 0 0 10px #777;
+  -webkit-box-shadow: 0 0 10px #777;
+  box-shadow: 0 0 10px #777;
+}
+#slide-how .slides .first {
+  background: #fff;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  z-index: 1;
+}
+#slide-how .slides .second {
+  position: relative;
+  background: #fff;
+  z-index: 0;
+}
+
+/* Two-column layout */
+.left-column {
+  color: #777;
+  width: 20%;
+  height: 92%;
+  float: left;
+}
+  .left-column h2:last-of-type, .left-column h3:last-child {
+    color: #000;
+  }
+.right-column {
+  width: 75%;
+  float: right;
+  padding-top: 1em;
+}
+
+.title-slide {
+  font-size: 28px;
+  background-image: url(img/title_16x9.png);
+  background-size: cover;
+}
+
+.title-slide h1 {
+  font-size: 2.5em;
+  line-height: 1.2em;
+  text-shadow: 0 0 0;
+  text-align: left;
+}
+
+.title-slide h3 {
+  line-height: 1.2em;
+  text-shadow: 0 0 0;
+  color: #3F88C5;
+  text-align: left;
+}
+.title-slide .remark-slide-number {
+  display: none;
+}
+.small {font-size: 70%;}
