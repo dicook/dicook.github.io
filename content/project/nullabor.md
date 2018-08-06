@@ -12,8 +12,8 @@ summary = "R package containing tools for doing statistical inference with data 
 image_preview = "nullabor_hex.png"
 
 # Tags: can be used for filtering projects.
-# Example: `tags = ["R", "statistical computing", "statistical graphics", "data science"]`
-tags = ["R", "statistical computing", "statistical graphics", "data science"]
+# Example: `tags = ["R", "research", "statistical computing", "statistical graphics", "data science"]`
+tags = ["R", "research", "statistical computing", "statistical graphics", "data science"]
 
 # Optional external URL for project (replaces project detail page).
 external_link = "http://dicook.github.io/nullabor/"
