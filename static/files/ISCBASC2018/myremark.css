@@ -84,8 +84,7 @@ code {
   padding: 15px;
 }
 .inverse {
-/*  background: rgb(18, 11, 49);*/
-  background: url('http://dicook.org/ISCBASC2018/img/space_hubble.png');
+  background: rgb(18, 11, 49);
   color: rgb(182, 136, 48);
   text-shadow: 0 0 0 #333;
 }

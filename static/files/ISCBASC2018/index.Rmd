@@ -17,8 +17,6 @@ output:
     mathjax: "default"
 ---
 
-class: inverse middle center
-
 ```{r initial, echo = FALSE, cache = FALSE, warning = FALSE, message = FALSE, error=FALSE, results = 'hide'}
 library(knitr)
 options(htmltools.dir.version = FALSE, tibble.width = 60)
@@ -42,6 +40,9 @@ knitr::opts_chunk$set(
 library(tidyverse)
 library(ochRe)
 ```
+
+background-image: url(http://dicook.org/files/ISCBASC2018/img/space_hubble.png);
+background-size: contain
 
 ---
 background-image: url(img/You_can't_see_beyond_3D.png)
