@@ -1,0 +1,792 @@
+---
+title: "`r icon::fa_cubes()` Visualisation of high-dimensional particle physics data"
+author: "<br><br> Di Cook, Ursula Laa, German Valencia <br><br> Monash University"
+date: "[bit.ly/ISCB-Cook](bit.ly/ISCB-Cook)  <br><br>  <br><br>Aug 28, 2018"
+output:
+  xaringan::moon_reader:
+    chakra: "remark-latest.min.js"
+    css: ["default", "myremark.css"]
+    self_contained: false
+    nature:
+      ratio: '14.6:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+    mathjax: "default"
+---
+
+class: inverse middle center
+
+```{r initial, echo = FALSE, cache = FALSE, warning = FALSE, message = FALSE, error=FALSE, results = 'hide'}
+library(knitr)
+options(htmltools.dir.version = FALSE, tibble.width = 60)
+knitr::opts_chunk$set(
+  echo = TRUE, 
+  warning = FALSE, 
+  message = FALSE, 
+  error=FALSE, 
+  comment = "#>",
+  collapse = TRUE,
+  fig.path = 'figure/', 
+  cache.path = 'cache/', 
+  fig.align = 'center', 
+  fig.width = 10, 
+  fig.height = 7, 
+  fig.show = 'hold', 
+  cache = TRUE, 
+  external = TRUE, 
+  dev = 'svglite'
+)
+library(tidyverse)
+library(ochRe)
+```
+
+---
+background-image: url(img/You_can't_see_beyond_3D.png)
+background-size: contain
+
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+]
+.right-column[
+
+![](img/You_can't_see_beyond_3D.png)
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/3D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/4D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/5D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/6D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/7D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/8D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/9D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+]
+.right-column[
+
+![](img/10D.png)
+
+Source: https://ultraculture.org/blog/2014/12/16/heres-visual-guide-10-dimensions-reality/
+]
+
+---
+background-image: url(https://tenor.com/view/its-not-like-that-at-all-no-nope-not-gif-4995777)
+background-size: contain
+
+---
+
+.left-column[
+# High-dimensions
+### You can't see beyond 3D
+### A universe of 10 dimensions
+### Its more like...
+
+]
+.right-column[
+
+Flatland: A Romance of Many Dimensions (1884) Edwin Abbott Abbott 
+
+![](img/Houghton_EC85_Ab264_884f_-_Flatland,_cover.jpg)
+]
+
+---
+
+# High dimensional shapes
+
+![](img/cubes.png)
+
+---
+# Outline
+
+- Visualisation of high-dimensions using tours: the [tourr](https://cran.r-project.org/web/packages/tourr/index.html) package
+- A library of high-dimensional shapes: the [geozoo](https://cran.r-project.org/web/packages/geozoo/index.html) package
+- Model in the data-space vs data in the model-space
+- Physics data 
+
+---
+## Sphere
+
+```{r eval=FALSE, echo=FALSE, warning=FALSE}
+library(tourr)
+library(geozoo)
+s5 <- sphere.hollow(p=5)
+colnames(s5$points) <- paste0("V", 1:5)
+bases <- save_history(flea[, 1:5], grand_tour(2),
+                      max = 2)
+tour_path <- interpolate(bases, 0.1)
+d <- dim(tour_path)
+mydat <- NULL
+for (i in 1:d[3]) {
+  #cat(i, "\n")
+  pd <- s5$points %*% matrix(tour_path[,,i], ncol=2)
+  mydat <- rbind(mydat, cbind(pd, rep(i, nrow(pd))))
+}
+colnames(mydat) <- c("x", "y", "indx")
+df <- as.tibble(mydat)
+#save(df, file="data/s5_t.rda")
+#library(plotly)
+#load("data/s5_t.rda")
+p <- ggplot(data = df, aes(x = x, y = y) ) +
+    geom_point(aes(frame = indx), size=0.2) +
+  theme_void() +
+  coord_fixed() +
+  theme(legend.position = "none")
+pg <- ggplotly(p) %>% animation_opts(1000, redraw = FALSE)
+m <- list(
+    l = 50,
+    r = 50,
+    b = 100,
+    t = 100,
+    pad = 4
+)
+
+h <- pg %>%
+layout(autosize = F, width = 500, height = 500, margin = m)
+save_html(h, file="s5.html")
+```
+
+<iframe src="s5.html" width="80%" height="420" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
+
+---
+##
+
+---
+## Next slide
+
+.left-column[
+# Tours
+### Definition
+]
+.right-column[
+A .red[grand tour] is by definition a movie of low-dimensional projections constructed in such a way that it comes arbitrarily close to any low-dimensional projection; in other words, a grand tour is a space-filling curve in the manifold of low-dimensional projections of high-dimensional data spaces.
+]
+
+
+---
+
+.left-column[
+# Tours
+### Definition
+]
+.right-column[
+![](img/tour_path.png)
+]
+
+---
+
+.left-column[
+# Tours
+### Definition
+### Notation
+]
+.right-column[
+- ${\mathbf x}_i \in \Re^p$, $i^{th}$ data vector
+- $d$ projection dimension
+- $F$ is a $p\times d$ orthonormal frame, $F'F=I_d$
+- The projection of ${\mathbf x}$ onto $F$ is ${\mathbf y}_i=F'{\mathbf x}_i$.
+- Paths of projections are given by *continuous one-parameter* families $F(t)$, where $t\in [a, z]$. Starting and target frame denoted as $F_a = F(a), F_z=F(t)$.
+- The animation of the projected data is given by a path ${\mathbf y}_i(t)=F'(t){\mathbf x}_i$.
+]
+
+
+---
+
+.left-column[
+# Tours
+### Definition
+### Notation
+### Algorithm
+]
+.right-column[
+- Given a starting frame $F_a$, create a new target frame $F_z$.
+- Initialize interpolation. Generate planar rotations, $R({\mathbf \tau}) = R_m(\tau_m)...R_1(\tau_1), ~~~ {\mathbf \tau}=(\tau_1, ..., \tau_m)$ such that $F_z=R({\mathbf \tau})F_a$.
+- Execute interpolation
+    - $t \leftarrow min(1, t)$
+    - $F(t)=R({\mathbf \tau}t)F_a$ (gives frame)
+    - ${\mathbf y}_i(t)=F(t)'{\mathbf x}_i$
+    - If $t=1$ break iteration, else $t\leftarrow t+\delta$
+- Set $F_a=F_z$, start again
+]
+
+
+---
+
+.left-column[
+# Tours
+### Definition
+### Notation
+### Algorithm
+### Avoiding whip-spin
+]
+.right-column[
+![](img/tour_shortest_path.png)
+
+Rotation out of the projection frame, is defined by the principal basis in $F_a$ and $F_z$, defining the shortest distance between the planes, computed using singular value decomposition of $F_a'F_z=V_a\Lambda V_z'$, 
+
+$$G_a=F_aV_a~~~,~~~ G_z=F_zV_z$$. 
+
+]
+
+
+---
+
+.left-column[
+# Tours
+### Definition
+### Notation
+### Algorithm
+### Avoiding whip-spin
+### Choosing targets
+]
+.right-column[
+- *Grand:* Randomly choose target
+- *Little:* Basis of $d$ of the $p$ variables
+- *Local:* Randomly within a small radius 
+- *Guided:* Define structure of interest in projection, and optimise function
+- *Manual:* Control the contribution of a single variable, and move along this axis  
+]
+
+
+---
+
+.left-column[
+# Tours
+### Definition
+### Notation
+### Algorithm
+### Avoiding whip-spin
+### Choosing targets
+### PP Guidance
+]
+.right-column[
+- *Holes:* finds projections with hollow centres $I(F)= \frac{1-\frac{1}{n}\sum_{i=1}^{n}\exp(-\frac{1}{2}{\mathbf y}_i{\mathbf y}_i')}{1-\exp(-\frac{p}{2})}$
+- *LDA:* finds separations between classes, classically $I(F) = 1- \frac{|F'WF|}{|F'(W+B)F|}$, where 
+$B=\sum_{i=1}^gn_i(\bar{{\mathbf y}}_{i.}-\bar{{\mathbf y}}_{..})(\bar{{\mathbf y}}_{i.}-\bar{{\mathbf y}}_{..})'$ ,
+$W=\sum_{i=1}^g\sum_{j=1}^{n_i}({\mathbf y}_{ij}-\bar{{\mathbf y}}_{i.})({\mathbf y}_{ij}-\bar{{\mathbf y}}_{i.})'$
+- *PDA:* finds separations between classes, when there are many variables and few points $I(F, \lambda) = 1-\frac{|F'((1-\lambda)W+n\lambda I_p)F|}{|F'((1-\lambda)(B+W)+n\lambda I_p)F|}$
+]
+
+
+---
+
+.left-column[
+# Tours
+### Definition
+### Notation
+### Algorithm
+### Avoiding whip-spin
+### Choosing targets
+### PP Guidance
+### R package: tourr
+]
+.right-column[
+- implements all of the tours except for manual
+- display projection dimension $d=1, ..., p$, using density plots, scatterplots, parallel coordinates, stereo 3D, scatterplot matrix, chernoff faces, stars, andrews curves, and images
+- guided tour using projection pursuit indices: holes, cmass, lda, pda
+- possible to generate a path and play it back
+]
+
+
+---
+
+.pull-left[
+<iframe src="https://player.vimeo.com/video/255464691" width="300" height="285" frameborder="10" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="https://player.vimeo.com/video/255464393" width="300" height="285" frameborder="10" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+]
+.pull-right[
+# Tourr package
+
+Self-reflection: Example path of a tour for $d=1, p=3$, and $d=1, p=4$. 
+
+```{r echo=FALSE, eval=FALSE}
+library(tidyverse)
+library(tourr)
+library(geozoo)
+library(dplyr)
+library(rlang)
+s3 <- sphere.hollow(p=3)
+colnames(s3$points) <- paste0("V", 1:3)
+bases <- save_history(flea[, 1:3], grand_tour(1),
+                      max = 30)
+tour_path <- interpolate(bases, 0.1)
+tour_path_df <- as.data.frame.table(tour_path)
+tour_path_mat <- matrix(tour_path_df$Freq, ncol=3, byrow=T)
+colnames(tour_path_mat) <- paste0("V", 1:3)
+s3_tp <- rbind(s3$points, tour_path_mat)
+
+col <- c(rep("#f0a800", nrow(s3$points)), rep("#486030", nrow(tour_path_mat)))
+pch <- c(rep(".", nrow(s3$points)), rep("o", nrow(tour_path_mat)))
+edges <- cbind((nrow(s3$points)+1):(nrow(s3$points)+nrow(tour_path_mat)-1), (nrow(s3$points)+2):(nrow(s3$points)+nrow(tour_path_mat)))
+colnames(edges) <- c("from", "to")
+quartz()
+animate(s3_tp, grand_tour(),
+        display_xy(axes = "bottomleft",
+                   col=col, pch=pch, 
+                   edges=edges))
+```
+
+```{r echo=FALSE, eval=FALSE}
+s4 <- sphere.hollow(p=4)
+colnames(s4$points) <- paste0("V", 1:4)
+bases <- save_history(flea[, 1:4], grand_tour(1),
+                      max = 30)
+tour_path <- interpolate(bases, 0.1)
+tour_path_df <- as.data.frame.table(tour_path)
+tour_path_mat <- matrix(tour_path_df$Freq, ncol=4, byrow=T)
+colnames(tour_path_mat) <- paste0("V", 1:4)
+s4_tp <- rbind(s4$points, tour_path_mat)
+col <- c(rep("#f0a800", nrow(s4$points)), rep("#486030", nrow(tour_path_mat)))
+pch <- c(rep(".", nrow(s4$points)), rep("o", nrow(tour_path_mat)))
+edges <- cbind((nrow(s4$points)+1):(nrow(s4$points)+nrow(tour_path_mat)-1), (nrow(s4$points)+2):(nrow(s4$points)+nrow(tour_path_mat)))
+colnames(edges) <- c("from", "to")
+quartz()
+animate(s4_tp, grand_tour(),
+        display_xy(axes = "bottomleft",
+                   col=col, pch=pch, 
+                   edges=edges))
+```
+
+```{r eval=FALSE}
+animate(s3_tp, 
+  grand_tour(),
+  display_xy(
+    axes = "bottomleft",
+    col=col, pch=pch, 
+    edges=edges))
+```
+]
+
+
+---
+# Tourr package
+
+Different types of displays, and projection dimension.
+
+```{r echo=FALSE, eval=FALSE}
+quartz()
+```
+
+```{r eval=FALSE}
+animate_dist(flea[, 1:6])
+animate_scatmat(flea[, 1:6], grand_tour(6))
+animate_pcp(flea[, 1:6], grand_tour(3))
+animate_faces(flea[sort(sample(1:74, 4)), 1:6], grand_tour(4))
+animate_stars(flea[sort(sample(1:74, 16)), 1:6], grand_tour(5))
+```
+
+<iframe src="https://player.vimeo.com/video/255466661" width="300" height="290" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+---
+
+.pull-left[
+<iframe src="https://player.vimeo.com/video/255467472" width="300" height="290" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+]
+.pull-right[
+# Tourr package
+
+Guided tour, LDA index.
+
+```{r echo=FALSE, eval=FALSE}
+quartz()
+pal <- ochre_palettes$lorikeet[c(2,4,5)]
+col <- pal[as.numeric(flea$species)]
+```
+
+```{r eval=FALSE}
+animate_xy(flea[, 1:6], 
+  guided_tour(
+    lda_pp(flea$species)), 
+  sphere = TRUE, 
+  col=col, 
+  axes = "bottomleft")
+```
+]
+
+
+---
+
+.left-column[
+# Library
+### Overview
+    
+]
+.right-column[
+The `geozoo` package is a library of high-dimensional shapes, and code to generate them. This includes cubes, spheres, simplices, mobius strips, torii, boy surface, enneper surface, dini surface, klein bottles, cones, ...
+
+Web site: [http://schloerke.com/geozoo/all/](http://schloerke.com/geozoo/all/)
+]
+
+
+---
+
+.left-column[
+# Library
+### Overview
+### Cubes
+    
+]
+.right-column[
+```{r echo=FALSE, eval=FALSE}
+quartz()
+```
+
+```{r eval=FALSE}
+c3 <- cube.iterate(p = 3)
+animate(c3$points, grand_tour(), 
+        display_xy(axes = "bottomleft", 
+                   edges=c3$edges))
+c5 <- cube.iterate(p = 5)
+animate(c5$points, grand_tour(), 
+        display_xy(axes = "bottomleft", 
+                   edges=c5$edges))
+c5_face <- cube.face(p = 5)
+animate(c5_face$points, grand_tour(), 
+        display_xy(axes = "bottomleft", 
+                   edges=c5_face$edges))
+```
+
+<img src="img/cube5.png" width="200px">
+<img src="img/cube5b.png" width="200px">
+
+]
+
+
+---
+
+.left-column[
+# Library
+### Overview
+### Cubes
+### Spheres
+    
+]
+.right-column[
+```{r echo=FALSE, eval=FALSE}
+quartz()
+```
+
+```{r eval=FALSE}
+s4h <- sphere.hollow(p = 4, n = 4 * 500)
+colnames(s4h$points) <- paste0("V", 1:4)
+animate(s4h$points, grand_tour(), 
+        display_xy(axes = "bottomleft"))
+s4s <- sphere.solid.random(p = 4, n = 4 * 500)
+colnames(s4s$points) <- paste0("V", 1:4)
+animate(s4s$points, grand_tour(), 
+        display_xy(axes = "bottomleft"))
+s3h <- sphere.hollow(p = 3, n = 3 * 500)
+colnames(s3h$points) <- paste0("V", 1:3)
+animate(s3h$points, grand_tour(), 
+        display_xy(axes = "bottomleft"))
+```
+
+<img src="img/sphere_h.png" width="200px">
+<img src="img/sphere_s.png" width="200px">
+]
+
+---
+
+.left-column[
+# Library
+### Overview
+### Cubes
+### Spheres
+### Simplices
+    
+]
+.right-column[
+```{r echo=FALSE, eval=FALSE}
+quartz()
+```
+
+```{r eval=FALSE}
+sp3 <- simplex(p = 3)
+colnames(sp3$points) <- paste0("V", 1:3)
+sp3$edges <- as.matrix(sp3$edges)
+animate(sp3$points, grand_tour(), 
+        display_xy(axes = "bottomleft", edges=sp3$edges))
+sp5 <- simplex(p = 5)
+colnames(sp5$points) <- paste0("V", 1:5)
+sp5$edges <- as.matrix(sp5$edges)
+animate(sp5$points, grand_tour(), 
+        display_xy(axes = "bottomleft", edges=sp5$edges))
+```
+<img src="img/simplex3.png" width="200px">
+<img src="img/simplex5.png" width="200px">
+]
+
+---
+
+.left-column[
+# Library
+### Overview
+### Cubes
+### Spheres
+### Simplices
+### Why simplices
+    
+]
+.right-column[
+```{r eval=FALSE, echo=FALSE}
+library(randomForest)
+data(olive)
+olive_sub <- olive %>% filter(region==1) %>%
+  select(-region) %>% mutate(area=factor(area))
+olive_rf <- randomForest(area~., data=olive_sub)
+votes <- f_composition(olive_rf$votes)
+colnames(votes) <- paste0("V", 1:3)
+votes <- cbind(votes, area=olive_sub$area)
+sp3$points <- cbind(sp3$points, area=c(5,5,5,5))
+votes <- rbind(sp3$points, votes)
+pal <- ochre_palettes$lorikeet[c(2,3,4,6)]
+col <- pal[votes[,4]]
+
+animate(votes[,-4], grand_tour(), 
+        display_xy(axes = "bottomleft", col=col, edges=sp3$edges))
+```
+
+```{r eval=FALSE}
+olive_rf <- randomForest(area~., 
+                         data=olive_sub)
+votes <- f_composition(olive_rf$votes)
+animate(votes[,-4], grand_tour(), 
+        display_xy(axes = "bottomleft", 
+                   col=col, edges=sp3$edges))
+```
+<img src="img/votes.png" width="400px">
+]
+
+
+---
+
+class: inverse middle center
+
+`r icon::fa_child()` Any requests? What would you like to look at? A torus, a klein, ... ?
+
+```{r echo=FALSE, eval=FALSE}
+quartz()
+t3 <- torus(p = 3, n = 1000)
+colnames(t3$points) <- paste0("V",1:3)
+animate_xy(t3$points, axes="bottomleft")
+t4 <- torus.flat(p = 4, n = 1000)
+colnames(t4$points) <- paste0("V",1:4)
+animate_xy(t4$points, axes="bottomleft")
+k4 <- klein.fig.eight(n = 1000, a = 3, b = 1)
+colnames(k4$points) <- paste0("V",1:4)
+animate_xy(k4$points, axes="bottomleft")
+```
+
+
+---
+.left-column[
+# Library
+### Overview
+### Cubes
+### Spheres
+### Simplices
+### Why simplices
+### Generation    
+]
+.right-column[
+- Cube:
+    - vertices: vectors of length $p$, with all combinations of $0,1$
+    - edges: connect all the vertices of length 1 apart
+- Sphere hollow: 
+${\mathbf x}_i\sim N_p(0,I_p)$, 
+$\frac{{\mathbf x}_i}{||{\mathbf x}_i||}$
+]
+
+.footnote[Schloerke et al (2016) "Escape from Boxland" The R Journal]
+---
+# Model in the data space
+
+- It is common to show the data in the model space, for example, predicted vs observed plots for regression, linear discriminant plots, and principal components.
+- By displaying the model in the high-d data space, rather than low-d
+summaries of the data produced by the model, we expect to better understand the fit.
+
+.footnote[Wickham et al (2015) Visualizing statistical models: Removing the blindfold, SAM]
+
+---
+# Hierarchical clustering
+Dendrogram: data in the model space
+
+```{r echo=FALSE, fig.show='hold', fig.width=50}
+library(tourr)
+source("dend_util.R")
+data(flea)
+plot(hclust(dist(rescaler(flea[,-7])), method="single"), hang=-1)
+plot(hclust(dist(rescaler(flea[,-7])), method="ward.D2"), hang=-1)
+```
+
+
+---
+# Hierarchical clustering
+
+Model in the data space
+
+```{r eval=FALSE, echo=FALSE}
+# Code adapted from library(clusterfly)
+quartz()
+flea_hc_s <- hierfly(flea, method="single")
+flea_hc_w <- hierfly(flea)
+pal <- ochre_palettes$lorikeet[c(2,3,4,5)]
+col <- c(pal[as.numeric(flea$species)],
+         rep(pal[4], nrow(flea_hc$data)-nrow(flea)))
+pch <- c(rep(16,nrow(flea)),
+         rep(4, nrow(flea_hc$data)-nrow(flea)))
+
+t1 <- save_history(flea_hc$data[, 1:6], max = 40)
+animate(flea_hc_s$data[, 1:6], planned_tour(t1),
+        display_xy(axes = "bottomleft",
+                   col=col, pch=pch, edges=flea_hc_s$edges))
+animate(flea_hc$data[, 1:6], planned_tour(t1),
+        display_xy(axes = "bottomleft",
+                   col=col, pch=pch, edges=flea_hc$edges))
+```
+
+<iframe src="https://player.vimeo.com/video/255344610" width="320" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<iframe src="https://player.vimeo.com/video/255344258" width="320" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+---
+# Multidimensional physics
+
+- Need to interpret and compare models with multiple parameters
+- Predictions vs measurements, theorist A model vs theorist B model
+- The average theorist resorts to dropping all but 1 or 2 parameters (variables)
+- Potentially misses multivariate associations and differences
+
+---
+# Summary
+
+- The tourr package is available for you to look beyond 2D
+- High-dimensional shapes, how they are defined, what they look like, how they differ is interesting
+- Think about ways to look at the model in the data space
+- .red[Challenge: new ideas for defining shape differences]
+
+
+---
+
+class: inverse 
+
+# Joint work!
+
+- *Tours:* Andreas Buja, Debby Swayne, Heike Hofmann, Hadley Wickham, Ursula Laa and Nick Spyrison
+- *Library of high-d shapes:* Barret Schloerke
+- *Physics application:* Ursula Laa, German Valencia
+
+Contact: [`r icon::fa_envelope()`](http://www.dicook.org) dicook@monash.edu, [`r icon::fa_twitter()`](https://twitter.com/visnut) visnut, [`r icon::fa_github()`](https://github.com/dicook) dicook
+
+<img src="img/lorikeets.png" width="200px">
+
+.footnote[Slides made with Rmarkdown, xaringan package by Yihui Xie, and lorikeet theme using the [ochRe package](https://github.com/ropenscilabs/ochRe). Available at [https://github.com/dicook/IMS-Singapore-talk](https://github.com/dicook/IMS-Singapore-talk].)
+
+---
+# Further reading
+
+- Buja et al (2004) [Computational Methods for High-Dimensional Rotations in Data Visualization](http://stat.wharton.upenn.edu/~buja/PAPERS/paper-dyn-proj-algs.pdf) 
+- Cook, D., and Swayne, D. [Interactive and Dynamic Graphics for Data Analysis with examples using R and GGobi](http://www.ggobi.org)
+- Wickham et al (2011) [tourr: An R Package for Exploring Multivariate Data with Projections](http://www.jstatsoft.org/v40)
+- Wickham et al (2015) Visualising Statistical Models: Removing the Blindfold (with Discussion), Statistical Analysis and Data Mining.
+- Schloerke, et al (2016) [Escape from Boxland](https://journal.r-project.org/archive/2016/RJ-2016-044/ index.html)
+
+
+
+---
+class: middle center
+
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+
