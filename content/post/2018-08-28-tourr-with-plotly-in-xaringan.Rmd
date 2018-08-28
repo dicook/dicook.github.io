@@ -41,7 +41,7 @@ animate_stars(flea[sort(sample(1:74, 16)), 1:6], grand_tour(5))
 
 The `save_history` function generates a sequence of projection bases that can be used to construct a tour, with any other tools.
 
-```{r}
+```
 library(tourr)
 bases <- save_history(flea[,1:6], grand_tour(2), max = 3)
 tour_path <- interpolate(bases, 0.1)
@@ -49,7 +49,7 @@ tour_path <- interpolate(bases, 0.1)
 
 Creating a plotly animation requires one data structure containing all the data, with a variable indicating the animation frame. This is the ugly part of the code! Maybe its just my way of making this, there are sure to be nicer ways to do this. The code loops over the number of projection planes, does a matrix multiplication with the data, adds the frame index column. *The index starts from 10, because when I started from 1 plotly messed up the order.* 
 
-```{r}
+```
 flea_std <- apply(flea[,1:6], 2, function(x) (x-mean(x))/sd(x))
 d <- dim(tour_path)
 flea_anim <- NULL
