@@ -1,23 +1,22 @@
 ---
 title: Getting past the little hiccups to getting plotly animations into slides
 author: Di Cook
-date: '2018-08-28'
-slug: content/post/2018-08-28-tourr-with-plotly-in-xaringan
-categories: [data visualisation,slides]
-tags: [animation,tour,R,tidyverse,xaringan,slides]
+date: '2018-08-29'
+slug: getting-past-the-little-hiccups-to-getting-plotly-animations-into-slides
+categories:
+  - data visualisation
+  - slides
+tags:
+  - animation
+  - tour
+  - R
+  - tidyverse
+  - xaringan
+  - slides
 header:
   caption: ''
   image: ''
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
-                      warning = FALSE, 
-                      message = FALSE, 
-                      error = FALSE,
-                      fig.align = "center")
-library(tidyverse)
-```
 
 ## Goal
 
@@ -42,6 +41,7 @@ animate_stars(flea[sort(sample(1:74, 16)), 1:6], grand_tour(5))
 The `save_history` function generates a sequence of projection bases that can be used to construct a tour, with any other tools.
 
 ```
+library(tidyverse)
 library(tourr)
 bases <- save_history(flea[,1:6], grand_tour(2), max = 3)
 tour_path <- interpolate(bases, 0.1)
@@ -100,3 +100,4 @@ It took me several instant messaging with Carson Sievert to get it working. Cars
 ## Sources
 
 [The code for this post is here.](https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/2018-08-28-tourr-with-plotly-in-xaringan.Rmd)
+
