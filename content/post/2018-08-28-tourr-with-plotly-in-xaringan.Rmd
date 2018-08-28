@@ -1,8 +1,8 @@
 ---
 title: Getting past the little hiccups to getting plotly animations into slides
 author: Di Cook
-date: '2018-08-28'
-slug: content/post/2018-08-28-tourr-with-plotly-in-xaringan
+date: '2018-08-27'
+slug: content/post/2018-08-27-tourr-with-plotly-in-xaringan
 categories: [data visualisation,slides]
 tags: [animation,tour,R,tidyverse,xaringan,slides]
 header:
