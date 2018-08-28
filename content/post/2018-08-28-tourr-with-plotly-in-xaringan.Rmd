@@ -1,0 +1,103 @@
+---
+title: Getting past the little hiccups to getting plotly animations into slides
+author: Di Cook
+date: '2018-08-28'
+slug: content/post/2018-08-28-tourr-with-plotly-in-xaringan
+categories: [data visualisation,slides]
+tags: [animation,tour,R,tidyverse,xaringan,slides]
+header:
+  caption: ''
+  image: ''
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE, 
+                      message = FALSE, 
+                      error = FALSE,
+                      fig.align = "center")
+library(tidyverse)
+```
+
+## Goal
+
+I just gave a short talk at [ISCB-ASC 2018](http://www.dicook.org/files/iscbasc2018/#1) about visualising high-dimensional data, which involves showing dynamic graphics. In the past, I have run the tour, captured the window and saved to a movie, and embedded this into the Rmarkdown xaringan slides. It seems a bit discombobulated to make the slides this way, and a better way to work would be to make a tour animation using plotly. This turned out to take me two days to get it working, through little mistakes that were not easy to debug by googling the problem. This blog post documents the process, and hopefully shows the little frustrations and how to get past them.
+
+## Tour
+
+The tourr package, elegantly crafted by Hadley Wickham, provides a broad range of tour types, and is easy to run locally on your laptop. It doesn't play very nicely with the RStudio graphics device, so requires opening a separate device which is easy:
+
+```
+quartz() # OSX, use X11() on Windows or linux
+library(tourr)
+animate_dist(flea[, 1:6])
+animate_scatmat(flea[, 1:6], grand_tour(6))
+animate_pcp(flea[, 1:6], grand_tour(3))
+animate_faces(flea[sort(sample(1:74, 4)), 1:6], grand_tour(4))
+animate_stars(flea[sort(sample(1:74, 16)), 1:6], grand_tour(5))
+```
+
+## Creating recorded tour with plotly
+
+The `save_history` function generates a sequence of projection bases that can be used to construct a tour, with any other tools.
+
+```{r}
+library(tourr)
+bases <- save_history(flea[,1:6], grand_tour(2), max = 3)
+tour_path <- interpolate(bases, 0.1)
+```
+
+Creating a plotly animation requires one data structure containing all the data, with a variable indicating the animation frame. This is the ugly part of the code! Maybe its just my way of making this, there are sure to be nicer ways to do this. The code loops over the number of projection planes, does a matrix multiplication with the data, adds the frame index column. *The index starts from 10, because when I started from 1 plotly messed up the order.* 
+
+```{r}
+flea_std <- apply(flea[,1:6], 2, function(x) (x-mean(x))/sd(x))
+d <- dim(tour_path)
+flea_anim <- NULL
+for (i in 1:d[3]) {
+  f <- flea_std %*% matrix(tour_path[,,i], ncol=2)
+  colnames(f) <- c("x", "y")
+  flea_anim <- rbind(flea_anim, cbind(f, rep(i+10, nrow(f))))
+}
+colnames(flea_anim)[3] <- "indx"
+flea_anim <- as.tibble(flea_anim)
+flea_anim$species <- rep(flea$species, d[3])
+```
+
+This can now be played using `ggplotly`, after first plotting using `ggplot2`. *Note the `aes(frame = indx)` which throws a warning from `ggplot`. It is essential for making the animation.*
+
+```{r}
+library(tidyverse)
+p <- ggplot(data = flea_anim, aes(x = x, y = y, colour=species) ) +
+       geom_point(aes(frame = indx), size=1) +
+       theme_void() +
+       coord_fixed()
+library(plotly)
+pg <- ggplotly(p, width=600, height=400) %>%
+                 animation_opts(200, redraw = FALSE, 
+                 easing = "linear")
+pg
+```
+
+# Embedding into slides
+
+The plotly animation, although it runs nicely in the RStudio viewer, and in this blog post, does not automatically run in the html slides. You need to save it to html, using the `htmltools` function:
+
+```
+htmltools::save_html(pg, file="flea_anim.html")    
+```
+
+and embed this in the slides using `iframe`:
+ 
+`<iframe src="s5.html" width="800" height="500" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe>`
+
+Now this almost worked, but the slider didn't show up! The problem was sizing. The parts of the code `ggplotly(p, width=600, height=400)` and `width="800" height="500"` are critical to place the plot with enough space to show the slider.
+
+## Summary
+
+The old approach can be seen in the [code for slides for IMS Singapore](https://github.com/dicook/IMS-Singapore-talk). It is prettier code, despite the cognitive break of showing a movie. 
+
+It took me several instant messaging with Carson Sievert to get it working. Carson's [advanced plotly slides and code](https://github.com/cpsievert/plotcon17/tree/master/docs/workshop/day2) explain the process in detail, but the two things that tripped me up, saving to html and the sizing are not documented there. Carson also recommends [Bhaskar Karambelkar's widgetframe](https://bhaskarvk.github.io/widgetframe/). Code for my presentation is [here](https://github.com/dicook/ISCBASC2018).
+
+## Sources
+
+[The code for this post is here.](https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/2018-08-28-tourr-with-plotly-in-xaringan.Rmd).
