@@ -66,7 +66,6 @@ flea_anim$species <- rep(flea$species, d[3])
 This can now be played using `ggplotly`, after first plotting using `ggplot2`. *Note the `aes(frame = indx)` which throws a warning from `ggplot`. It is essential for making the animation.*
 
 ```{r}
-library(tidyverse)
 p <- ggplot(data = flea_anim, aes(x = x, y = y, colour=species) ) +
        geom_point(aes(frame = indx), size=1) +
        theme_void() +
