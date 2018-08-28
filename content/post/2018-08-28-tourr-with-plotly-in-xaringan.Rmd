@@ -91,8 +91,6 @@ and embed this in the slides using `iframe`:
 
 Now this almost worked, but the slider didn't show up! The problem was sizing. The parts of the code `ggplotly(p, width=600, height=400)` and `width="800" height="500"` are critical to place the plot with enough space to show the slider.
 
-<iframe src="flea_anim.html" width="800" height="500" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe>
-
 ## Summary
 
 The old approach can be seen in the [code for slides for IMS Singapore](https://github.com/dicook/IMS-Singapore-talk). It is prettier code, despite the cognitive break of showing a movie. 
