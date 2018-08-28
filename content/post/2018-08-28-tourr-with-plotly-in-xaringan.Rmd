@@ -79,7 +79,7 @@ pg
 
 # Embedding into slides
 
-The plotly animation, although it runs nicely in the RStudio viewer, and in this blog post, does not automatically run in the html slides. You need to save it to html, using the `htmltools` function:
+The plotly animation, although it runs nicely in the RStudio viewer, does not automatically run in the html slides. You need to save it to html, using the `htmltools` function:
 
 ```
 htmltools::save_html(pg, file="flea_anim.html")    
@@ -87,9 +87,11 @@ htmltools::save_html(pg, file="flea_anim.html")
 
 and embed this in the slides using `iframe`:
  
-`<iframe src="s5.html" width="800" height="500" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe>`
+`<iframe src="flea_anim.html" width="800" height="500" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe>`
 
 Now this almost worked, but the slider didn't show up! The problem was sizing. The parts of the code `ggplotly(p, width=600, height=400)` and `width="800" height="500"` are critical to place the plot with enough space to show the slider.
+
+<iframe src="flea_anim.html" width="800" height="500" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe>
 
 ## Summary
 
@@ -99,4 +101,4 @@ It took me several instant messaging with Carson Sievert to get it working. Cars
 
 ## Sources
 
-[The code for this post is here.](https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/2018-08-28-tourr-with-plotly-in-xaringan.Rmd).
+[The code for this post is here.](https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/2018-08-28-tourr-with-plotly-in-xaringan.Rmd)
