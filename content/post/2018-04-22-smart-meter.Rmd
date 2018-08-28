@@ -97,7 +97,8 @@ This meter seems to show regular use, not related to our activity. It comes on l
 ```{r calendar}
 load("data/deidentified-usage.rda")
 library(sugrrants)
-hols <- c(au_holiday(2018, state = "VIC")$date, au_holiday(2017, state = "VIC")$date)
+library(tsibble)
+hols <- c(holiday_aus(2018, state = "VIC")$date, holiday_aus(2017, state = "VIC")$date)
 elec_hr <- elec %>% 
   mutate(hour = ceiling(halfhour)) %>%
   group_by(date, hour, meter) %>%
