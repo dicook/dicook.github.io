@@ -79,6 +79,8 @@ pg <- ggplotly(p, width=600, height=400) %>%
 pg
 ```
 
+*One change I'd like to have in plotly, but I couldn't see how to do this, is easing completely off. The tour controls the interpolation and doesn't need any additional interpolation.*
+
 # Embedding into slides
 
 The plotly animation, although it runs nicely in the RStudio viewer, does not automatically run in the html slides. You need to save it to html, using the `htmltools` function:
