@@ -13,6 +13,8 @@ tags:
   - tidyverse
   - xaringan
   - slides
+  - plotly
+  - Rmd
 header:
   caption: ''
   image: ''
@@ -63,7 +65,7 @@ flea_anim <- as.tibble(flea_anim)
 flea_anim$species <- rep(flea$species, d[3])
 ```
 
-This can now be played using `ggplotly`, after first plotting using `ggplot2`. *Note the `aes(frame = indx)` which throws a warning from `ggplot`. It is essential for making the animation.*
+This can now be played using `ggplotly`, after first plotting using `ggplot2`. *Note the `aes(frame = indx)` which throws a warning from `ggplot`, is essential for making the animation.*
 
 ```
 p <- ggplot(data = flea_anim, aes(x = x, y = y, colour=species) ) +

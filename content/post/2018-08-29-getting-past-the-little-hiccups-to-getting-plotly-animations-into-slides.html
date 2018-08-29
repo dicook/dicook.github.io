@@ -13,6 +13,8 @@ tags:
   - tidyverse
   - xaringan
   - slides
+  - plotly
+  - Rmd
 header:
   caption: ''
   image: ''
@@ -54,7 +56,7 @@ for (i in 1:d[3]) {
 colnames(flea_anim)[3] &lt;- &quot;indx&quot;
 flea_anim &lt;- as.tibble(flea_anim)
 flea_anim$species &lt;- rep(flea$species, d[3])</code></pre>
-<p>This can now be played using <code>ggplotly</code>, after first plotting using <code>ggplot2</code>. <em>Note the <code>aes(frame = indx)</code> which throws a warning from <code>ggplot</code>. It is essential for making the animation.</em></p>
+<p>This can now be played using <code>ggplotly</code>, after first plotting using <code>ggplot2</code>. <em>Note the <code>aes(frame = indx)</code> which throws a warning from <code>ggplot</code>, is essential for making the animation.</em></p>
 <pre><code>p &lt;- ggplot(data = flea_anim, aes(x = x, y = y, colour=species) ) +
        geom_point(aes(frame = indx), size=1) +
        theme_void() +
