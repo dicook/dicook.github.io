@@ -79,7 +79,7 @@ pg <- ggplotly(p, width=600, height=400) %>%
 pg
 ```
 
-*One change I'd like to have in plotly, but I couldn't see how to do this, is easing completely off. The tour controls the interpolation and doesn't need any additional interpolation.*
+*One change I'd like to have in plotly, but I couldn't see how to do this, is easing completely off. The tour controls the interpolation and doesn't need any additional interpolation.* (CORRECTION: use transition=0 to achieve this!)
 
 # Embedding into slides
 
