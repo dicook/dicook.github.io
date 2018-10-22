@@ -1,0 +1,91 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+/******************
+ kunoichi.css must also be coupled with ninjutsu.css to be effective
+ See https://emitanaka.github.io/ninja-theme/kunoichi-theme-example.html for an example.
+
+My preferences
+******************/
+
+
+:root {
+    --main-color1: rgba(6, 84, 142, 1);
+    --main-color2: #699cda;
+    --main-color3: rgba(6, 84, 142, 1);
+    --main-color4: rgba(204, 89, 0, 1);
+    --link-color: rgba(204, 89, 0, 1);
+    --logo: url("images/M.jpg");
+}
+
+h1 {
+  font-family: 'Montserrat';
+  font-weight: bold;
+}
+
+h2, h3, body{
+  font-family: 'Montserrat';
+  font-weight: normal;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+h1 { font-size: 4.5em; }
+h2 { font-size: 4em; }
+
+body{
+  font-size: 3.5em;
+  margin-left: 50px;
+}
+
+.title-slide {
+  width: 87%;
+  background-color: var(--color-opacity10);
+  border-left-width: 0.7em;
+}
+
+.remark-slide {
+  background-color: var(--main-color1);
+  background-image: var(--logo);
+  background-size:  12%;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+
+.padding {
+  margin-left: 30px;
+}
+
+li { line-height: 1.85em; }
+li p { line-height: 1.25em; }
+li {
+  list-style-type: none;
+}
+ul li:before {
+  content: "\f080";
+  font-family: "FontAwesome";
+  margin-right: 10px;
+  color: var(--main-color4);
+}
+ul li li:before {
+  content: "\f200";
+  font-family: "FontAwesome";
+  margin-right: 10px;
+  color: var(--main-color4);
+}
+.split-20>.column:first-of-type {width: 20%; height:100%; position: absolute; top: 0; left: 10; right: 10;}
+
+.font_small {font-size: 0.5em;}
+.font_medium {font-size: 1.5em;}
+.font_large {font-size: 2.5em;}
+
+.shuriken-300>.blade1 {height: 50%; width:50%; position: absolute; top: 0; left: 0;}
+.shuriken-300>.blade2 {height: 50%; width:50%; position: absolute; top: 0; right: 0;}
+.shuriken-300>.blade3 {height: 50%; width:50%; position: absolute; bottom: 0; right: 0;}
+.shuriken-300>.blade4 {height: 50%; width:50%; position: absolute; bottom: 0; left: 0;}
+.shuriken-300>.hole {height: calc(100% - 600px); width:calc(100% - 600px); position: absolute; top: 300px; left: 300px;}
+
