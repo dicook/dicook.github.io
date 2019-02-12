@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>How visualisation and open data can empower you</title>
+    <meta charset="utf-8">
+    <meta name="author" content="  Professor Di Cook   Professor of Business Analytics   Econometrics and Business Statistics   Monash University   @visnut   http://dicook.org" />
+    <link href="libs/remark-css/kunoichi.css" rel="stylesheet" />
+    <link href="libs/remark-css/ninjutsu.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-animation/font-awesome-animation-emi.css" rel="stylesheet" />
+    <script src="libs/fontawesome/js/fontawesome-all.min.js"></script>
+    <link rel="stylesheet" href="mystyle.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: title-slide   
+
+&lt;img src="images/ACEMS_Masterclass_powerpoint_16_9.png" style="width: 100%" /&gt;
+---
+class: split-25 hide-slide-number
+
+
+.column.bg-green[
+
+.white[H. G. Wells (1903) Mankind in the Making
+
+*"Statistical thinking will one day be as necessary for efficient citizenship as the ability to read and write!"*]]
+
+.column[.content[
+# .font2[.green[How visualisation and open data can empower you]]
+
+## .blue[Di Cook &lt;br&gt; &lt;br&gt;]
+
+## .light-green[Professor of Business Analytics &lt;br&gt;] 
+### .indigo[Econometrics and Business Statistics] &lt;br&gt;
+### .indigo[<i class="fas  fa-university "></i>Monash University &lt;br&gt; &lt;br&gt;  &lt;br&gt;]
+
+.light-blue[<i class="fab  fa-twitter "></i>] .teal[@visnut] &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+.black[<i class="fab  fa-github "></i>] .teal[dicook] &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+.deep-orange[<span>&lt;i class="fab  fa-slideshare faa-vertical animated "&gt;&lt;/i&gt;</span>] [dicook.org/MBS_ACEMS](http://dicook.org/MBS_ACEMS)
+]]
+
+---
+
+layout: true
+class: shuriken-full hide-slide-number
+
+.blade1.bg-blue[.content.center[
+# .white[Open data, open source]
+]]
+.blade2.bg-light-green[.content.vertical-rl.center[
+# .blue[Data is available everywhere today, publicly, free]
+]]
+.blade3.bg-light-blue[.content.center[
+# .pink[Software, very powerful software, for analysis of data is available publicly, free]
+]]
+.blade4.bg-green[.content.sideways-center.vmiddle[
+# .yellow[A little know-how about plotting data (maybe some math and stat)]
+]]
+.gray-hole[.content.center.vmiddle[
+{{content}}
+]]
+
+---
+
+class: hide-blade2 hide-blade3 hide-blade4 hide-hole
+
+---
+
+class: hide-blade3 hide-blade4 hide-hole
+count: false
+
+---
+
+class: hide-blade4 hide-hole
+count: false
+
+---
+
+class: hide-hole
+count: false
+
+---
+layout: false
+class: split-70 hide-slide-number
+
+.column[.content.nopadding[
+&lt;img src="images/energy_compare.png" width="120%" /&gt;
+]]
+.column.bg-white.pad10px[
+&lt;br&gt;
+## A local example &lt;br&gt; &lt;br&gt;
+.bg-yellow.black[.font2[Claim your bonus $50]] &lt;br&gt; &lt;br&gt;
+You need to download your data, and upload to the comparison site.
+&lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt;  &lt;br&gt; &lt;br&gt;
+*.light-green[Now that you have your data, you can make a few plots of your usage too!]*
+]
+
+
+---
+
+layout: true
+class: shuriken-full hide-slide-number
+
+.blade1[.content.center.black.nopadding[
+&lt;img src="images/energy_distributors.png" width="90%" /&gt;
+]]
+.blade2[.content.vmiddle[
+### [Find your distributor](https://www.energy.vic.gov.au/electricity/electricity-distributors) &lt;br&gt;
+### Create an account, using your meter number which you can find on a current bill&lt;br&gt;&lt;br&gt;&lt;br&gt;
+### .lime[Dashboard summarises usage]&lt;br&gt;
+]]
+.blade3[.content.center[
+&lt;img src="images/citipower2.png", style="width: 60%" /&gt;
+]]
+.blade4[.content.center[
+&lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; 
+.font3[It's easy 😂]
+]]
+
+
+---
+layout: false
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; date &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d2 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d3 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d4 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d5 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d6 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d7 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d8 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d9 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d10 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d11 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d12 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d13 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d14 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; d15 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 200 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; meter1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20171124 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20171125 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20171126 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20171127 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20171128 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20171129 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 400 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 400 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 44 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 44.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 89.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 400 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 45 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20171130 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.056 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.081 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.094 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.113 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.119 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.138 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.150 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.150 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.169 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.194 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.256 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.444 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.181 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.144 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.106 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 400 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 400 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 28 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 89.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 400 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 29 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20171201 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.188 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.194 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.206 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.206 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.225 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.225 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.231 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.219 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.213 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.238 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.288 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.281 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.325 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.294 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.269 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20171202 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.063 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.031 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.038 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.069 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.044 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.013 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.038 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.031 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.013 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.263 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.956 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.881 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.356 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.025 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.019 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20171203 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.019 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.038 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.025 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.469 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.144 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.300 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.419 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.119 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.288 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.388 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.475 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.369 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.425 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.369 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.388 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20171204 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.025 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.038 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.019 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.450 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.013 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.413 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.019 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.350 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.031 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.363 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.513 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.350 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.181 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.175 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.225 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20171205 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.306 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.106 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.163 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.188 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.319 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.213 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.144 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.356 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.350 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.519 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.781 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.125 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.038 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.031 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.019 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20171206 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.038 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.013 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.044 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.013 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.038 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.019 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.025 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.038 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.025 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.063 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.013 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.038 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.013 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.044 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.106 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+.bgcolor_alert[Raw data]
+
+---
+class: split-40
+.column.pad10px[
+# Wrangling
+
+&lt;br&gt; &lt;br&gt; &lt;br&gt;
+&lt;img src="images/data-science-wrangle.png" width="90%" /&gt;
+
+.footnote[Image from [R4DS](https://r4ds.had.co.nz/wrangle-intro.html)]
+]
+.column.pad10px[
+
+&lt;br&gt;
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; date &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; halfhour &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; kwh &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; wday &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; month &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; year &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; dt &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 12:30:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 13:00:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 13:30:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 14:00:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 14:30:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 15:00:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 15:30:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 16:00:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 16:30:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 17:00:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 17:30:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 18:00:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 18:30:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 19:00:00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fri &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-11-24 19:30:00 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;br&gt; &lt;br&gt; &lt;br&gt;  
+.bgcolor_alert[Well-defined variables and observations are data-times, half-hour chunks]
+]
+
+
+
+---
+class: split-40
+.column.pad50px[
+## Think about what you want to know 
+&lt;br&gt; 
+.font3[🤔]
+]
+
+.column.font2[
+&lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt;  
+.green[What does my energy usage look like?] 
+
+Need to be more specific than that. 
+
+- is there a difference in use by day of the week?
+- what's the daily pattern?
+- are some months more energy intensive than others?
+- how does it look over time?
+
+.light-green[What's a "kwh"? It doesn't really mean much, so let's examine it relatively.]
+]
+---
+class: split-50
+
+.column[.pad50px[
+# is there a difference in use by day of the week?
+
+&lt;br&gt;
+.font2[Energy use is added up for each day. The distribution of daily usage is displayed against day of the week, using a .deep-orange[violin plot] with quartiles and medians marked.]
+
+&lt;br&gt; &lt;br&gt;
+
+*.light-green[Typically more energy use over the weekends, and Tuesday/Thursday during the week. These latter two days, especially Thursday is usually a work from home day.]*
+
+]]
+.column[.pad50px[
+&lt;img src="slides_files/figure-html/boxplot-1.png" width="100%" /&gt;
+]]
+
+---
+# what's the daily pattern?
+
+&lt;br&gt;
+.font[Add a new variable indicating whether the day is a holiday (weekend or public holiday for Victoria, function available in the tsibble package). Examine the distribution of usage for each half-hour using a .deep-orange[boxplot].] 
+
+
+
+&lt;img src="slides_files/figure-html/time-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+*.light-green[There is a strong work day vs weekend pattern. The week day typically has less usage in the middle of the day. Weekend has relatively constant usage. Both types of days though often begins around 7am, and ends around 9-10pm. There is a stripe of "outliers" on both types of days, that indicates constant high energy usage.]*
+
+---
+# daily usage?
+
+.font2[Usage by hour plot displayed over each day day, in a .deep-orange[calendar] plot, just for January and February 2018. Colour indicates holiday or working day.] 
+
+&lt;img src="slides_files/figure-html/calendar-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+*In the USA, central air runs continuously in the summer, and central heating in the winter, and a clothes dryer is used to dry clothes.*
+
+---
+class: split-30
+
+.column.pad10px[
+# How does this compare with my friends?
+
+&lt;br&gt; &lt;br&gt; &lt;br&gt;
+
+.font2[Comparing January 2018 usage across households]
+
+]
+.column.pad10px[
+&lt;img src="slides_files/figure-html/compare-1.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+class: split-50
+
+.column.pad50px[
+# is my usage different this year?
+
+.font2[January 2018 and 2019.] 
+&lt;br&gt;
+&lt;br&gt;
+
+
+```
+## # A tibble: 2 x 2
+##    year   kwh
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1  2018  805.
+## 2  2019  438.
+```
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+*.light-green.font2[Becoming less of an energy hog, maybe more Australian.]*
+
+]
+.column[
+&lt;img src="slides_files/figure-html/calendar2-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+class: split-50
+
+.column.pad50px[
+# is my usage different this year?
+
+.font2[February 2018 and 2019.] 
+&lt;br&gt;
+&lt;br&gt;
+
+
+```
+## # A tibble: 2 x 2
+##    year   kwh
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1  2018 548. 
+## 2  2019  44.2
+```
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+*.light-green.font2[So far its looking good.]*
+
+]
+.column[
+&lt;img src="slides_files/figure-html/calendar3-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+
+class: bg-teal center middle hide-slide-number
+
+.reveal-text.bg-white[.pad1[
+.font4[# *A few more stories* 🤸]
+]]
+
+---
+class: split-50
+
+.column.pad50px[
+# Learning about Melbourne 
+
+.font2[[Pedestrian counting system](http://www.pedestrian.melbourne.vic.gov.au) has about 40 sensors dotted around Melbourne city.]
+
+&lt;br&gt; &lt;br&gt; 
+
+.font2[Here are the counts from last week, for four train stations]
+
+&lt;br&gt; &lt;br&gt;
+
+.font2[🤭 .light-green[*Hmm, no data for two of these.* ]]
+
+]
+.column.pad10px[
+&lt;img src="slides_files/figure-html/ped-1.png" width="100%" style="display: block; margin: auto 0 auto auto;" /&gt;
+]
+
+---
+class: split-50
+
+.column.pad50px[
+# Learning about Melbourne 
+
+July 2016
+]
+.column.pad10px[
+&lt;img src="slides_files/figure-html/ped2-1.png" width="100%" style="display: block; margin: auto 0 auto auto;" /&gt;
+]
+
+---
+class: split-50
+.column.pad10px[
+# PISA
+&lt;br&gt;
+
+.font2[
+- OECD Programme for International Student Assessment
+- Triennial survey of workforce readiness of 15 year olds, across 60-70 countries. Approximately 14,000 Australian students from 700 schools are surveyed each time. 
+- 2015 survey
+]
+
+&lt;br&gt; &lt;br&gt;
+[Download data](http://www.oecd.org/pisa/data/)
+]
+.column.nopadding[
+&lt;img src="images/gender-dotplot.pdf" style="width: 90%" /&gt;
+]
+---
+class: split-50
+count: false
+
+.column.pad10px[
+# PISA
+&lt;br&gt;
+
+.font2[
+- OECD Programme for International Student Assessment
+- Triennial survey of workforce readiness of 15 year olds, across 60-70 countries. Approximately 14,000 Australian students from 700 schools are surveyed each time. 
+- 2015 survey
+]
+
+&lt;br&gt; &lt;br&gt;
+[Download data](http://www.oecd.org/pisa/data/)
+
+&lt;br&gt; &lt;br&gt;
+.deep-orange[Math gap is not universal!]
+
+]
+.column.nopadding[
+&lt;img src="images/gender-dotplot.pdf" style="width: 90%" /&gt;
+]
+
+---
+
+&lt;img src="images/gender-math-map.pdf" style="width: 100%" /&gt;
+
+---
+
+&lt;img src="images/gender-reading-map.pdf" style="width: 100%" /&gt;
+
+---
+
+# Climate - CO2
+
+&lt;img src="images/CO2-1.png" style="width: 100%" /&gt;
+
+Download data from http://scrippsco2.ucsd.edu/data/atmospheric_co2/. 
+---
+class: split-three
+
+.column[
+# .right[Monash]
+
+
+![](images/ala-logo-2016-inline.png)
+https://www.ala.org.au
+
+&lt;br&gt;
+.center[Magpies]
+
+&lt;img src="slides_files/figure-html/monash-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+.column[
+
+# .center[wildlife]
+
+.center[Main species we see .pink[now]]
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+.column[
+# .left[ecosystem]
+
+.center[What people saw .pink[before 2010]]
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+---
+class: bg-teal center middle hide-slide-number
+
+.reveal-text.bg-white[.pad1[
+.font3[*"If someone feeds you a fish you eat for a day, but if you learn to fish, you eat for a lifetime"* 🐟]
+]]
+
+---
+class: split-two black with-thick-border middle border-white bg-black
+
+.column[
+.split-two[
+.row.bg-light-green[.content.indigo[
+# Privacy
+&lt;br&gt;
+.font2[Smart meter data: only YOU can download your data. Your account is created using your meter id. My friends gave me their data. Previously the electricity company had access to all of this, and we had to rely on their summaries and their interpretation.]
+]]
+.row.bg-green[.content.indigo[
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.font2[PISA: Has been privatised, raw scores are not returned, predicted values using the model]
+]]]]
+
+.column[
+.split-two[
+.row.bg-blue[.content[
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.font2[Pedestrian: Numbers bundled by hour, just counts, no individual information or images
+]]]
+.row.bg-light-blue[.content[
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.font2[Monash wildlife comes from the Atlas of Living Australia, data is scientist and citizen contributed. Messy.]
+]]]]
+
+---
+
+class: bg-teal center middle hide-slide-number
+
+.reveal-text.bg-white[.pad1[
+.font4[~~All I Really Need to Know I Learned in Kindergarten~~]
+]]
+
+---
+layout: true
+class: shuriken-300 white 
+
+.blade1.bg-blue[.content.center[
+&lt;br&gt;
+# .white[Get] [R](https://cran.r-project.org) .white[(the airplane) and] &lt;br&gt; [RStudio](https://www.rstudio.com/products/rstudio/download/) .white[(the airport terminal)]
+]]
+.blade2.bg-yellow[.content.vertical-rl.center[
+### .blue[get some more graphics insight with [Data Visualization: A practical introduction](https://socviz.co/index.html) Kieran Healy]
+]]
+.blade3.bg-white[.content.center[
+&lt;br&gt;&lt;br&gt;
+## .pink[Start reading and working through] [R for Data Science](https://r4ds.had.co.nz) .pink[by Wickham and Grolemund]
+]]
+.blade4.bg-lime[.content.vertical-rl.center.vmiddle[
+.purple[### Join a meetup group: [R Ladies Melbourne](https://www.meetup.com/en-AU/R-Ladies-Melbourne/) or [MelbURN](https://www.meetup.com/en-AU/MelbURN-Melbourne-Users-of-R-Network/)
+]]]
+.hole.bg-black[.content.center.vmiddle[
+## .lime[You can get started by]
+]]
+
+---
+
+class: hide-blade1 hide-blade3 hide-blade2 hide-blade4 
+count: false
+
+---
+
+class: hide-blade3 hide-blade2 hide-blade4
+count: false
+
+---
+
+class: hide-blade2 hide-blade4
+count: false
+
+---
+
+class: hide-blade4
+count: false
+
+---
+
+count: false
+
+---
+layout: false
+class: split-40
+
+.column.pad50px.bg-green[
+# .white[Benefits for data providers]
+]
+.column.pad50px[
+.row[.content[
+&lt;br&gt;
+]]
+.row[.content[
+&lt;br&gt;
+]]
+.row[.content[
+.font3[&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Free error-checking]
+]]
+.row[.content[
+.font3.light-blue[&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Free analysis]
+]]
+.row[.content[
+.font3.green[&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Goodwill and trust]
+]]
+.row[.content[
+.font3.light-green[&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Reproducibility]
+]]
+]
+
+---
+layout: true
+class: shuriken-300 white 
+
+.blade1[.content.center[
+&lt;br&gt;
+# .blue[With a laptop loaded with R, and access to open data]
+]]
+.blade2.bg-yellow[.content.vertical-rl.center[
+### .blue[With knowledge of randomisation (bootstrap, permutation, simulation)]
+]]
+.blade3.bg-white[.content.center[
+&lt;br&gt;&lt;br&gt;
+## .pink[Ability to make data plots (grammar of graphics, appropriate mapping of variables to graphical elements)]
+]]
+.blade4.bg-lime[.content.vertical-rl.center.vmiddle[
+### .purple[We can learn a lot about our world
+]]]
+.hole.bg-black[.content.center.vmiddle[
+## .lime[Power to the people]
+]]
+
+
+---
+layout: false
+# 👩‍💻 Thanks!
+
+### Slides and code at [dicook.org/MBS_ACEMS](http://dicook.org/MBS_ACEMS).
+&lt;br&gt;
+
+### R software is used generate plots, using [tidyverse](https://www.tidyverse.org), and [tidyverts](https://github.com/tidyverts) tools for time series, including [sugrrants](https://github.com/earowang/sugrrants) for calendar plots, and [rwalkr](https://github.com/earowang/rwalkr), [wordclouds](https://cran.r-project.org/web/packages/ggwordcloud/vignettes/ggwordcloud.html) and emojis with [emo](https://github.com/hadley/emo). 
+&lt;br&gt;
+
+### Created using [R Markdown](https://rmarkdown.rstudio.com) with flair by [**xaringan**](https://github.com/yihui/xaringan), and [**kunoichi** (female ninja) style](https://github.com/emitanaka/ninja-theme).
+
+&lt;br&gt; &lt;br&gt; &lt;br&gt;
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
