@@ -17,8 +17,9 @@ weight = 60
 
 I am the instructor for the following courses at Monash University:
 
-- [ETC1010: Data Modelling and Computing](https://dmac.netlify.com)
-- [ETC2420/5242: Statistical Thinking](https://st.netlify.com)
+- [ETC1010: Data Modelling and Computing](https://dmac.dicook.org)
+- [ETC2420/5242: Statistical Thinking (OLD)](https://st.netlify.com)
+- [ETC3250: Business Analytics](https://monba.dicook.org)
 
 My current and recent PhD students are:
 
