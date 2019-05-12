@@ -27,7 +27,7 @@
   --main-monashblue2: #0063A7;
   --link-color: #67b69c;
   --color-opacity70: rgba(0, 99, 167, 0.7);
-  --logo: url("https://monba.dicook.org/img/M-large.png");
+  --logo: url("http://dicook.org/files/waverly/images/M.png");
 }
 
 .bg-monashblue { background-color: var(--color-monashblue2); }
