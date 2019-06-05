@@ -11,6 +11,14 @@
     --logo: url("http://dicook.github.io/nullabor/reference/figures/nullabor_hex.png");
 }
 
+.remark-slide-content {
+  font-size: 30px;
+}
+
+.remark-code, .remark-inline-code {
+  color: var(--main-color3);
+}
+
 h1{
   font-family: 'Sunshiney';
   font-weight: normal;

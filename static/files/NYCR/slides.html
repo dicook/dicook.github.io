@@ -3,7 +3,7 @@
   <head>
     <title>nullabor</title>
     <meta charset="utf-8" />
-    <meta name="author" content=" Di Cook, Monash University" />
+    <meta name="author" content="Di Cook, Monash University" />
     <link href="libs/remark-css/shinobi.css" rel="stylesheet" />
     <link href="libs/remark-css/ninjutsu.css" rel="stylesheet" />
     <link rel="stylesheet" href="mystyle.css" type="text/css" />
@@ -14,8 +14,8 @@ class: center, middle, inverse, title-slide
 
 # <a href="http://dicook.github.io/nullabor/">nullabor</a>
 ## tools for testing whether what you see in plots is really there
-### <br>Di Cook, Monash University
-### <br>NYC R meetup - June 6, 2019 <br> <a href="http://dicook.org/NYCR/slides.html">Slides here</a>
+### Di Cook, Monash University
+### NYC R meetup - June 6, 2019 <br> <a href="http://dicook.org/NYCR/slides.html">Slides here</a>
 
 ---
 
@@ -49,6 +49,10 @@ background-image: url("http://dicook.org/files/NYCR/images/biomass.png")
 background-position: 50% 50%
 background-size: 75%
 
+---
+class: center, middle
+
+# A lot of decisions that we make are based on plots, but there is no rigorous was to say that what we see is really there
 
 ---
 # Outline
@@ -58,7 +62,6 @@ background-size: 75%
 - null generating mechanisms
 - p-values
 - power and plot design
-- metrics
 - where to get more information
 - acknowledgements
 
@@ -70,8 +73,11 @@ background-size: 75%
 
 # Post-hoc inference
 
+- Inference is usually set up before collecting data
 - Once you see it, its too late
 - You cannot legitimately test for significance of structure
+
+... but you can't always plan the future
 
 ---
 # nullabor
@@ -130,22 +136,123 @@ class: center, middle
 
 Motivated by this article [How Data Made Me A Believer In New York City's Restaurant Grades](https://fivethirtyeight.com/features/how-data-made-me-a-believer-in-new-york-citys-restaurant-grades/), using data on NYC restaurant inspections tidied by [tidytuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-11)
 
+How do restaurants rate?
+
 ---
 class: center, middle
+
+
+# Pick the plot that is most different from the others
+
+---
+class: center, middle
+
 
 
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" width="100%" /&gt;
 ---
 
+```
+ggplot(lineup(null_permute("grade"), nyc_cuisine), 
+       aes(x=cuisine_description, fill=grade)) + 
+  geom_bar(position="fill") + xlab("") + ylab("") +
+  scale_fill_ochre(palette="parliament") +
+  facet_wrap(~.sample) +
+  ggtitle("A grade % and cuisine") + coord_flip() +
+  theme_bw() + 
+  theme(legend.position="none", axis.text.y = element_blank())
+```
+
+`\(H_o:\)` There is no difference in proportion A, B, C grade among cuisines
+
+`\(H_a:\)` There is
+
+Null generating mechanism: Permuting the values of grade
+
+---
+class: center, middle
+
+
+# Pick the plot that is most different from the others
+
+---
+class: center, middle
+
 &lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="100%" /&gt;
 
+
+
+
+---
+
+```
+nyc_yrmth_l &lt;- lineup(null_ts("pct", auto.arima), filter(nyc_yrmth, grade=="A"))
+ggplot(nyc_yrmth_l, aes(x=yrmth, y=pct)) + 
+  geom_line() + xlab("") + ylab("") +
+  facet_wrap(~.sample) +
+  ggtitle("Monthly A grade %")
+```
+
+`\(H_o:\)` There is NO temporal pattern in percentage of restaurants awarded an A grade
+
+`\(H_a:\)` There is
+
+Null generating mechanism: Simulating from an ARIMA model with same parameters
+
+
+---
+# Computing p-value
+
+Probability of `\(x\)` or more independent observers picking the data plot, assuming that there is no difference between the data plot and the null plots.
+
+
+```r
+pvisual(5, 50)
+```
+
+```
+##      x simulated     binom
+## [1,] 5    0.1704 0.1036168
+```
+
+---
+# Computing power
+
+
+```r
+data(turk_results)
+visual_power(turk_results)
+```
+
+```
+## # A tibble: 6 x 3
+##   pic_id power     n
+##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;
+## 1     36 0        18
+## 2    105 0.746    17
+## 3    116 0.125    16
+## 4    131 0.842    14
+## 5    159 0.656    15
+## 6    225 0.130    15
+```
+
+Useful for objectively determining best plot design, see [Hofmann et al (2012)](https://ieeexplore.ieee.org/document/6327249)
+
+---
+# What did we learn about NYC restaurant quality?
+
+- There is a difference in percentage A, B, C between cuisines
+- There is no temporal trend
 
 ---
 
 # Summary
 
-- Really useful package
+- Really useful package. 
+    - Various null plot generators
+    - Embeds the data plot, and encrypts
+    - Computes significance and power
 - Helps to adjust our expectations, dampen surprise, support surprise
 - Calibrate your eyes on what randomness looks like
 
