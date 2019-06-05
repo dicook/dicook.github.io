@@ -32,17 +32,103 @@ class: center, middle
 ---
 background-image: url("http://dicook.org/files/NYCR/images/polls1.png")
 background-position: 50% 50%
-background-size: 80%
+background-size: 75%
 
 ---
 background-image: url("http://dicook.org/files/NYCR/images/polls2.png")
 background-position: 50% 50%
-background-size: 80%
+background-size: 75%
 
 ---
-background-image: url("http://dicook.github.io/nullabor/articles/nullabor_files/figure-html/unnamed-chunk-8-1.png")
+background-image: url("http://dicook.org/files/NYCR/images/wasps.png")
 background-position: 50% 50%
-background-size: cover
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/biomass.png")
+background-position: 50% 50%
+background-size: 75%
+
+
+---
+# Outline
+
+- why
+- lineup, rorschach functions
+- null generating mechanisms
+- p-values
+- power and plot design
+- metrics
+- where to get more information
+- acknowledgements
+
+---
+# Why inference?
+
+- Plots of data allow us to uncover the unexpected, but it needs to be calibrated against what might be seen by chance, if there really is no underlying pattern
+- Classical statistical inference allows computing probabilities, of this being a likely value for the statistic, if there really is no structure
+
+# Post-hoc inference
+
+- Once you see it, its too late
+- You cannot legitimately test for significance of structure
+
+---
+# nullabor
+
+- Lineup protocol: Plots your data among a field of "null" plots
+    - Puts it in the context of what it might look like if there is really no structure
+    - Encrypts the location of the data plot
+- Rorschach protocol: Plots only nulls, and gives a sense of what random structure might be seen
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/wasps1.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/wasps2.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/biomass1.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/biomass2.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/polls3.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+background-image: url("http://dicook.org/files/NYCR/images/polls4.png")
+background-position: 50% 50%
+background-size: 75%
+
+---
+# lineup functions
+
+- `lineup`: Generates a lineup using one of the given null generating mechanisms
+    - `null_permute`
+    - `null_dist`
+    - `null_lm`
+    - `null_ts`
+- `pvisual`: Compute `\(p\)`-values, after showing to impartial jurers
+- `visual_power`: Compute the *power*, after showing to impartial jurers
+- `distmet`: empirical distribution of distance between data plot and null plots
+
+---
+class: center, middle
+
+# Let's do it!
+
+Motivated by this article [How Data Made Me A Believer In New York City's Restaurant Grades](https://fivethirtyeight.com/features/how-data-made-me-a-believer-in-new-york-citys-restaurant-grades/), using data on NYC restaurant inspections tidied by [tidytuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-11)
 
 ---
 class: center, middle
