@@ -1,0 +1,41 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url(https://fonts.googleapis.com/css?family=Sunshiney);
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+:root {
+    --main-color1: #AA591F;
+    --main-color2: #FFD479;
+    --main-color3: #F4AC39;
+    --main-color4: #7B2529;
+    --link-color: #F4AC39;
+    --logo: url("http://dicook.github.io/nullabor/reference/figures/nullabor_hex.png");
+}
+
+h1{
+  font-family: 'Sunshiney';
+  font-weight: normal;
+  color: var(--main-color4);
+}
+
+h2{
+  font-family: 'Sunshiney';
+  font-weight: normal;
+  color: var(--main-color2);
+}
+
+h3, body{
+  font-family: 'Lato';
+  font-weight: normal;
+  color: var(--main-color1);
+}
+
+.title-slide {
+  width: 80%;
+  background-color: var(--main-color4);
+  color: var(--main-color2);
+}
+
+.remark-slide {
+  background-image: var(--logo);
+  background-size:  20%;
+}
