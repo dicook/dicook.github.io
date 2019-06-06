@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # <a href="http://dicook.github.io/nullabor/">nullabor</a>
 ## tools for testing whether what you see in plots is really there
 ### Di Cook, Monash University
-### NYC R meetup - June 6, 2019 <br> <a href="http://dicook.org/NYCR/slides.html">Slides here</a>
+### NYC R meetup - June 6, 2019 <br> Slides: <a href="https://dicook.org/files/NYCR/slides.html">https://dicook.org/files/NYCR/slides.html</a>
 
 ---
 
@@ -70,6 +70,7 @@ class: center, middle
 
 - Plots of data allow us to uncover the unexpected, but it needs to be calibrated against what might be seen by chance, if there really is no underlying pattern
 - Classical statistical inference allows computing probabilities, of this being a likely value for the statistic, if there really is no structure
+---
 
 # Post-hoc inference
 
@@ -170,6 +171,8 @@ ggplot(lineup(null_permute("grade"), nyc_cuisine),
 
 Null generating mechanism: Permuting the values of grade
 
+True data plot is in position 6.
+
 ---
 class: center, middle
 
@@ -200,6 +203,37 @@ ggplot(nyc_yrmth_l, aes(x=yrmth, y=pct)) +
 
 Null generating mechanism: Simulating from an ARIMA model with same parameters
 
+True data plot is in position 7.
+---
+class: center, middle
+
+
+# Pick the plot that is most different from the others
+
+---
+
+
+
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="100%" /&gt;
+
+---
+
+```
+nyc_boro_grade_l &lt;- lineup(null_dist("grade_A", "unif",
+  params=list(min=0, max=1)), nyc_boro_grade, n=6)
+nyc_boro_grade_l_p &lt;- nyc_boro_grade_l %&gt;% 
+  group_by(.sample, boro) %&gt;%
+  summarise(prop_A = length(grade_A[grade_A&gt;0.174])/length(grade_A))
+```
+
+`\(H_o:\)` The percentage of restaurants awarded an A grade in each boro is the same (82.5%)
+
+`\(H_a:\)` Its not
+
+Null generating mechanism: Simulating from an binomial model with same parameters
+
+True data plot is in position 3
 
 ---
 # Computing p-value
@@ -213,7 +247,7 @@ pvisual(5, 50)
 
 ```
 ##      x simulated     binom
-## [1,] 5    0.1704 0.1036168
+## [1,] 5    0.1711 0.1036168
 ```
 
 ---
@@ -239,11 +273,15 @@ visual_power(turk_results)
 
 Useful for objectively determining best plot design, see [Hofmann et al (2012)](https://ieeexplore.ieee.org/document/6327249)
 
+
 ---
 # What did we learn about NYC restaurant quality?
 
+?
+
 - There is a difference in percentage A, B, C between cuisines
 - There is no temporal trend
+- Some boroughs are more A class than others
 
 ---
 
