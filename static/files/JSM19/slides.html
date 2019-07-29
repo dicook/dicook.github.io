@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Give Your Statistician Colleague Iris Bulbs for Their House Warming!</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Di Cook" />
+    <link href="libs/font-awesome-animation/font-awesome-animation-emi.css" rel="stylesheet" />
+    <script src="libs/fontawesome/js/fontawesome-all.min.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="mytheme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: inverse middle
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/f/f8/Iris_virginica_2.jpg)
+background-position: 100% 100%
+background-size: 50%
+
+# Give Your Statistician Colleague Iris Bulbs for Their House Warming!
+
+## Di Cook &lt;br&gt; Monash University
+
+### Joint Statistics Meetings &lt;br&gt; July 30, 2019
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+.footnote[Image credit: [Iris Virginica, Wikimedia Commons](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Iris_virginica_2.jpg/440px-Iris_virginica_2.jpg)]
+
+---
+class: middle
+
+&lt;table&gt;
+&lt;tr&gt; &lt;td width="30%"&gt; &lt;img src="images/setosa_lady_bird.jpg" width="100%" /&gt; &lt;/td&gt; &lt;td width="30%"&gt; &lt;img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Iris_versicolor_3.jpg" width="100%" /&gt; &lt;/td&gt; &lt;td width="30%"&gt; &lt;img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Iris_virginica_2.jpg" width="90%" /&gt; &lt;/td&gt; &lt;/tr&gt;
+&lt;tr&gt; &lt;td&gt; Setosa .footnote[[Lady Bird Johnson Wildflower Center](https://www.wildflower.org/)]  &lt;/td&gt; &lt;td&gt; Versicolor .footnote[[Wikimedia Commons](https://upload.wikimedia.org/wikipedia/commons/4/41/Iris_versicolor_3.jpg)] &lt;/td&gt; &lt;td&gt; Virginica .footnote[[Wikimedia Commons](https://upload.wikimedia.org/wikipedia/commons/f/f8/Iris_virginica_2.jpg)]&lt;/td&gt; &lt;/tr&gt;
+&lt;/table&gt;
+
+---
+
+.pull-left[
+# Where did this data come from?
+
+The iris data was introduced to the data science community in [Fisher (1936)](https://onlinelibrary.wiley.com/doi/epdf/10.1111/j.1469-1809.1936.tb02137.x), in order to illustrate his new method "Fishers linear discriminant". 
+
+*An era when the entire data table could be written on a single page.*
+]
+.pull-right[
+&lt;img src="images/iris_table.png" width="100%" /&gt;
+]
+---
+.pull-left[
+# Where did this data come from?
+
+*"Table I shows measurements of the flowers of fifty plants each of the .orange[two species] Iris setosa and I. versicolor, found growing together in the same colony and measured by Dr E. Anderson, to whom I am indebted for the use of the data."* Fisher
+
+.green[What about the third species?]
+]
+.pull-right[
+&lt;img src="images/iris_table.png" width="100%" /&gt;
+]
+
+---
+# The original source 
+
+.pull-left[
+Edgar Anderson (1935) "The irises of the Gaspe Peninsula" Bulletin of the American Iris Society, **59**, 2-5.
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+.green[Original cannot be found.]
+.footnote[[Bulletin of the American Iris Society](https://www.irises.org/pdf/AIS_Bulletin_Index_02-21-2015.pdf)]
+]
+.pull-right[
+&lt;img src="images/iris_bulletin.png" width="100%" /&gt;
+
+&lt;br&gt;
+...
+&lt;br&gt;
+
+&lt;img src="images/irises_Gaspe.png" width="100%" /&gt;
+]
+
+
+---
+
+.pull-left[
+
+.yellow[Anderson had been intrigued by I*. versicolor* and *I. virginica* for almost a decade.] 
+
+Anderson (1928) The Problem of Species in the Northern Blue Flags. Iris versicolor and Iris virginica.
+
+Anderson (1931) Internal Factors Affecting Discontinuity Between Species. 
+
+]
+.pull-right[
+&lt;img src="images/anderson.png" width="100%" /&gt;
+
+]
+
+&gt; .green["Although well provided with distinguishing characteristics, Iris versicolor and Iris virginica seem to be under a special curse so far as their recognition in the herbarium is concerned."] [Anderson, 1936](https://http://biostor.org/reference/11559)
+ The Species Problem in Iris
+
+&lt;br&gt;
+*More than 50 pages long!*
+
+---
+# The motivation
+
+.pull-left[
+
+&gt;"Although well provided with distinguishing characteristics, Iris versicolor and Iris virginica seem to be under a special curse so far as their recognition in the herbarium is concerned." .yellow[Anderson], 1936 The Species Problem in Iris
+]
+--
+
+.pull-right[
+&gt;"The sample of the third species given in Table I, Iris virginica, differs from the two other samples in not being taken from the same natural colony as they were." .yellow[Fisher], 1936
+
+]
+---
+# Outline
+
+- Where did this data come from? (we've just covered this)
+- Data:
+    - Description - what is a sepal?
+    - What was the original task/analysis? Is this the same as how it has been used since?
+    - The new iris data using genomics
+- The very amazing visuals from Anderson's original paper
+- What does it mean to use the iris data, and how to get yourself into de-tox treatment
+
+
+---
+class: middle
+
+.pull-left[
+<span class=" faa-flash animated-hover faa-slow " style=" color:#686CA9; display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">Would you like framed iris photos?</span> 
+
+<span class=" faa-flash animated-hover faa-slow " style=" color:#CFA118; display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">Stay tuned to take the quiz at the end of the presentation.</span> 
+]
+.pull-right[
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/9/98/VanGoghIrises2.jpg" style="border-radius: 100%; align: center" /&gt;
+
+.footnote[[Source: Wikimedia Commons](https://upload.wikimedia.org/wikipedia/commons/9/98/VanGoghIrises2.jpg)]
+]
+---
+# Data description
+
+Four variables: Sepal Length and Width, Petal Length and Width
+
+&lt;img src="http://suruchifialoke.com/img/ML/iris.png" width="100%" /&gt;
+
+.footnote[[Source: Suruchi Fialoke, October 13, 2016, Classification of Iris Varieties](http://suruchifialoke.com/img/ML/iris.png)]
+
+---
+
+.pull-left[
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Petal-sepal.jpg" width="100%" /&gt;
+
+.footnote[[Wikimedia Commons](https://upload.wikimedia.org/wikipedia/commons/7/78/Petal-sepal.jpg)]
+
+]
+.pull-right[
+&lt;br&gt;
+&lt;br&gt;
+Irises are weird!
+
+&lt;br&gt;
+&lt;br&gt;
+
+The sepals have grown out of control, and are more spectacular than the petals. 
+
+]
+---
+# Where to find the three species
+
+&lt;table&gt;
+&lt;tr&gt; &lt;td width="30%"&gt; &lt;img src="images/range_setosa.png" width="100%" /&gt; &lt;/td&gt; &lt;td width="30%"&gt; &lt;img src="images/range_versicolor.png" width="100%" /&gt; &lt;/td&gt; &lt;td width="30%"&gt; &lt;img src="images/range_virginica.png" width="90%" /&gt; &lt;/td&gt; &lt;/tr&gt;
+&lt;tr&gt; &lt;td&gt; Setosa   &lt;/td&gt; &lt;td&gt; Versicolor &lt;/td&gt; &lt;td&gt; Virginica &lt;/td&gt; &lt;/tr&gt;
+&lt;/table&gt;
+
+---
+.pull-left[
+# Fisher's method
+
+1. Fisher's linear discriminant between *setosa* and *versicolor*:
+`\begin{equation}
+(\bar{x}_{setosa}-\bar{x}_{versicolor})^TS^{-1}_{pooled}
+\end{equation}`
+2. Project *virginica* on this vector
+]
+--
+
+.pull-right[
+&lt;img src="images/fisher_linear_discriminant1.png" width="140%" /&gt;
+]
+
+
+---
+.pull-left[
+# Fisher's method
+
+1. Fisher's linear discriminant between *setosa* and *versicolor*:
+`\begin{equation}
+(\bar{x}_{setosa}-\bar{x}_{versicolor})^TS^{-1}_{pooled}
+\end{equation}`
+2. Project *virginica* on this vector
+]
+
+.pull-right[
+&lt;img src="images/fisher_linear_discriminant2.png" width="140%" /&gt;
+]
+
+--
+
+.yellow[*I. versicolor* is 2/3 of the distance between *I. setosa* and *I. virginica*. Which gives evidence for Anderson's claim that *I. versicolor* is a hybrid of the two.] 
+
+
+---
+# Do it: Fisher linear discriminant
+
+Coefficients of linear discriminant (setosa, versicolor only) on standardised `\(^1\)` measurements.
+
+
+```
+##                     LD1
+## Sepal.Length -0.1928034
+## Sepal.Width  -0.8492086
+## Petal.Length  3.1053092
+## Petal.Width   1.7156500
+```
+
+Mostly, petal length and width needed to separate the (two) species. 
+
+.footnote[1 Standardised variables allows direction interpretation of importance from the coefficients of the linear combination.]
+
+---
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-2-1.png" width="504" /&gt;
+
+---
+class: inverse middle
+
+🌎 .yellow[Most contemporary use of the data focuses on building a classification model for] <span class=" faa-flash animated-hover faa-slow " style=" color:#CFA118; display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">all three species.</span>
+
+&lt;br&gt;
+&lt;br&gt;
+
+<span class="fa-2x faa-flash animated-hover faa-slow " style=" display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">The task was never to distinguish between all three species!</span>
+
+---
+.pull-left[
+# The new iris data
+
+&lt;img src="images/m_aob100_2.cover.gif" width="20%" /&gt;
+
+<span class=" faa-flash animated-hover faa-slow " style=" display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">Genomic analysis confirms Anderson's suspicions!</span>
+
+[K. Yoong Lim, Roman Matyasek, Ales Kovarik, Andrew Leitch (2007) Parental Origin and Genome Evolution in the Allopolyploid Iris versicolor](https://academic.oup.com/aob/article/100/2/219/104457)
+
+]
+.pull-right[
+&lt;img src="images/iris_genomics.png" width="100%" /&gt;
+
+]
+
+---
+
+background-image: url("images/white_rabbit.jpg")
+background-size: cover
+class: inverse middle
+
+## Anderson's original paper was filled with visual evidence, to support his thinking that *I.versicolor* is a hybrid. 
+
+<span class="fa-2x faa-falling animated-hover faa-slow " style=" display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">Come down the rabbit hole with me</span>
+
+---
+.pull-left[
+# Heatmap
+
+Very popular plots for multivariate data. 
+
+Show the data matrix, with rows and columns sorted by some criteria. Colour the cell according to the numerical value.
+
+&lt;br&gt;
+&lt;br&gt;
+
+*Do you see three groups?*
+
+]
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" width="100%" /&gt;
+]
+
+---
+.pull-left[
+# Scatterplot matrix
+
+Plot all pairs of variables, coloured by species.
+
+There is a strong linear association between petal length and width, and the three species cluster separately along the association.
+
+.yellow[Is it possible that only petal size matters to distinguish the species?]
+
+]
+
+
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="100%" /&gt;
+]
+
+.yellow[Maybe the Fisher linear discriminant is purely a linear combination of these two measurements.] 
+
+---
+# Parallel coordinate plot (*)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-5-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+# Icon (glyph) plot (*)
+
+One observation (one row) = one icon
+
+Variable values mapped to different features. 
+
+---
+
+.pull-left[
+
+Star glyphs
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+--
+.pull-right[
+
+Chernoff faces
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+.footnote[1-height of face, 2-width of face, 3-shape of face, 4-height of mouth, 5-width of mouth, 6-curve of smile, 7-height of eyes, 8-width of eyes, 9-height of hair, 10-width of hair, 11-styling of hair, 12-height of nose, 13-width of nose, 14-width of ears, 15-height of ears]
+]
+
+---
+# Tour
+
+A movie of low-dimensional projections constructed in such a way that it comes arbitrarily close to showing all possible low-dimensional projections.
+ 
+---
+class: middle
+
+
+
+&lt;iframe src="iris_tour.html" width="1000" height="800" scrolling="yes" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+
+---
+class: inverse middle
+
+# How did Anderson plot the data to support his thinking?
+
+---
+background-image: url("images/anderson_3D_parcoords.png")
+background-size: contain
+class: inverse middle
+
+---
+.pull-left[
+# It's not a parallel coordinate plot. 
+
+&lt;br&gt;
+&lt;br&gt;
+
+# It's an icon (glyph) plot, with lines connecting variable values. 
+
+]
+--
+.pull-right[
+
+
+# Anderson called them ideographs.
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;img src="images/anderson_petals.png" style="width: 100% align: center" /&gt;
+
+&lt;!-- 
+&lt;img src="slides_files/figure-html/unnamed-chunk-9-1.png" width="504" /&gt;
+--&gt;
+
+]
+---
+class: inverse-nopad
+
+.pull-left[
+&lt;img src="images/anderson_petal_sepal.png" style="width: 80%; align: right" /&gt;
+]
+--
+.pull-right[
+&lt;img src="images/anderson_icon_plot.png" style="width: 80%; align: center" /&gt;
+]
+
+---
+
+&lt;img src="images/anderson_3D_parcoords_annotated.png" style="width: 70% align: center" /&gt;
+
+
+---
+
+*People have been using this data for demonstrating supervised classification (and clustering and dimension reduction) for almost 100 years!*
+
+**Why has it stuck so long?**
+
+- pretty, and clean
+- got a challenge (that's not actually a challenge!)
+- as close to simulated data as you can get
+
+*Small but not trivial. Simple but challenging. Real data. Fisher's reputation, although it's not his data. Tradition. Inertia. Continuity. You can find flower pictures to spell it out.* [– Nick Cox Nov 6 '13 at 19:07](https://stats.stackexchange.com/questions/74776/what-aspects-of-the-iris-data-set-make-it-so-successful-as-an-example-teaching)
+
+---
+# Other similar (abused) old data sets for classification/clustering
+
+- Italian olive oils: Sicily is overlapped with other regions, overlapping classes
+- Australian crabs: Strong positive correlation, heteroskedasity variance, overlapping classes
+- Pima Indian diabetes: overlapping classes
+- Hand-written digits: lots of classes, lots of data, overlapping classes
+
+---
+# New data science
+
+.pull-left[
+.yellow[Fresh and local] data, where you can. For me, this is:
+- Pedestrian sensors
+- Election and census
+- Local sea levels
+- Local temperatures
+- Tennis Australia
+]
+.pull-right[
+&lt;img src="images/veggies.jpeg" width="100%" /&gt;
+]
+---
+class: inverse middle
+
+.pull-left[
+# Use the iris data in your statistics and data science classes if you want to look like you are *not qualified* to teach the class
+]
+.pull-right[
+&lt;img src="images/pool_fall.gif" width="100%" /&gt;
+
+.footnote[[via GIPHY](https://giphy.com/gifs/fail-pool-falls-24MlC0gDHUAKY)]
+]
+
+
+---
+class: inverse middle
+
+.pull-left[
+&lt;img src="images/hopbike.gif" width="100%"&gt; 
+.footnote[[ia GIPHY](https://giphy.com/gifs/motion-fascinatingly-hopbike-mKDv2RJByxUZy0)]
+]
+.pull-right[
+# Use the iris data in your publications if you want to look like your method *isn't useful*
+]
+
+---
+class: inverse middle
+
+.pull-left[
+Thanks for listening!
+
+Trivia quiz on the Iris data is here: [http://bit.ly/JSMiris2019](http://bit.ly/JSMiris2019)
+]
+.pull-right[
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/9/98/VanGoghIrises2.jpg" style="border-radius: 100%; align: center" /&gt;
+
+.footnote[[Source: Wikimedia Commons](https://upload.wikimedia.org/wikipedia/commons/9/98/VanGoghIrises2.jpg)]
+]
+---
+class: middle
+# Resources
+
+- [Wikipedia iris data page](https://en.wikipedia.org/wiki/Iris_flower_data_set) editor [Indon](https://en.wikipedia.org/wiki/User:Indon), from which most of the information about the iris data is pulled.
+- [Not Stats Chat](https://notstatschat.rbind.io/2016/12/30/theiris-data/)
+- [Deep learning iris classifcation](https://www.kaggle.com/akashsri99/deep-learning-iris-dataset-keras) Are you kidding me! 
+- [Nick Cox's response](https://stats.stackexchange.com/questions/74776/what-aspects-of-the-iris-data-set-make-it-so-successful-as-an-example-teaching) to "What aspects of the “Iris” data set make it so successful as an example/teaching/test data set".
+- [Fishers article](https://onlinelibrary.wiley.com/doi/epdf/10.1111/j.1469-1809.1936.tb02137.x)
+- [Phylogeny of the genus Iris](https://irisresearch.berkeley.edu/research/systematics/phylogeny-of-the-genus-iris-based-on-dna-sequence-data/)
+
+---
+class: middle
+# Thanks
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan), with **iris theme** created from [xaringanthemer](https://github.com/gadenbuie/xaringanthemer).
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
