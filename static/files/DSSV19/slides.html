@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Human vs computer</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Professor Di Cook Monash University" />
+    <link href="libs/font-awesome-animation/font-awesome-animation-emi.css" rel="stylesheet" />
+    <script src="libs/fontawesome/js/fontawesome-all.min.js"></script>
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="mytheme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: inverse middle
+background-image: url(images/redgum.jpg)
+background-position: 110% 50%
+background-size: 50%
+
+# Human vs computer
+
+## .pink[*In Visualising Data, Who Wins?*]
+## Experiments with building computer vision models for reading residual plots
+
+### .lightgreen[Professor Di Cook &lt;br&gt; Monash University]
+
+.green[DSSV '19, Kyoto &lt;br&gt;Aug 14, 2019]
+
+
+---
+class: inverse middle
+
+<span>&lt;i class="fas  fa-hand-paper fa-2x faa-flash animated-hover faa-slow " style=" color:#FD4D6A;"&gt;&lt;/i&gt;</span> <span class="fa-2x faa-flash animated-hover faa-slow " style=" color:#959B4C; display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">Hands up if you have fitted a model in the last week</span>
+
+--
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+<span class="fa-2x faa-flash animated-hover faa-slow " style=" color:#D8BA69; display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">Keep your hand up if you also looked at a residual plot from that model fit</span>
+--
+
+---
+background-image: url(images/cartoon.png)
+background-size: contain
+
+---
+
+background-image: url(images/housekeeping.png)
+background-size: contain
+
+---
+
+background-image: url(images/robot.png)
+background-size: contain
+
+---
+
+# Outline
+
+- Motivation: inspiration for these experiments
+- Methods
+    - Deep learning: image recognition
+    - Visual inference: process and framework
+- Experiments
+    - Design
+    - Results
+- Future
+- Acknowledgements, resources and references
+
+
+
+---
+background-image: url(images/simchoni.png)
+background-size: 80%
+
+# True motivation is Giora's blog post
+
+
+---
+.left-code[
+Trained a computer vision two ways:
+
+- classification, significant correlation vs not
+- regression, to predict the correlation
+
+.green[Success, picked plot 16]
+]
+.right-plot[
+&lt;img src="images/simchoni_test1.png" width="100%" /&gt;
+]
+---
+.left-code[
+Trained a computer vision two ways:
+
+- classification, significant correlation vs not
+- regression, to predict the correlation
+
+.green[Success, failed to pick plot 4]
+]
+.right-plot[
+&lt;img src="images/simchoni_test2.png" width="100%" /&gt;
+]
+---
+.left-code[
+Trained a computer vision two ways:
+
+- classification, significant correlation vs not
+- regression, to predict the correlation
+
+.pink[Fail! Doesn't see the strong nonlinear association. Picks the most linear.]
+]
+.right-plot[
+&lt;img src="images/simchoni_test3.png" width="100%" /&gt;
+]
+
+---
+.left-column[
+# Deep learning
+]
+.right-column[
+
+&lt;img src="images/image_classification.png" width="100%" /&gt;
+
+.footnote[Source: [Abdellatif Abdelfattah](https://medium.com/@tifa2up/image-classification-using-deep-neural-networks-a-beginner-friendly-approach-using-tensorflow-94b0a090ccd4)]
+]
+---
+
+.left-column[
+# Deep learning
+]
+.right-column[
+&lt;img src="https://miro.medium.com/max/1230/1*DGDcAQmm0e0kW_1iON1e-Q.jpeg" width="70%" /&gt;
+
+.footnote[Source: [Chihuahua or Muffin? Brad Folkens](https://blog.cloudsight.ai/chihuahua-or-muffin-1bdf02ec1680)]
+]
+
+---
+.left-column[
+# Deep learning
+
+### Neural network
+]
+.right-column[
+A linear model can be thought of as a neural network:
+
+&lt;img src="images/linear_model_nn.png" width="100%" /&gt;
+
+.footnote[Source: [Cheng and Titterington (1994)](https://projecteuclid.org/euclid.ss/1177010638)]
+]
+
+---
+.left-column[
+# Deep learning
+
+### Neural network
+]
+.right-column[
+A simple neural network, contains a hidden layer, to increase/decrease dimensionality, and a transformation through a (logistic) function:
+
+&lt;img src="images/hidden_layer_nn.png" width="100%" /&gt;
+]
+
+---
+.left-column[
+# Deep learning
+
+### Neural network
+]
+.right-column[
+
+&lt;img src="images/nnet-hidden-fill.png" width="100%" /&gt;
+&lt;img src="images/nnet-best-fill.png" width="40%" /&gt;
+
+.footnote[Example from [Wickham et al (2015) "Removing the blindfold"](https://onlinelibrary.wiley.com/doi/abs/10.1002/sam.11271)]
+
+]
+---
+
+.left-column[
+# Fitting neural networks is difficult
+
+&lt;img src="images/nnet-best-fill.png" width="100%" /&gt;
+
+.footnote[Example from [Wickham et al (2015) "Removing the blindfold"](https://onlinelibrary.wiley.com/doi/abs/10.1002/sam.11271)]
+
+]
+.right-plot[
+
+&lt;img src="images/nnet-value-accuracy.png" width="100%" /&gt;
+
+&lt;img src="images/nnet-all.png" width="80%" /&gt;
+]
+
+---
+.left-column[
+# Deep learning
+
+### Neural network
+### Convolutional NN
+]
+.right-plot[
+
+Thinking about images as data, requires unpacking into variables:
+
+&lt;img src="images/img_nn.jpg" width="80%" /&gt;
+]
+
+---
+.left-column[
+# Deep learning
+
+### Neural network
+### Convolutional NN
+]
+.right-column[
+
+- Proximity in an image matters though. 
+- The dimension reduction takes into account of neighbouring cells in the image, using filters
+
+&lt;img src="images/covnet2.jpg" width="100%" /&gt;
+
+]
+
+---
+.left-column[
+# Deep learning
+
+### Neural network
+### Convolutional NN
+]
+.right-column[
+
+Applying multiple filters
+
+&lt;img src="images/covnet1.jpg" width="100%" /&gt;
+
+]
+
+---
+.left-column[
+# Deep learning
+
+### Neural network
+### Convolutional NN
+### Software
+]
+.right-column[
+
+The [keras](https://keras.rstudio.com) package in R, interfaces to python software, provides a convenient way to fit the convolutional neural network. 
+
+&lt;img src="images/dlwR.png" width="40%" /&gt;
+
+]
+
+---
+class: center
+background-image: url(images/robot.png)
+background-size: 100%
+
+## Training the robot
+
+---
+# Model set up overview
+
+- Formulate the problem as a classification task: "good" vs "bad" residual plot
+- Simulate an enormous number of both types of residual plots
+- Train the model on half of these
+- Choose the best model by accuracy with the other half
+
+&lt;img src="images/plot_turk2_300_70_5_2_7.png" width="19%" /&gt; &lt;img src="images/plot_turk2_300_70_5_2_1.png" width="19%" /&gt;
+
+.footnote[beta=0.7, sigma=12, n=300]
+---
+
+background-image: url(images/training.png)
+background-size: 100%
+
+.footnote[Source: Shuofan Zhang]
+
+---
+# Model training
+
+1. Simulate data (X, Y) from the null and the alternative models.
+
+2. Generate scatterplots of X and Y
+
+3. Save scatter plots as 150 × 150 pixels images
+
+4. Train a deep learning classifier to recognise the patterns from two groups
+
+5. Test the model's performance on new data and compute the accuracy
+
+6. One model chosen as the best, to compare performance with humans
+
+---
+class: center middle
+background-image: url(images/housekeeping.png)
+background-size: 150%
+
+## How the human evaluated residuals plots
+
+---
+.left-column[
+# Human evaluation
+### Lineup protocol
+]
+.right-column[
+- Statistical inference with graphics, follows classical hypothesis testing procedures
+- Lineup protocol embeds the data plot among a field of null plots (comparison of test statistic with sampling distribution)
+- Human observers pick plot that is most different from the others
+- `\(p\)`-value calculated from the probability that the data plot is selected by chance
+
+[Buja et al (2009)](http://rsta.royalsocietypublishing.org/content/367/1906/4361) ideas, [Majumder et al (2013)](https://www.tandfonline.com/doi/abs/10.1080/01621459.2013.808157) validation
+
+]
+
+---
+
+background-image: url(images/inference_diagram.png)
+background-size: contain
+
+.footnote[[Majumder et al (2013)](https://www.tandfonline.com/doi/abs/10.1080/01621459.2013.808157)]
+---
+.left-column[
+# Human evaluation
+### Lineup protocol
+### Database
+]
+.right-column[
+
+- [Majumder et al (2013)](https://www.tandfonline.com/doi/abs/10.1080/01621459.2013.808157) conducted validation study to compare the performance of the lineup protocol, assessed by human evaluators, in comparison to the classical test
+- Experiment 2 examined `\(H_o: \beta_k = 0 ~~vs ~~H_a: \beta_k \neq 0\)`
+- 70 lineups of size 20 plots: `\(n=100, 300; \beta \in [-6, 4.5]; \sigma=5, 12\)`
+- 351 evaluations by human subjects
+- Amazon's Mechanical Turk used to recruit observers
+
+]
+
+---
+
+.left-column[
+# Human evaluation
+### Lineup protocol
+### Database
+### Try it
+]
+.right-column[
+Let's do a couple:
+
+&lt;br&gt;
+&lt;br&gt;
+
+*From the field of 20 plots shown, pick the plot with the strongest linear relationship between the two variables.*
+]
+
+---
+
+background-image: url(images/plot_turk2_300_150_5_3.png)
+background-size: contain
+
+---
+
+.left-column[
+# Human evaluation
+## Lineup protocol
+## Database
+## Try it
+]
+.right-column[
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+*If you chose 19 you picked the data plot.*
+
+In the Turk study 76/78 observers chose plot 19. The estimated p-value is 0. It is very unlikely to see this result if the data plot was a sample a population with no relationahip between the variables. 
+
+
+]
+
+
+---
+
+background-image: url(images/plot_turk2_300_10_5_3.png)
+background-size: contain
+
+
+
+---
+
+.left-column[
+# Human evaluation
+### Lineup protocol
+### Database
+### Try it
+]
+.right-column[
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+*If you chose 18 you picked the data plot.*
+
+In the Turk study 0/19 observers chose plot 18. The estimated p-value is 1. It is very likely to see this result if the data plot was a sample a population with no relationahip between the variables. 
+
+11/19 chose plot number 19. This plot is the plot in the field that has the smallest p-value. People do tend to pick the plot that has the smallest p-value (or the most structure). 
+
+]
+
+---
+
+.left-column[
+# Human evaluation
+### Lineup protocol
+### Database
+### Try it
+### Validation
+
+.footnote[Source: [Majumder et al (2013)](https://www.tandfonline.com/doi/abs/10.1080/01621459.2013.808157)]
+
+]
+.right-plot[
+
+Effect `\(= \frac{\sqrt{n}\times |\beta|}{\sigma}\)`
+
+&lt;img src="images/majumder1.png" width="70%" /&gt;
+&lt;img src="images/majumder2.png" width="30%" /&gt;
+
+
+]
+---
+
+background-image: url(images/diaghm.png)
+background-size: 100%
+
+.footnote[Source: Shuofan Zhang]
+
+---
+
+.left-column[
+# Human vs computer
+### Comparison
+]
+.right-plot[
+
+`\(H_o: \beta_k = 0 ~~vs ~~H_a: \beta_k \neq 0\)`
+
+Linear vs no relationship (null)
+
+]
+
+---
+.left-column[
+# Human vs computer
+### Comparison
+### Computer model
+]
+.pull-right[
+
+Simulation 
+
+`$$Y_i = \beta_0 + \beta_1 X_{i}  + \varepsilon_i, ~~i=1, \dots , n$$`
+
+- `\(X \sim N[0,\ 1]\)`
+- `\(\beta_0 = 0\)` (intercept)
+- `\(\beta_1\sim U[-10, -0.1] \bigcup [0.1, 10]\)`  (linear, null when `\(\beta_1=0\)`)
+- `\(\varepsilon\sim N(0, \sigma^2) \ where\ \sigma \sim U[1,12]\)` 
+- `\(n=U[50,500]\)`  
+- 200,000 from each linear and null scenario generated
+
+&lt;img src="images/covnet3.png" style="width: 50%; align: center" /&gt;
+
+]
+
+---
+.left-column[
+# Human vs computer
+### Comparison
+### Computer model
+### Testing
+]
+.pull-right[
+
+### Computer model prediction
+
+- Re-generate the 70 *data plots* using the same data in Turk study (without null plots)
+- Use the computer model to predict whether the 70 data plots were "linear" or "null"
+- The computer model's predicted accuracy over the 70 data plots are recorded as the model's performance.
+]
+
+---
+.left-column[
+# Human vs computer
+### Comparison
+### Computer model
+### Testing
+]
+.pull-right[
+
+### Human subjects results
+
+- Calculate `\(p\)`-value associated with each lineup using the binomial formula (from Majumder), with `\(N\)`=number of evaluations and k=number of people choosing data plot
+- Draw conclusion: reject the null when the calculated `\(p\)`-value is smaller than `\(\alpha\)`.
+- The accuracy of the conclusions over the 70 lineups 
+]
+---
+class: inverse middle center
+
+<span>&lt;i class="fas  fa-hourglass fa-2x faa-tada animated faa-slow " style=" color:#FD4D6A;"&gt;&lt;/i&gt;</span> 
+
+### Stay tuned for the result!
+--
+
+## Experiment repeated
+
+---
+# Repeat of experiment
+
+Using same sample of `\(n\)`, `\(\beta\)`, `\(\sigma\)`, new data generated, and images created numerically by binning (to 30x30 pixels), counting and scaling counts to 0-255.
+
+Keras model fitted with 60,000 training images for each class, linear and not.
+
+Accuracy with simulated test data, 93%. Null error 0.0179, linear error 0.1176
+
+.footnote[Code available in the file `keras_correlation.r`]
+--
+
+.pink[Its blindingly fast!]
+
+---
+
+background-image: url(images/drumroll.gif)
+background-size: 100%
+
+---
+.left-column[
+# Human vs computer
+### Comparison
+### Computer model
+### Testing
+### Results
+]
+.right-plot[
+
+# Results 1
+
+&lt;img src="images/results.png" width="100%" /&gt;
+
+.pink[Humans beat computers.] 
+
+]
+---
+.left-column[
+# Human vs computer
+### Comparison
+### Computer model
+### Testing
+### Results
+]
+.right-plot[
+
+# Results 2
+
+&lt;img src="images/new_computer_v_human.png" width="80%" /&gt;
+
+.pink[Humans beat computers, and match the power of the theoretical t-test (uniformly most powerful test).]
+
+]
+---
+# Comparison of human and computer. 
+ 
+&lt;table&gt;
+&lt;tr&gt; &lt;th&gt; &lt;/th&gt; &lt;th&gt; &lt;/th&gt; &lt;th colspan="2"&gt; Computer &lt;/th&gt; &lt;/tr&gt;
+&lt;tr&gt; &lt;th&gt; &lt;/th&gt; &lt;th&gt;  &lt;/th&gt; &lt;th&gt; Not &lt;/th&gt; &lt;th&gt; Linear &lt;/th&gt; &lt;/th&gt; &lt;/tr&gt;
+&lt;tr&gt; &lt;th rowspan="2"&gt; Human &lt;/th&gt; &lt;th&gt; Not &lt;/th&gt; &lt;td&gt; 27 &lt;/td&gt; &lt;td&gt; 0 &lt;/td&gt; &lt;/tr&gt;
+&lt;tr&gt;  &lt;th&gt; Linear &lt;/th&gt; &lt;td&gt; 15 &lt;/td&gt; &lt;td&gt; 28 &lt;/td&gt; &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+
+.pink[Computer tends to predict too many as not linear.]
+
+---
+background-image: url(images/simchoni2.png)
+background-size: contain
+
+[Giora Simchoni's JSM 2019 talk](http://giorasimchoni.com/deep_visual_inference.html#/1)
+
+---
+
+# Summary
+
+- Computer model trained specifically on detecting linear vs no relationship, comes close but does not beat human evaluation
+- Results are consistent: images vs binned data, image size, number of training samples
+
+---
+.left-code[
+# Discussion
+
+Graphics are important in data analysis
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" width="80%" /&gt;
+
+.footnote[Source: [Matejka, J. and Fitzmaurice, G. (2017)](https://www.autodeskresearch.com/publications/samestats) and [Locke, S. and D'Agostino McGowan, L. (2018)](https://CRAN.R-project.org/package=datasauRus)]
+]
+.right-plot[
+
+Same numerical statistics but radically different structure
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; dataset &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mx &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; my &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; sx &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; sy &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; r &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; away &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; bullseye &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; circle &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; dino &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; dots &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; h_lines &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; high_lines &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; slant_down &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; star &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; v_lines &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; wide_lines &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; x_shape &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+---
+.left-code[
+[Residual (Sur)Realism](https://www4.stat.ncsu.edu/~stefanski/nsf_supported/hidden_images/stat_res_plots.html#Download_Data_Sets) or how to hide images in your residuals.
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-5-1.png" width="504" /&gt;
+
+.footnote[Looks boring]
+]
+.right-plot[
+Fit a linear model, plot the residuals
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" width="504" /&gt;
+]
+---
+# To the future <i class="fas  fa-rocket "></i>
+
+- The lineup protocol, from visual inference, provides a way to check and validate the models
+    - Need to build up more human subject evaluations
+- Model checking may be systematic enough to automate. 
+    - Computer only needs to relieve us of most of the work, after all.
+- Expand the computer model with simulations of all sorts of departures from no relationship
+- Web service for uploading plots?
+
+---
+
+background-image: url(images/Rosie.png)
+background-size: contain
+
+---
+
+class: inverse 
+
+# Joint work!
+
+- Deep learning model, human vs computer comparison: Monash Masters thesis by Shuofan Zhang (inspired by a blog post by [Giora Simchoni](http://giorasimchoni.com/2018/02/07/2018-02-07-book-em-danno/))
+- Inference: Heike Hofmann, Mahbub Majumder, Andreas Buja, Hadley Wickham, Eric Hare, Susan Vanderplas, Adam Loy, Niladri Roy Chowdhury, Nat Tomasetti.
+
+Contact: [<i class="fas  fa-envelope "></i>](http://www.dicook.org) dicook@monash.edu [<i class="fab  fa-twitter "></i>](https://twitter.com/visnut) visnut [<i class="fab  fa-github "></i>](https://github.com/dicook) dicook
+
+.footnote[Slides made with Rmarkdown, xaringan package by Yihui Xie, modified xaringanthemer by Garrick Aden-Buie, and the anicon package by Emi Tanaka, with icon package by Mitch O'Hara-Wild. Available at [https://github.com/dicook/DSSV19](https://github.com/dicook/files/DSSV19).]
+
+---
+# Further reading
+
+- Buja et al (2009) Statistical Inference for Exploratory Data Analysis and Model Diagnostics, Roy. Soc. Ph. Tr., A
+- Majumder et al (2013) Validation of Visual Statistical Inference, Applied to Linear Models, JASA
+- Wickham et al (2010) Graphical Inference for Infovis, InfoVis, Best paper
+- Hofmann et al (2012) Graphical Tests for Power Comparison of Competing Design, InfoVis
+    
+---
+class: middle center
+
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
