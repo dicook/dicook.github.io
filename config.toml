@@ -58,7 +58,7 @@ defaultContentLanguageInSubdir = false
   organizations = [ { name = "Econometrics and Business Statistics", url = "https://www.monash.edu/business/econometrics-and-business-statistics"}, { name = "Monash University", url = "https://www.monash.edu" } ]
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
-  avatar = "dicook-2014.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
+  avatar = "dicook-2019.png"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "dicook@monash.edu"
   address = "E762A Menzies, 20 Chancellors Walk, Clayton, Vic, 3800, Australia"
   office_hours = "By appointment"
