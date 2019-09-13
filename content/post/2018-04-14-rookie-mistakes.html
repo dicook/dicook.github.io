@@ -21,12 +21,15 @@ header:
 <li>Sample size appropriate plots</li>
 <li>Order of conditioning</li>
 </ul>
-<p>Please don’t be discouraged if you see one of the plots you made in this document, you all did a great job of creating plots and these are suggestions to take your creations and make them better!</p>
+<p>Please don’t be discouraged if you see one of the plots you made in this
+document, you all did a great job of creating plots and these are suggestions
+to take your creations and make them better!</p>
 <div id="reduce-complexity" class="section level2">
 <h2>Reduce complexity</h2>
 <p>There is a temptation to pack as much as possible in a single plot. After all, you only get to put a small number of plots in a report. This makes it harder to read anything from the plot, and thus more difficult for the reader to learn about the data.</p>
 <p>It is better to break up information dense graphics into smaller chunks. If there is a constraint on the number of plots you can put in a report, you could make an ensemble graphic containing a number of plots, which would count as a single plot. Facetting is an inbuilt way that the grammar of graphics facilitates chunking, to make an ensemble of plots.</p>
-<p>Let’s look at an example of an overly complex plot of the interaction between three variables - Q30, Q31, and Q17. There’s a lot going on in this plot.</p>
+<p>Let’s look at an example of an overly complex plot of the interaction between
+three variables - Q30, Q31, and Q17. There’s a lot going on in this plot.</p>
 <p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>We interpret the information that we want to communicate is: <em>how enjoyment of the unit, and whether you are struggling, depends on having prior coding experience or not</em>. The chunks are the three pairwise combinations of the three variables. This is a good start to tackling the primary purpose.</p>
 <p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-2-1.png" width="1152" style="display: block; margin: auto;" /></p>
@@ -47,7 +50,10 @@ header:
 <li>Most people who have prior coding experience and are not struggling, are enjoying the class.</li>
 <li>About a third of the students who have prior coding experience, and struggling with the class, are unhappy.</li>
 </ol>
-<p>Remember one purpose of plots is to communicate what you’ve found in the data to the reader - a more complex plot forces a reader to take longer to understand your findings and has a narrow viewpoint. Breaking a complex plot into chunks allows your reader to slowly gain a richer understanding of the data.</p>
+<p>Remember one purpose of plots is to communicate what you’ve found in the
+data to the reader - a more complex plot forces a reader to take longer
+to understand your findings and has a narrow viewpoint. Breaking a complex plot
+into chunks allows your reader to slowly gain a richer understanding of the data.</p>
 </div>
 <div id="order" class="section level2">
 <h2>Order</h2>
@@ -77,12 +83,14 @@ header:
 <li>Double degree students are not putting in more study time than single degree students.</li>
 </ol>
 <p>Here’s another plot submitted to study a similar relationship, study by year in university. The group summary was:</p>
-<p><em>“We can see overall 3rd year students put a lot more hours into study per week. This could perhaps be due to increased workload during the 3rd year as opposed to 1st year.”</em></p>
+<p><em>“We can see overall 3rd year students put a lot more hours into study per week.
+This could perhaps be due to increased workload during the 3rd year as opposed to 1st year.”</em></p>
 <p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>To answer the original question you need to look at the distribution of hours studying, within each year.</p>
 <p>Facet by year in school, and then make a bar chart in each facet. You can see that most students are in year 2 or 3, and the counts increase over hours spent studying. Both years have this pattern.</p>
 <p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Because numbers are so small in all other groups, drop them, and focus only on years 2 and 3. Then we need to do the same calculations as the previous problem, to compare proportion in each study time, within year.</p>
+<p>Because numbers are so small in all other groups, drop them,
+and focus only on years 2 and 3. Then we need to do the same calculations as the previous problem, to compare proportion in each study time, within year.</p>
 <p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>What do we learn?</p>
 <ol style="list-style-type: decimal">
@@ -93,15 +101,20 @@ header:
 </div>
 <div id="sample-size-appropriate-plots" class="section level2">
 <h2>Sample size appropriate plots</h2>
-<p>When a plot performs a statistical transformation of a variable, be aware of the sample size used to calculate the transformation. In a boxplot 5 numbers are computed to summarise a distribution, if the sample size is small, the boxplot can be misleading:</p>
+<p>When a plot performs a statistical transformation of a variable, be aware
+of the sample size used to calculate the transformation. In a boxplot
+5 numbers are computed to summarise a distribution, if the sample size
+is small, the boxplot can be misleading:</p>
 <p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Interpretation: People spending few study hours are spending too much time on the internet.</p>
 <p><img src="/post/2018-04-14-rookie-mistakes_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Correction: There’s only three students in the category, of spending too much time on the web and too little time studying.</p>
+<p>Correction: There’s only three students in the category, of spending too much
+time on the web and too little time studying.</p>
 </div>
 <div id="order-of-conditioning" class="section level2">
 <h2>Order of conditioning</h2>
-<p>We should condition the response variable (or the variable we are trying to understand) by other variables we think will explain the response. This allows us to examine how the response varies by levels of the explanatory variable.</p>
+<p>We should condition the response variable (or the variable we
+are trying to understand) by other variables we think will explain the response. This allows us to examine how the response varies by levels of the explanatory variable.</p>
 <p>Goal: how does core or elective vary by year in school.</p>
 <p>Which plot is appropriate here?</p>
 <p>This:</p>
