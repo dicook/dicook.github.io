@@ -60,7 +60,9 @@ This is the first set of explanatory variables. There are 150 observations and 3
 
 There is some collinearity, but there is also a little more. There is a concentration of points in the first couple of variables, which likely corresponds to a lot of very small values on these variables. It can be hard to fix this, usually a log or power transformation would be used.  There are also a few outliers, just a few, and they are not very extreme. These are the points that float out from the others occasionally. The last frame below shows a point where the collinearity is visible. The points flatten into a tall pancake, which says that there is moderate association between them. 
 
-<img src="http://dicook.org/post/multicollinearity/d1_f1.png" width="25%" /><img src="http://dicook.org/post/multicollinearity/d1_f2.png" width="25%" /><img src="http://dicook.org/post/multicollinearity/d1_f3.png" width="25%" />
+<table>
+<tr> <td><img src="http://dicook.org/post/multicollinearity/d1_f1.png" width="100%" /></td><td><img src="http://dicook.org/post/multicollinearity/d1_f2.png" width="100%" /></td><td><img src="http://dicook.org/post/multicollinearity/d1_f3.png" width="100%" /></td></tr>
+</table>
 
 ### Model 2
 
@@ -68,7 +70,9 @@ There is some collinearity, but there is also a little more. There is a concentr
 
 The second example is similar to the first. There is also some nonlinear association visible, but the outliers are less extreme. 
 
-<img src="http://dicook.org/post/multicollinearity/d2_f1.png" width="25%" /><img src="http://dicook.org/post/multicollinearity/d2_f2.png" width="25%" /><img src="http://dicook.org/post/multicollinearity/d2_f3.png" width="25%" />
+<table>
+<tr> <td><img src="http://dicook.org/post/multicollinearity/d2_f1.png" width="100%" /></td><td><img src="http://dicook.org/post/multicollinearity/d2_f2.png" width="100%" /></td><td><img src="http://dicook.org/post/multicollinearity/d2_f3.png" width="100%" /></td></tr>
+</table>
 
 ## Summary
 
