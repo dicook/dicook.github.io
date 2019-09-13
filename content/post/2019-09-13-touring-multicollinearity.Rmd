@@ -1,0 +1,76 @@
+---
+title: How to use a tour to check if your model suffers from multicollinearity
+author: Di Cook
+date: '2019-09-13'
+slug: touring-to-check-for-multicollinearity
+categories:
+  - data visualisation
+  - statistics
+tags:
+  - animation
+  - tour
+  - R
+  - tidyverse
+  - Rmd
+header:
+  caption: ''
+  image: ''
+---
+
+## Multicollinearity
+
+> As you note in the paper, it seems likely that there are still issues with multi-collinearity
+
+[Multicollinearity](https://en.wikipedia.org/wiki/Multicollinearity) means that your explanatory variables have substantial association between them, which means that you don't have a stable base on which to build a model. I like to say its *like building
+a table with only two legs, or three legs but they are all in a row. The table top is going to be very wobbly.* You need to have the legs placed broadly to provide a good base for the table top. Its similar for model fitting. You can think of the model like the table top, and the explanatory variables form the base. If the observations are not well spread out in the space, then the model fit will be unstable.
+
+When there are only two predictors (explanatory variables) its easy to check, by plotting the two variables. With more variables its harder to detect. Common aproaches are to use [principal component analysis](https://en.wikipedia.org/wiki/Principal_component_analysis), and examine the screeplot, or proportion of variation explained by a subset of principal components. If all (or most) of the variation is explained with a subset of all the variables, it means *you have a multicollinearity problem*. You will need to drop some variables or do some other dimension reduction to fix it before choosing your final model.
+
+Another approach is to compute the [variance inflation factor](https://en.wikipedia.org/wiki/Variance_inflation_factor) for all the variable sin your model. This measures how much the coefficients for the variable change when other variables are included with it in the model. This is the stability mentioned earlier - if there is multicollinearity the model coefficient for a variable can change substantially depending on whether another variable (or more) is included in the model or not. High variance inflation factors means that this variable's coefficient changes a lot depdening on the other variables, indicating multicollinearity among the collection of explanatory variables.
+
+## Tour
+
+This is my favorite method for checking for multicollinearity. I usually do the routine approaches first (PCA and VIFs), and then run a tour. Here is the example from the paper, Jeremy Forbes, Rob Hyndman and myself are currently working on. There were actually multiple models fit, and I'll show just two, because they do show the range. 
+
+```{r eval=FALSE}
+library(tourr)
+quartz()
+load("data/d1.rda")
+load("data/d2.rda")
+animate_xy(d1, axes="bottomleft", half_range=1.2)
+render_gif(d1, grand_tour(), display_xy(, 
+           axes="bottomleft", half_range=1.2), 
+           frames = 100, 
+           gif_file="d1.gif")
+render_gif(d2, grand_tour(), display_xy(, 
+           axes="bottomleft", half_range=1.2), 
+           frames = 100, 
+           gif_file="d2.gif")
+```
+
+This is the first set of explanatory variables. There are 150 observations and 32 variables. That's about 5 observations for each dimension -- its sparse.
+
+### Model 1
+
+<img src="http://dicook.org/post/multicollinearity/d1.gif" />
+
+There is some collinearity, but there is also a little more. There is a concentration of points in the first couple of variables, which likely corresponds to a lot of very small values on these variables. It can be hard to fix this, usually a log or power transformation would be used.  There are also a few outliers, just a few, and they are not very extreme. These are the points that float out from the others occasionally. The last frame below shows a point where the collinearity is visible. The points flatten into a tall pancake, which says that there is moderate association between them. 
+
+<img src="http://dicook.org/post/multicollinearity/d1_f1.png" width="25%" /><img src="http://dicook.org/post/multicollinearity/d1_f2.png" width="25%" /><img src="http://dicook.org/post/multicollinearity/d1_f3.png" width="25%" />
+
+### Model 2
+
+<img src="http://dicook.org/post/multicollinearity/d2.gif" />
+
+The second example is similar to the first. There is also some nonlinear association visible, but the outliers are less extreme. 
+
+<img src="http://dicook.org/post/multicollinearity/d2_f1.png" width="25%" /><img src="http://dicook.org/post/multicollinearity/d2_f2.png" width="25%" /><img src="http://dicook.org/post/multicollinearity/d2_f3.png" width="25%" />
+
+## Summary
+
+While there is evidence of multicollinearity for both of these sets of explanatory variables, its not very severe. Its more like a table built with one thick central plank for support. These sort of tables exist and are reasonably stable. We can not be absolutely certain, but the conclusion would be that the models are robust. 
+
+## Sources
+
+[The code for this post is here.](https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/2019-09-13-touring-multicollinearity.Rmd)
+
