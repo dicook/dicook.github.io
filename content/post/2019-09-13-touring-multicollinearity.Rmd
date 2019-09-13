@@ -52,6 +52,8 @@ render_gif(d2, grand_tour(), display_xy(,
 
 This is the first set of explanatory variables. There are 150 observations and 32 variables. That's about 5 observations for each dimension -- its sparse.
 
+(If you are new to tours, a good resource is to look at the Wickham et al (2011) as cited in the `tourr` package.)
+
 ### Model 1
 
 <img src="http://dicook.org/post/multicollinearity/d1.gif" width="50%" />
