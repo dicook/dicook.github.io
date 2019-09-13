@@ -74,6 +74,8 @@ The second example is similar to the first. There is also some nonlinear associa
 
 While there is evidence of multicollinearity for both of these sets of explanatory variables, its not very severe. Its more like a table built with one thick central plank for support. These sort of tables exist and are reasonably stable. We can not be absolutely certain, but the conclusion would be that the models are robust. 
 
+Now, I dare someone to add a sentence to their next model application paper like "Multicollinearity was checked using a tour on all the explanatory variables, run for 3.46 minutes." (Ha, ha)
+
 ## Sources
 
 [The code for this post is here.](https://github.com/dicook/dicook.github.io/blob/blogdown/content/post/2019-09-13-touring-multicollinearity.Rmd)
