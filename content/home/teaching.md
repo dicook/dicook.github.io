@@ -24,8 +24,8 @@ I am the instructor for the following courses at Monash University:
 My current and recent PhD students are:
 
 - [Lindsay Rutter](https://github.com/lrutter) (2013-2018)
-- [Earo Wang](https://earo.me) (2016-2019)
-- [Stuart Lee](https://github.com/sa-lee) (2017-2020)
-- Nick Spyrison (2018-2021)
-- Sayani Gupta (2018-2021)
-
+- [Earo Wang](https://earo.me) (2016-2019) with Rob Hyndman
+- [Stuart Lee](https://github.com/sa-lee) (2017-2020) with Matt Ritchie and Paul Harrison
+- [Nick Spyrison](https://github.com/nspyrison) (2018-2021) with Kim Marriott
+- [Sayani Gupta](https://github.com/Sayani07) (2018-2021) with Rob Hyndman
+- [Ryan Thompson] with Catherine Forbes and Farshid Vahid
