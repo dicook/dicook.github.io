@@ -19,6 +19,8 @@ header:
 
 ## Multicollinearity
 
+This was one of the comments from a recent review of a paper:
+
 > As you note in the paper, it seems likely that there are still issues with multi-collinearity
 
 [Multicollinearity](https://en.wikipedia.org/wiki/Multicollinearity) means that your explanatory variables have substantial association between them, which means that you don't have a stable base on which to build a model. I like to say its *like building
@@ -52,7 +54,7 @@ This is the first set of explanatory variables. There are 150 observations and 3
 
 ### Model 1
 
-<img src="http://dicook.org/post/multicollinearity/d1.gif" />
+<img src="http://dicook.org/post/multicollinearity/d1.gif" width="50%" />
 
 There is some collinearity, but there is also a little more. There is a concentration of points in the first couple of variables, which likely corresponds to a lot of very small values on these variables. It can be hard to fix this, usually a log or power transformation would be used.  There are also a few outliers, just a few, and they are not very extreme. These are the points that float out from the others occasionally. The last frame below shows a point where the collinearity is visible. The points flatten into a tall pancake, which says that there is moderate association between them. 
 
@@ -60,7 +62,7 @@ There is some collinearity, but there is also a little more. There is a concentr
 
 ### Model 2
 
-<img src="http://dicook.org/post/multicollinearity/d2.gif" />
+<img src="http://dicook.org/post/multicollinearity/d2.gif"  width="50%"/>
 
 The second example is similar to the first. There is also some nonlinear association visible, but the outliers are less extreme. 
 
