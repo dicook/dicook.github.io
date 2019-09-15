@@ -10,8 +10,8 @@ tags:
   - animation
   - tour
   - R
-  - tidyverse
   - Rmd
+  - multivariate data
 header:
   caption: ''
   image: ''
@@ -23,7 +23,7 @@ This was one of the comments from a recent review of a paper:
 
 > As you note in the paper, it seems likely that there are still issues with multi-collinearity
 
-[Multicollinearity](https://en.wikipedia.org/wiki/Multicollinearity) means that your explanatory variables have substantial association between them, which means that you don't have a stable base on which to build a model. I like to say its *like building
+[Multicollinearity](https://en.wikipedia.org/wiki/Multicollinearity) means that the observations are co-linear in some combination of the variables. This has been relaxed in practice to mean substantial association between explanatory variables. When your explanatory variables have substantial association between them, it means that you don't have a stable base on which to build a model. I like to say its *like building
 a table with only two legs, or three legs but they are all in a row. The table top is going to be very wobbly.* You need to have the legs placed broadly to provide a good base for the table top. Its similar for model fitting. You can think of the model like the table top, and the explanatory variables form the base. If the observations are not well spread out in the space, then the model fit will be unstable.
 
 When there are only two predictors (explanatory variables) its easy to check, by plotting the two variables. With more variables its harder to detect. Common aproaches are to use [principal component analysis](https://en.wikipedia.org/wiki/Principal_component_analysis), and examine the screeplot, or proportion of variation explained by a subset of principal components. If all (or most) of the variation is explained with a subset of all the variables, it means *you have a multicollinearity problem*. You will need to drop some variables or do some other dimension reduction to fix it before choosing your final model.
@@ -77,6 +77,8 @@ The second example is similar to the first. There is also some nonlinear associa
 ## Summary
 
 While there is evidence of multicollinearity for both of these sets of explanatory variables, its not very severe. Its more like a table built with one thick central plank for support. These sort of tables exist and are reasonably stable. We can not be absolutely certain, but the conclusion would be that the models are robust. 
+
+An aside about multicollinearity and model fitting purpose: we typically consider this to be a problem only if the purpose is explanatory rather than predictive. If the goal is to predict from the model and the new predictor values are in the range of the existing data, then the predictions are ok. Think about it like the table on two legs, the line at which the table top sits on the legs is the same, even if the table top pivots around this line. For explanation, because the coefficients can change dramatically depending on the other variable sin the model, the interpretation of the coefficient is unreliable with multicollinearity.
 
 Now, I dare someone to add a sentence to their next model application paper like "Multicollinearity was checked using a tour on all the explanatory variables, run for 3.46 minutes." (Ha, ha)
 
