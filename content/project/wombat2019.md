@@ -6,8 +6,7 @@ date = "2019-10-17"
 title = "WOMBAT 2019"
 
 # Project summary to display on homepage.
-summary = "Workshop Organised by the Monash Business Analytics Team
-28-29 Nov, sponsored by the Monash University Network of Excellence on High-Dimensional Dynamic Systems."
+summary = "Workshop Organised by the Monash Business Analytics Team 28-29 Nov, sponsored by the Monash University Network of Excellence on High-Dimensional Dynamic Systems."
 
 # Optional image to display on homepage (relative to `static/img/` folder).
 image_preview = "user_au_logo.png"
