@@ -18,7 +18,7 @@ weight = 60
 I am the instructor for the following courses at Monash University:
 
 - [ETC3250/5250: Introduction to Machine Learning](https://iml.numbat.space)
-- [ETC5512: Wild-caught Data](https://wcd.numbat.space)
+- [ETC5512: Wild-Caught Data](https://wcd.numbat.space)
 - [ETC1010: Data Modelling and Computing (OLD)](https://github.com/dicook/Data_Modelling_and_Computing)
 - [ETC2420/5242: Statistical Thinking (OLD)](https://github.com/dicook/Statistical_Thinking)
 
