@@ -17,7 +17,7 @@ authors = ["Wang, E.", "Cook, D.","Hyndman, R. J."]
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "In *Journal of Computational and Graphical Statistics *"
+publication = "In *Journal of Computational and Graphical Statistics*"
 publication_short = "In *JCGS*"
 
 # Abstract and optional shortened version.
