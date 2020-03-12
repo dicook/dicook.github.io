@@ -1,6 +1,6 @@
 +++
 title = "plyranges: a grammar of genomic data transformation"
-date = "2020-01-01"
+date = "2019-01-04"
 
 # Authors. Comma separated list, e.g. `["Roy Chowdhury, N.", "Cook, D.", "Hofmann, H.", "Majumder, M."]`.
 authors = ["Lee, S.", "Cook, D.","Lawrence, M."]
