@@ -36,7 +36,7 @@ selected = false
 projects = ["https://github.com/tidyverts/tsibble"]
 
 # Links (optional).
-url_pdf = "https://doi.org/10.1080/10618600.2019.1695624"
+url_pdf = "https://www.tandfonline.com/doi/full/10.1080/10618600.2019.1695624"
 url_preprint = "https://arxiv.org/abs/1901.10257"
 url_code = "#"
 url_dataset = "#"
