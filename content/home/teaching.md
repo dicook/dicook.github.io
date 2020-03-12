@@ -30,3 +30,5 @@ My current and recent PhD students are:
 - [Nick Spyrison](https://github.com/nspyrison) (2018-2021) with Kim Marriott
 - [Sayani Gupta](https://github.com/Sayani07) (2018-2021) with Rob Hyndman
 - [Sherry Zhang](https://github.com/huizezhang-sherry) (2020-2023) with Patricia Menendez
+
+I am supervising [Ursula Laa's](https://uschilaa.github.io) postdoctoral research. 
