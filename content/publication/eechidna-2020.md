@@ -1,5 +1,5 @@
 +++
-title = "Spatial modelling of the two-party pre-ferred vote in Australian federal elections: 2001–2016"
+title = "Spatial modelling of the two-party preferred vote in Australian federal elections: 2001–2016"
 date = "2020-01-01"
 
 # Authors. Comma separated list, e.g. `["Roy Chowdhury, N.", "Cook, D.", "Hofmann, H.", "Majumder, M."]`.
