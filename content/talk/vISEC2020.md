@@ -20,7 +20,7 @@ projects = []
 
 # Links (optional).
 url_pdf = ""
-url_slides = "https://dicook.org/files/vISEC2020/slides_tourr.html"
+url_slides = "https://www.dicook.org/files/visec2020/slides_tourr#1"
 url_video = ""
 url_code = "https://github.com/dicook/vISEC2020"
 
