@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>The paradox of the positive: exploratory tools for visualising the individuals in (multivariate) longitudinal data</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Di Cook" />
+    <link href="libs/font-awesome-animation/font-awesome-animation-emi.css" rel="stylesheet" />
+    <script src="libs/fontawesome/js/fontawesome-all.min.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="mytheme2.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: inverse middle
+background-image: url(images/people2.png)
+background-position: 99% 98%
+background-size: 55%
+
+# *The Paradox of the Positive* 
+
+## Exploratory tools for visualising the individuals in (multivariate) longitudinal data
+
+### Di Cook, Monash University &lt;br&gt; .small[Joint with Nick Tierney and Tania Prvan] &lt;br&gt; International Biometrics Conference &lt;br&gt; .tiny[Virtual Learning Series, July 20, 2020]
+
+.tiny[<span>&lt;i class="fas  fa-arrow-right faa-passing animated "&gt;&lt;/i&gt;</span> [https://dicook.org/files/IBC2020/slides.html](https://dicook.org/files/IBC2020/slides.html)]
+&lt;br&gt;
+
+.footnote[Image credit: 2020 Australian Open spectators by Di Cook]
+
+---
+background-image: url(images/singer_willett.png)
+background-size: 50%
+
+.huge[
+☀️
+]
+
+.footnote[Example from Singer and Willett (2003) Applied Longitudinal Data Analysis: Modeling Change and Event Occurrence]
+
+
+
+---
+class: inverse
+
+&lt;video width="750" height="563" controls="controls" name="Exploring longitudinal data" src="http://ggobi.org/book/chap-misc/Longitudinal.mov"&gt; &lt;/video&gt;
+
+.footnote[[Exploring Longitudinal Data with GGobi](http://ggobi.org/book/chap-misc/Longitudinal.mov) by Di Cook on [GGobi website](http://ggobi.org)]
+
+---
+class: inverse middle
+
+.huge[
+🌧
+]
+
+# Shiver.
+--
+
+&lt;p&gt; The variation from individual to individual is much greater than the overall trend. While there may be an overall trend that matches our common belief, many individuals have a different experience. 
+
+---
+background-image: \url(https://suziegruber.com/wp-content/uploads/2018/06/Frayed-Rope-2-Deposit-web.jpg)
+background-size: cover
+class: inverse center
+
+# A divergence of purpose
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+.pull-left[
+
+Statistics&lt;br&gt; for policy
+]
+
+.pull-right[
+
+Statistics &lt;br&gt; for the public
+
+]
+
+.footnote[Image source: [Suzie Graber]((https://suziegruber.com/wp-content/uploads/2018/06/Frayed-Rope-2-Deposit-web.jpg)]
+&lt;!--
+&lt;img src="slides_files/figure-html/dichotomy-1.png" width="40%" /&gt;
+--&gt;
+
+---
+background-image: \url(https://upload.wikimedia.org/wikipedia/commons/2/21/Frederick_Douglass_by_Samuel_J_Miller%2C_1847-52.png)
+background-size: 15%
+background-position: 100% 0%
+
+# Paradox of the positive
+
+&gt; *Douglass orates that positive statements about American values, such as liberty, citizenship, and freedom, were an offense to the enslaved population of the United States because of their lack of freedom, liberty, and citizenship. As well, Douglass referred not only to the captivity of enslaved people, but to the merciless exploitation and the cruelty and torture that slaves were subjected to in the United States. Rhetoricians R.L. Heath and D. Waymer called this topic the "paradox of the positive" because it highlights how something positive and meant to be positive can also exclude individuals.* 
+.footnote[[Wikipedia: What to a slave is the fourth of July ](https://en.wikipedia.org/wiki/What_to_the_Slave_Is_the_Fourth_of_July%3F)]
+
+---
+
+.pull-left[
+<span class=" faa-float animated " data-fa-transform="grow-2 " style=" display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">Aside: Should race even be a variable used in analyses?</span>
+]
+
+.pull-right[
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;&amp;quot;First, if racism is a principal factor organizing social life, why not study racism rather than race? Second, why use an unscientific system of classification in scientific research?&amp;quot; AJPH 22 years ago, loud and clear, in plain sight, &lt;a href="https://twitter.com/mindphul?ref_src=twsrc%5Etfw"&gt;@mindphul&lt;/a&gt; &lt;a href="https://t.co/aLQ5BqquIS"&gt;https://t.co/aLQ5BqquIS&lt;/a&gt;&lt;/p&gt;&amp;mdash; Melanie Wall (@mwallbiostat) &lt;a href="https://twitter.com/mwallbiostat/status/1282418693750894594?ref_src=twsrc%5Etfw"&gt;July 12, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+]
+
+---
+
+.large[I'm going to talk about]
+
+--
+
+<span>&lt;i class="fas  fa-hand-pointer fa-2x faa-float animated faa-slow " style=" color:#75A34D;"&gt;&lt;/i&gt;</span> .large[.purple[new tools for longitudinal data]]
+
+--
+
+<span>&lt;i class="fas  fa-hand-spock fa-2x faa-wrench animated faa-slow " style=" color:#75A34D;"&gt;&lt;/i&gt;</span> .large[.green[to explore the individuals]]
+
+--
+
+<span>&lt;i class="fas  fa-hand-peace fa-2x faa-vertical animated faa-slow " style=" color:#75A34D;"&gt;&lt;/i&gt;</span> .large[.orange[in the R package `brolgar`.]]
+
+---
+
+# What is the data structure
+
+`brolgar` builds on `tsibble`, by Earo Wang. 
+
+
+
+```
+*## # A tsibble: 6,402 x 9 [!]
+*## # Key:       id [888]
+##       id ln_wages    xp   ged xp_since_ged black hispanic high_grade
+##    &lt;int&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;        &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;      &lt;int&gt;
+##  1    31     1.49 0.015     1        0.015     0        1          8
+##  2    31     1.43 0.715     1        0.715     0        1          8
+##  3    31     1.47 1.73      1        1.73      0        1          8
+##  4    31     1.75 2.77      1        2.77      0        1          8
+##  5    31     1.93 3.93      1        3.93      0        1          8
+##  6    31     1.71 4.95      1        4.95      0        1          8
+##  7    31     2.09 5.96      1        5.96      0        1          8
+##  8    31     2.13 6.98      1        6.98      0        1          8
+##  9    36     1.98 0.315     1        0.315     0        0          9
+## 10    36     1.80 0.983     1        0.983     0        0          9
+## # … with 6,392 more rows, and 1 more variable: unemploy_rate &lt;dbl&gt;
+```
+
+---
+
+# Making spaghetti
+
+
+
+.pull-left[
+
+```r
+wages %&gt;%
+  ggplot(aes(x = xp,
+             y = ln_wages,
+             group = id)) + 
+  geom_line(alpha=0.3) + invthm
+```
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-2-1.svg" width="100%" /&gt;
+]
+
+---
+class: inverse middle center
+
+# from a spaghetti mess
+
+&lt;img src="spaghetti_mess.gif" width="640" height="480"&gt;
+
+.footnote[Source: giphy]
+---
+class: inverse middle center
+
+# to controlled spaghetti handling
+
+&lt;img src="spaghetti_clean.gif" width="640" height="480"&gt;
+
+.footnote[Source: giphy]
+
+---
+class: inverse middle center
+
+# to perfection
+
+&lt;img src="spaghetti_perfect.gif" width="640" height="480"&gt;
+
+.footnote[Source: giphy]
+
+---
+# Its not regular
+
+.pull-left[
+
+Using features, compute the number of measurements for each subject
+
+
+```r
+wages %&gt;%
+* features(ln_wages, n_obs) %&gt;%
+  ggplot(aes(x = n_obs)) + 
+  geom_bar() +
+  xlab("Number of observations") +
+  invthm
+```
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-3-1.svg" width="100%" /&gt;
+]
+
+---
+
+# We could filter on this
+
+.pull-left[
+
+```r
+*wages &lt;- wages %&gt;% add_n_obs()
+wages %&gt;% 
+* filter(n_obs &gt; 3) %&gt;%
+  select(id, ln_wages, xp, n_obs)
+```
+]
+
+.pull-right[
+
+```
+## # A tsibble: 6,145 x 4 [!]
+*## # Key:       id [764]
+##       id ln_wages    xp n_obs
+##    &lt;int&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+##  1    31     1.49 0.015     8
+##  2    31     1.43 0.715     8
+##  3    31     1.47 1.73      8
+##  4    31     1.75 2.77      8
+##  5    31     1.93 3.93      8
+##  6    31     1.71 4.95      8
+##  7    31     2.09 5.96      8
+##  8    31     2.13 6.98      8
+##  9    36     1.98 0.315    10
+## 10    36     1.80 0.983    10
+## # … with 6,135 more rows
+```
+]
+
+---
+# Subjects don't all start at the same time
+
+.pull-left[
+Using features to extract minimum time
+
+
+```r
+wages %&gt;%
+* features(xp, list(min = min)) %&gt;%
+  ggplot(aes(x = min)) + 
+  geom_histogram(binwidth=0.5) +
+  xlim(c(0, 13)) +
+  xlab("First time in study") + 
+  invthm
+```
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-5-1.svg" width="100%" /&gt;
+]
+
+---
+
+# There's a range of experience
+
+.pull-left[
+Using features to extract range of time index
+
+
+```r
+wages_xp_range &lt;- wages %&gt;% 
+* features(xp, feat_ranges)
+
+ggplot(wages_xp_range,
+       aes(x = range_diff)) + 
+  geom_histogram() + 
+  xlab("Range of experience") +
+  invthm
+```
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.svg" width="100%" /&gt;
+]
+
+
+---
+
+# Small spoonfuls of spaghetti
+
+.pull-left[
+Sample some individuals
+
+
+```r
+set.seed(20200720)
+wages %&gt;%
+* sample_n_keys(size = 10) %&gt;%
+  ggplot(aes(x = xp,
+             y = ln_wages,
+             group = id)) + 
+  geom_line() +
+  xlim(c(0,13)) + ylim(c(0, 4.5)) +
+  xlab("Years of experience") + 
+  ylab("Log wages") +
+  invthm
+```
+
+.tiny[Wages conversion 0.5 = $1.65; 4.5 = $90]
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.svg" width="100%" /&gt;
+]
+
+---
+count: false
+# Small spoonfuls of spaghetti
+
+.pull-left[
+Sample some individuals
+
+
+```r
+wages %&gt;%
+* sample_n_keys(size = 10) %&gt;%
+  ggplot(aes(x = xp,
+             y = ln_wages,
+             group = id)) + 
+  geom_line() +
+  xlim(c(0,13)) + ylim(c(0, 4.5)) +
+  xlab("Years of experience") + 
+  ylab("Log wages") +
+  invthm
+```
+
+.tiny[Wages conversion 0.5 = $1.65; 4.5 = $90]
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-8-1.svg" width="100%" /&gt;
+]
+---
+count: false
+
+# Small spoonfuls of spaghetti
+
+.pull-left[
+Sample some individuals
+
+
+```r
+wages %&gt;%
+* sample_n_keys(size = 10) %&gt;%
+  ggplot(aes(x = xp,
+             y = ln_wages,
+             group = id)) + 
+  geom_line() +
+  xlim(c(0,13)) + ylim(c(0, 4.5)) +
+  xlab("Years of experience") + 
+  ylab("Log wages") +
+  invthm
+```
+
+.tiny[Wages conversion 0.5 = $1.65; 4.5 = $90]
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-9-1.svg" width="100%" /&gt;
+]
+
+---
+# Take a spoonful of different lengths
+
+.pull-left[
+Sample experienced individuals
+
+
+```r
+wages %&gt;%
+  add_n_obs() %&gt;%
+* filter(n_obs &gt; 7) %&gt;%
+  sample_n_keys(size = 10) %&gt;%
+  ggplot(aes(x = xp,
+             y = ln_wages,
+             group = id)) + 
+  geom_line()  +
+  xlim(c(0,13)) + ylim(c(0, 4.5)) +
+  xlab("Years of experience") + 
+  ylab("Log wages") +
+  invthm
+```
+
+.tiny[Wages conversion 0.5 = $1.65; 4.5 = $90]
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-10-1.svg" width="100%" /&gt;
+]
+
+---
+# Take a spoonful of different lengths
+
+.pull-left[
+Sample INexperienced individuals
+
+
+```r
+wages %&gt;%
+  add_n_obs() %&gt;%
+* filter(n_obs &lt; 5) %&gt;%
+  sample_n_keys(size = 10) %&gt;%
+  ggplot(aes(x = xp,
+             y = ln_wages,
+             group = id)) + 
+  geom_line()  +
+  xlim(c(0,13)) + ylim(c(0, 4.5)) +
+  xlab("Years of experience") + 
+  ylab("Log wages") +
+  invthm
+```
+
+.tiny[Wages conversion 0.5 = $1.65; 4.5 = $90]
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-11-1.svg" width="100%" /&gt;
+]
+
+---
+# Take a spoonful of different lengths
+
+.pull-left[
+Sample average experience
+
+
+```r
+wages %&gt;%
+  add_n_obs() %&gt;%
+* filter(n_obs &gt; 4, n_obs &lt; 8) %&gt;%
+  sample_n_keys(size = 10) %&gt;%
+  ggplot(aes(x = xp,
+             y = ln_wages,
+             group = id)) + 
+  geom_line()  +
+  xlim(c(0,13)) + ylim(c(0, 4.5)) +
+  xlab("Years of experience") + 
+  ylab("Log wages") +
+  invthm
+```
+
+.tiny[Wages conversion 0.5 = $1.65; 4.5 = $90]
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-12-1.svg" width="100%" /&gt;
+]
+---
+# Also we can 
+
+- `facet_strata`: show the whole pot, neatly separated into equally portioned
+- `facet_sample`: show most of the pot in neatly separated portions
+
+---
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-13-1.svg" width="100%" /&gt;
+
+---
+# Special features 
+
+Compute longnostics for each subject
+
+- Slope, intercept from simple linear model
+- Variance, standard deviation
+- Jumps, differences
+
+---
+
+# Increasing
+
+.pull-left[
+
+
+```r
+wages_slope &lt;- wages %&gt;%   
+  add_n_obs() %&gt;%
+  filter(n_obs &gt; 4) %&gt;%
+* add_key_slope(ln_wages ~ xp) %&gt;%
+  as_tsibble(key = id, index = xp) 
+
+wages_slope %&gt;% 
+* filter(.slope_xp &gt; 0.4) %&gt;%
+  ggplot(aes(x = xp, 
+             y = ln_wages, 
+             group = id)) + 
+  geom_line() +
+  ylim(c(0, 4.5)) +
+  xlab("Years of experience") + 
+  ylab("Log wages") +
+  invthm
+```
+
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-14-1.svg" width="100%" /&gt;
+]
+
+---
+# Decreasing 
+
+.pull-left[
+
+
+```r
+wages_slope %&gt;% 
+* filter(.slope_xp &lt; (-0.7)) %&gt;%
+  ggplot(aes(x = xp, 
+             y = ln_wages, 
+             group = id)) + 
+  geom_line() +
+  ylim(c(0, 4.5)) +
+  xlab("Years of experience") + 
+  ylab("Log wages") +
+  invthm
+```
+
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-15-1.svg" width="100%" /&gt;
+]
+
+---
+background-image: \url(https://cdn.mos.cms.futurecdn.net/xVDtHe3txNCijnegF8y4d6-970-80.jpg)
+background-size: 30%
+background-position: 50% 99%
+# A different style of five number summary
+
+Who is average?
+Who is different?
+
+Find those individuals who are representative of the min, median, maximum, etc of growth, using `keys_near()`
+
+.footnote[Image credit: Image credit: Flickr/paul dynamik]
+---
+
+.pull-left[
+
+
+```r
+wages_threenum &lt;- wages %&gt;%   
+  add_n_obs() %&gt;%
+  filter(n_obs &gt; 4) %&gt;%
+  key_slope(ln_wages ~ xp) %&gt;%
+* keys_near(key = id,
+*           var = .slope_xp,
+*           funs = l_three_num) %&gt;%
+  left_join(wages, by = "id") %&gt;%
+  as_tsibble(key = id, index = xp) 
+```
+
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/three_number_plot-1.svg" width="100%" /&gt;
+]
+
+---
+
+&lt;img src="slides_files/figure-html/five_number-1.svg" width="100%" /&gt;
+
+---
+# Sculpting spaghetti
+
+.pull-left[
+
+Mixed effects model, education as fixed effect, subject random effect using slope.
+
+
+```r
+wages_fit_int &lt;- 
+* lmer(ln_wages ~ xp + high_grade +
+*        (xp |id), data = wages)
+wages_aug &lt;- wages %&gt;%
+  add_predictions(wages_fit_int, 
+                  var = "pred_int") %&gt;%
+  add_residuals(wages_fit_int, 
+                var = "res_int")
+```
+]
+
+.pull-right[
+&lt;img src="slides_files/figure-html/model_plot-1.svg" width="100%" /&gt;
+]
+
+---
+# Sample and show the data, too
+
+
+```r
+set.seed(1)
+wages_aug %&gt;% add_n_obs() %&gt;% filter(n_obs &gt; 4) %&gt;%
+  sample_n_keys(size = 12) %&gt;%
+* ggplot(aes(x = xp, y = pred_int, group = id,
+             colour = factor(id))) + 
+  geom_line() + 
+* geom_point(aes(x = xp, y = ln_wages,
+                 colour = factor(id))) + 
+  scale_colour_ochre(palette = "emu_woman_paired") +
+  facet_wrap(~id, ncol=4)  +
+  xlab("Years of experience") + ylab("Log wages") +
+  invthm + 
+  theme(legend.position = "none")
+```
+
+---
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-16-1.svg" width="100%" /&gt;
+
+---
+
+.pull-left[
+# Multivariate
+
+Multiple response variables, expecting some association between them. 
+
+- ln_wages
+- expens (simulated)
+- savings (simulated)
+
+]
+.pull-right[
+&lt;img src="slides_files/figure-html/unnamed-chunk-17-1.svg" width="100%" /&gt;
+]
+
+
+---
+
+# Multivariate
+
+
+```r
+library(tourr)
+wages_mv_df &lt;- wages_mv %&gt;% select(ln_wages, expens, savings, id) %&gt;% as.data.frame()
+wages_12227 &lt;- data.frame(from = 6137:6146, to = 6138:6147) %&gt;% as.matrix()
+wages_735 &lt;- data.frame(from = 408:418, to = 409:419) %&gt;% as.matrix()
+edges &lt;- rbind(wages_12227, wages_735)
+animate_xy(wages_mv_df[,1:3], axes = "bottomleft", col="grey90", 
+           edges = wages_12227)
+animate_xy(wages_mv_df[,1:3], axes = "bottomleft", col="grey90", 
+           edges = wages_735)
+render_gif(wages_mv_df[,1:3], grand_tour(), display_xy(axes = "bottomleft", col="grey90", edges = wages_12227), gif_file="./tour1.gif", 
+           apf=1/15, frames=200)
+render_gif(wages_mv_df[,1:3], grand_tour(), display_xy(axes = "bottomleft", col="grey90", edges = wages_735), gif_file="./tour2.gif", 
+           apf=1/15, frames=200)
+```
+
+---
+
+.pull-left[
+Subject 12227
+&lt;img src="tour1.gif" width="90%"&gt;
+]
+--
+
+.pull-left[
+Subject 735
+&lt;img src="tour2.gif" width="90%"&gt;
+]
+
+---
+background-image: \url(images/mouldy-spaghetti.jpg)
+background-size: cover
+class: inverse center
+
+# I'm sorry about the wages data
+
+.footnote[Image source: [https://www.stayathomemum.com.au](https://www.stayathomemum.com.au/my-lifestyle/mouldy-food-how-far-is-too-far-gone/)]
+---
+
+.pull-left[
+Even though its messy, its too clean
+
+.small[
+- Original cohort included 12,686 individuals, but this data has only 888 individuals
+- Process not transparent
+- Demographic groups have very different numbers
+]
+]
+
+.pull-right[
+.small[
+ https://www.nlsinfo.org/content/cohorts/nlsy79/get-data
+
+- I have been trying to refresh the wages data
+- can extract approx 6000 individuals
+- many odd values, like hourly wages &gt; $10,000 per hour
+- different coding of variables from one year to another
+]
+]    
+
+---
+
+
+Example of data issues
+
+&lt;img src="slides_files/figure-html/bad-data-1.svg" width="100%" /&gt;
+
+---
+class: inverse middle center
+
+# Individual approach in use
+
+---
+background-image: \url(images/NYTimes1.png)
+background-size: 80%
+
+
+.footnote[[NYTimes Coronavirus coverage](https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html)]
+
+---
+background-image: \url(images/NYTimes2.png)
+background-size: 100%
+
+.footnote[[NYTimes Coronavirus coverage](https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html)]
+
+---
+
+--- 
+# What I hope you have heard today
+
+- We need .orange[more research], and .orange[acceptance], on methods for communicating the individual experience.
+- When the variation is large, summarising the variation is the honest thing to do.
+- .orange[Statistics needs to address the individual experience], so we can better engage with the public. *I feel this is important for evolving democracy, for literate citizenship. As more tools become readily available, people will do their own analysis*.
+
+---
+background-image: \url(https://upload.wikimedia.org/wikipedia/commons/9/99/Brolga_%2835984742503%29.jpg)
+background-size: 40%
+background-position: 99% 99%
+class: inverse 
+
+### Read more about the `brolgar` package at 
+
+# http://brolgar.njtierney.com
+
+&lt;br&gt;
+
+**br**owse **o**ver **l**ongitudinal data &lt;br&gt; **g**raphically and **a**nalytically in **R**
+
+.footnote[Image source: [wikicommons](https://upload.wikimedia.org/wikipedia/commons/9/99/Brolga_%2835984742503%29.jpg)]
+---
+class: inverse middle
+background-image: url(images/people2.png)
+background-position: 99% 1%
+background-size: 35%
+
+# Acknowledgements
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan), with **iris theme** created from [xaringanthemer](https://github.com/gadenbuie/xaringanthemer).
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+
+Slides are available at [https://dicook.org/files/IBC2020/slides.html](https://dicook.org/files/IBC2020/slides.html) and supporting files at [https://github.com/dicook/IBC2020](https://github.com/dicook/IBC2020).
+
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.
+
+.footnote[Image credit: 2020 Australian Open spectators by Di Cook]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
