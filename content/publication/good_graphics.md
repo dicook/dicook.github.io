@@ -37,10 +37,10 @@ projects = ["https://www.annualreviews.org/doi/full/10.1146/annurev-statistics-0
 
 # Links (optional).
 url_pdf = "https://www.annualreviews.org/doi/full/10.1146/annurev-statistics-031219-041252"
-url_preprint = "hhttps://www.annualreviews.org/doi/full/10.1146/annurev-statistics-031219-041252"
+url_preprint = "https://github.com/srvanderplas/AnnualReviewStatisticsVisualization"
 url_code = "#"
 url_dataset = "#"
-url_project = "https://www.annualreviews.org/doi/full/10.1146/annurev-statistics-031219-041252"
+url_project = "https://github.com/srvanderplas/AnnualReviewStatisticsVisualization"
 url_slides = "#"
 url_video = "#"
 url_poster = "#"
