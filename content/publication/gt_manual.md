@@ -1,9 +1,9 @@
 +++
-title = "Manual Controls for High-Dimensional Data Projections"
-date = "1997-06-20"
+title = "Grand Tour and Projection Pursuit"
+date = "1995-06-20"
 
 # Authors. Comma separated list, e.g. `["Cook, D.", "Buja, A.", "Cabrera, J.", "Hurley, C."]`.
-authors = ["Cook, D.", "Buja, A."]
+authors = ["Cook, D.", "Buja, A.", "Cabrera, J.", "Hurley, C."]
 
 # Publication type.
 # Legend:
@@ -21,8 +21,8 @@ publication = "In *Journal of the Computational and Graphical Statistics*"
 publication_short = "In *JCGS*"
 
 # Abstract and optional shortened version.
-abstract = "Projections of high-dimensional data onto low-dimensional subspaces provide insightful views for understanding multivariate relationships. This article discusses how to manually control the variable contributions to the projection. The user has control of the way a particular variable contributes to the viewed projection and can interactively adjust the variable's contribution. These manual controls complement the automatic views provided by a grand tour, or a guided tour, and give greatly improved flexibility to data analysts."
-abstract_short = "This article discusses how to manually control the variable contributions to the projection. The user has control of the way a particular variable contributes to the viewed projection and can interactively adjust the variable's contribution."
+abstract = "The grand tour and projection pursuit are two methods for exploring multivariate data. We show how to combine them into a dynamic graphical tool for exploratory data analysis, called a projection pursuit guided tour. This tool assists in clustering data when clusters are oddly shaped and in finding general low-dimensional structure in high-dimensional, and in particular, sparse data. An example shows that the method, which is projection-based, can be quite powerful in situations that may cause grief for methods based on kernel smoothing. The projection pursuit guided tour is also useful for comparing and developing projection pursuit indexes and illustrating some types of asymptotic results."
+abstract_short = "The grand tour and projection pursuit are two methods for exploring multivariate data. We show how to combine them into a dynamic graphical tool for exploratory data analysis, called a projection pursuit guided tour. This tool assists in clustering data when clusters are oddly shaped and in finding general low-dimensional structure in high-dimensional, and in particular, sparse data."
 
 # Featured image thumbnail (optional)
 image_preview = ""
@@ -36,8 +36,8 @@ selected = true
 projects = ["https://github.com/ggobi/tourr"]
 
 # Links (optional).
-url_pdf = "https://www.tandfonline.com/doi/abs/10.1080/10618600.1997.10474754"
-url_preprint = "http://dicook.org/files/tour_manual.pdf"
+url_pdf = "https://www.tandfonline.com/doi/abs/10.1080/10618600.1995.10474674"
+url_preprint = "http://dicook.org/files/gt-pp.pdf"
 url_code = "#"
 url_dataset = "#"
 url_project = "https://github.com/ggobi/tourr"
