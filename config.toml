@@ -181,7 +181,7 @@ defaultContentLanguageInSubdir = false
   [params.publications]
     # Date format (refer to Go's date format: http://fuckinggodateformat.com )
     #   Examples: "Mon, Jan 2, 2006" or "2006-01-02"
-    date_format = "January, 2014"
+    date_format = "2018-01-22"
 
   # Configuration of project pages.
   [params.projects]
