@@ -254,29 +254,34 @@ defaultContentLanguageInSubdir = false
   weight = 2
 
 [[menu.main]]
+  name = "Recent"
+  url = "#recent"
+  weight = 3
+
+[[menu.main]]
   name = "Talks"
   url = "#talks"
-  weight = 3
+  weight = 4
 
 [[menu.main]]
   name = "Posts"
   url = "#posts"
-  weight = 4
+  weight = 5
 
 [[menu.main]]
   name = "Projects"
   url = "#projects"
-  weight = 5
+  weight = 6
 
 [[menu.main]]
   name = "Teaching"
   url = "#teaching"
-  weight = 6
+  weight = 7
 
 [[menu.main]]
   name = "Contact"
   url = "#contact"
-  weight = 7
+  weight = 8
 
 # Taxonomies.
 [taxonomies]
