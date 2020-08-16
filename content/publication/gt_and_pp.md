@@ -33,14 +33,14 @@ selected = true
 # Projects (optional).
 #   Associate this publication with one or more of your projects.
 #   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
-projects = ["http://ggobi.org/tourr"]
+projects = ["https://github.com/ggobi/tourr"]
 
 # Links (optional).
 url_pdf = "https://www.tandfonline.com/doi/abs/10.1080/10618600.1995.10474674"
 url_preprint = "http://dicook.org/files/gt-pp.pdf"
 url_code = "#"
 url_dataset = "#"
-url_project = "http://ggobi.org/tourr"
+url_project = "https://github.com/ggobi/tourr"
 url_slides = "#"
 url_video = "#"
 url_poster = "#"
