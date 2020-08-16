@@ -1,7 +1,7 @@
 +++
-# Recent Publications widget.
+# Selected Publications widget.
 # This widget displays recent publications from `content/publication/`.
-widget = "publications"
+widget = "publications_selected"
 active = true
 date = 2018-01-12
 

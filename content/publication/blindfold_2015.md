@@ -28,7 +28,7 @@ abstract_short = "This paper proposes three strategies for visualizing statistic
 image_preview = ""
 
 # Is this a selected publication? (true/false)
-selected = false
+selected = true
 
 # Projects (optional).
 #   Associate this publication with one or more of your projects.
