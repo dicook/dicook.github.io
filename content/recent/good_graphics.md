@@ -1,5 +1,5 @@
 +++
-title = "Testing Statistical Charts: What Makes a Good Graph?"
+title = "Testing Statistical Charts: What Makes a Good Graph"
 date = "2020-03-19"
 
 # Authors. Comma separated list, e.g. `["Vanderplas, S.", "Cook, D.", "Hofmann, H.", "Majumder, M."]`.
