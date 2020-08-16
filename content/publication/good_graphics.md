@@ -17,7 +17,7 @@ authors = ["Vanderplas, S.", "Cook, D.","Hofmann, H."]
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "In * Annual Review of Statistics and Its Application*"
+publication = "In *Annual Review of Statistics and Its Application*"
 publication_short = "In *ARSIA*"
 
 # Abstract and optional shortened version.
