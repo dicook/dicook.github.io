@@ -1,0 +1,123 @@
+/* -------------------------------------------------------
+ *
+ *     These are my modifications to the xaringanthemer
+ *
+ * ------------------------------------------------------- */
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.remark-slide-content {
+  font-size: 30px;
+}
+body {
+  font-family: 'Lato';
+  font-weight: normal;
+  color: #384C3A;
+}
+h1 {
+  font-family: 'Lato';
+  font-weight: bold;
+  color: #687B4A;
+}
+h2, h3 {
+  font-family: 'Lato';
+  font-weight: normal;
+  color: #E1223A;
+}
+a {
+  color: #FE375D;
+}
+.inverse-nopad {
+  background-color: #002b36;
+  color: #fdf6e3;
+  padding: 0;
+}
+.inverse h1 {
+  font-family: 'Lato';
+  font-weight: normal;
+  color: #FE375D;
+}
+.inverse h2 {
+  font-family: 'Lato';
+  font-weight: normal;
+  color: #D8BA69;
+}
+.inverse h3 {
+  font-family: 'Lato';
+  font-weight: normal;
+  color: #959B4C;
+}
+li { line-height: 1.25em; }
+li p { line-height: 1.35em; }
+ul li {
+  list-style-type: none;
+}
+ul li li {
+  list-style-type: none;
+}
+ul li:before {
+  content: "\f109";
+  font-family: "FontAwesome";
+  margin-right: 10px;
+  color: #CF1930;
+}
+ul li li:before {
+  content: "\f2bd";
+  font-family: "FontAwesome";
+  margin-right: 10px;
+  color: #D8BA69;
+}
+.inverse ul li:before {
+  content: "\f2bd";
+  font-family: "FontAwesome";
+  margin-right: 10px;
+  color: #C0CC65;
+}
+.footnote {
+  position: absolute;
+  bottom: 3em;
+  padding-right: 4em;
+  font-size: 0.5em;
+}
+strong{color:#686CA9;}
+.remark-slide table thead th { border-bottom: 1px solid #839496; }
+th { 
+  padding: 5px; 
+  text-align: left;
+}
+td { 
+  padding: 5px; 
+  text-align: right;
+}
+.remark-slide table, td, th{
+  margin: auto;
+  border: 1px solid #959B4C;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+.remark-slide thead, .remark-slide tfoot, .remark-slide tr:nth-child(even) { background: #EAE49A }
+.purple { color: #686CA9; }
+.orange { color: #9A6902; }
+.blue { color: #72879C; }
+.yellow { color: #CFA118; }
+.green { color: #959B4C; }
+.large { font-size: 2em; }
+.pink { color: #FD4D6A; }
+.lightgreen { color: #C0CC65; }
+
+.left-code {
+  color: #777;
+  width: 48%;
+  height: 100%;
+  float: left;
+}
+.right-plot {
+  width: 50%;
+  float: right;
+  padding-left: 1%;
+}
+.pull-right {
+  width: 70%;
+  float: right;
+  padding-left: 1%;
+}
