@@ -1,0 +1,11 @@
+Statistics on Street Corners: Conducting Inference for Data Plots
+
+Professor Di Cook, EBS, Monash University
+
+Perceptual research is often conducted on the street, with convenience sampling  of pedestrians who happen to be passing by. It is through experiments conducted using passer-bys that we have learned about the effect of change-blindness (https://www.youtube.com/watch?v=FWSxSQsspiQ) is in play outside the laboratory. 
+
+In data analysis, plots of data are important tools for observing patterns, making decisions, and communicating findings. But plots of data can be viewed differently by different observers, and often provoke skepticism about whether what you see "is really there". With the availability of technology that harnesses statistical randomisation techniques and input from crowds we can provide objective evaluation of structure read from plots of data. 
+
+This talk describes an inferential framework for data visualisation, and the protocols that can be used to provide estimates of p-values, and power. I will discuss the experiments that we have conducted that (1) show that the crowd-sourcing does provide results similar to statistical hypothesis testing, (2) how this can be used to improve plot design, and (3) p-values in situations where no classical tests exist. 
+
+This talk will cover joint work with many people including Heike Hofmann, Andreas Buja, Deborah Swayne, Hadley Wickham, Eun-kyung Lee, Mahbubul Majumder, Niladri Roy Chowdhury, Lendie Follett, Susan Vanderplas, Adam Loy, Yifan Zhao, Nathaniel Tomasetti, Emi Tanaka, Nancy Reid. 
