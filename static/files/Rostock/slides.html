@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Uncertainty in data visualisation through the lens of statistical inference</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Di Cook" />
+    <script src="libs/header-attrs-2.8/header-attrs.js"></script>
+    <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.2.6/panelset.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="mytheme2.css" type="text/css" />
+    <link rel="stylesheet" href="panelset.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+class: inverse middle
+background-image: url(images/wattle_bee.jpg)
+background-position: 99% 99%
+background-size: 55%
+
+# Uncertainty in data visualisation through the lens of statistical inference
+
+## Di Cook &lt;br&gt; Monash University
+
+### Visualising Uncertainty &lt;br&gt; Rostock Retreat &lt;br&gt; June 21, 2021
+
+&lt;br&gt;
+.tiny[[https://dicook.org/files/Rostock2021/slides.html](https://dicook.org/files/Rostock2021/slides.html)]
+&lt;br&gt;
+.footnote[Image credit: Di Cook, 2018]
+
+
+
+
+---
+class: middle center inverse
+
+# Hello 👋🏻
+--
+
+&lt;center&gt;&lt;img src="http://dicook.org/img/dicook-2019.png" style="height: 300px; border-radius: 50%;"&gt; &lt;/center&gt;
+--
+
+Professor, Monash University, Melbourne, Australia &lt;br&gt;
+--
+
+&lt;br&gt; [👉🏻 https://dicook.org/files/Rostock2021/slides.html](https://dicook.org/files/Rostock2021/slides.html)
+
+
+
+---
+class: inverse middle center
+
+# Motivation
+
+---
+background-color: white
+
+.panelset[
+.panel[.panel-name[map]
+
+.yellow[What do you read from each display?]
+
+&lt;center&gt;
+&lt;img src="images/choro-1.png" style="width: 45%; align: center" /&gt; 
+
+&lt;img src="images/fullhexmap-1.png" style="width: 45%; align: center" /&gt; &lt;/center&gt;
+
+These images were motivated by work on the Australian Cancer Atlas, and show thyroid cancer incidence as a choropleth map (left) and a new type of display a hexagon tile map (right). 
+
+.tiny[Kobakian and Cook (unpublished) https://github.com/srkobakian/experiment]
+
+]
+.panel[.panel-name[explanation]
+
+.yellow[What do you read from each display?]
+
+.pull-left[
+
+High thyroid cancer incidence mostly located in east coast.
+
+]
+.pull-right[
+
+High thyroid cancer incidence is evident around Brisbane, Sydney, Perth and in some inner city Melbourne areas. 
+]
+
+]
+]
+
+
+---
+class: center
+background-color: white
+background-image: url(images/wide_open_australia.jpg)
+background-position: 50% 50%
+background-size: cover
+
+# .white["Land doesn’t get cancer, people do"]
+
+.white[We need to establish a new display for Australia to allow us to read spatial distribution of values measured on people]
+
+---
+class: middle center
+
+To test which design is better we are going to use the .yellow[lineup protocol]. Each slide shows 12 plots, numbered .yellow[1 through 12] at the top of each plot. One of the 12 is a data plot and the remaining 11 are null plots. 
+--
+
+Pick the plot that is .yellow[most different] from the others.  &lt;br&gt;&lt;br&gt; Write them down just for yourself, .yellow[without sharing], for now.&lt;br&gt;&lt;br&gt;
+--
+
+.yellow[## Ready?]
+--
+
+---
+background-color: white
+background-image: url(images/aus_nwse_6_geo.png)
+background-size: 68%
+background-position: 15% 15%
+
+---
+background-color: white
+background-image: url(images/aus_nwse_3_hex.png)
+background-size: 68%
+background-position: 15% 15%
+
+---
+background-color: white
+background-image: url(images/aus_three_8_geo.png)
+background-size: 68%
+background-position: 15% 15%
+
+---
+background-color: white
+background-image: url(images/aus_three_5_hex.png)
+background-size: 68%
+background-position: 15% 15%
+
+---
+background-color: white
+background-image: url(images/aus_cities_9_geo.png)
+background-size: 68%
+background-position: 15% 15%
+
+---
+background-color: white
+background-image: url(images/aus_cities_3_hex.png)
+background-size: 68%
+background-position: 15% 15%
+
+---
+# Check your choices
+
+&lt;br&gt;
+&lt;center&gt;
+The data plot is in these positions
+
+&lt;style&gt;
+table{
+  border-spacing: unset;    # inherent, initial, unset, 0px
+}
+&lt;/style&gt;
+
+&lt;table class="table" style='font-family: "Courier New", courier; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;background-color: #fdf6e3 !important;"&gt; page &lt;/th&gt;
+   &lt;th style="text-align:right;background-color: #fdf6e3 !important;"&gt; location &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;font-weight: bold;"&gt; 6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;font-weight: bold;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;font-weight: bold;"&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;font-weight: bold;"&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;font-weight: bold;"&gt; 9 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 14 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;font-weight: bold;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;/center&gt;
+
+---
+class: inverse middle center
+
+# Conducting visual inference
+
+---
+# About the lineup protocol
+
+Based on the statistical justice system 
+
+- Compare the data plot (.yellow[accused]) with a population of null plots (.yellow[innocents])
+- If the data plot (.yellow[accused]) is picked from the lineup, then reject the null hypothesis because it looks different (.yellow[guilty]). 
+- The `\(p\)`-value is the probability that the accused would look this different (.yellow[guilty]) if they actually were not really different (.yellow[innocent]).
+
+.tiny[[Wickham et al (2010) IEEE TVCG](https://vita.had.co.nz/papers/inference-infovis.html)]
+
+---
+
+&lt;table class="table" style="font-size: 24px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;background-color: #fdf6e3 !important;"&gt; plot &lt;/th&gt;
+   &lt;th style="text-align:left;background-color: #fdf6e3 !important;"&gt; question &lt;/th&gt;
+   &lt;th style="text-align:left;background-color: #fdf6e3 !important;"&gt; null &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Chloropleth maps &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Is there a spatial trend? &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; No relationship between location and statistic value &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Tag cloud &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Is this document the same as that document? &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; No difference in word counts &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Treemap &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Is the distribution within higher-level categories the same? &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; No difference in proportions within categories &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Histogram &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Is the underlying distribution smooth? &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Distribution is smooth &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Histogram &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Is the underlying distribution bell-shaped? &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Distribution is normal &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Residual plot &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Are residuals normally distributed? &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Distribution is normal &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Scatterplot &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Are the two variables associated? &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; No association &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Scatterplot, coloured &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Are points clustered by colour? &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; No difference between coloured groups &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Time series &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Does the mean change over time? &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Same mean over time &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Time series &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Does the variability change over time? &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; Same variability over time &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+background-color: white
+# A visual t-test
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" width="100%" /&gt;
+
+Nulls: samples .yellow[simulated] from same normal distribution &lt;br&gt;
+Null hypothesis: Both groups are samples from the same distribution
+
+---
+background-color: white
+# A visual t-test: take 2
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="100%" /&gt;
+
+Nulls: samples generated by .yellow[permuting labels A, B] &lt;br&gt;
+Null hypothesis: Both groups are samples from the same distribution
+
+---
+# Procedure (1/5)
+
+.panelset[
+.panel[.panel-name[tidy data]
+
+&lt;table class="table" style='font-size: 18px; font-family: "Courier New", courier; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;background-color: #fdf6e3 !important;"&gt; x &lt;/th&gt;
+   &lt;th style="text-align:right;background-color: #fdf6e3 !important;"&gt; y &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 0.92 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 2.18 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; -0.27 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; -3.92 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; -2.12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 1.73 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; -1.65 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 1.81 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 3.51 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 3.60 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+.panel[.panel-name[is it tidy?]
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;table class="table" style='font-size: 18px; font-family: "Courier New", courier; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;background-color: #fdf6e3 !important;"&gt; ID &lt;/th&gt;
+   &lt;th style="text-align:right;background-color: #fdf6e3 !important;"&gt; koala_NSW &lt;/th&gt;
+   &lt;th style="text-align:right;background-color: #fdf6e3 !important;"&gt; koala_VIC &lt;/th&gt;
+   &lt;th style="text-align:right;background-color: #fdf6e3 !important;"&gt; bilby_NSW &lt;/th&gt;
+   &lt;th style="text-align:right;background-color: #fdf6e3 !important;"&gt; bilby_VIC &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; grey &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 43 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; cream &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 56 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 89 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 17 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; white &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 35 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 72 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 13 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; black &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 28 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 44 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 16 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;background-color: #fdf6e3 !important;"&gt; taupe &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 25 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 37 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: #fdf6e3 !important;"&gt; 12 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+.panel[.panel-name[what is tidy?]
+
+&lt;br&gt;
+&lt;br&gt;
+- Variables in columns
+- Observations in rows
+&lt;br&gt;
+&lt;br&gt;
+
+.tiny[https://vita.had.co.nz/papers/tidy-data.pdf]
+]
+]
+
+---
+
+# Procedure (2/5)
+
+Use the grammar of graphics to define a plot
+
+
+```r
+*ggplot(aes(x = x, y = y, colour = x)) +
+  geom_point() +
+  stat_summary(fun = "mean", 
+               shape = 4, size=1) +
+  scale_colour_brewer("", palette="Dark2") +
+  some_nice_plot_styling
+```
+
+Based on this mapping, what would be considered null (not interesting)?
+
+---
+# Procedure (3/5)
+
+Add data or null
+
+
+```r
+*data %&gt;%
+  ggplot(aes(x = x, y = y, colour = x)) +
+  geom_point() +
+  stat_summary(fun = "mean", 
+               shape = 4, size=1) +
+  scale_colour_brewer("", palette="Dark2") +
+  some_nice_plot_styling
+```
+
+---
+# Procedure (4/5)
+
+Hide the data among a field of nulls
+
+
+```r
+*library(nullabor)
+*lineup(null_permute("y"), n=10,
+*           true = data) %&gt;%
+  ggplot(aes(x = x, y = y, colour = x)) +
+  geom_point() +
+  stat_summary(fun = "mean", 
+               shape = 4, size=1) +
+  scale_colour_brewer("", palette="Dark2") +
+* facet_wrap(~.sample) +
+  some_nice_plot_styling
+```
+
+---
+# Procedure (5/5)
+
+Ask uninvolved, independent observers to pick the plot that is most different from the lineup. We would expect that the chance that any observer chooses the data plot is 1/10 (or `\(1/m\)` generally, where `\(m\)` is the number of plots in the lineup. 
+
+Suppose you had 23 observers, and 8 of them choose the data plot as the most different. 
+
+
+```r
+pvisual(x=8, K=23, m=10)
+```
+
+```
+##      x simulated       binom
+## [1,] 8    0.0099 0.001229827
+```
+
+---
+class: inverse middle center
+
+# How do we know it works?
+
+---
+background-color: white
+
+.pull-left[
+# Validation experiment
+
+[Majumder et al (2013)](https://www.tandfonline.com/doi/abs/10.1080/01621459.2013.808157) conducted validation study to compare the performance of the lineup protocol, assessed by human evaluators, in comparison to the classical test, using subjects employed with Amazon's Mechanical Turk.
+
+.tiny[http://datascience.unomaha.edu/turk/exp2/index.html]
+]
+.pull-right[
+
+Power analysis of human evaluation  relative to classical test. 
+
+&lt;center&gt;&lt;img src="images/majumder1.png" width="65%" /&gt;
+&lt;img src="images/majumder2.png" width="25%" /&gt;
+&lt;/center&gt;
+
+]
+
+---
+class: inverse middle center
+
+# How can it be used to compare plot designs?
+
+---
+background-color: white
+.pull-left[
+# Power to compare plot design
+
+[Hofmann et al (2012)](https://ieeexplore.ieee.org/document/6327249) show how power, interpreted as .yellow[proportion of observers who detect] the data plot, from different plot designs, can be used to establish which is better.
+
+How to make the power calculations and generate confidence intervals for power of different designs.
+
+]
+.pull-right[
+
+&lt;center&gt;&lt;img src="images/eucline.png" width="90%" /&gt;
+
+&lt;br&gt;
+&lt;img src="images/polar.png" width="90%" /&gt;
+
+&lt;br&gt;
+&lt;img src="images/power.jpg" width="60%" /&gt;
+&lt;/center&gt;
+]
+
+
+---
+class: inverse middle center
+# Back to the maps experiment
+
+---
+background-color: white
+# Thyroid cancer incidence in Australia
+
+&lt;center&gt;
+&lt;img src="images/choro-1.png" style="width: 45%; align: center" /&gt; 
+
+&lt;img src="images/fullhexmap-1.png" style="width: 45%; align: center" /&gt; &lt;/center&gt;
+
+---
+# Experimental design
+
+.yellow[Factor]: choropleth, hexagon tile map&lt;br&gt;
+.yellow[Structure]: NW to SE trend, hotspot in 3 cities, hotspot in all cities &lt;br&gt;&lt;br&gt;
+.yellow[Null]: Simulation from a variogram model to model spatial dependence, using `gstat` package (144 null sets) &lt;br&gt;
+.yellow[Replicates]: Four &lt;br&gt;
+.yellow[Lineups]: 12 plots in a lineup &lt;br&gt;
+.yellow[Data plot]: Trend added to null, for one plot in a lineup&lt;br&gt;&lt;br&gt;
+.yellow[Displays]: Two sets, with coin flip for data displayed as choropleth or hexagon tile map, sets A and B &lt;br&gt;
+.yellow[Subjects]: 42 subjects for set A, and 53 for set B
+
+
+---
+background-color: white
+background-image: url(images/detect-compare-1.jpg)
+background-size: 68%
+background-position: 80% 15%
+
+# Results
+
+---
+background-image: url(http://dicook.github.io/nullabor/reference/figures/nullabor_hex.png)
+background-position: 70% 1%
+background-size: 15%
+
+
+# How to do this yourself
+
+Get a copy of the `nullabor` package
+
+
+```r
+install.packages("nullabor")
+```
+
+or 
+
+
+```r
+# install.packages("remotes")
+remotes::install_github("dicook/nullabor")
+```
+
+Look at the "Get started" documentation at http://dicook.github.io/nullabor/index.html
+
+---
+class: inverse middle center
+
+# Statistical inference architecture
+
+is built to measure uncertainty
+
+---
+background-color: white
+background-image: url(images/vis_inf.png)
+background-size: 95%
+background-position: 100% 1%
+
+Statistical &lt;br&gt; inference &lt;br&gt; architecture
+
+---
+background-color: white
+# Group A1 Data vis challenge
+
+Which display of uncertainty is better?
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-13-1.png" width="100%" /&gt;
+
+---
+# Thanks for listening!
+
+Here's what I hope you take away from this talk:
+
+- Uncertainty means what might change if you had a different sample
+- This is what statistical inference addresses
+- Plots can be embedded into an inferential framework
+- Crowd-sourcing can help with conducting inference with plots
+- Visual inference might be helpful to test your new ideas for adding indications of uncertainty into your displays
+
+---
+### Additional reading
+
+.tiny[
+^ Buja et al (2009) Statistical Inference for Exploratory Data Analysis and Model Diagnostics, RSPT A &lt;br&gt;
+^ Wickham et al (2010) Graphical Inference for Infovis, TVCG &lt;br&gt;
+^ Hofmann et al (2012) Graphical Tests for Power Comparison of Competing Design, TVCG &lt;br&gt;
+^ Majumder et al (2013) Validation of Visual Statistical Inference, Applied to Linear Models, JASA &lt;br&gt;
+^ Yin et al (2013) Visual Mining Methods for RNA-Seq data: Examining Data structure, Understanding Dispersion estimation and Significance Testing, JDMGP &lt;br&gt;
+^ Zhao, et al (2014) Mind Reading: Using An Eye-tracker To See How People Are Looking At Lineups, IJITA &lt;br&gt;
+^ Lin et al (2015) Does host-plant diversity explain species richness in insects? Ecological Entomology&lt;br&gt;
+^ Roy Chowdhury et al (2015) Using Visual Statistical Inference to Better Understand Random Class Separations in High Dimension, Low Sample Size Data, CS &lt;br&gt;
+^ Loy et al (2017) Model Choice and Diagnostics for Linear, &lt;br&gt; Mixed-Effects Models Using Statistics on Street Corners, JCGS &lt;br&gt;
+^ Roy Chowdhury et al (2018) Measuring Lineup Difficulty By Matching Distance Metrics with Subject Choices in Crowd- Sourced Data, JCGS &lt;br&gt;
+^ Vanderplas et al (2020) Testing Statistical Charts: What Makes a Good Graph? ARSIA &lt;br&gt;
+^ Vanderplas et al (2021) Statistical significance calculations for scenarios in visual inference. Stat. &lt;br&gt;
+]
+
+---
+class: inverse middle
+background-image: url(images/wattle_bee.jpg)
+background-position: 99% 1%
+background-size: 25%
+
+# Acknowledgements
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan), with **wattle theme** created from [xaringanthemer](https://github.com/gadenbuie/xaringanthemer).
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+
+Slides are available at [https://dicook.org/files/Rostock2021/slides.html](https://dicook.org/files/NCB2021/slides.html) and supporting files at [https://github.com/dicook/Rostock2021](https://github.com/dicook/NCB2021).
+
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.
+
+.footnote[Image credit: Di Cook, 2018]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
