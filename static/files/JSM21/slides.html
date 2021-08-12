@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>What Can Statistical Graphics Speak to Us About Deep Learning and Complex Models?</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Professor Di Cook Monash University" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="mytheme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: inverse middle
+background-image: url(images/redgum.jpg)
+background-position: 100% 110%
+background-size: 30%
+
+# What Can Statistical Graphics Speak to Us About Deep Learning and Complex Models?
+
+&lt;br&gt;
+&lt;br&gt;
+### .lightgreen[Professor Di Cook &lt;br&gt; Econometrics and Business Statistics &lt;br&gt;Monash University]
+
+
+&lt;br&gt;
+.green[JSM '21, Aug 12 (2AM Aug 13) 2021]
+
+
+---
+class: inverse middle
+background-image: url(images/redgum.jpg)
+background-position: 110% 0%
+background-size: 50%
+
+- .lightgreen[Dr Kevin Moon] &lt;br&gt; Introduction to Deep Learning &lt;br&gt; for Computer Vision &lt;br&gt; &lt;br&gt;
+- .lightgreen[Dr Susan VanderPlas] &lt;br&gt; How Do You Define a Circle? &lt;br&gt; Perception and Computer Vision Diagnostics &lt;br&gt;&lt;br&gt;
+- .lightgreen[Dr Stuart Lee] &lt;br&gt; Casting Multiple Shadows:  High-Dimensional &lt;br&gt;Interactive Data Visualization with Tours &lt;br&gt;and Embeddings 
+
+---
+class: inverse middle
+
+# Key points from each talk
+
+# How the topics are related
+
+# Challenges for statistical graphics
+
+---
+class: inverse middle
+
+# Kevin Moon: deep learning
+
+I like to think about a deep learning model using a different diagram
+
+---
+
+Thinking about images as data, requires unpacking into variables:
+
+&lt;center&gt;
+&lt;img src="images/img_nn.jpg" width="60%" /&gt;
+&lt;/center&gt;
+
+---
+
+
+- Proximity in an image matters though. 
+- The dimension reduction takes into account of neighbouring cells in the image, using filters
+
+&lt;img src="images/covnet2.jpg" width="100%" /&gt;
+
+---
+# Susan VanderPlas: shoe prints
+
+.left-code[
+
+Computer vision model trained to distinguish different shoe treads.
+
+A lot of graphics used to diagnose the model fit. 
+]
+
+.right-plot[
+
+&lt;img src="images/heatmap-test_image.png" width="100%"&gt;
+&lt;img src="images/heatmap-text-2-seychelles-slow-down-blush-metallic_product_9017725_color_34700.png" width="100%"&gt;
+
+]
+
+---
+# Stuart Lee: High-d vis
+
+.left-code[
+These vis techniques can be used to help understand the results from deep learning. Here's an example for classifying [Google Quickdraw Sketches](https://quickdraw.withgoogle.com).
+]
+
+.right-plot[
+&lt;center&gt;
+&lt;img src="images/sketches_image.png" width = "100%"&gt;
+&lt;/center&gt;
+]
+
+---
+
+.left-code[
+
+&lt;center&gt;
+&lt;img src="images/sketches_pc.png" width="100%"&gt;
+&lt;/center&gt;
+
+]
+
+.right-plot[
+&lt;center&gt;
+&lt;img src="images/sketches.gif" width = "100%"&gt;
+&lt;/center&gt;
+]
+
+---
+class: inverse middle 
+# Human vs computer
+
+- Giora Simchoni's post and talks
+- Our experiments in getting computer to do our chores
+
+---
+background-image: url(images/simchoni.png)
+background-size: 80%
+
+---
+.left-code[
+Trained a computer vision two ways:
+
+- classification, significant correlation vs not
+- regression, to predict the correlation
+
+.green[Success, picked plot 16]
+]
+.right-plot[
+
+&lt;center&gt;
+&lt;img src="images/simchoni_test1.png" width="120%" /&gt;
+&lt;/center&gt;
+]
+---
+.left-code[
+Trained a computer vision two ways:
+
+- classification, significant correlation vs not
+- regression, to predict the correlation
+
+.green[Success, failed to pick plot 4]
+]
+.right-plot[
+&lt;center&gt;
+&lt;img src="images/simchoni_test2.png" width="120%" /&gt;
+&lt;/center&gt;
+]
+
+---
+.left-code[
+Trained a computer vision two ways:
+
+- classification, significant correlation vs not
+- regression, to predict the correlation
+
+.pink[Fail! Doesn't see the strong nonlinear association. Picks the most linear.]
+]
+.right-plot[
+&lt;img src="images/simchoni_test3.png" width="100%" /&gt;
+]
+
+---
+background-image: url(images/simchoni2.png)
+background-size: contain
+
+[Giora Simchoni's JSM 2019 talk](http://giorasimchoni.com/deep_visual_inference.html#/1)
+
+---
+
+.left-code[
+Our experiment 1: training computer to read residual plot
+]
+
+.right-plot[
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;table&gt;
+&lt;tr&gt; &lt;td&gt; Rank &lt;/td&gt; &lt;td&gt; Test type &lt;/td&gt; &lt;td&gt; Number correct&lt;/td&gt; &lt;td&gt; Proportion &lt;/td&gt; &lt;/tr&gt;
+&lt;tr&gt; &lt;td&gt; 1 &lt;/td&gt; &lt;td&gt; human &lt;/td&gt; &lt;td&gt; 47/70 &lt;/td&gt; &lt;td&gt; 0.67 &lt;/td&gt; &lt;/tr&gt;
+&lt;tr&gt; &lt;td&gt; 2 &lt;/td&gt; &lt;td&gt; t-test &lt;/td&gt; &lt;td&gt; 43/70 &lt;/td&gt; &lt;td&gt; 0.61 &lt;/td&gt; &lt;/tr&gt;
+&lt;tr&gt; &lt;td&gt; 3 &lt;/td&gt; &lt;td&gt; computer &lt;/td&gt; &lt;td&gt; 39/70 &lt;/td&gt; &lt;td&gt; 0.55 &lt;/td&gt; &lt;/tr&gt;
+&lt;/table&gt;
+]
+
+---
+
+Our experiment 2: training computer to read residual plot
+
+.left-code[
+&lt;img src="images/new_computer_v_human.png" width="100%" /&gt;
+
+]
+.right-plot[
+
+&lt;table&gt;
+&lt;tr&gt; &lt;th&gt; &lt;/th&gt; &lt;th&gt; &lt;/th&gt; &lt;th colspan="2"&gt; Computer &lt;/th&gt; &lt;/tr&gt;
+&lt;tr&gt; &lt;th&gt; &lt;/th&gt; &lt;th&gt;  &lt;/th&gt; &lt;th&gt; Not &lt;/th&gt; &lt;th&gt; Linear &lt;/th&gt; &lt;/th&gt; &lt;/tr&gt;
+&lt;tr&gt; &lt;th rowspan="2"&gt; Human &lt;/th&gt; &lt;th&gt; Not &lt;/th&gt; &lt;td&gt; 27 &lt;/td&gt; &lt;td&gt; 0 &lt;/td&gt; &lt;/tr&gt;
+&lt;tr&gt;  &lt;th&gt; Linear &lt;/th&gt; &lt;td&gt; 15 &lt;/td&gt; &lt;td&gt; 28 &lt;/td&gt; &lt;/tr&gt;
+&lt;/table&gt;
+]
+
+---
+# Software
+
+The [keras](https://keras.rstudio.com) package in R, interfaces to python software, provides a convenient way to fit the convolutional neural network. 
+
+&lt;img src="images/dlwR.png" width="30%" /&gt;
+
+
+
+---
+# Things to work on <i class="fas  fa-rocket "></i>
+
+- Visualisation for computer vision model fits to
+    - diagnose 
+    - interpret 
+- Computer vision models to do some of the analysis work that we typically duck, e.g. read residual plots
+
+
+---
+class: middle center
+
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
