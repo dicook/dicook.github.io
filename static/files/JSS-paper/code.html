@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title> C code for Computing a Grand Tour </title>
+</head>
+<body>
+
+<a href="paper.html"> Back </a>
+<hr>
+<h1> C Code for Computing a Grand Tour </h1>
+<a href="code/gt.tar.gz"> Tar'd files </a> | 
+<a href="code/Makefile"> Makefile </a> | 
+<a href="code/main.c"> main.c </a> | 
+<a href="code/defs_and_types.h.c"> defs_and_types.h </a> | 
+<a href="code/read.c"> read.c </a> | 
+<a href="code/gt.c"> gt.c </a> | 
+<a href="code/gt.h"> gt.h </a> | 
+<a href="code/gt_util.c"> gt_util.c </a> | 
+<a href="code/gt_util.h"> gt_util.h </a> | 
+<a href="code/svd.c"> svd.c </a> | 
+<a href="code/util.c"> util.c </a> | 
+<a href="code/util.h"> util.h </a>
+
+<P><HR>
+
+<P> <b> Usage: </b>
+
+<P>
+
+<PRE>
+  gt datafilename proj_dim tourlen stepscale
+
+Optional arguments:
+  proj_dim = Projection Dimension, default is 2
+  tourlen = The number of projections to calculate, default is 150
+  stepscale = The speed factor: 1 is slow, 100 is fast, default is 10
+</PRE>
+
+<P> <b> Description: </b>
+
+<P> This code takes a data file and several optional arguments and
+returns a sequence of grand tour projection vectors. Small
+modifications can be made to have the code return the projected data.
+The algorithm is described in detail in <a
+href="http://www.research.att.com/~andreas/papers/dynamic-projections.ps.gz">
+Buja, Cook, Asimov, Hurley (1997)</a>. The code generates a grand tour
+similar to the one available in XGobi, with the major difference being
+that in XGobi the projection is 2D, but this code can generate grand
+tours of 1D, 2D, 3D or any dimension, lower than that of the data,
+projections.
+
+<P> The main operational functions are:
+
+<P><em> run_tour() </em> is the main driving engine of the tour. This
+calls the functions that sequentially compute the projections. 
+
+
+<P> <em> preproject_data() </em> preprojects the data into the space
+spanned by the starting and ending bases at the end of each
+interpolation stage. This speeds calculations during the interpolation
+stage.
+
+<P> <em> tour_reproject() </em> calculates the projected data and the
+corresponding variable axes at each tour step.
+
+<P> <em> gen_norm_variates() </em> generates random normal variates
+used to generate the new random bases.
+
+<P> <em> new_random_basis() </em> transforms the normal random
+variates into random variates from a <em>(p-1)</em>-dimensional sphere
+in <em>p</em>-space, that form the new ending basis.
+
+<P> <em> path() </em> calculates the new interpolation path, from the
+current basis to the new ending basis. Several steps are involved: the
+first is calculating the principal angles and corresponding principal
+vectors between the starting and ending bases, then the preprojection
+basis is computed, and finally the viewing frames.
+
+<P> <em> reached_target_plane() </em> checks if the interpolation
+stage is finished.
+
+<P> <em> finishing_step() </em> does the final small increment needed
+to get to the ending basis.
+
+<P> <em> mean_lgdist() </em> finds the distance between the point
+furthest from the sample mean. This is used to scale the data into the
+plotting window. It is more effective than using the minimum and
+maximum for each variable when there are 3 or more begin used in a
+grand tour. As the number of variables grows the distance of the point
+farthest from the mean grows at a rate proportional to the square root
+of the number of variables. This scaling method helps to take this
+into account for different data sets, to keep all the data within the
+plotting window. There maybe other/better ways to do this.
+
+<P> <em> scale_into_window() </em> scales the projected data into
+plotting coordinates, currently assumed to be between -1 and 1.
+
+<P> <em> gt_pipeline() </em> scale the raw data into a -1 to +1
+p-dimensional box.
+
+<P> <b> Using S/S-Plus to generate pictures: </b>
+
+<P>Pipe the output to a file, say "gt_proj". The following S-code will
+read the file, and plot the consecutive projections of the data, 25
+plots per page:
+
+<P><a href="code/1d-gt.s"> 1D </a> | 
+<a href="code/2d-gt.s"> 2D </a> | 
+<a href="code/3d-gt.s"> 3D </a> | 
+<a href="code/4d-gt.s"> 4D </a> | 
+<a href="code/5d-gt.s"> 5D </a>
+
+<hr>
+<address><BR>
+Dianne Cook, Dept of Statistics, ISU, 325 Snedecor Hall, Ames, IA 50011-1210<BR>
+  Tel: (515) 294 8865, Fax: (515) 294 4040<BR>
+  email: <a href="mailto:dicook@iastate.edu">dicook@iastate.edu</a><BR>
+  http://www.public.iastate.edu/~dicook/ <BR>
+</A><BR>
+</address>
+<!-- hhmts start -->
+Last modified: Sun Sep 21 14:30:20 CDT 1997
+<!-- hhmts end -->
+</body> </html>
+

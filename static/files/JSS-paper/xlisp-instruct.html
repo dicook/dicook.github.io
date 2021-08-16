@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Setting up web browser for XLispStat</title>
+</head>
+
+<body> 
+<OL>
+<LI>
+
+XLispStat needs to be installed on your computer. For information on XLispStat
+<a href="ftp://ftp.stat.umn.edu/pub/xlispstat/"> click
+here </a>. This is the way that I have it setup:
+
+<LI>
+Add a line to your .mime.types file (maybe the system administrator
+needs to do this.) 
+<P> 
+ <TT> application/x-xlispstat xli </TT>
+<P> 
+<LI>
+Add a line to your personal .mailcap file:
+<P>
+ <TT> application/x-xlispstat; $HOME/run_xlispstat %s </TT>
+<P>
+where run_xlispstat is an executable shell script that has two lines:
+<PRE>   cd /usr/local/xlispstat/xlispstat-3-44
+   xlispstat="xterm -e xlispstat"</PRE>
+</OL>
+
+Some web browsers allow you to set this up interactively, for example,
+in netscape using the "Options" and "General Preferences" leads you
+through the setup.
+
+<P>
+<hr>
+<address>
+<BR>
+Dianne Cook, Dept of Statistics, ISU, 323 Snedecor Hall, Ames, IA 50011-1210<BR>
+  Tel: (515) 294 8865, Fax: (515) 294 4040<BR>
+  email: <a href="mailto:dicook@iastate.edu">dicook@iastate.edu</a><BR>
+  http://www.public.iastate.edu/~dicook/ <BR>
+</A><BR>
+</address>
+<!-- hhmts start -->
+Last modified: Thu Sep 18 09:53:34 PDT 1997
+<!-- hhmts end -->
+</body></html>

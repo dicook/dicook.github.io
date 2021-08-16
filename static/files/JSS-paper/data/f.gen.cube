@@ -1,0 +1,8 @@
+f.gen.cube<-function(p=9)
+{
+  x<-as.matrix(c(0,1))
+  for (i in 1:(p-1))
+  {
+    x<-cbind(rbind(x,x),c(rep(0,dim(x)[1]),rep(1,dim(x)[1])))
+  }
+}

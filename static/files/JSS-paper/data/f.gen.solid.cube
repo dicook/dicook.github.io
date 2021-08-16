@@ -1,0 +1,5 @@
+f.gen.solid.cube<-function(n=500,p=9)
+{
+  x<-matrix(runif(n*p),ncol=p)
+  return(x)
+}

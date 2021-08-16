@@ -1,0 +1,17 @@
+# Generate a sample from a multivariate standard normal distribution,
+# default is 5-D 100 points
+f.gen.norm <- function(n = 100, p = 5) {
+  x <- matrix(rnorm(n * p), ncol = p)
+  x
+}
+# Transform the sample through a variance-covariance matrix
+f.transf.dat<-function(data, vc)
+{
+# assuming symmetric vc
+        vsvd <- eigen(vc)
+        evc <- vsvd$vectors
+        evc <- apply(vsvd$vectors, 2, norm.vec)
+        evl <- vsvd$values
+        trnsfd.dat <- evc %*% diag(sqrt(evl)) %*% t(evc) %*% t(as.matrix(data))
+        return(t(trnsfd.dat))
+}

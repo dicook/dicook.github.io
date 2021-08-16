@@ -1,0 +1,7 @@
+f.gen.sphere<-
+function(n = 100, p = 5)
+{
+        x <- matrix(rnorm(n * p), ncol = p)
+        xnew <- t(apply(x, 1, norm.vec))
+        xnew
+}

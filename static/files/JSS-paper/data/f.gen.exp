@@ -1,0 +1,5 @@
+f.gen.exp<-function(n = 100, p = 5)
+{
+        x <- matrix(rexp(n * p), ncol = p)
+        return(x)
+}
