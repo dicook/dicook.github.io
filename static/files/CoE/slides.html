@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Challenges for Visualisation in Data Science: High-dimensional spaces, and Statistical Inference</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Professor Di Cook Monash University" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="mytheme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: inverse middle slide-number-off
+background-image: url(images/redgum.jpg)
+background-position: 100% 100%
+background-size: 30%
+
+# Challenges for Visualisation in Data Science: High-dimensional spaces, and Statistical Inference
+
+.green[CoE Spotlight Workshop, Aug 23-25 2021]
+
+.green[[http://dicook.org/talk/CoE/](http://dicook.org/talk/CoE/)]
+
+&lt;br&gt;
+### .lightgreen[Professor Di Cook &lt;br&gt; Econometrics and Business Statistics &lt;br&gt;Monash University]
+
+
+
+
+---
+# About me 👋
+
+- Education
+    - B.Sc./Dip.Ed. Math, Statistics, Biochemisty University of New England, Armidale
+    - M.Sc., Ph.D. Statistics, Rutgers University
+- Positions
+    - Iowa State University: oldest Stats lab in USA
+    - Monash University since 2015
+- Editorial work
+    - Journal of Computational and Graphical Statistics, 2015-2018, first female editor
+    - The R Journal, 2019-2022
+
+---
+background-color: #FFFFFF
+
+# High-dimensional visualisation
+
+Let `\(X_{np}\)` be a data matrix (quantitative), `\(A_{pd}\)` be an orthonormal projection basis, defining a `\(d\)`-D plane in `\(p\)`-space, then `\(Y_{nd} = XA\)` is a `\(d\)`-dimensional projection of the data. `\(A^S\)` is a starting plane, `\(A^T\)` is a target plane. 
+
+.left-code[
+Geodesic interpolationL SVD finds smallest angles between two planes. Angles divided into `\(k\)` intervals, `\(A_1(=A^S), ..., A_k(=A^T)\)`, preserves orthonormality of bases for interpolation, and shortest path between two planes is travelled. 
+]
+.right-plot[
+&lt;center&gt;
+&lt;img src="images/tour_path.png" width="100%"&gt;
+&lt;/center&gt;
+]
+
+---
+count: false
+
+For example, how does t-SNE warp the data/space? ( bioinformatics: Dr Le Cao)
+&lt;br&gt;
+
+&lt;center&gt;
+&lt;iframe title="vimeo-player" src="https://player.vimeo.com/video/439635905?h=d6177c7f54" width="800" height="495" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+
+---
+count: false
+
+.left-code[
+For example, comparing constrained optimisation paths over 5-D sphere (optimisation: Dr Burachik, Dr O'Reilly; statistics on spheres, compositional data: Dr Scealy)
+]
+.right-plot[
+&lt;center&gt;
+&lt;iframe src="https://player.vimeo.com/video/512885379?h=0c2c0e9d8d" width="600" height="600" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+]
+
+---
+# Recent papers
+
+- Lee et al (2021) [A Review of the State-of-the-Art on Tours for Dynamic Visualization of High-dimensional Data](https://arxiv.org/abs/2104.08016)
+- Zhang et al (2021) [Visual Diagnostics for Constrained Optimisation with Application to Guided Tours](https://arxiv.org/abs/2104.03448)
+- Lee et al (2021) [Casting Multiple Shadows: High-Dimensional Interactive Data Visualisation with Tours and Embeddings](https://arxiv.org/abs/2012.06077)
+- Laa et al (2020) [A Slice Tour for Finding Hollowness in High-Dimensional Data](https://doi.org/10.1080/10618600.2020.1777140)
+
+---
+background-color: #FFFFFF
+# Inference for data plots
+
+&lt;center&gt;
+&lt;img src="images/inference.png" width="100%"&gt;
+&lt;/center&gt;
+
+---
+background-color: #FFFFFF
+
+&lt;br&gt;
+Example, Mapping Australia (Australian Cancer Atlas, Dr Mengersen)
+&lt;br&gt;
+&lt;br&gt;
+&lt;center&gt; Choropleth vs hexagon tile map &lt;/center&gt;
+&lt;br&gt;
+
+.left-code[
+&lt;center&gt;
+&lt;img src="images/choro-1.jpg" width="80%"&gt;
+&lt;/center&gt;
+]
+.right-plot[
+&lt;center&gt;
+&lt;img src="images/fullhexmap-1.png" width="98%"&gt;
+&lt;/center&gt;
+]
+---
+background-color: #FFFFFF
+count: false
+
+&lt;center&gt;
+&lt;img src="images/aus_cities_3_geo.png" width="80%"&gt;
+&lt;/center&gt;
+
+---
+background-color: #FFFFFF
+count: false
+
+&lt;center&gt;
+&lt;img src="images/aus_cities_4_hex.png" width="80%"&gt;
+&lt;/center&gt;
+
+---
+background-color: #FFFFFF
+count: false
+
+&lt;center&gt;
+&lt;img src="images/detect-compare-1.jpg" width="80%"&gt;
+&lt;/center&gt;
+
+---
+# Recent papers
+
+- Vanderplas et al (2021) [Statistical Significance Calculations for Scenarios in Visual Inference](https://onlinelibrary.wiley.com/doi/abs/10.1002/sta4.337)
+- Vanderplas et al (2020) [Testing Statistical Charts: What Makes a Good Graph?](https://www.annualreviews.org/doi/abs/10.1146/annurev-statistics-031219-041252)
+- Cook, Reid, Tanaka (2021) [Commentary on "Challenges in Incorporating Exploratory Data Analysis into Statistical Workflow"](https://hdsr.mitpress.mit.edu/pub/2ym7zm34/release/2)
+
+possible connections: Dr Navarro (psychology reading graphics), Dr Hong (visual analytics)
+---
+# Software
+
+Reproducibility, transparency, open science (eg Dr Navarro)
+
+- [tourr](https://cran.r-project.org/web/packages/tourr/index.html): geodesic interpolations between projection planes
+- [geozoo](https://cran.r-project.org/web/packages/geozoo/index.html): a library of high-dimensional shapes
+- [nullabor](https://cran.r-project.org/web/packages/nullabor/index.html): check that your plot pattern is not occurring by chance
+- [liminal](https://cran.r-project.org/web/packages/liminal/index.html): check your nonlinear dimension reduction
+- [ferrn](https://cran.r-project.org/web/packages/ferrn/index.html): diagnostic plots for optimisation
+- [spinfex](https://cran.r-project.org/web/packages/spinifex/index.html): manual steering through high-dimensions
+- [eechidna](https://cran.r-project.org/web/packages/eechidna/index.html): exploring Oz election and Census data
+- [sugarbag](https://cran.r-project.org/web/packages/sugarbag/index.html): hexagon tile map display from spatial polygons
+- [sugrrants](https://cran.r-project.org/web/packages/sugrrants/index.html): graphics for analysing time series data
+- [tsibble](https://cran.r-project.org/web/packages/tsibble/index.html): temporal data in an data- and model-oriented format
+- [tsibbletalk](https://cran.r-project.org/web/packages/tsibbletalk/index.html): linked plots to explore multiple time series
+
+---
+background-color: #FFFFFF
+
+# R Journal improvements
+
+.pull-left[
+&lt;center&gt;
+Current: pdf
+
+&lt;iframe src="https://journal.r-project.org/archive/2021/RJ-2021-050/index.html" height = "800", width = "90%"&gt; &lt;/iframe&gt;
+
+&lt;/center&gt;
+]
+.pull-left[
+&lt;center&gt;
+New: html, interactive graphics
+
+&lt;a src="https://journal.r-project.org/dev/articles/RJ-2021-050/"&gt; &lt;iframe src="https://journal.r-project.org/dev/articles/RJ-2021-050/" height = "800", width = "90%"&gt; &lt;/iframe&gt;  &lt;/a&gt;
+
+&lt;/center&gt;
+]
+
+---
+# Challenges
+
+- Mathematical framework for data visualisation - especially exploratory graphics, without pre-specifying 
+- Tighter integration between complex models and visualisation
+- Diagnosing complex models, explainable AI (XAI)
+- Scriptable interactive graphics, to support data analysis
+- Communication using graphics, building understanding of variability
+- Infrastructure to support easier data analysis and communication - other people can do what you do
+
+---
+class: middle center
+
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
