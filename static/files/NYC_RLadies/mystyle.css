@@ -1,0 +1,71 @@
+:root {
+    --main-color1: #AA591F;
+    --main-color2: #FFD479;
+    --main-color3: #F4AC39;
+    --main-color4: #7B2529;
+    --link-color: #F4AC39;
+    --logo: url("http://dicook.github.io/nullabor/reference/figures/nullabor_hex.png");
+}
+
+.remark-slide-content {
+  font-size: 30px;
+}
+
+.remark-code, .remark-inline-code {
+  color: var(--main-color3);
+}
+
+h1{
+  font-family: 'Sunshiney', cursive;
+  color: var(--main-color4);
+}
+
+h2{
+  font-family: 'Sunshiney', cursive;
+  color: var(--main-color2);
+}
+
+h3, body{
+  font-family: 'Lato', sans-serif;
+  color: var(--main-color1);
+}
+
+.title-slide {
+  width: 100%;
+  background-color: var(--main-color4);
+  color: var(--main-color2);
+}
+
+.remark-slide {
+  background-image: var(--logo);
+  background-size:  20%;
+}
+
+.red {
+  color: red;
+}
+
+.orange {
+  color: orange;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.blue {
+  color: blue;
+}
+
+.green {
+  color: green;
+}
+
+.purple {
+  color: purple;
+}
+
+.aqua {
+  color: #31b09e;
+}
+
