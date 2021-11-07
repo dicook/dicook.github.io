@@ -22,7 +22,7 @@ projects = []
 url_pdf = ""
 url_slides = "http://www.dicook.org/files/MalaysiaR/slides.html"
 url_video = ""
-url_code = http://www.dicook.org/files/MalaysiaR/slides.Rmd"
+url_code = "http://www.dicook.org/files/MalaysiaR/slides.Rmd"
 
 # Does the content use math formatting?
 math = true
