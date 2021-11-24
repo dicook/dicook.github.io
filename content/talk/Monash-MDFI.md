@@ -1,7 +1,7 @@
 +++
 date = 2021-01-01T00:00:00  # Schedule page publish date.
 
-title = "The Role of R and Data Visualisation in Understanding Your World"
+title = "The right to access, open data, open software, diagnostics and statistics as integral components of AI"
 time_start = 2021-11-25T16:00:00
 time_end = 2021-11-25T17:00:00
 abstract = " "
