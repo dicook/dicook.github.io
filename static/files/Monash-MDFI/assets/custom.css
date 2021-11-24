@@ -1,0 +1,79 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+ul li {
+  list-style-type: none;
+}
+ul li:before {
+  content: "\f188";
+  font-size: 28px;
+  font-family: "FontAwesome";
+  margin-right: 10px;
+  color: #D93F00;
+}
+ul li li:before {
+  content: "\f0f4";
+  font-size: 20px;
+  font-family: "FontAwesome";
+  margin-right: 5px;
+  color: #D93F00;
+}
+
+.tip{
+    padding: 0.35em;
+    margin: 0.35em 0;
+    padding-left: 10px;
+    background-size: 70px;
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    background-image: url("blub.png");
+    min-height: 50px;
+    color: #1f5386;
+    background-color: #bed3ec;
+    border: dashed 5px #1f5386;
+    width: 100%;
+    display: table;
+    margin: 0 auto;
+  }
+
+.tip > ul li::before {
+  color: #003F7F;
+}
+
+ul { text-align:  left; }
+
+.pull-far-right {
+  float: right;
+  padding-left: 50px;
+  width: 40%;
+}
+
+.circle-image {
+  background: #eee;
+  border-radius: 100%;
+  margin-bottom: 1rem;
+  border: solid 3px black;
+  height: 6em;
+  width: 6em;
+  margin: auto;
+  overflow: hidden;
+}
+
+.wider {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.fill-box {
+  border-color: #D93F00;
+  display: inline-block;
+  margin:10px auto;
+  background-color: white;
+  color: #555555;
+  padding: 0.3em 20px 0.3em 20px;
+  line-height:1.6;
+  position: relative;
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-left-width: 60px;
+}
