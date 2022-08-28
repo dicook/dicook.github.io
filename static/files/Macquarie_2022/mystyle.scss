@@ -1,0 +1,76 @@
+// Include theme-specific fonts
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+/*-- scss:defaults --*/
+// Override theme settings (see ../template/settings.scss)
+// Base settings for all themes that can optionally be
+// overridden by the super-theme
+
+// Background of the presentation
+$backgroundColor: #FFFFFF;
+
+// Primary/body text
+$mainFont: 'Lato', sans-serif;
+$mainFontSize: 30px;
+$mainColor: #909078;
+
+// Vertical spacing between blocks of text
+$blockMargin: 20px;
+
+// Headings
+$headingMargin: 0 0 $blockMargin 0;
+$headingFont: 'Lato', Impact, sans-serif;
+$headingColor: #a8c0a8;
+$headingLineHeight: 1.2;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingTextShadow: none;
+$headingFontWeight: normal;
+$heading1TextShadow: $headingTextShadow;
+
+$heading1Size: 3.00em;
+$heading2Size: 2.11em;
+$heading3Size: 1.55em;
+$heading4Size: 1.00em;
+
+$codeFont: monospace;
+
+// Links and actions
+$linkColor: #d89060;
+$linkColorHover: darken( $linkColor, 20% );
+
+// Text selection
+$selectionBackgroundColor: #FF5E99;
+$selectionColor: #fff;
+
+// start using css here
+#title-slide > h1 {
+  color: #c07848;
+}
+
+#title-slide .author {
+  color: #909078;
+  position: relative;
+  padding-left: 600px;
+  text-align: left;
+}
+
+#title-slide {
+  top: 0 !important;
+}
+
+#title-slide > .author:first-of-type {
+  margin-top: 100px;
+}
+
+#title-slide > .footer {
+  color: #a8c0a8;
+}
+
+#footer {
+  color: #a8c0a8;
+}
+
+#code {
+  font-size: 30px;
+}
