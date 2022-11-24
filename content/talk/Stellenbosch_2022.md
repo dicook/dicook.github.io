@@ -1,7 +1,7 @@
 +++
 date = 2017-01-01T00:00:00  # Schedule page publish date.
 
-title = "A showcase of new methods for high dimensional data viewing with linear projections and sections"
+title = "Visually exploring local explanations to understand complex machine learning models"
 time_start = 2022-11-24T09:00:00
 time_end = 2022-07-24T10:00:00
 abstract = " "
