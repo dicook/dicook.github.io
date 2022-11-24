@@ -1,0 +1,89 @@
+// Include theme-specific fonts
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap');
+
+/*-- scss:defaults --*/
+// Override theme settings (see ../template/settings.scss)
+// Base settings for all themes that can optionally be
+// overridden by the super-theme
+
+// Background of the presentation
+$backgroundColor: #FFFFFF;
+
+// Primary/body text
+$mainFont: 'Noto Sans', sans-serif;
+$mainFontSize: 30px;
+$mainColor: #6e7d81;
+
+// Vertical spacing between blocks of text
+$blockMargin: 20px;
+
+// Headings
+$headingMargin: 0 0 $blockMargin 0;
+$headingFont: 'Noto Sans', sans-serif;
+$headingColor: #79815c;
+$headingLineHeight: 1.1;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingTextShadow: none;
+$headingFontWeight: normal;
+$heading1TextShadow: $headingTextShadow;
+
+$heading1Size: 3.00em;
+$heading2Size: 2.11em;
+$heading3Size: 1.55em;
+$heading4Size: 1.00em;
+
+// Code 
+$codeFont: monospace;
+$codeFontSize: 1.5em;
+$code-color: #9fa997;
+$code-block-bg: #cad7dd;
+
+// Links and actions
+$linkColor: #9fa997;
+$linkColorHover: darken( $linkColor, 20% );
+
+// Text selection
+$selectionBackgroundColor: #FF5E99;
+$selectionColor: #fff;
+
+// start using css here
+h1 {
+  font-family: 'Noto Sans', sans-serif;
+  color: #79815c;
+  font-size: 72px;
+  font-weight: bold;
+}
+
+// start using css here
+#title-slide > h1 {
+  font-family: 'Noto Sans', sans-serif;
+  color: #79815c;
+  font-size: 72px;
+  font-weight: bold;
+}
+
+// Styling title slide
+#title-slide .author {
+  font-family: 'Noto Sans', sans-serif;
+  color: #9fa997;
+  position: relative;
+  font-weight: medium;
+}
+
+#title-slide {
+  top: 0 !important;
+}
+
+#title-slide > .author:first-of-type {
+  margin-top: 100px;
+}
+
+#title-slide > .footer {
+  color: #a8c0a8;
+}
+
+// Code is too small
+#remark-code {
+  font-size: 50px;
+} 
