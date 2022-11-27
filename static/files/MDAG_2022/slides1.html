@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="slides1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="slides1_files/libs/quarto-html/tabby.min.js"></script>
+<script src="slides1_files/libs/quarto-html/popper.min.js"></script>
+<script src="slides1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="slides1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="slides1_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="slides1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.0.38">
+
+  <meta name="author" content="Session 1    Professor Di Cook   Monash University    @visnut@aus.social">
+  <title>Visual methods for multivariate data - a journey beyond 3D</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="slides1_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="slides1_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="slides1_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="slides1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="slides1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="slides1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="slides1_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="img/title_bg.png" data-background-position="30% 45%" data-background-size="90%" class="center">
+  <h1 class="title">Visual methods for multivariate data - a journey beyond 3D</h1>
+  <p class="author">Session 1 <br><br> Professor Di Cook <br> Monash University <br><br> <span class="citation" data-cites="visnut">@visnut</span><span class="citation" data-cites="aus.social">@aus.social</span></p>
+</section>
+
+<section id="outline" class="slide level2">
+<h2>Outline</h2>
+<div class="column" style="width:45%;">
+<ul>
+<li><strong style="color: #aec7b2"> Session 1: Introduction to tours </strong>
+<ul>
+<li>Getting started: package installs</li>
+<li>What is a tour?</li>
+<li>Interpreting what you see</li>
+<li>Different types of tours</li>
+<li>Interpreting what you see</li>
+<li>Creating your own tour display</li>
+<li>Saving your tour plot</li>
+</ul></li>
+</ul>
+</div>
+<div class="column" style="width:5%;">
+
+</div>
+<div class="column" style="width:45%;">
+<ul>
+<li><strong style="color: #aec7b2"> Session 2: Combining tours with models </strong>
+<ul>
+<li>Model in the data space philosophy</li>
+<li>Comparison to non-linear dimension reduction: liminal</li>
+<li>Utilising random forest diagnostics</li>
+<li>Dendrograms in the data space</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="getting-set-up-12" class="slide level2">
+<h2>Getting set up (1/2)</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Install from CRAN</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tourr"</span>, </span>
+<span id="cb1-3"><a href="#cb1-3"></a>                   <span class="st">"geozoo"</span>, </span>
+<span id="cb1-4"><a href="#cb1-4"></a>                   <span class="st">"spinifex"</span>, </span>
+<span id="cb1-5"><a href="#cb1-5"></a>                   <span class="st">"liminal"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>                   <span class="st">"tidyverse"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>                   <span class="st">"palmerpenguins"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8"></a>                   <span class="st">"RColorBrewer"</span>))</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># Getting help                 </span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="fu">help</span>(<span class="at">package=</span><span class="st">"tourr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>tourr</code>: Implements geodesic interpolation and basis generation functions that allow you to create new tour methods from R.</p>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:50%;">
+<p><code>geozoo</code>: Geometric objects defined in ‘geozoo’ can be simulated or displayed in the R package ‘tourr’.</p>
+<p><code>spinifex</code>: Implements manual control, where the contribution of a selected variable can be adjusted between -1 to 1, to examine the sensitivity of structure in the data to that variable.</p>
+<p><code>liminal</code>: A special purpose package to compare the views of the data provided by non-linear dimension with tSNE and a tour.</p>
+</div>
+</div>
+</section>
+<section id="getting-set-up-22" class="slide level2">
+<h2>Getting set up (2/2)</h2>
+<ul>
+<li>Grab the <code>slides1.R</code> file from <a href="https://github.com/dicook/MDAG_2022">https://github.com/dicook/MDAG_2022</a></li>
+</ul>
+<p>My version of R, and installed packages is:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; R version 4.2.1 (2022-06-23)
+#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+#&gt; Running under: macOS Big Sur ... 10.16
+#&gt; 
+#&gt; Matrix products: default
+#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib
+#&gt; 
+#&gt; locale:
+#&gt; [1] en_AU.UTF-8/en_AU.UTF-8/en_AU.UTF-8/C/en_AU.UTF-8/en_AU.UTF-8
+#&gt; 
+#&gt; attached base packages:
+#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     
+#&gt; 
+#&gt; other attached packages:
+#&gt;  [1] showtext_0.9-5  showtextdb_3.0  sysfonts_0.8.8  ggthemes_4.2.4  forcats_0.5.2   stringr_1.4.1   dplyr_1.0.10   
+#&gt;  [8] purrr_0.3.5     readr_2.1.3     tidyr_1.2.1     tibble_3.1.8    ggplot2_3.4.0   tidyverse_1.3.2 knitr_1.40     
+#&gt; 
+#&gt; loaded via a namespace (and not attached):
+#&gt;  [1] tidyselect_1.2.0    xfun_0.34           haven_2.5.1         gargle_1.2.1        colorspace_2.0-3   
+#&gt;  [6] vctrs_0.5.1         generics_0.1.3      htmltools_0.5.3     yaml_2.3.6          utf8_1.2.2         
+#&gt; [11] rlang_1.0.6         pillar_1.8.1        withr_2.5.0         glue_1.6.2          DBI_1.1.3          
+#&gt; [16] dbplyr_2.2.1        modelr_0.1.9        readxl_1.4.1        lifecycle_1.0.3     munsell_0.5.0      
+#&gt; [21] gtable_0.3.1        cellranger_1.1.0    rvest_1.0.3         evaluate_0.18       tzdb_0.3.0         
+#&gt; [26] fastmap_1.1.0       curl_4.3.3          fansi_1.0.3         broom_1.0.0         backports_1.4.1    
+#&gt; [31] scales_1.2.1        googlesheets4_1.0.1 jsonlite_1.8.3      fs_1.5.2            hms_1.1.2          
+#&gt; [36] digest_0.6.30       stringi_1.7.8       grid_4.2.1          cli_3.4.1           tools_4.2.1        
+#&gt; [41] magrittr_2.0.3      crayon_1.5.2        pkgconfig_2.0.3     ellipsis_0.3.2      xml2_1.3.3         
+#&gt; [46] reprex_2.0.2        googledrive_2.0.0   lubridate_1.9.0     timechange_0.1.1    assertthat_0.2.1   
+#&gt; [51] rmarkdown_2.18      httr_1.4.4          rstudioapi_0.14     R6_2.5.1            compiler_4.2.1</code></pre>
+</div>
+</div>
+</section>
+<section id="load-the-penguins-data" class="slide level2" data-background-image="https://allisonhorst.github.io/palmerpenguins/logo.png" data-background-size="100px" data-background-position="96% 1%">
+<h2>Load the penguins data</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bill_length_mm)) </span>
+<span id="cb3-4"><a href="#cb3-4"></a>penguins_sub <span class="ot">&lt;-</span> penguins[,<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>)] <span class="sc">%&gt;%</span> </span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric),  <span class="sc">~</span> <span class="fu">scale</span>(.)[,<span class="dv">1</span>])) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">rename</span>(<span class="at">bl =</span> bill_length_mm,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>         <span class="at">bd =</span> bill_depth_mm,</span>
+<span id="cb3-8"><a href="#cb3-8"></a>         <span class="at">fl =</span> flipper_length_mm,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>         <span class="at">bm =</span> body_mass_g)</span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="fu">summary</span>(penguins_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;       species          bl              bd              fl              bm       
+#&gt;  Adelie   :151   Min.   :-2.17   Min.   :-2.05   Min.   :-2.06   Min.   :-1.87  
+#&gt;  Chinstrap: 68   1st Qu.:-0.86   1st Qu.:-0.79   1st Qu.:-0.78   1st Qu.:-0.81  
+#&gt;  Gentoo   :123   Median : 0.10   Median : 0.08   Median :-0.28   Median :-0.19  
+#&gt;                  Mean   : 0.00   Mean   : 0.00   Mean   : 0.00   Mean   : 0.00  
+#&gt;                  3rd Qu.: 0.84   3rd Qu.: 0.78   3rd Qu.: 0.86   3rd Qu.: 0.68  
+#&gt;                  Max.   : 2.87   Max.   : 2.20   Max.   : 2.14   Max.   : 2.62</code></pre>
+</div>
+</div>
+<p><br> See <a href="https://allisonhorst.github.io/palmerpenguins/">Allison Horst’s web site</a> for more details.</p>
+</section>
+<section id="about-the-penguins-data" class="slide level2">
+<h2>About the penguins data</h2>
+
+<table>
+<tbody><tr>
+<td width="40%">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Adélie_Penguin.jpg/320px-Adélie_Penguin.jpg" width="100%">
+</td>
+<td width="30%">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Pygoscelis_papua_-Jougla_Point%2C_Wiencke_Island%2C_Palmer_Archipelago_-adults_and_chicks-8.jpg/273px-Pygoscelis_papua_-Jougla_Point%2C_Wiencke_Island%2C_Palmer_Archipelago_-adults_and_chicks-8.jpg" width="100%">
+</td>
+<td width="30%">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/A_chinstrap_penguin_%28Pygoscelis_antarcticus%29_on_Deception_Island_in_Antarctica.jpg/201px-A_chinstrap_penguin_%28Pygoscelis_antarcticus%29_on_Deception_Island_in_Antarctica.jpg" width="90%">
+</td>
+</tr>
+<tr>
+<td>
+Adélie <sup>1</sup>
+</td>
+<td>
+Gentoo <sup>2</sup>
+</td>
+<td>
+Chinstrap <sup>3</sup>
+</td>
+</tr>
+
+</tbody></table>
+<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Adélie_Penguin.jpg/320px-Adélie_Penguin.jpg">Adelie image at Wikimedia Commons</a></p></li><li id="fn2" role="doc-endnote"><p><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Pygoscelis_papua_-Jougla_Point%2C_Wiencke_Island%2C_Palmer_Archipelago_-adults_and_chicks-8.jpg/273px-Pygoscelis_papua_-Jougla_Point%2C_Wiencke_Island%2C_Palmer_Archipelago_-adults_and_chicks-8.jpg">Gentoo image at Wikimedia Commons</a></p></li><li id="fn3" role="doc-endnote"><p><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/A_chinstrap_penguin_%28Pygoscelis_antarcticus%29_on_Deception_Island_in_Antarctica.jpg/201px-A_chinstrap_penguin_%28Pygoscelis_antarcticus%29_on_Deception_Island_in_Antarctica.jpg">Chinstrap image at Wikimedia Commons</a></p></li></ol></aside></section>
+<section id="simple-scatterplot" class="slide level2">
+<h2>Simple scatterplot</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(penguins_sub, </span>
+<span id="cb5-2"><a href="#cb5-2"></a>   <span class="fu">aes</span>(<span class="at">x=</span>fl, </span>
+<span id="cb5-3"><a href="#cb5-3"></a>       <span class="at">y=</span>bm,</span>
+<span id="cb5-4"><a href="#cb5-4"></a>       <span class="at">colour=</span>species)) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.8</span>, </span>
+<span id="cb5-6"><a href="#cb5-6"></a>             <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">scale_colour_brewer</span>(<span class="st">""</span>,</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    <span class="at">palette=</span><span class="st">"Dark2"</span>) <span class="sc">+</span> </span>
+<span id="cb5-9"><a href="#cb5-9"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>,</span>
+<span id="cb5-10"><a href="#cb5-10"></a>  <span class="at">legend.position=</span><span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="slides1_files/figure-revealjs/runthis2-1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="our-first-tour" class="slide level2">
+<h2>Our first tour</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>clrs <span class="ot">&lt;-</span> <span class="fu">brewer.pal</span>(<span class="dv">3</span>, <span class="st">"Dark2"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>col <span class="ot">&lt;-</span> clrs[</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">as.numeric</span>(</span>
+<span id="cb6-5"><a href="#cb6-5"></a>    penguins_sub<span class="sc">$</span>species)]</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="fu">animate_xy</span>(penguins_sub[,<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>], </span>
+<span id="cb6-7"><a href="#cb6-7"></a>           <span class="at">col=</span>col, </span>
+<span id="cb6-8"><a href="#cb6-8"></a>           <span class="at">axes=</span><span class="st">"off"</span>, </span>
+<span id="cb6-9"><a href="#cb6-9"></a>           <span class="at">fps=</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+
+</div>
+<p><img src="penguins2d.gif" width="100%"></p>
+</div>
+</div>
+</section>
+<section id="what-did-you-see" class="slide level2">
+<h2>What did you see?</h2>
+<ul>
+<li>clusters ✅</li>
+<li>outliers ✅</li>
+<li>linear dependence ✅</li>
+<li>elliptical clusters with slightly different shapes ✅</li>
+<li>separated elliptical clusters with slightly different shapes ✅</li>
+</ul>
+</section>
+<section id="movement-patterns" class="slide level2">
+<h2>Movement patterns</h2>
+<div class="column" style="width:40%;">
+<p>Movement of points, generally in a grand tour, can provide additional information about structure in high-dimensions.</p>
+</div>
+<div class="column" style="width:5%;">
+
+</div>
+<div class="column" style="width:50%;">
+<p><img src="img/tour_movements.png" width="100%"></p>
+</div>
+</section>
+<section id="reading-axes---interpretation" class="slide level2">
+<h2>Reading axes - interpretation</h2>
+<p>Length and direction of axes relative to the pattern of interest</p>
+<div class="column" style="width:45%;">
+<p><img src="img/reading_axes1.png" width="100%"></p>
+</div>
+<div class="column" style="width:5%;">
+
+</div>
+<div class="column" style="width:45%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="slides1_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-axes---interpretation-1" class="slide level2">
+<h2>Reading axes - interpretation</h2>
+<p>Length and direction of axes relative to the pattern of interest</p>
+<div class="column" style="width:45%;">
+<p><img src="img/reading_axes2.png" width="100%"></p>
+</div>
+<div class="column" style="width:5%;">
+
+</div>
+<div class="column" style="width:45%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="slides1_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-a-tour" class="slide level2">
+<h2>What is a tour?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>A grand tour is by definition a movie of low-dimensional projections constructed in such a way that it comes arbitrarily close to showing all possible low-dimensional projections; in other words, a grand tour is a space-filling curve in the manifold of low-dimensional projections of high-dimensional data spaces.</p>
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\({\mathbf x}_i \in \mathcal{R}^p\)</span>, <span class="math inline">\(i^{th}\)</span> data vector</p>
+<p><span class="math inline">\(F\)</span> is a <span class="math inline">\(p\times d\)</span> orthonormal basis, <span class="math inline">\(F'F=I_d\)</span>, where <span class="math inline">\(d\)</span> is the projection dimension.</p>
+<p>The projection of <span class="math inline">\({\mathbf x_i}\)</span> onto <span class="math inline">\(F\)</span> is <span class="math inline">\({\mathbf y}_i={\mathbf x}_iF\)</span>.</p>
+<p>Tour is indexed by time, <span class="math inline">\(F(t)\)</span>, where <span class="math inline">\(t\in [a, z]\)</span>. Starting and target frame denoted as <span class="math inline">\(F_a = F(a), F_z=F(t)\)</span>.</p>
+<p>The animation of the projected data is given by a path <span class="math inline">\({\mathbf y}_i(t)={\mathbf x}_iF(t)\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="geodesic-interpolation-between-planes" class="slide level2">
+<h2>Geodesic interpolation between planes</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Tour is indexed by time, <span class="math inline">\(F(t)\)</span>, where <span class="math inline">\(t\in [a, z]\)</span>. Starting and target frame denoted as <span class="math inline">\(F_a = F(a), F_z=F(t)\)</span>.</p>
+<p>The animation of the projected data is given by a path <span class="math inline">\({\mathbf y}_i(t)={\mathbf x}_iF(t)\)</span>.</p>
+</div><div class="column" style="width:50%;">
+<p><img src="img/geodesic.png" width="120%"></p>
+</div>
+</div>
+</section>
+<section id="understanding-the-projections" class="slide level2">
+<h2>Understanding the projections</h2>
+<div class="cell" data-layout-align="center">
+
+</div>
+<center>
+<iframe src="penguins_manual_demo.html" width="800" height="500" scrolling="yes" seamless="seamless" frameborder="0">
+</iframe>
+</center>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<p><br><br><br><br><br> Let’s take a look at some common high-d shapes with a grand tour</p>
+</section>
+<section id="d-spheres" class="slide level2">
+<h2>4D spheres</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>Hollow</p>
+<p><img src="sphere4d_1.gif" width="70%"></p>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>Solid</p>
+<p><img src="sphere4d_2.gif" width="70%"></p>
+</div>
+</div>
+</section>
+<section id="d-cubes" class="slide level2">
+<h2>4D cubes</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>Hollow</p>
+<p><img src="cube4d_1.gif" width="70%"></p>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>Solid</p>
+<p><img src="cube4d_2.gif" width="70%"></p>
+</div>
+</div>
+</section>
+<section id="others" class="slide level2">
+<h2>Others</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>Torus</p>
+<p><img src="torus4d.gif" width="70%"></p>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>Mobius</p>
+<p><img src="mobius.gif" width="70%"></p>
+</div>
+</div>
+</section>
+<section id="path-on-the-space-of-all-projections" class="slide level2">
+<h2>Path on the space of all projections</h2>
+<p>A grand tour is like a random walk (with interpolation) through the space of all possible projections: sphere for 1D, torus for 2D.<sup>1</sup></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+
+</div>
+<p><img src="tour_path.gif" width="80%"></p>
+</div><div class="column" style="width:50%;">
+<p><img src="tour_path_2d.gif" width="80%"></p>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn4" role="doc-endnote"><p><a href="https://journal.r-project.org/articles/RJ-2021-105/">Zhang et al (2021)</a></p></li></ol></aside></section>
+<section id="other-tour-types" class="slide level2">
+<h2>Other tour types</h2>
+<ul>
+<li><strong style="color: #aec7b2"> guided</strong>: follows the optimisation path for a projection pursuit index.</li>
+<li><strong style="color: #aec7b2"> little</strong>: interpolates between all variables.</li>
+<li><strong style="color: #aec7b2"> local</strong>: rocks back and forth from a given projection, so shows all possible projections within a radius.</li>
+<li><strong style="color: #aec7b2"> dependence</strong>: two independent 1D tours</li>
+<li><strong style="color: #aec7b2"> frozen</strong>: fixes some variable coefficients, others vary freely.</li>
+<li><strong style="color: #aec7b2"> manual/radial</strong>: control coefficient of one variable, to examine the sensitivity of structure this variable. See <code>spinifex</code> package.</li>
+<li><strong style="color: #aec7b2"> slice</strong>: use a section instead of a projection.</li>
+<li><strong style="color: #aec7b2"> sage</strong>: reverses the piling problem when projecting from high-dimensions.</li>
+<li><strong style="color: #aec7b2"> pca</strong>: tour on <span class="math inline">\(k\)</span> principal components, but show original variable axes. High-d biplots.</li>
+</ul>
+</section>
+<section id="guided-tour" class="slide level2">
+<h2>Guided tour</h2>
+<p>New target bases are chosen using a projection pursuit index function</p>
+<p><span class="math display">\[\mathop{\text{maximize}}_{F} g(xF) ~~~\text{ subject to }
+F \text{ being orthonormal}\]</span></p>
+<ul>
+<li><code>holes</code>: This is an inverse Gaussian filter, which is optimised when there is not much data in the center of the projection, i.e.&nbsp;a “hole” or donut shape in 2D.</li>
+<li><code>central mass</code>: The opposite of holes, high density in the centre of the projection, and often “outliers” on the edges.</li>
+<li><code>LDA</code>/<code>PDA</code>: An index based on the linear discriminant dimension reduction (and penalised), optimised by projections where the named classes are most separated.</li>
+</ul>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Grand</p>
+<p><img src="penguins2d.gif" width="80%"></p>
+<p>Might accidentally see best separation</p>
+</div><div class="column" style="width:50%;">
+<p>Guided, using LDA index</p>
+<p><img src="penguins2d_guided.gif" width="80%"></p>
+<p>Moves to the best separation</p>
+</div>
+</div>
+</section>
+<section id="manual-tour" class="slide level2">
+<h2>Manual tour</h2>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>start from best projection, given by projection pursuit</li>
+<li><code>bd</code> contribution controlled</li>
+<li>if <code>bd</code> is removed from projection, Gentoo separation disappears</li>
+<li><code>bd</code> is important for distinguishing Gentoo</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img src="penguins_rt_bd.gif" width="90%"></p>
+</div>
+</div>
+</section>
+<section id="manual-tour-1" class="slide level2">
+<h2>Manual tour</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>start from best projection, given by projection pursuit</li>
+<li><code>bl</code> contribution controlled</li>
+<li><code>bl</code> is important for distinguishing Adelie from Chinstrap</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img src="penguins_rt_bl.gif" width="90%"></p>
+</div>
+</div>
+</section>
+<section id="local-tour" class="slide level2">
+<h2>Local tour</h2>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Rocks from and to a given projection, in order to observe the neighbourhood</p>
+</div><div class="column" style="width:50%;">
+<p><img src="penguins2d_local.gif" width="90%"></p>
+</div>
+</div>
+</section>
+<section id="slice-tour" class="slide level2">
+<h2>Slice tour</h2>
+<div class="column" style="width:45%;">
+<p>Solid 4D sphere</p>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p><img src="sphere4d_solid_slice.gif" width="70%"></p>
+</div>
+<div class="column" style="width:5%;">
+
+</div>
+<div class="column" style="width:45%;">
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>Hollow 4D sphere</p>
+<p><img src="sphere4d_slice.gif" width="70%"></p>
+</div>
+</section>
+<section id="geometric-shapes-with-slice-tour" class="slide level2">
+<h2>Geometric shapes with slice tour</h2>
+<div class="column" style="width:45%;">
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>4D Torus</p>
+<p><img src="torus4d_slice.gif" width="70%"></p>
+</div>
+<div class="column" style="width:5%;">
+
+</div>
+<div class="column" style="width:45%;">
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>4D Hollow Cube</p>
+<p><img src="cube4d_slice.gif" width="70%"></p>
+</div>
+</section>
+<section id="pca-tour" class="slide level2">
+<h2>PCA tour</h2>
+<div class="column" style="width:45%;">
+<p>Compute PCA, reduce dimension, show original variable axes in the reduced space.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>penguins_pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(penguins_sub[,<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">center =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>penguins_coefs <span class="ot">&lt;-</span> penguins_pca<span class="sc">$</span>rotation[, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb7-3"><a href="#cb7-3"></a>penguins_scores <span class="ot">&lt;-</span> penguins_pca<span class="sc">$</span>x[, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb7-4"><a href="#cb7-4"></a>clrs <span class="ot">&lt;-</span> <span class="fu">brewer.pal</span>(<span class="dv">3</span>, <span class="st">"Dark2"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>col <span class="ot">&lt;-</span> clrs[</span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">as.numeric</span>(</span>
+<span id="cb7-7"><a href="#cb7-7"></a>    penguins_sub<span class="sc">$</span>species)]</span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="fu">animate_pca</span>(penguins_scores, <span class="at">pc_coefs =</span> penguins_coefs, <span class="at">col=</span>col)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+</div>
+<div class="column" style="width:5%;">
+
+</div>
+<div class="column" style="width:45%;">
+<p><img src="penguins2d_pca.gif" width="100%"></p>
+</div>
+</section>
+<section id="projection-dimension-and-displays" class="slide level2">
+<h2>Projection dimension and displays</h2>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>1D projections displayed as a density</p>
+<p><img src="penguins1d.gif" width="90%"></p>
+</div><div class="column" style="width:50%;">
+<p>Density contours overlaid on a scatterplot</p>
+<p><img src="penguins2d_dens.gif" width="80%"></p>
+</div>
+</div>
+</section>
+<section id="tours-are-used-for-12" class="slide level2">
+<h2>Tours are used for (1/2)</h2>
+<ul>
+<li><strong style="color: #aec7b2"> Classification</strong>:
+<ul>
+<li>to check assumptions of models</li>
+<li>to examine separations between groups</li>
+<li>determine variable importance</li>
+<li>examine boundaries</li>
+<li>random forest diagnostics vote matrix</li>
+</ul></li>
+<li><strong style="color: #aec7b2"> Dimension reduction </strong>
+<ul>
+<li>go beyond 2 PCs</li>
+<li>work with much higher dimensional data</li>
+<li>check for not linear dependencies</li>
+</ul></li>
+</ul>
+</section>
+<section id="tours-are-used-for-22" class="slide level2">
+<h2>Tours are used for (2/2)</h2>
+<ul>
+<li><strong style="color: #aec7b2"> Clustering</strong>:
+<ul>
+<li>examine shape of clusters</li>
+<li>separation between clusters</li>
+<li>compare cluster solution</li>
+<li>view the dendrogram in data space</li>
+</ul></li>
+<li><strong style="color: #aec7b2"> Compositional data</strong>:
+<ul>
+<li>shapes and clusters in a simplex</li>
+</ul></li>
+</ul>
+<p><strong style="color: #aec7b2"> More on these in Session 2 </strong></p>
+</section>
+<section id="creating-a-new-display" class="slide level2">
+<h2>Creating a new display</h2>
+<div class="column" style="width:45%;">
+<pre><code>function (center = TRUE, axes = "center", 
+  half_range = NULL, col = "black", pch = 20, 
+  cex = 1, edges = NULL, edges.col = "black", 
+    ...) 
+{
+    labels &lt;- NULL
+    if (!areColors(col)) 
+        col &lt;- mapColors(col)
+    init &lt;- function(data) {
+        half_range &lt;&lt;- compute_half_range(
+          half_range, data, center)
+        labels &lt;&lt;- abbreviate(colnames(data), 3)
+    }
+    if (!is.null(edges)) {
+        if (!is.matrix(edges) &amp;&amp; ncol(edges) == 2) {
+            stop("Edges matrix needs two columns, 
+              from and to, only.")
+        }
+    }
+    render_frame &lt;- function() {
+        par(pty = "s", mar = rep(0.1, 4))
+        blank_plot(xlim = c(-1, 1), 
+                   ylim = c(-1, 1))
+    }
+    render_transition &lt;- function() {
+        rect(-1, -1, 1, 1, col = "#FFFFFFE6", 
+        border = NA)
+    }
+    render_data &lt;- function(data, proj, 
+      geodesic) {
+        draw_tour_axes(proj, labels, limits = 1, 
+          axes, ...)
+        x &lt;- data %*% proj
+        if (center) 
+            x &lt;- center(x)
+        x &lt;- x/half_range
+        points(x, col = col, pch = pch, 
+               cex = cex)
+        if (!is.null(edges)) {
+            segments(x[edges[, 1], 1], 
+              x[edges[, 1], 2], 
+              x[edges[, 2], 1], 
+              x[edges[, 2], 2], 
+                col = edges.col)
+        }
+    }
+    list(init = init, 
+      render_frame = render_frame, 
+      render_transition = render_transition, 
+      render_data = render_data, 
+      render_target = nul)
+}</code></pre>
+</div>
+<div class="column" style="width:5%;">
+
+</div>
+<div class="column" style="width:45%;">
+<p>To create a new display, a function containing these functions:</p>
+<ul>
+<li><code>render_data</code>: draw the data using base, input at least <code>data</code>, <code>proj</code></li>
+<li><code>init</code>: initialise the drawing</li>
+<li><code>render_frame</code>: clears display to restart drawing</li>
+<li><code>render_transition</code>: allows for different drawing when a target is reached</li>
+</ul>
+</div>
+</section>
+<section id="saving-for-publication" class="slide level2">
+<h2>Saving for publication</h2>
+<div class="column" style="width:45%;">
+<p>Method 1, using <code>gifski</code> and <code>tourr::render_gif()</code>. See lots of code chunks!</p>
+<pre><code>render_gif(penguins_sub[,2:5], grand_tour(), 
+           display_xy(col=col, axes="bottomleft"), 
+           "penguins2d.gif", apf=1/5, 
+           frames=100, width=300, height=300)</code></pre>
+<p><br> Method 2, using plotly (see slide 15 “Understanding the projections” code chunk):</p>
+</div>
+<div class="column" style="width:5%;">
+
+</div>
+<div class="column" style="width:45%;">
+<ol type="1">
+<li>Generate each frame, index each frame, a big array</li>
+<li>Make one big ggplot, with all frames overplotted, and a non-used argument <code>frame</code> pointing to your index</li>
+<li>Pass to <code>ggplotly</code></li>
+<li>Save to html using <code>htmltools::save_html()</code></li>
+</ol>
+<p>Use the <code>spinifex</code> function <code>play_tour_path()</code> to do this easily.</p>
+</div>
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<p>We can learn a little more about the data if have a tour in the toolbox. It can help us to understand</p>
+<ul>
+<li>dependencies between multiple variables</li>
+<li>examine shapes, of clusters</li>
+<li>detect outliers</li>
+</ul>
+</section>
+<section id="if-you-want-to-read-more" class="slide level2">
+<h2>If you want to read more</h2>
+<ul>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/sam.11271">Visualizing statistical models: Removing the blindfold (2015)</a></li>
+<li><a href="http://github.com/ggobi/tourr">tourr: An R Package for Exploring Multivariate Data with Projections</a></li>
+</ul>
+</section>
+<section id="acknowledgements" class="slide level2">
+<h2>Acknowledgements</h2>
+<p>Slides produced using <a href="https://quarto.org">quarto</a>.</p>
+<p>Slides available from <a href="https://github.com/dicook/MDAG_2022">https://github.com/dicook/MDAG_2022</a>.</p>
+<p>Viewable at <a href="https://dicook.github.io/MDAG_2022/slides.html">https://dicook.github.io/MDAG/slides.html)</a>).</p>
+<div class="footer footer-default">
+<p><a href="https://github.com/dicook/MDAG_2022">https://github.com/dicook/MDAG_2022</a></p>
+</div>
+</section>
+
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="slides1_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="slides1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="slides1_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="slides1_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="slides1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="slides1_files/libs/revealjs/plugin/multiplex/socket.io.js"></script>
+  <script src="slides1_files/libs/revealjs/plugin/multiplex/multiplex.js"></script>
+  <script src="slides1_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="slides1_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="slides1_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="slides1_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="slides1_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'multiplex': {"secret":null,"id":"1ebbe0005995ea6c","url":"https://reveal-multiplex.glitch.me/"},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          let href = ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+    
+
+</body></html>
